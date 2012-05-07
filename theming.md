@@ -154,7 +154,7 @@ Custom pages can be defined using the following syntax:
 	 
 	 {/Page:CustomPageName}
 
-They can contain any modules or blocks that you choose to put inside of them. The page URL will simple be /CustomPageName
+They can contain any modules or blocks that you choose to put inside of them. The page URL will simply be /CustomPageName
 
 -----
  
