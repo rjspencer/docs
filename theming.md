@@ -11,7 +11,7 @@
 -----
 
 # Available Pages
-Note: Not all pages are required. Define pages that make sense for your theme, and the rest will be taken care of by our engine. No links will be broken.
+Note: Not all pages are required. Define pages that make sense for your theme, and the rest will be taken care of by our engine. No links will be broken. *Also see Defining Custom Pages*
 
 ## page:About
 This page should show general information about the account.
@@ -219,6 +219,47 @@ oneItemText
 numerousItemText
 :	the text to append to the cound if it is anything other than 1
 
+## AudioAddToCartLink
+Creates a link that, when clicked, will add the item to the user's cart on StageBloc
+Options  
+text
+:	the text to be put inside the `<a>` tag *defaults to "Add To Cart"*
+
+audioid
+:	the ID of the audio you want to add to the user's cart *required*
+
+class
+:	the class to assign to the `<a>` tag
+
+## AudioFreeDownloadLink
+Creates a link that, when clicked, will download an audio file (unless it requires a follow to download, in which a modal will first show up)
+Options  
+text
+:	the text to be put inside the `<a>` tag *defaults to "Download"*
+
+audioid
+:	the ID of the audio you want to download *required*
+
+class
+:	the class to assign to the `<a>` tag
+
+## AudioPlaylistAddToCartLink
+Creates a link that, when clicked, will add the audio playlist to the user's cart on StageBloc
+Options  
+text
+:	the text to be put inside the `<a>` tag *defaults to "Add To Cart"*
+
+preorderText
+:	the text to be put inside the `<a>` tag when a preorder is set up for the playlist *defaults to "Pre-order"*
+
+preorderSoldOutText
+:	the text to be put inside the `<a>` tag when a preorder is set up for the playlist and it has sold out (if it has a limit on the amount of orders) *defaults to "Pre-order Sold Out"*
+
+audioplaylistid
+:	the ID of the audio you want to add to the user's cart *required*
+
+class
+:	the class to assign to the `<a>` tag
 
 ## SecureEmail
 Securely put a mailto: link in a theme  
