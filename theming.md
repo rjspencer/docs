@@ -262,7 +262,7 @@ class
 :	the class to assign to the `<a>` tag
 
 ## AudioPlaylistFreeDownloadLink
-Creates a link that, when clicked, will download an audio plsylist (unless it requires a follow to download, in which a modal will first show up) *Note: This will check to make sure a playlist is capabale of being downloaded for free as well*
+Creates a link that, when clicked, will download an audio plsylist (unless it requires a follow to download, in which a modal will first show up) *Note: This will check to make sure a playlist is capable of being downloaded for free as well*
 Options  
 text
 :	the text to be put inside the `<a>` tag *defaults to "Download"*
