@@ -652,8 +652,80 @@ PhotoAlbumPhotoCount
 :	the number of photos in this photo album
 
 ## module:PhotoList
+A listing of photos.  
+Options  
+albumid
+: an album id of which to limit the returned photos to *defaults to none*
 
 ## module:PhotoView
+A view for a single photo. *Meant to be used with {Page:PhotoView}*  
+Options  
+photoid
+: an ID for which photo to show *defaults to the one given to {Page:PhotoView} if in that {Page}*
+### block:PhotoView
+PhotoUrl
+:	the permalink to this photo's individual page
+
+PhotoTitle
+:	the title of this photo
+
+PhotoDescription
+:	the description of the photo
+
+PhotoAlbumUrl
+:	a permalink to the photo's album's individual page
+
+PhotoAlbumId
+:	the ID of the photo's album
+
+PhotoAlbumTitle
+:	the title for the photo's album
+
+PhotoAlbumPhotoCount
+:	the number of photos in this photo's album
+
+Source-Thumb
+:	A square thumbnail, 130x130
+
+Source-Small
+:	Photo with max width of 250
+
+Source-Medium
+:	Photo with max width of 500
+
+Source-Large
+:	Photo with max width of 800
+
+	Use Source-Large when possible
+
+Source-Original
+:	The originally uploaded photo.
+
+ShortUrl-Thumb
+:	A square thumbnail, 130x130
+
+ShortUrl-Small
+:	Photo with max width of 250
+
+ShortUrl-Medium
+:	Photo with max width of 500
+
+ShortUrl-Large
+:	Photo with max width of 800
+
+ShortUrl-Original
+:	The originally uploaded photo.
+
+	Use ShortUrls when sharing photos
+
+PreviousPhotoId, NextPhotoId
+:	the ID of the photo previous/next to the current one if it exists
+
+PreviousPhotoTitle, NextPhotoTitle
+:	the title of the photo previous/next to the current one if it exists
+
+PreviousPhotoUrl, NextPhotoUrl
+:	the permalink of the photo previous/next to the current one if it exists
 
 ## module:StatusList
 
