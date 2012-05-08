@@ -201,8 +201,8 @@ Options variables use the following syntax:
 	  
 -----
 
-## ActivityDate
-Show the date of an activity in the activity stream  
+## ActivityDate, AudioPlaylistReleaseDate, AudioRecordedDate, CreatedDate, EventEndDate, EventStartDate, ModifiedDate, PublishedDate
+Show the date of various objects
 Options  
 format
 :	the format of the date according to [this](http://php.net/manual/en/function.date.php) *defaults to n/j/y*  
@@ -261,6 +261,18 @@ audioplaylistid
 class
 :	the class to assign to the `<a>` tag
 
+## AudioPlaylistFreeDownloadLink
+Creates a link that, when clicked, will download an audio plsylist (unless it requires a follow to download, in which a modal will first show up) *Note: This will check to make sure a playlist is capabale of being downloaded for free as well*
+Options  
+text
+:	the text to be put inside the `<a>` tag *defaults to "Download"*
+
+audioplaylistid
+:	the ID of the audio playlist you want to download *required*
+
+class
+:	the class to assign to the `<a>` tag
+
 ## SecureEmail
 Securely put a mailto: link in a theme  
 Options  
@@ -269,6 +281,21 @@ address
 
 text
 :	the text inside the `<a>` tag *defaults to address*
+
+## LikeLink
+Add a link to like a specific item  
+Options  
+likeText
+:	the text to show when the item hasn't yet been liked by the viewer *defaults to "Like"*
+
+unlikeText
+:	the text to show when the item has been liked by the viewer *defaults to "Unlike"*
+
+itemId
+: the ID of the item to like *required*
+
+class
+:	the class to give the `<a>` tag
 
 ## RepostLink
 Add a link to repost a specific item  
@@ -356,6 +383,22 @@ Checks if a venue has a website.
 Recommended blocks: EventView, AudioView
 
 # Modules and their blocks
+
+-----
+
+The general syntax for modules and their blocks is as follows:
+	
+	 {module:ModuleName}
+	 	{block:BlockName}
+		 	...
+	 		{BlockVariable1}
+	 		...
+	 		{BlockVariable2}
+	 		...
+	 	{/block:BlockName}
+	 {/module:ModuleName}
+	  
+-----
 
 ## module:AccountAbout
 
