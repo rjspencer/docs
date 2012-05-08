@@ -407,6 +407,8 @@ Renders if there is a defined bio text for the account.
 
 AccountAbout
 :	the bio text
+AccountAboutCleaned
+:	the bio text stripped of all tags except: `<span><em><strong><a><u><i><b>`
 
 ### block:AccountLink
 
@@ -520,6 +522,16 @@ This will generate links like this:
 		<li><a href="/" class="active">News</a></li>
 		<li><a href="/events" class="">Shows</a></li>
 	</ul>
+
+All variables:
+
+ignore
+:	list of top level links to ignore in navigation
+
+	default: `blog,statuses`
+order
+:	comma separated list to push to beginning; unlisted items will remain in default position
+
 
 ## module:Pagination
 
