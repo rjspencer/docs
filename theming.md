@@ -496,6 +496,37 @@ RepostedFromAccountUrl
 :	if reposted, what was the original content permalink url
 
 ## module:BlogList
+A listing of blogs.  
+### block:BlogPost
+AuthorName
+:	author's name
+
+AuthorPhotoUrl
+:	url to a 130x130px user photo. if one isn't available, we'll use a default placeholder
+
+BlogPostTitle
+:	the content's title
+
+BlogPostId
+:	the content's id
+
+BlogPostBody
+:	the main content for the blog post
+
+BlogPostExcerpt
+:	the 1500 character beginning of a blog post
+
+BlogPostUrl
+:	the permalink to the content's individual page
+
+PreviousBlogPostId, NextBlogPostId
+:	the ID of the blog post previous/next to the current one if it exists
+
+PreviousBlogPostTitle, NextBlogPostTitle
+:	the title of the blog post previous/next to the current one if it exists
+
+PreviousBlogPostUrl, NextBlogPostUrl
+:	the permalink of the blog post previous/next to the current one if it exists
 
 ## module:BlogView
 
