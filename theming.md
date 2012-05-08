@@ -946,8 +946,30 @@ CreatedByName, ModifiedByName
 :	the name of the user who created/modified the audio playlist
 
 ## module::FollowingList
+A list of accounts that this account's admins are following
+
+### block:FollowingView
+FollowingAccountName
+:	the name of the account being following
+
+FollowingAccountUrl
+:	the URL of the account being followed
 
 ## module:BuyLinkList
+A listing of buy links for a the following modules: AudioView, AudioPlaylistView
+
+### block:BuyLinkView
+BuyLink
+:	the actual link
+
+BuyLinkTitle
+:	the title for the buy link
+
+BuyLinkPrice
+:	the price of the material for the buy link
+
+BuyLinkCurrency
+:	the currency of the material in the buy link
 
 # Example Theme
 
