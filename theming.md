@@ -831,9 +831,123 @@ CreatedByPhotoUrl, ModifiedByPhotoUrl
 CreatedByName, ModifiedByName
 :	the name of the user who created/modified the video playlist
 
-## module:AudioView
-
 ## module:AudioList
+A listing of audio objects  
+Options  
+audioplaylistid
+:	a audio playlist id to limit the videos to. *defaults to none*
+
+limit
+:	a limit on the amount of returned audio objects
+
+order
+:	the order in which to show the videos. *defaults to asc*
+
+Variables  
+TotalAudio:
+:	the total amount of audio objects for the account
+
+## module:AudioView
+A view for a single audio object. *Meant to be used with {Page:AudioView}*  
+Options  
+audioid
+: an ID for which audio to show *defaults to the one given to {Page:AudioView} if in that page
+
+### block:AudioView
+AudioLink
+:	a permalink to the audio's individual page
+
+AudioTitle
+:	the title of the audio
+
+AudioId
+:	the ID of the audio object
+
+AudioLyrics
+:	the lyrics for the audio
+
+AudioDescription
+:	the description for the audio object
+
+AudioCredits
+:	the credits for the audio object
+
+AudioArtist
+:	the artist for the audio object
+
+AudioFreeDownloadQuality, AudioPaidDownloadQuaility
+:	a string representing the quality of the free/paid version of this audio. it will be one of the following:
+
+		'128kb MP3';
+		'320kb MP3';
+		'Original WAV';
+		'Original AIFF';
+		'Original WAV / AIFF';
+		
+AudioOrderNumber
+:	the order of this audio in a potential playlist
+
+AudioStreamUrl
+:	the URL to use when streaming the audio
+
+## module:AudioPlaylistList
+A listing of audio playlists  
+Options  
+featured
+:	whether or not to just show the featured audio playlist *defaults to false*
+
+featuredfirst
+:	whether or not to show the featured audio playlist first in the listing
+
+## module:AudioPlaylistView
+A single view for an audio playlist. *Meant to be used with {Page:AudioPlaylistView}*
+
+### block:AudioPlaylistView
+AudioPlaylistDescription
+:	the description for the audio playlist
+
+AudioPlaylistId
+:	the ID for the audio playlist
+
+AudioPlaylistUrl
+:	a permalink for the plalist's individual page
+
+AudioPlaylistTitle
+:	the title of the audio playlist *Note: if there is a pre-order currently active for the audio playlist, it'll use that instead*
+
+AudioPlaylistAudioCount
+:	the amount of audio objects in this playlist
+
+AudioPlaylistCoverPhotoUrl
+:	a 130x130 pixel playlist cover image or a default one if there is no cover set
+
+AudioPlaylistArtist
+:	the artist for the audio playlist
+
+AudioPlaylistLabel
+:	the label for the audio playlist
+
+AudioPlaylistPrice
+:	the price for the playlist *Note: if there is a pre-order currently active for the playlist, it'll use that price instead*
+
+AudioPlaylistFreeDownloadQuality, AudioPlaylistPaidDownloadQuaility
+:	a string representing the quality of the free/paid version of this audio playlist. it will be one of the following:
+
+		'128kb MP3';
+		'320kb MP3';
+		'Original WAV';
+		'Original AIFF';
+		'Original WAV / AIFF';
+		
+CreatedByPhotoUrl, ModifiedByPhotoUrl
+:	a URL to the photo for who created/modified the audio playlist to be used in an `<img src="" />` tag
+
+CreatedByName, ModifiedByName
+:	the name of the user who created/modified the audio playlist
+
+## module::FollowingList
+
+## module:BuyLinkList
 
 # Example Theme
 
