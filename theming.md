@@ -752,12 +752,57 @@ Tag
 :	the actual tag
 
 ## module:VideoList
+A listing of videos.
+Options  
+videoplaylistid
+:	a video playlist id to limit the videos to. *defaults to none*
+
+limit
+:	a limit on the amount of returned videos
+
+order
+:	the order in which to show the videos. *defaults to asc*
+
+featured
+:	whether or not to show the just featured video *defaults to false*
+
+## module:VideoView
+A view for a single video. *Meant to be used with {Page:VideoView}*  
+Options  
+videoid
+: an ID for which video to show *defaults to the one given to {Page:VideoView} if in that page
+
+### block:VideoView
+VideoUrl
+:	a permalink to the video's individual page on StageBloc
+
+VideoJavaScriptEscapedTitle
+:	the title of the video escaped so that it is able to be used with JavaScript
+
+VideoID
+:	the ID of the video
+
+VideoDescription
+:	the description of the video
+
+VideoJavaScriptEscapedDescription
+:	the description of the video escaped to be used in JavaScript
+
+VideoEmbedCode
+:	the embed code for the given video
+
+VideoJavaScriptEncodedEmbedCode
+:	the embed code encoded for use in a URL
+
+VideoJavaScriptEscapedEmbedCode
+:	the embed code escaped to be used in JavaScript
+
+VideoThumbnailUrl
+:	a URL to a thumbnail image used to represent this video 
 
 ## module:VideoPlaylistList
 
 ## module:VideoPlaylistView
-
-## module:VideoView
 
 # Example Theme
 
