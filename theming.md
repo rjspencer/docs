@@ -728,10 +728,28 @@ PreviousPhotoUrl, NextPhotoUrl
 :	the permalink of the photo previous/next to the current one if it exists
 
 ## module:StatusList
-
+A listing of statuses.
 ## module:StatusView
+A view for an individual status. *Meant to be used with {Page:StatusView}*
+### block:StatusPost
+AuthorName
+:	the author of the status
+
+AuthorPhotoUrl
+:	a 130x130 pixel image of the author of the photo or a placeholder if the photo doesn't exist
+
+StatusText
+:	the actual text of the status post
 
 ## module:TagList
+A listing of tags for the current content item
+Options  
+limit
+:	an amount to limit the tags for the item by
+
+### block:TagView
+Tag
+:	the actual tag
 
 ## module:VideoList
 
