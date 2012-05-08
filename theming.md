@@ -326,6 +326,11 @@ Use this if statement to compare if a certain activity list item is of a certain
 Supported types: Audio, Blog, BlogRepost, Event, PhotoAlbum, Status, StatusRepost, Video  
 Recommended modules: ActivityStreamList
 
+## if:EventHasEnded
+Check if an event's end time is after the current time.
+
+Recommended block: EventView
+
 ## if:EventHasMinimumAge
 Check if an event has a required minimum age (any age greater than zero).
 
