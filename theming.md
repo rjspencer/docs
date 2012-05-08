@@ -621,8 +621,35 @@ order
 ## module:Pagination
 
 ## module:PhotoAlbumList
+A listing of photo albums for the account
 
 ## module:PhotoAlbumView
+A view for a single photo album. *Meant to be used with {Page:PhotoAlbumView}*
+
+### block:PhotoAlbumView
+Cover
+:	a 130x130 pixel image of the cover for the album or a default image if the album doesn't have a cover set
+
+CreatedByPhotoUrl, ModifiedByPhotoUrl
+:	a URL to the photo for who created/modified the album to be used in an `<img src="" />` tag
+
+CreatedByName, ModifiedByName
+:	the name of the user who created/modified the photo album
+
+PhotoAlbumDescription
+:	the description of the photo album
+
+PhotoAlbumUrl
+:	a permalink to the photo album's individual page
+
+PhotoAlbumId
+:	the ID of the photo album
+
+PhotoAlbumTitle
+:	the title for the photo album
+
+PhotoAlbumPhotoCount
+:	the number of photos in this photo album
 
 ## module:PhotoList
 
