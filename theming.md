@@ -11,25 +11,43 @@
 -----
 
 # Available Pages
-Note: Not all pages are required. Define pages that make sense for your theme, and the rest will be taken care of by our engine. No links will be broken.
+Note: Not all pages are required. Define pages that make sense for your theme, and the rest will be taken care of by our engine. No links will be broken. *Also see Defining Custom Pages*
 
 ## page:About
 This page should show general information about the account.
 
-Url structure: /about
-Recommended modules: 
+Url structure: /about  
+Recommended modules: AccountAbout
 
 ## page:ActivityStreamList
 This page should show a listing of content posted and reposted by the current account. *By default this is the homepage.*
 
 Url structure: /activities  
-Recommended modules:
+Recommended modules: ActivityStreamList
 
 ## page:AudioList
+This page should show a listing of audio content such as audio objects or audio playlists.
 
-## page:AudioPlaylistView
+Url structure: /audio  
+Recommended modules: AudioList, AudioView, AudioPlaylistList, AudioPlaylistView
 
 ## page:AudioView
+This page should show content for an audio object.
+
+Url structure: /audio/[%id]  
+Recommended modules: AudioView
+
+## page:AudioPlaylistList
+This page should show a listing of audio playlists
+
+Url structure: /audio/playlists  
+Recommended modules: AudioPlaylistView
+
+## page:AudioPlaylistView
+This page should show content for an audio playlist.
+
+Url structure: /audio/playlists/[%id]  
+Recommended modules: AudioPlaylistView
 
 ## page:BlogList
 This page should show a listing of blog posts posted by the account.
@@ -44,78 +62,119 @@ Url structure: /blog/[%id]
 Recommended modules: 
 
 ## page:Error404
-This page will be loaded whenever a unknown URL structure is hit.  *Note: This page will not be called when no content is available for a defined view. See {Else} blocks*
+This page will be loaded whenever a unknown URL structure is hit.  *Note: This page will not be called when no content is available for a defined view. Also see {Else} blocks for Modules*
 
-Url structure: /HanShotFirstError404
+Url structure: /PageThatDoesNotExist
 
 ## page:EventPastList
 This page should show a listing of events that have already finished.
 
 Url structure: /events/past  
-Recommended modules:
+Recommended modules: EventList
 
 ## page:EventUpcomingList
 This page should show a listing of events that have not yet finished.
 
 Url structures: /events  &  /events/upcoming  
-Recommended modules:
+Recommended modules: EventList
 
 ## page:EventView
 This page should show information for an event.
 
 Url structure: /events/[%id]  
-Recommended modules:
+Recommended modules: EventView
+
+## page:PhotoAlbumList
+This page should show a listing of photo albums
+
+Url structure: /photos/albums/  
+Recommended modules: PhotoAlbumList
 
 ## page:PhotoAlbumView
 This page should show the photos contained inside a photo album.
 
 Url structure: /photos/albums/[%id]  
-Recommended modules:
+Recommended modules: PhotoAlbumView
 
 ## page:PhotoList
 This page should show a listing of either (a) all photos or (b) all photo albums.
 
 Url structure: /photos  
-Recommended modules:
+Recommended modules: PhotoList
 
 ## page:PhotoView
-This page should show a large version of a photo.
+This page should show a single photo.
 
 Url structure: /photos/[%id]  
-Recommended modules:
+Recommended modules: PhotoView
 
 ## page:StatusList
 This page should show a listing of statuses posted by the account.
 
 Url structure: /statuses  
-Recommended modules:
+Recommended modules: StatusList
 
 ## page:StatusView
 This page should show an individual status.
 
 Url structure: /statuses/[%id]  
-Recommended modules:
+Recommended modules: StatusView
 
 ## page:VideoList
+This page should show a listing of videos.
 
-## page:VideoPlaylistView
+Url structure: /videos/  
+Recommended modules: VideoList
 
 ## page:VideoView
+This page should show the content for an individual video.
 
+Url structure: /videos/[%id]  
+Recommended modules: VideoView
+
+## page:VideoPlaylistList
+This page should show a listing of video playlists.
+
+Url structure: /videps/playlists
+Recommended modules: ViewPlaylistList
+
+## page:VideoPlaylistView
+This page should show an individual video playlist.
+
+Url structure: /videos/playlists/[%id]  
+Recommended modules: ViewPlaylistView
 
 # Defining Custom Pages
 
+-----
 
+Custom pages can be defined using the following syntax:
+	
+	 {Page:CustomPageName}
+	 
+	 {/Page:CustomPageName}
+
+They can contain any modules or blocks that you choose to put inside of them. The page URL will simply be /CustomPageName
+
+-----
+ 
 # Available Global Variables
+
+-----
+
+Global variables use the following syntax:
+	
+	 {VariableName}
+	  
+-----
 
 ## AccountName
 
 ## CSS
-Returns a `<link rel="stylesheet" />` tag, unless the CDN is down, where it will return the CSS inside a `<style>` tag.
+Returns a `<link rel="stylesheet" />` tag with a link to the theme's CSS on StageBloc's CDN.
 
 ## JS
-Returns a `<script src="">` tag, unless the CDN is down where it will return the JavaScript inside a `<script>` tag.
-
+Returns a `<script src="">` tag with a link to the theme's JS on StageBloc's CDN.
 
 ## jQuery
 Include the latest version of jQuery on the page via Google's CDN.
@@ -132,17 +191,99 @@ Supported: Audio, Events, EventsPast, Blog, Statuses, Photos, Videos, Home
 Example: `<a href="{Link-Videos}">See my killer video about how to weave baskets underwater!</a>`  
 Example return: `<a href="/account-name/videos">See my killer videos about how to weave baskets underwater!</a>`
 
-## Secure Email
-Securely put a mailto: link in a theme
+# Available Option Variables
 
+-----
+
+Options variables use the following syntax:
+	
+	 {VariableName option1="value1" option2="value2"}
+	  
+-----
+
+## ActivityDate
+Show the date of an activity in the activity stream  
+Options  
+format
+:	the format of the date according to [this](http://php.net/manual/en/function.date.php) *defaults to n/j/y*  
+Special Cases
+1. relative : gives a relative date string such as "5 seconds ago"
+2. gmdate : gives a GMT date 
+
+## AdminListLikeCount
+Shows the amount of likes the collective admins for an account have
+Options  
+oneItemText
+:	the text to append to the count if it happens to be 1
+
+numerousItemText
+:	the text to append to the cound if it is anything other than 1
+
+## AudioAddToCartLink
+Creates a link that, when clicked, will add the item to the user's cart on StageBloc
+Options  
+text
+:	the text to be put inside the `<a>` tag *defaults to "Add To Cart"*
+
+audioid
+:	the ID of the audio you want to add to the user's cart *required*
+
+class
+:	the class to assign to the `<a>` tag
+
+## AudioFreeDownloadLink
+Creates a link that, when clicked, will download an audio file (unless it requires a follow to download, in which a modal will first show up)
+Options  
+text
+:	the text to be put inside the `<a>` tag *defaults to "Download"*
+
+audioid
+:	the ID of the audio you want to download *required*
+
+class
+:	the class to assign to the `<a>` tag
+
+## AudioPlaylistAddToCartLink
+Creates a link that, when clicked, will add the audio playlist to the user's cart on StageBloc
+Options  
+text
+:	the text to be put inside the `<a>` tag *defaults to "Add To Cart"*
+
+preorderText
+:	the text to be put inside the `<a>` tag when a preorder is set up for the playlist *defaults to "Pre-order"*
+
+preorderSoldOutText
+:	the text to be put inside the `<a>` tag when a preorder is set up for the playlist and it has sold out (if it has a limit on the amount of orders) *defaults to "Pre-order Sold Out"*
+
+audioplaylistid
+:	the ID of the audio you want to add to the user's cart *required*
+
+class
+:	the class to assign to the `<a>` tag
+
+## SecureEmail
+Securely put a mailto: link in a theme  
+Options  
 address
 :	the email address *required*
 
 text
 :	the text inside the `<a>` tag *defaults to address*
 
+## RepostLink
+Add a link to repost a specific item  
+Options  
+repostText
+:	the text to show when the item hasn't yet been reposted by the viewer *defaults to "Repost"*
+
+unrepostText
+:	the text to show when the item has been reposted by the viewer *defaults to "Unrepost"*
+
+class
+:	the class to give the `<a>` tag
+
 # If Statements
-If statements will check if a certain statement is true, and if it is, execute the code inside. We also support the use of `{if:Else}` delimiters that will execute another code block if false. For example:
+If statements will check if a certain statement is true, and if it is, add the code inside. We also support the use of `{if:Else}` delimiters that will add a different code block if false. For example:
 
 	{if:EventHasMinimumAge}
 		This event requires that you are over the age of {EventAge} to enter.
@@ -187,7 +328,7 @@ Recommended block: BlogView
 ## if:Has[%direction]Photo
 Check if a previous or next photo exists, relative to the current photo album.
 
-Supported direction: Previous, Next
+Supported directions: Previous, Next
 Recommended block: PhotoView
 
 ## if:HasPastEvents
@@ -197,7 +338,7 @@ Recommended page: EventList
 Global: Yes, this if statement will run anywhere.
 
 ## if:HasTags
-Check if the content item has any tags
+Check if the current content item has any tags
 
 Recommended blocks: BlogView, StatusView, PhotoView, PhotoAlbumView, EventView, AudioView, AudioPlaylistView, VideoView, VideoPlaylistView
 
@@ -373,4 +514,5 @@ order
 
 ## module:VideoView
 
-# Formatting Date variables
+# Example Theme
+
