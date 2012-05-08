@@ -53,13 +53,13 @@ Recommended modules: AudioPlaylistView
 This page should show a listing of blog posts posted by the account.
 
 Url structure: /blog  
-Recommended modules:
+Recommended modules: BlogList, BlogView
 
 ## page:BlogView
 This page should show the content of an individual blog post.
 
 Url structure: /blog/[%id]  
-Recommended modules: 
+Recommended modules: BlogView
 
 ## page:Error404
 This page will be loaded whenever a unknown URL structure is hit.  *Note: This page will not be called when no content is available for a defined view. Also see {Else} blocks for Modules*
@@ -497,6 +497,8 @@ RepostedFromAccountUrl
 
 ## module:BlogList
 A listing of blogs.  
+## module:BlogView
+A view for a single blog post. Meant to be used with {Page:BlogView}
 ### block:BlogPost
 AuthorName
 :	author's name
@@ -528,11 +530,63 @@ PreviousBlogPostTitle, NextBlogPostTitle
 PreviousBlogPostUrl, NextBlogPostUrl
 :	the permalink of the blog post previous/next to the current one if it exists
 
-## module:BlogView
-
 ## module:EventList
+A listing of events.  
+Options  
+limit
+: the amount of events to list per page *defaults to 50*
+
+upcoming
+: whether or not to show upcoming events *defaults to true*
+
+past
+: whether or not to show past events *defaults to false* Also see {if:HasPastEvents}
+
+order
+: the other to show the events in *defaults to asc*
+
+Variables  
+TotalEvents
+: the amount of events loaded based on your values for upcoming and/or past
 
 ## module:EventView
+A view for a single event. Meant to be used with {Page:EventView}
+### block:EventView
+EventAges
+:	will return either "Any Age" or "[%Age]+" (meaning this age and up). Also see {if:EventHasMinimumAge}
+
+EventCity 
+:	the city in which the event is taking place
+
+EventState
+:	the state in which the event is taking place
+
+EventDescription
+:	the description of the event
+
+EventUrl
+:	a permalink to the event's individual page
+
+EventLocation
+:	a string constructed by StageBloc based on the information available for the location. if in the USA, it will return "city, state", otherwise it will return "city, state, country"
+
+EventPrice
+:	the event for the price. Also see {if:EventHasPrice}
+
+EventTitle
+:	the title for the event. Also see {if:EventHasTitle}
+
+TicketsBuyLink
+:	a link to where tickets for this event can be purchased
+
+VenueName
+:	the name of the venue where this event is taking place
+
+SupportingActs
+:	a comma seperated listing of the supporting acts for the event. Also see {if:EventHasSupportingActs}
+
+VenueWebsiteUrl
+:	the URL to the venue where the event is taking place. Also see {if:VenueHasWebsite}
 
 ## module:Navigation
 Display all the links to active, defined content sections. *Note: If you do not have the page defined in your theme, the link will not show to that section, however the section will still work with our ###LINK fallback no content page layout###.*
