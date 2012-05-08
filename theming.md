@@ -801,8 +801,39 @@ VideoThumbnailUrl
 :	a URL to a thumbnail image used to represent this video 
 
 ## module:VideoPlaylistList
+A listing of video playlists
 
 ## module:VideoPlaylistView
+A view for a single video playlist
+
+### block:VideoPlaylistView
+VideoPlaylistDescription
+:	the description for the playlist
+
+VideoPlaylistId
+:	the ID for the video playlist
+
+VideoPlaylistUrl
+:	a permalink to the video playlist's individual page
+
+VideoPlaylistTitle
+:	the title for the video playlist
+
+VideoPlaylistVideoCount
+:	the amount of videos in this playlist
+
+VideoPlaylistCoverPhotoUrl
+:	a 130x130px photo of the cover image for the video playlist or a default one if none exist
+
+CreatedByPhotoUrl, ModifiedByPhotoUrl
+:	a URL to the photo for who created/modified the video playlist to be used in an `<img src="" />` tag
+
+CreatedByName, ModifiedByName
+:	the name of the user who created/modified the video playlist
+
+## module:AudioView
+
+## module:AudioList
 
 # Example Theme
 
