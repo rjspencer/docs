@@ -488,6 +488,9 @@ ActivityDateTime
 ActivityExcerpt
 :	a trimmed version of {ActivityBody}, roughly 600 characters, taking into account HTML
 
+ActivityExcerptCleaned
+:	a trimmed version of {ActivityBody} stripped of all HTML except: `<span><em><strong><a><u><i><b>`
+
 ActivityUrl
 :	the permalink to the content's individual page
 
@@ -633,6 +636,19 @@ order
 
 
 ## module:Pagination
+This module latches onto the last seen module and provides next/previous links to go through the pages. **Note:** this currently must be the first module *after* the module you wish to paginate
+
+### block:PreviousPage
+Renders only if there is a previous page.
+
+PreviousPage
+:	link to previous page
+
+### block:NextPage
+Renders only if there is a next page.
+
+PreviousNext
+:	link to next page
 
 ## module:PhotoAlbumList
 A listing of photo albums for the account
