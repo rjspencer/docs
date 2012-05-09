@@ -379,8 +379,8 @@ Recommended blocks: BlogView, StatusView, PhotoView, PhotoAlbumView, EventView, 
 ## if:ReadMore
 Checks if the current excerpt is trimmed to length of 600 characters (give or take, depending on HTML tags).
 
-Recommended blocks: ActivityView, BlogView  
-Recommended pages: ActivityStreamView, BlogList
+Recommended blocks: ActivityStreamView, BlogView  
+Recommended pages: ActivityStreamList, BlogList
 
 ## if:VenueHasWebsite
 Checks if a venue has a website.
