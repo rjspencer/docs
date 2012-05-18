@@ -383,10 +383,7 @@ Checks if a venue has a website.
 
 Recommended blocks: EventView, AudioView
 
-# Modules and their blocks
-
------
-
+# Modules & Blocks
 The general syntax for modules and their blocks is as follows:
 	
 	 {module:ModuleName}
@@ -398,8 +395,7 @@ The general syntax for modules and their blocks is as follows:
 	 		...
 	 	{/block:BlockName}
 	 {/module:ModuleName}
-	  
------
+
 
 ## module:AccountAbout
 
@@ -408,6 +404,7 @@ Renders if there is a defined bio text for the account.
 
 AccountAbout
 :	the bio text
+
 AccountAboutCleaned
 :	the bio text stripped of all tags except: `<span><em><strong><a><u><i><b>`
 
