@@ -10,153 +10,151 @@
 
 -----
 
-# Available Pages
-Note: Not all pages are required. Define pages that make sense for your theme, and the rest will be taken care of by our engine. No links will be broken. *Also see Defining Custom Pages*
+# Pages
 
-## page:About
+
+## Available Pages
+Note: Not all pages are required. Define pages that make sense for your theme, and the rest will be taken care of by the engine. No links will be broken.
+
+### page:About
 This page should show general information about the account.
 
 Url structure: /about  
 Recommended modules: AccountAbout
 
-## page:ActivityStreamList
+### page:ActivityStreamList
 This page should show a listing of content posted and reposted by the current account. *By default this is the homepage.*
 
 Url structure: /activities  
 Recommended modules: ActivityStreamList
 
-## page:AudioList
+### page:AudioList
 This page should show a listing of audio content such as audio objects or audio playlists.
 
 Url structure: /audio  
 Recommended modules: AudioList, AudioView, AudioPlaylistList, AudioPlaylistView
 
-## page:AudioView
+### page:AudioView
 This page should show content for an audio object.
 
 Url structure: /audio/[%id]  
 Recommended modules: AudioView
 
-## page:AudioPlaylistList
+### page:AudioPlaylistList
 This page should show a listing of audio playlists
 
 Url structure: /audio/playlists  
 Recommended modules: AudioPlaylistView
 
-## page:AudioPlaylistView
+### page:AudioPlaylistView
 This page should show content for an audio playlist.
 
 Url structure: /audio/playlists/[%id]  
 Recommended modules: AudioPlaylistView
 
-## page:BlogList
+### page:BlogList
 This page should show a listing of blog posts posted by the account.
 
 Url structure: /blog  
 Recommended modules: BlogList, BlogView
 
-## page:BlogView
+### page:BlogView
 This page should show the content of an individual blog post.
 
 Url structure: /blog/[%id]  
 Recommended modules: BlogView
 
-## page:Error404
+### page:Error404
 This page will be loaded whenever a unknown URL structure is hit.  *Note: This page will not be called when no content is available for a defined view. Also see {Else} blocks for Modules*
 
 Url structure: /PageThatDoesNotExist
 
-## page:EventPastList
+### page:EventPastList
 This page should show a listing of events that have already finished.
 
 Url structure: /events/past  
 Recommended modules: EventList
 
-## page:EventUpcomingList
+### page:EventUpcomingList
 This page should show a listing of events that have not yet finished.
 
 Url structures: /events  &  /events/upcoming  
 Recommended modules: EventList
 
-## page:EventView
+### page:EventView
 This page should show information for an event.
 
 Url structure: /events/[%id]  
 Recommended modules: EventView
 
-## page:PhotoAlbumList
+### page:PhotoAlbumList
 This page should show a listing of photo albums
 
 Url structure: /photos/albums/  
 Recommended modules: PhotoAlbumList
 
-## page:PhotoAlbumView
+### page:PhotoAlbumView
 This page should show the photos contained inside a photo album.
 
 Url structure: /photos/albums/[%id]  
 Recommended modules: PhotoAlbumView
 
-## page:PhotoList
+### page:PhotoList
 This page should show a listing of either (a) all photos or (b) all photo albums.
 
 Url structure: /photos  
 Recommended modules: PhotoList
 
-## page:PhotoView
+### page:PhotoView
 This page should show a single photo.
 
 Url structure: /photos/[%id]  
 Recommended modules: PhotoView
 
-## page:StatusList
+### page:StatusList
 This page should show a listing of statuses posted by the account.
 
 Url structure: /statuses  
 Recommended modules: StatusList
 
-## page:StatusView
+### page:StatusView
 This page should show an individual status.
 
 Url structure: /statuses/[%id]  
 Recommended modules: StatusView
 
-## page:VideoList
+### page:VideoList
 This page should show a listing of videos.
 
 Url structure: /videos/  
 Recommended modules: VideoList
 
-## page:VideoView
+### page:VideoView
 This page should show the content for an individual video.
 
 Url structure: /videos/[%id]  
 Recommended modules: VideoView
 
-## page:VideoPlaylistList
+### page:VideoPlaylistList
 This page should show a listing of video playlists.
 
 Url structure: /videps/playlists
 Recommended modules: ViewPlaylistList
 
-## page:VideoPlaylistView
+### page:VideoPlaylistView
 This page should show an individual video playlist.
 
 Url structure: /videos/playlists/[%id]  
 Recommended modules: ViewPlaylistView
 
-# Defining Custom Pages
-
------
-
+## Custom Pages
 Custom pages can be defined using the following syntax:
 	
-	 {Page:CustomPageName}
+	 {Page:CustomMyAwesomePage}
 	 
-	 {/Page:CustomPageName}
+	 {/Page:CustomMyAwesomePage}
 
-They can contain any modules or blocks that you choose to put inside of them. The page URL will simply be /CustomPageName
-
------
+They can contain any modules or blocks that you choose to put inside of them, however pagination may not be reliable. The page URL of the example page above will be /MyAwesomePage
  
 # Available Global Variables
 
