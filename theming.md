@@ -5,7 +5,7 @@ Hello there. You are about to embark on an epic journey through StageBloc's them
 All of StageBloc's documentation are up on GitHub for you to fork, modify, and improve. Join us over there to request features, add suggestions, and report bugs. What are you waiting for? [Git to it!](https://github.com/stagebloc/docs)
 
 ## Code Style Guidelines
-Here are a few tips and tricks that we have when writing a theme. These are just some loose guidelines---don't follow them if neccesary.
+Here are a few tips and tricks that we have when writing a theme. These are just some loose guidelines---don't follow them if necessary.
 
 * Use semicolons in JavaScript. We do compress JavaScript before we upload it to our CDN, which may cause issues from time to time.
 
@@ -136,7 +136,7 @@ Recommended modules: VideoView
 ### page:VideoPlaylistList
 This page should show a listing of video playlists.
 
-Url structure: /videps/playlists
+Url structure: /videos/playlists
 Recommended modules: ViewPlaylistList
 
 ### page:VideoPlaylistView
@@ -213,7 +213,7 @@ oneItemText
 :	the text to append to the count if it happens to be 1
 
 numerousItemText
-:	the text to append to the cound if it is anything other than 1
+:	the text to append to the count if it is anything other than 1
 
 ## AudioAddToCartLink
 Creates a link that, when clicked, will add the item to the user's cart on StageBloc
@@ -596,7 +596,7 @@ VenueName
 :	the name of the venue where this event is taking place
 
 SupportingActs
-:	a comma seperated listing of the supporting acts for the event. Also see {if:EventHasSupportingActs}
+:	a comma separated listing of the supporting acts for the event. Also see {if:EventHasSupportingActs}
 
 VenueWebsiteUrl
 :	the URL to the venue where the event is taking place. Also see {if:VenueHasWebsite}
@@ -936,7 +936,7 @@ AudioPlaylistId
 :	the ID for the audio playlist
 
 AudioPlaylistUrl
-:	a permalink for the plalist's individual page
+:	a permalink for the playlist's individual page
 
 AudioPlaylistTitle
 :	the title of the audio playlist *Note: if there is a pre-order currently active for the audio playlist, it'll use that instead*
