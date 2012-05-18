@@ -397,7 +397,7 @@ The general syntax for modules and their blocks is as follows:
 	 {/module:ModuleName}
 
 
-## module:AccountAbout
+## AccountAbout
 
 ### block:AccountAbout
 Renders if there is a defined bio text for the account.
@@ -435,7 +435,7 @@ PhotoSource-Original
 
 	Use PhotoSource-Large when possible
 
-## module:ActivityStreamList
+## ActivityStreamList
 Events are grouped in the activity stream.
 
 supported
@@ -505,9 +505,9 @@ RepostedFromAccountPhotoUrl
 RepostedFromAccountUrl
 :	if reposted, what was the original content permalink url
 
-## module:BlogList
+## BlogList
 A listing of blogs.  
-## module:BlogView
+## BlogView
 A view for a single blog post. Meant to be used with {Page:BlogView}
 ### block:BlogPost
 AuthorName
@@ -540,7 +540,7 @@ PreviousBlogPostTitle, NextBlogPostTitle
 PreviousBlogPostUrl, NextBlogPostUrl
 :	the permalink of the blog post previous/next to the current one if it exists
 
-## module:EventList
+## EventList
 A listing of events.  
 Options  
 limit
@@ -559,7 +559,7 @@ Variables
 TotalEvents
 : the amount of events loaded based on your values for upcoming and/or past
 
-## module:EventView
+## EventView
 A view for a single event. Meant to be used with {Page:EventView}
 ### block:EventView
 EventAges
@@ -598,7 +598,7 @@ SupportingActs
 VenueWebsiteUrl
 :	the URL to the venue where the event is taking place. Also see {if:VenueHasWebsite}
 
-## module:Navigation
+## Navigation
 Display all the links to active, defined content sections. *Note: If you do not have the page defined in your theme, the link will not show to that section, however the section will still work with our ###LINK fallback no content page layout###.*
 
 You can override the link text in navigation modules as options. Example:
@@ -628,7 +628,7 @@ order
 :	comma separated list to push to beginning; unlisted items will remain in default position
 
 
-## module:Pagination
+## Pagination
 This module latches onto the last seen module and provides next/previous links to go through the pages. **Note:** this currently must be the first module *after* the module you wish to paginate
 
 ### block:PreviousPage
@@ -643,10 +643,10 @@ Renders only if there is a next page.
 PreviousNext
 :	link to next page
 
-## module:PhotoAlbumList
+## PhotoAlbumList
 A listing of photo albums for the account
 
-## module:PhotoAlbumView
+## PhotoAlbumView
 A view for a single photo album. *Meant to be used with {Page:PhotoAlbumView}*
 
 ### block:PhotoAlbumView
@@ -674,13 +674,13 @@ PhotoAlbumTitle
 PhotoAlbumPhotoCount
 :	the number of photos in this photo album
 
-## module:PhotoList
+## PhotoList
 A listing of photos.  
 Options  
 albumid
 : an album id of which to limit the returned photos to *defaults to none*
 
-## module:PhotoView
+## PhotoView
 A view for a single photo. *Meant to be used with {Page:PhotoView}*  
 Options  
 photoid
@@ -750,9 +750,9 @@ PreviousPhotoTitle, NextPhotoTitle
 PreviousPhotoUrl, NextPhotoUrl
 :	the permalink of the photo previous/next to the current one if it exists
 
-## module:StatusList
+## StatusList
 A listing of statuses.
-## module:StatusView
+## StatusView
 A view for an individual status. *Meant to be used with {Page:StatusView}*
 ### block:StatusPost
 AuthorName
@@ -764,7 +764,7 @@ AuthorPhotoUrl
 StatusText
 :	the actual text of the status post
 
-## module:TagList
+## TagList
 A listing of tags for the current content item
 Options  
 limit
@@ -774,7 +774,7 @@ limit
 Tag
 :	the actual tag
 
-## module:VideoList
+## VideoList
 A listing of videos.
 Options  
 videoplaylistid
@@ -789,7 +789,7 @@ order
 featured
 :	whether or not to show the just featured video *defaults to false*
 
-## module:VideoView
+## VideoView
 A view for a single video. *Meant to be used with {Page:VideoView}*  
 Options  
 videoid
@@ -823,10 +823,10 @@ VideoJavaScriptEscapedEmbedCode
 VideoThumbnailUrl
 :	a URL to a thumbnail image used to represent this video 
 
-## module:VideoPlaylistList
+## VideoPlaylistList
 A listing of video playlists
 
-## module:VideoPlaylistView
+## VideoPlaylistView
 A view for a single video playlist
 
 ### block:VideoPlaylistView
@@ -854,7 +854,7 @@ CreatedByPhotoUrl, ModifiedByPhotoUrl
 CreatedByName, ModifiedByName
 :	the name of the user who created/modified the video playlist
 
-## module:AudioList
+## AudioList
 A listing of audio objects  
 Options  
 audioplaylistid
@@ -870,7 +870,7 @@ Variables
 TotalAudio:
 :	the total amount of audio objects for the account
 
-## module:AudioView
+## AudioView
 A view for a single audio object. *Meant to be used with {Page:AudioView}*  
 Options  
 audioid
@@ -913,7 +913,7 @@ AudioOrderNumber
 AudioStreamUrl
 :	the URL to use when streaming the audio
 
-## module:AudioPlaylistList
+## AudioPlaylistList
 A listing of audio playlists  
 Options  
 featured
@@ -922,7 +922,7 @@ featured
 featuredfirst
 :	whether or not to show the featured audio playlist first in the listing
 
-## module:AudioPlaylistView
+## AudioPlaylistView
 A single view for an audio playlist. *Meant to be used with {Page:AudioPlaylistView}*
 
 ### block:AudioPlaylistView
@@ -968,7 +968,7 @@ CreatedByPhotoUrl, ModifiedByPhotoUrl
 CreatedByName, ModifiedByName
 :	the name of the user who created/modified the audio playlist
 
-## module::FollowingList
+## :FollowingList
 A list of accounts that this account's admins are following
 
 ### block:FollowingView
@@ -978,7 +978,7 @@ FollowingAccountName
 FollowingAccountUrl
 :	the URL of the account being followed
 
-## module:BuyLinkList
+## BuyLinkList
 A listing of buy links for a the following modules: AudioView, AudioPlaylistView
 
 ### block:BuyLinkView
