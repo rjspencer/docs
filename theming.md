@@ -1,17 +1,15 @@
-# StageBloc Theme Documentation
+# Home
+Hello there. You are about to embark on an epic journey through StageBloc's theming engine documentation. It may sound scary, but if you have a basic understanding of HTML, CSS, or JavaScript, you should not have any issues.
 
-# Code Style Guidelines
+### Fork us on GitHub!
+All of StageBloc's documentation are up on GitHub for you to fork, modify, and improve. Join us over there to request features, add suggestions, and report bugs. What are you waiting for? [Git to it!](https://github.com/stagebloc/docs)
 
------
+## Code Style Guidelines
+Here are a few tips and tricks that we have when writing a theme. These are just some loose guidelines---don't follow them if neccesary.
 
-	Here we will want to talk about what kind of code to write, some examples:
-	
-	* Use semicolons in JavaScript. we compress (not minify, since that would involve changing javascript variable names and stuff) all the code before we upload to the CDN
-
------
+* Use semicolons in JavaScript. We do compress JavaScript before we upload it to our CDN, which may cause issues from time to time.
 
 # Pages
-
 
 ## Available Pages
 Note: Not all pages are required. Define pages that make sense for your theme, and the rest will be taken care of by the engine. No links will be broken.
