@@ -154,70 +154,61 @@ Custom pages can be defined using the following syntax:
 
 They can contain any modules or blocks that you choose to put inside of them, however pagination may not be reliable. The page URL of the example page above will be /MyAwesomePage
  
-# Available Global Variables
+# Variables
 
------
-
-Global variables use the following syntax:
+Variables use the following syntax:
 	
 	 {VariableName}
+	 {VariableWithOption option1="value" option2="value"}
 	  
------
+## Global Variables
 
-## AccountName
+### AccountName
 
-## CSS
+### CSS
 Returns a `<link rel="stylesheet" />` tag with a link to the theme's CSS on StageBloc's CDN.
 
-## JS
+### JS
 Returns a `<script src="">` tag with a link to the theme's JS on StageBloc's CDN.
 
-## jQuery
+### jQuery
 Include the latest version of jQuery on the page via Google's CDN.
 
 *Note: this variable will eventually support defining a specific version to grab from Google*
 
-## jPlayer
+### jPlayer
 Include the jPlayer JavaScript library. Requires that {jQuery} is also included and comes before the {jPlayer} variable.
 
-## Link-\[%Section]
+### Link-\[%Section]
 Get a relative url to a particular section of the site.
 
 Supported: Audio, Events, EventsPast, Blog, Statuses, Photos, Videos, Home  
 Example: `<a href="{Link-Videos}">See my killer video about how to weave baskets underwater!</a>`  
 Example return: `<a href="/account-name/videos">See my killer videos about how to weave baskets underwater!</a>`
 
-# Available Option Variables
+## Variables with Options
 
------
-
-Options variables use the following syntax:
-	
-	 {VariableName option1="value1" option2="value2"}
-	  
------
-
-## ActivityDate, AudioPlaylistReleaseDate, AudioRecordedDate, CreatedDate, EventEndDate, EventStartDate, ModifiedDate, PublishedDate
+### ActivityDate, AudioPlaylistReleaseDate, AudioRecordedDate, CreatedDate, EventEndDate, EventStartDate, ModifiedDate, PublishedDate
 Show the date of various objects
-Options  
+  
 format
 :	the format of the date according to [this](http://php.net/manual/en/function.date.php) *defaults to n/j/y*  
 Special Cases
 1. relative : gives a relative date string such as "5 seconds ago"
 2. gmdate : gives a GMT date 
 
-## AdminListLikeCount
+### AdminListLikeCount
 Shows the amount of likes the collective admins for an account have
-Options  
+
 oneItemText
 :	the text to append to the count if it happens to be 1
 
 numerousItemText
 :	the text to append to the count if it is anything other than 1
 
-## AudioAddToCartLink
+### AudioAddToCartLink
 Creates a link that, when clicked, will add the item to the user's cart on StageBloc
-Options  
+
 text
 :	the text to be put inside the `<a>` tag *defaults to "Add To Cart"*
 
@@ -227,9 +218,9 @@ audioid
 class
 :	the class to assign to the `<a>` tag
 
-## AudioFreeDownloadLink
+### AudioFreeDownloadLink
 Creates a link that, when clicked, will download an audio file (unless it requires a follow to download, in which a modal will first show up)
-Options  
+
 text
 :	the text to be put inside the `<a>` tag *defaults to "Download"*
 
@@ -239,9 +230,9 @@ audioid
 class
 :	the class to assign to the `<a>` tag
 
-## AudioPlaylistAddToCartLink
+### AudioPlaylistAddToCartLink
 Creates a link that, when clicked, will add the audio playlist to the user's cart on StageBloc
-Options  
+
 text
 :	the text to be put inside the `<a>` tag *defaults to "Add To Cart"*
 
@@ -257,9 +248,9 @@ audioplaylistid
 class
 :	the class to assign to the `<a>` tag
 
-## AudioPlaylistFreeDownloadLink
+### AudioPlaylistFreeDownloadLink
 Creates a link that, when clicked, will download an audio playlist (unless it requires a follow to download, in which a modal will first show up) *Note: This will check to make sure a playlist is capable of being downloaded for free as well*
-Options  
+
 text
 :	the text to be put inside the `<a>` tag *defaults to "Download"*
 
@@ -269,18 +260,18 @@ audioplaylistid
 class
 :	the class to assign to the `<a>` tag
 
-## SecureEmail
+### SecureEmail
 Securely put a mailto: link in a theme  
-Options  
+
 address
 :	the email address *required*
 
 text
 :	the text inside the `<a>` tag *defaults to address*
 
-## LikeLink
+### LikeLink
 Add a link to like a specific item  
-Options  
+
 likeText
 :	the text to show when the item hasn't yet been liked by the viewer *defaults to "Like"*
 
@@ -293,9 +284,9 @@ itemId
 class
 :	the class to give the `<a>` tag
 
-## RepostLink
+### RepostLink
 Add a link to repost a specific item  
-Options  
+
 repostText
 :	the text to show when the item hasn't yet been reposted by the viewer *defaults to "Repost"*
 
