@@ -148,9 +148,9 @@ Recommended modules: ViewPlaylistView
 ## Custom Pages
 Custom pages can be defined using the following syntax:
 	
-	 {Page:CustomMyAwesomePage}
-	 
-	 {/Page:CustomMyAwesomePage}
+	{Page:CustomMyAwesomePage}
+	
+	{/Page:CustomMyAwesomePage}
 
 They can contain any modules or blocks that you choose to put inside of them, however pagination may not be reliable. The page URL of the example page above will be /MyAwesomePage
  
@@ -158,8 +158,8 @@ They can contain any modules or blocks that you choose to put inside of them, ho
 
 Variables use the following syntax:
 	
-	 {VariableName}
-	 {VariableWithOption option1="value" option2="value"}
+	{VariableName}
+	{VariableWithOption option1="value" option2="value"}
 	  
 ## Global Variables
 
@@ -192,10 +192,9 @@ Example return: `<a href="/account-name/videos">See my killer videos about how t
 Show the date of various objects
   
 format
-:	the format of the date according to [this](http://php.net/manual/en/function.date.php) *defaults to n/j/y*  
-Special Cases
-1. relative : gives a relative date string such as "5 seconds ago"
-2. gmdate : gives a GMT date 
+:	the format of the date according to [PHP date() function](http://php.net/date) *defaults to n/j/y*  
+: if set to "relative", returns time ago such as "5 seconds ago"
+: if set to "gmdate", returns a GMT date in PHP date format 'Y-M-d h:i A' (see using `{EventList}` in the ActivityStream)
 
 ### AdminListLikeCount
 Shows the amount of likes the collective admins for an account have
@@ -298,7 +297,7 @@ class
 
 # If Statements
 If statements will check if a certain statement is true, and if it is, add the code inside. We also support the use of `{if:Else}` delimiters that will add a different code block if false. For example:
-
+	
 	{if:EventHasMinimumAge}
 		This event requires that you are over the age of {EventAge} to enter.
 	{if:Else}
@@ -376,17 +375,16 @@ Recommended blocks: EventView, AudioView
 
 # Modules & Blocks
 The general syntax for modules and their blocks is as follows:
-	
-	 {module:ModuleName}
-	 	{block:BlockName}
-		 	...
-	 		{BlockVariable1}
-	 		...
-	 		{BlockVariable2}
-	 		...
-	 	{/block:BlockName}
-	 {/module:ModuleName}
 
+	{module:ModuleName}
+		{block:BlockName}
+			...
+			{BlockVariable1}
+			...
+			{BlockVariable2}
+			...
+		{/block:BlockName}
+	{/module:ModuleName}
 
 ## AccountAbout
 
@@ -498,8 +496,10 @@ RepostedFromAccountUrl
 
 ## BlogList
 A listing of blogs.  
+
 ## BlogView
 A view for a single blog post. Meant to be used with {Page:BlogView}
+
 ### block:BlogPost
 AuthorName
 :	author's name
@@ -533,7 +533,9 @@ PreviousBlogPostUrl, NextBlogPostUrl
 
 ## EventList
 A listing of events.  
-Options  
+
+### Options
+
 limit
 : the amount of events to list per page *defaults to 50*
 
@@ -546,13 +548,16 @@ past
 order
 : the other to show the events in *defaults to asc*
 
-Variables  
+### Variables  
+
 TotalEvents
 : the amount of events loaded based on your values for upcoming and/or past
 
 ## EventView
 A view for a single event. Meant to be used with {Page:EventView}
+
 ### block:EventView
+
 EventAges
 :	will return either "Any Age" or "[%Age]+" (meaning this age and up). Also see {if:EventHasMinimumAge}
 
@@ -615,6 +620,7 @@ ignore
 :	list of top level links to ignore in navigation
 
 	default: `blog,statuses`
+
 order
 :	comma separated list to push to beginning; unlisted items will remain in default position
 
@@ -676,7 +682,9 @@ A view for a single photo. *Meant to be used with {Page:PhotoView}*
 Options  
 photoid
 : an ID for which photo to show *defaults to the one given to {Page:PhotoView} if in that {Page}*
+
 ### block:PhotoView
+
 PhotoUrl
 :	the permalink to this photo's individual page
 
@@ -743,9 +751,12 @@ PreviousPhotoUrl, NextPhotoUrl
 
 ## StatusList
 A listing of statuses.
+
 ## StatusView
 A view for an individual status. *Meant to be used with {Page:StatusView}*
+
 ### block:StatusPost
+
 AuthorName
 :	the author of the status
 
@@ -767,7 +778,7 @@ Tag
 
 ## VideoList
 A listing of videos.
-Options  
+
 videoplaylistid
 :	a video playlist id to limit the videos to. *defaults to none*
 
@@ -847,7 +858,9 @@ CreatedByName, ModifiedByName
 
 ## AudioList
 A listing of audio objects  
-Options  
+
+### Options
+
 audioplaylistid
 :	a audio playlist id to limit the videos to. *defaults to none*
 
@@ -857,13 +870,14 @@ limit
 order
 :	the order in which to show the videos. *defaults to asc*
 
-Variables  
+### Variables
+
 TotalAudio:
 :	the total amount of audio objects for the account
 
 ## AudioView
 A view for a single audio object. *Meant to be used with {Page:AudioView}*  
-Options  
+
 audioid
 : an ID for which audio to show *defaults to the one given to {Page:AudioView} if in that page
 
@@ -892,11 +906,11 @@ AudioArtist
 AudioFreeDownloadQuality, AudioPaidDownloadQuaility
 :	a string representing the quality of the free/paid version of this audio. it will be one of the following:
 
-		'128kb MP3';
-		'320kb MP3';
-		'Original WAV';
-		'Original AIFF';
-		'Original WAV / AIFF';
+		* 128kb MP3
+		* 320kb MP3
+		* Original WAV
+		* Original AIFF
+		* Original WAV / AIFF
 		
 AudioOrderNumber
 :	the order of this audio in a potential playlist
@@ -906,7 +920,7 @@ AudioStreamUrl
 
 ## AudioPlaylistList
 A listing of audio playlists  
-Options  
+
 featured
 :	whether or not to just show the featured audio playlist *defaults to false*
 
@@ -947,11 +961,11 @@ AudioPlaylistPrice
 AudioPlaylistFreeDownloadQuality, AudioPlaylistPaidDownloadQuaility
 :	a string representing the quality of the free/paid version of this audio playlist. it will be one of the following:
 
-		'128kb MP3';
-		'320kb MP3';
-		'Original WAV';
-		'Original AIFF';
-		'Original WAV / AIFF';
+		* 128kb MP3
+		* 320kb MP3
+		* Original WAV
+		* Original AIFF
+		* Original WAV / AIFF
 		
 CreatedByPhotoUrl, ModifiedByPhotoUrl
 :	a URL to the photo for who created/modified the audio playlist to be used in an `<img src="" />` tag
@@ -959,10 +973,11 @@ CreatedByPhotoUrl, ModifiedByPhotoUrl
 CreatedByName, ModifiedByName
 :	the name of the user who created/modified the audio playlist
 
-## :FollowingList
+## FollowingList
 A list of accounts that this account's admins are following
 
 ### block:FollowingView
+
 FollowingAccountName
 :	the name of the account being following
 
@@ -973,6 +988,7 @@ FollowingAccountUrl
 A listing of buy links for a the following modules: AudioView, AudioPlaylistView
 
 ### block:BuyLinkView
+
 BuyLink
 :	the actual link
 
