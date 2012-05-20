@@ -277,9 +277,6 @@ likeText
 unlikeText
 :	the text to show when the item has been liked by the viewer *defaults to "Unlike"*
 
-itemId
-: the ID of the item to like *required*
-
 class
 :	the class to give the `<a>` tag
 
