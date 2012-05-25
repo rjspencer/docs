@@ -637,7 +637,7 @@ PreviousPage
 ### block:NextPage
 Renders only if there is a next page.
 
-PreviousNext
+PreviousPage
 :	link to next page
 
 ## PhotoAlbumList
