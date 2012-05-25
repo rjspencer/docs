@@ -186,9 +186,9 @@ Supported: Audio, Events, EventsPast, Blog, Statuses, Photos, Videos, Home
 Example: `<a href="{Link-Videos}">See my killer video about how to weave baskets underwater!</a>`  
 Example return: `<a href="/account-name/videos">See my killer videos about how to weave baskets underwater!</a>`
 
-## Variables with Options
+## Variables with Options ASDF
 
-### ActivityDate, AudioPlaylistReleaseDate, AudioRecordedDate, CreatedDate, EventEndDate, EventStartDate, ModifiedDate, PublishedDate
+### CreatedDate, ModifiedDate, PublishedDate
 Show the date of various objects
   
 format
@@ -441,6 +441,16 @@ ActivityAuthorName
 ActivityAuthorPhotoUrl
 :	url to a 130x130px user photo
 
+ActivityDate
+:	the datetime the activity was posted
+	
+	**Options**
+	
+	format
+	:	the format of the date according to [PHP date() function](http://php.net/date) *defaults to n/j/y*  
+	:	if set to "relative", returns time ago such as "5 seconds ago"
+	:	if set to "gmdate", returns a GMT date in PHP date format 'Y-M-d h:i A' (see using `{EventList}` in the ActivityStream)
+
 ActivityTitle
 :	the content's title
 
@@ -569,6 +579,16 @@ EventState
 
 EventDescription
 :	the description of the event
+
+Event[Start|End]Date
+:	the datetime the event is set to begin or end
+	
+	**Options**
+	
+	format
+	:	the format of the date according to [PHP date() function](http://php.net/date) *defaults to n/j/y*  
+	:	if set to "relative", returns time ago such as "5 seconds ago"
+	:	if set to "gmdate", returns a GMT date in PHP date format 'Y-M-d h:i A' (see using `{EventList}` in the ActivityStream)
 
 EventUrl
 :	a permalink to the event's individual page
@@ -793,7 +813,7 @@ featured
 
 ## VideoView
 A view for a single video. *Meant to be used with {Page:VideoView}*  
-Options  
+
 videoid
 : an ID for which video to show *defaults to the one given to {Page:VideoView} if in that page
 
@@ -897,6 +917,16 @@ AudioLyrics
 AudioDescription
 :	the description for the audio object
 
+AudioRecordedDate
+:	the date this audio was recorded on
+	
+	**Options**
+	
+	format
+	:	the format of the date according to [PHP date() function](http://php.net/date) *defaults to n/j/y*  
+	:	if set to "relative", returns time ago such as "5 seconds ago"
+	:	if set to "gmdate", returns a GMT date in PHP date format 'Y-M-d h:i A' (see using `{EventList}` in the ActivityStream)
+
 AudioCredits
 :	the credits for the audio object
 
@@ -957,6 +987,16 @@ AudioPlaylistLabel
 
 AudioPlaylistPrice
 :	the price for the playlist *Note: if there is a pre-order currently active for the playlist, it'll use that price instead*
+
+AudioPlaylistReleaseDate
+:	the datetime the audio playlist was released on
+	
+	**Options**
+	
+	format
+	:	the format of the date according to [PHP date() function](http://php.net/date) *defaults to n/j/y*  
+	:	if set to "relative", returns time ago such as "5 seconds ago"
+	:	if set to "gmdate", returns a GMT date in PHP date format 'Y-M-d h:i A' (see using `{EventList}` in the ActivityStream)
 
 AudioPlaylistFreeDownloadQuality, AudioPlaylistPaidDownloadQuaility
 :	a string representing the quality of the free/paid version of this audio playlist. it will be one of the following:
