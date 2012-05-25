@@ -303,69 +303,72 @@ If statements will check if a certain statement is true, and if it is, add the c
 
 Most if statements will only function in certain modules or blocks.
 
-## if:ActivityIs[%type]
+### if:ActivityIs[%type]
 Use this if statement to compare if a certain activity list item is of a certain type.
 
 Supported types: Audio, Blog, BlogRepost, Event, Photo, PhotoAlbum, Status, StatusRepost, Video  
 Recommended modules: ActivityStreamList
 
-## if:EventHasEnded
+### if:EventHasEnded
 Check if an event's end time is after the current time.
 
 Recommended block: EventView
 
-## if:EventHasMinimumAge
+### if:EventHasMinimumAge
 Check if an event has a required minimum age (any age greater than zero).
 
 Recommended block: EventView
 
-## if:EventHasTitle
+### if:EventHasTitle
 Check if an event has a title.
 
 Recommended block: EventView
 
-## if:EventHasPrice
+### if:EventHasPrice
 Check if an event has a price. Note that a price of "0" is considered a price, as it is free.
 
 Recommended block: EventView
 
-## if:EventHasSupportingActs
+### if:EventHasSupportingActs
 Check if there is at least one supporting act for an event.
 
 Recommended block: EventView
 
-## if:Has[%direction]BlogPost
+### if:Has[%direction]BlogPost
 Check if a previous or next blog post exists.
 
 Supported directions: Previous, Next  
 Recommended block: BlogView
 
-## if:Has[%direction]Photo
+### if:Has[%direction]Photo
 Check if a previous or next photo exists, relative to the current photo album.
 
 Supported directions: Previous, Next
 Recommended block: PhotoView
 
-## if:HasPastEvents
+### if:HasPastEvents
 Check if past events exist for current account.
 
 Recommended page: EventList  
 Global: Yes, this if statement will run anywhere.
 
-## if:HasTags
+### if:HasTags
 Check if the current content item has any tags
 
 Recommended blocks: BlogView, StatusView, PhotoView, PhotoAlbumView, EventView, AudioView, AudioPlaylistView, VideoView, VideoPlaylistView
 
-## if:HasTicketsBuyLink -- NEEDS TO BE UPDATED
+### if:EventHasTicketsBuyLink
+Check if the event has a ticket buy link attached
 
-## if:ReadMore
+Recommended blocks: EventView
+
+### if:ReadMore
 Checks if the current excerpt is trimmed to length of 600 characters (give or take, depending on HTML tags).
 
 Recommended blocks: ActivityStreamView, BlogView  
 Recommended pages: ActivityStreamList, BlogList
 
-## if:VenueHasWebsite
+### if:VenueHasWebsite
 Checks if a venue has a website.
 
 Recommended blocks: EventView, AudioView
