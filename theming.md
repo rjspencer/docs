@@ -186,7 +186,7 @@ Supported: Audio, Events, EventsPast, Blog, Statuses, Photos, Videos, Home
 Example: `<a href="{Link-Videos}">See my killer video about how to weave baskets underwater!</a>`  
 Example return: `<a href="/account-name/videos">See my killer videos about how to weave baskets underwater!</a>`
 
-## Variables with Options ASDF
+## Variables with Options
 
 ### CreatedDate, ModifiedDate, PublishedDate
 Show the date of various objects
