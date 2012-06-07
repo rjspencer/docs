@@ -186,6 +186,77 @@ Supported: Audio, Events, EventsPast, Blog, Statuses, Photos, Videos, Home
 Example: `<a href="{Link-Videos}">See my killer video about how to weave baskets underwater!</a>`  
 Example return: `<a href="/account-name/videos">See my killer videos about how to weave baskets underwater!</a>`
 
+## option: Variables
+You can set up ways for StageBloc users to customize their theme to their liking without them doing any HTML/CSS/JS editing with custom theme {option}s.
+
+*Note: these shouldn't be used as theme assets (things users won't change, such as sprites)*
+*Note: Less is often more. If someone wants very specific, fine tune control, it's best if they just edit the theme.*
+
+Examples (line spacing for legibility):
+
+	{option:Image
+		group="background"
+		name="image"
+		format="background-image: url(%s);"
+		defaultFormat=""
+	}
+
+{option}s can also be reused without needing to provide all information after the first use. Simply provide the {option:* name="" and group=""} and the value from the first use will be returned.
+
+Example:
+
+	div#one {
+		{option:Select group="background" name="BG Color" format="background-color: %s;" presets="red,blue,green,yellow,magenta" default="red"}
+	}
+
+	/* Now that the entire option variable has been defined, this second instance does not require as much data: */
+	div#two {
+		{option:Select group="background" name="BG Color"}
+	}
+
+### option:Image
+Provides users with a file upload box where they can upload JPEG, GIF, and PNG files to be used in the theme. Data provided will be the full path URL to the original file uploaded.
+
+name (required)
+:	the name of the option field. Also the title in the left side of the theme management area
+
+group
+:	items in groups are namespaced and put together in the theme management area
+
+format
+:	the way the data is outputted. This is equivalent to [PHP's sprintf()](http://php.net/sprintf) if you'd like to force a format. Default: `%s`
+
+defaultFormat
+:	format of the default data. Default: copy of `format`
+
+default
+:	when no value has been specified, use this data is used instead
+
+### option:Color
+Provides users with a color select box. Data provided is a full HEX value including pound sign.
+
+rgb
+:	if true, returns three numbers comma separated, if false hex. default false
+	ex: 255,255,255 or #ffffff
+
+### option:Select
+Provides users with a drop down box containing a list of predefined values. Data provided is the value selected.
+
+: presets
+	define a comma separated list of values
+
+		{option:Select
+			group="background"
+			name="repeat"
+			format="background-repeat: %s;"
+			presets="repeat,no-repeat,repeat-x,repeat-y"
+			default="no-repeat"
+		}
+
+
+### option:Textarea
+Provides users with a textbox where they can input any string. Data provided is user's string.
+
 ## Variables with Options
 
 ### CreatedDate, ModifiedDate, PublishedDate
