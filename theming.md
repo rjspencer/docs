@@ -1133,7 +1133,7 @@ position
 When submitting a theme, you can select a default color scheme that you feel best matches and fits in. Users have the option to override this in their account's theme management section.
 
 # Example Theme
-Here's a boilerplate theme to kickstart your development.
+Here's a boilerplate theme to kickstart your development. [View these files on GitHub](https://github.com/stagebloc/docs/tree/master/boilerplate_theme).
 
 ### HTML
 	<!DOCTYPE html>
