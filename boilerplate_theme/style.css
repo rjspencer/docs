@@ -1,0 +1,220 @@
+/* HTML5 Doctor CSS Reset - http://html5doctor.com/html-5-reset-stylesheet/ */
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video { margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}
+body{line-height:1}
+p {word-wrap: break-word}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+nav ul{list-style:none}
+blockquote,q{quotes:none}
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}
+a{margin:0;padding:0;font-size:100%;vertical-align:baseline;background:transparent}
+ins{background-color:#ff9;color:#000;text-decoration:none}
+mark{background-color:#ff9;color:#000;font-style:italic;font-weight:bold}
+del{text-decoration:line-through}
+abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}
+table{border-collapse:collapse;border-spacing:0}
+hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}
+input,select{vertical-align:middle}
+
+
+/* General Styles */
+a {}
+a:hover {}
+a:focus {}
+p {}
+.clear { display: block; clear: both; }
+img { display: block; max-width: 100%; }
+
+/* Page styles */
+html {}
+body {}
+
+/* Navigation */
+#main-nav {}
+#main-nav li {}
+#main-nav li.current {}
+#main-nav li a {}
+
+/* 404 Error Styles */
+.nocontent {}
+.nocontent.post {}
+
+/* Content Styles */
+#main-content {}
+
+.post {}
+
+.post.blog {}
+.post.blog.repost {}
+
+.post.status {}
+.post.status.repost {}
+.post.status .status-quote-mark {}
+
+.post.event {}
+.post.event ul.events-list.compact {}
+
+.post.photo {}
+.post.photo img {}
+
+.post.photo-album {}
+
+.post.video {}
+
+.post.audio {}
+
+.post .post-body {}
+
+.post .repost {}
+.post .repost .repost-account-image {}
+.post .repost .repost-info {}
+
+.post .read-more {}
+
+.post .footer-info {}
+.post .footer-info a {}
+.post.footer-info .datetime-link {}
+
+#pagination {}
+#pagination a {}
+
+.post.individual {}
+.post.individual.blog {}
+.post.individual.status {}
+.post.individual.photo {}
+
+.single-item-navigation {}
+.single-item-navigation a {}
+
+/* Tags */
+#tags {}
+#tags.blog-post-tags {}
+#tags.event-tags {}
+#tags.video-tags {}
+#tags.video-playlist-tags {}
+#tags.audio-tags {}
+#tags.audio-playlist-tags {}
+
+#tags .tag {}
+
+/* Events */
+a#other-events {}
+
+.events-list { list-style: none; }
+.events-list li {}
+.events-list .event-date {}
+.events-list .event-venue {}
+.events-list .event-location {}
+.events-list .event-actions {}
+.events-list .event-actions .event-tickets {}
+.events-list .event-actions .event-more {}
+
+.event-datetime {}
+.event-datetime .event-month {}
+.event-datetime .event-day {}
+.event-datetime .event-year {}
+.event-datetime .event-datetime-sub {}
+
+.event-details {}
+.event-details + .event-details {}
+.event-details #event-header {}
+.event-details #event-supportingacts {}
+.event-details #event-price {}
+.event-details #event-tickets {}
+.event-details #event-description {}
+.event-details #event-description p {}
+
+/* Video */
+.playlists-block { list-style: none; }
+.playlists-block li {}
+.playlists-block li a { display: block; }
+.playlists-block li img {}
+.playlists-block li h3 {}
+.playlists-block li .total {}
+
+.video-container {}
+#playlistTitle {}
+#playlistTitle .title {}
+#playlistTitle .total {}
+
+.video-blocks {}
+.video-blocks li {}
+.video-blocks li.current {}
+.video-blocks li a {}
+.video-blocks li .image {}
+.video-blocks li .image img {}
+.video-blocks li span {}
+.video-blocks li.nowPlaying { display: none; }
+
+.video {}
+.video h2 {}
+.video h2 a {}
+.video p {}
+
+.playlist-blocks {}
+.playlist-blocks li {}
+.playlist-blocks li a {}
+.playlist-blocks li a img {}
+.playlist-blocks li a h3 {}
+.playlist-blocks li a span {}
+
+/* Photos */
+.album-blocks { list-style: none; }
+.album-blocks li {}
+.album-blocks li a {}
+.album-blocks li a img {}
+.album-blocks li a .title {}
+
+.photo-image {}
+.photo-title {}
+.photo-backtoalbum {}
+.photo-description {}
+
+#album-info {}
+#album-info #album-cover {}
+#album-info #album-title {}
+#album-info #album-last-updated {}
+#album-info #description {}
+#album-info #album-photo-count {}
+
+.photos-list { list-style: none; }
+.photos-list li {}
+.photos-list li a {}
+.photos-list li a img {}
+
+/* Audio */
+.playlist-info {}
+.playlist-info .buy-link {}
+.playlist-info .description {}
+.playlist-info .description p {}
+
+.single-info {}
+.single-info .buy-link {}
+.single-info .description {}
+.single-info .description p {}
+.lyrics {}
+
+.jp-audio {}
+.jp-audio-single {}
+.jp-audio-activity-stream {}
+.jp-current-time {}
+.jp-time-left {}
+.jp-progress { overflow: hidden; cursor: pointer; }
+.jp-play-bar { height: 15px; background: #000; }
+
+.playlist-tracks { list-style: none; }
+.playlist-tracks li {}
+.playlist-tracks li .number {}
+.playlist-tracks li .title {}
+.playlist-tracks li .links {}
+.playlist-tracks li .links a {}
+
+.empty-audio-playlist {}
+
+/* Account About */
+.account-overview {}
+.account-overview #account-photo {}
+.account-overview #account-links { list-style: none; }
+.account-overview #account-links li {}
+
+.account-bio {}
+.account-bio p {}
