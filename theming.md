@@ -1123,13 +1123,13 @@ BuyLinkCurrency
 # SB Nav
 SB Nav is the little control box that appears in a corner of the screen. It allows users to log in; follow and unfollow accounts; and edit, like, repost, and buy content. As a theme author, you can change a few things.
 
-## {SBNav position=""}
+### {SBNav position=""}
 You can set the sbnav position with the {SBNav} variable. Place it anywhere in your theme and SB Nav will be placed in the specified corner.
 
 position
 :	which corner to be placed in. accepts two words in any order, separated by a space. top, bottom, left, right
 
-## SB Nav color scheme
+### SB Nav color scheme
 When submitting a theme, you can select a default color scheme that you feel best matches and fits in. Users have the option to override this in their account's theme management section.
 
 # Example Theme
