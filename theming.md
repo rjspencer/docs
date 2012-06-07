@@ -10,7 +10,7 @@ Here are a few tips and tricks that we have when writing a theme. These are just
 * Use semicolons in JavaScript. We do compress JavaScript before we upload it to our CDN, which may cause issues from time to time.
 
 # Pages
-Each view on StageBloc has a `{Page}` block. [#custom-pages](You can also create your own custom pages).
+Each view on StageBloc has a `{Page}` block. [You can also create your own custom pages](#custom-pages).
 
 *Note: Not all pages are required. Define pages that make sense for your theme, and the rest will be taken care of by the engine. No links will be broken.*
 
