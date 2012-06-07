@@ -164,6 +164,10 @@ Variables use the following syntax:
 ## Global Variables
 
 ### AccountName
+Returns the account's Account Name
+
+### Body-ID
+Returns the general section the page is in. Eg: blog, statuses, video, audio
 
 ### CSS
 Returns a `<link rel="stylesheet" />` tag with a link to the theme's CSS on StageBloc's CDN.
@@ -1130,3 +1134,1254 @@ When submitting a theme, you can select a default color scheme that you feel bes
 
 # Example Theme
 
+### HTML
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="utf-8" />
+			{CSS}
+			{jQuery}
+			{jPlayer}
+		</head>
+		<body id="{Body-ID}">
+			<header>
+				<h1><a href="{Link-Home}">{AccountName}</a></h1>
+				{module:Navigation}
+					<nav id="main-nav">
+						<ul>
+						{block:NavigationItem}
+							<li class="{CSSClass}"><a href="{Url}">{LinkText}</a></li>
+						{/block:NavigationItem}
+						<li><a href="{Link-Archive}">Archive</a></li>
+						</ul>
+					</nav>
+				{/module:Navigation}
+			</header>
+
+			<div id="content">
+				{page:ActivityStreamList}
+					<div id="main-content">
+						{module:ActivityStreamList embedWidth="500"}
+							{block:ActivityStreamView}
+								<article class="post {ActivityCSSClass}">
+									<header>
+										{if:ActivityIsBlog}
+											<h1><a href="{ActivityUrl}">{ActivityTitle}</a></h1>
+										{/if:ActivityIsBlog}
+										{if:ActivityIsBlogRepost}
+											<h1><a href="{ActivityUrl}">{ActivityTitle}</a></h1>
+										{/if:ActivityIsBlogRepost}
+										{if:ActivityIsVideo}
+											<h1><a href="{ActivityUrl}">{ActivityTitle}</a></h1>
+										{/if:ActivityIsVideo}
+										{if:ActivityIsAudio}
+											<h1><a href="{ActivityUrl}">{ActivityTitle}</a></h1>
+										{/if:ActivityIsAudio}
+									</header>
+
+									<div class="post-body">
+										{if:ActivityIsBlog}
+											{ActivityExcerpt}
+										{/if:ActivityIsBlog}
+										{if:ActivityIsVideo}
+											{ActivityExcerpt}
+										{/if:ActivityIsVideo}
+										{if:ActivityIsAudio}
+											<div id="jquery_jplayer{ActivityId}" class="jp-jplayer"></div>
+											<div id="jp_container{ActivityId}" class="jp-audio jp-audio-single jp-audio-activity-stream" data-id="{ActivityId}" data-url="{ActivityExcerpt}">
+												<ul class="jp-controls">
+													<li><a href="javascript:;" class="jp-play" tabindex="1"><span>play</span></a></li>
+													<li><a href="javascript:;" class="jp-pause" tabindex="1"><span>pause</span></a></li>
+												</ul>
+												<div class="jp-current-time"></div>
+												<div class="jp-progress"><div class="jp-seek-bar"><div class="jp-play-bar"></div></div></div>
+												<div class="jp-time-left"></div>
+												<div class="clear"></div>
+											</div>
+										{/if:ActivityIsAudio}
+										{if:ActivityIsBlogRepost}
+											{ActivityExcerpt}
+
+											<div class="repost">
+												<a href="{RepostedFromAccountUrl}" class="repost-account-image-link">
+													<img src="{RepostedFromAccountPhotoUrl}" class="repost-account-image" />
+												</a>
+												<div class="repost-info">
+													<a href="{RepostedFromAccountUrl}">{RepostedFromAccountName}</a>
+													{RepostedContentTimeAgo}
+												</div>
+											</div>
+										{/if:ActivityIsBlogRepost}
+										{if:ActivityIsStatus}
+											<a href="{ActivityUrl}"><span class="status-quote-mark">&ldquo;</span>{ActivityExcerpt}</a>
+										{/if:ActivityIsStatus}
+										{if:ActivityIsStatusRepost}
+											<a href="{ActivityUrl}"><span class="status-quote-mark">&ldquo;</span>{ActivityExcerpt}</a>
+
+											<div class="repost">
+												<a href="{RepostedFromAccountUrl}" class="repost-account-image-link">
+													<img src="{RepostedFromAccountPhotoUrl}" class="repost-account-image" />
+												</a>
+												<div class="repost-info">
+													<a href="{RepostedFromAccountUrl}">{RepostedFromAccountName}</a>
+													{RepostedContentTimeAgo}
+												</div>
+											</div>
+										{/if:ActivityIsStatusRepost}
+										{if:ActivityIsEvent}
+											{ActivityTitle}
+										{/if:ActivityIsEvent}
+
+										{if:ActivityIsEvent}
+										<div>
+											{module:EventList upcoming="true" past="true" dateadded="{ActivityDate format="gmdate"}" limit="8"}
+												<ul class="events-list compact">
+												{block:EventView}
+													<li>
+														<span class="event-date">{ActivityDate format="M j"}</span>
+														<span class="event-location">{EventLocation}</span>
+														<small class="event-actions">
+															 <a class="event-more" href="{EventUrl}">more info</a>
+														 </small>
+													</li>
+												{/block:EventView}
+												</ul>
+											{/module:EventList}
+										</div>
+										{/if:ActivityIsEvent}
+
+										{if:ActivityIsPhoto}
+										<a href="{ActivityUrl}"><img src="{ActivityPhotoUrl-Medium}" /></a>
+										{/if:ActivityIsPhotoAlbum}
+
+									{if:ReadMore}
+										<a class="read-more" href="{ActivityUrl}">read more</a>
+									{/if:ReadMore}
+
+									</div>
+
+									<footer>
+										<span class="footer-info">
+											{LikeLink likeText="Like" unlikeText="Unlike"}
+											{if:ActivityIsBlog}
+												{RepostLink repostText="Repost" unRepostText="UnRepost"}
+											{/if:ActivityIsBlog}
+											{if:ActivityIsStatus}
+												{RepostLink repostText="Repost" unRepostText="UnRepost"}
+											{/if:ActivityIsStatus}
+											{if:ActivityIsBlogRepost}
+												{RepostLink repostText="Repost" unRepostText="UnRepost"}
+											{/if:ActivityIsBlogRepost}
+											{if:ActivityIsStatusRepost}
+												{RepostLink repostText="Repost" unRepostText="UnRepost"}
+											{/if:ActivityIsStatusRepost}
+											{if:ActivityIsPhotoAlbum}
+												{ActivityPhotoCount} photos <a href="{ActivityUrl}">view all photos</a>
+											{/if:ActivityIsPhotoAlbum}
+										</span>
+										<a href="{ActivityUrl}" class="datetime-link" title="{ActivityDate format="D M j Y g:i A"}">{ActivityDate format="relative"}</a>
+									</footer>
+								</article>
+							{/block:ActivityStreamView}
+						{Else}
+							<article class="post nocontent">
+								<p>Oh snap! We haven't written anything yet.</p>
+							</article>
+						{/module:ActivityStreamList}
+
+						{module:Pagination}
+							<div id="pagination">
+								{block:NextPage}
+								<a href="{NextPage}">Older</a>
+								{/block:NextPage}
+								{block:PreviousPage}
+								<a href="{PreviousPage}">Newer</a>
+								{/block:PreviousPage}
+							</div>
+						{/module:Pagination}
+
+					</div>
+				{/page:ActivityStreamList}
+
+				{page:BlogView}
+					<div id="main-content">
+						{module:BlogView}
+							{block:BlogPost}
+								<article class="post blog individual">
+									<header>
+										<h1>{BlogPostTitle}</h1>
+									</header>
+									{BlogPostBody}
+									<footer>
+										<span class="footer-info">
+											{LikeLink likeText="Like" unlikeText="Unlike"}
+											{RepostLink repostText="Repost" unRepostText="UnRepost"}
+										</span>
+										{PublishedDate format="D M j Y g:i A"}
+									</footer>
+									<div id="single-item-navigation">
+										{if:HasNextBlogPost}
+										<div><a href="{NextBlogPostUrl}">Newer</a></div>
+										{/if:HasNextBlogPost}
+										{if:HasPreviousBlogPost}
+										<div><a href="{PreviousBlogPostUrl}">Older</a></div>
+										{/if:HasPreviousBlogPost}
+									</div>
+								</article>
+								{if:HasTags}
+									<section id="tags" class="blog-post-tags">
+										<h2>Tags</h2>
+										{module:TagList}
+											{block:TagView}
+												<span class="tag">{Tag}</span>
+											{/block:TagView}
+										{/module:TagList}
+									</section>
+								{/if:HasTags}
+							{/block:BlogPost}
+						{Else}
+							<div class="nocontent">
+								<p>Sorry, but this blog post was not found!</p>
+							</div>
+						{/module:BlogView}
+					</div>
+				{/page:BlogView}
+
+				{page:StatusView}
+					<div id="main-content">
+						{module:StatusView}
+							{block:StatusPost}
+								<article class="post status individual">
+									<div class="post-body">
+										<a><span class="status-quote-mark">&ldquo;</span>{StatusText}</a>
+									</div>
+									<footer>
+										<span class="footer-info">
+											{LikeLink likeText="Like" unlikeText="Unlike"}
+											{RepostLink repostText="Repost" unRepostText="UnRepost"}
+										</span>
+										{CreatedDate format="D M j Y g:i A"}
+									</footer>
+								</article>
+							{/block:StatusPost}
+						{Else}
+							<div class="nocontent">
+								<p>Sorry, but this status was not found!</p>
+							</div>
+						{/module:StatusView}
+					</div>
+				{/page:StatusView}
+
+				{page:EventUpcomingList}
+					<div id="main-content">
+						{module:EventList upcoming="true" past="false"}
+							<h2>Upcoming Events</h2>
+							{if:HasPastEvents}
+							<a href="{Link-EventsPast}" id="other-events">view past events</a>
+							{/if:HasPastEvents}
+							<ul class="events-list">
+								{block:EventView}
+								<li>
+									<span class="event-date">{EventStartDate format="M j"}</span>
+									<span class="event-venue"><a href="{EventUrl}">{VenueName}</a></span>
+									<span class="event-location">{EventLocation}</span>
+									<span class="event-actions">
+										{if:EventHasTicketsBuyLink}
+										<a class="event-tickets" href="{TicketsBuyLink}">tickets</a> |
+										{/if:EventHasTicketsBuyLink}
+										<a class="event-more" href="{EventLink}">more</a>
+									</span>
+								</li>
+								{/block:EventView}
+							</ul>
+						{Else}
+							<h2>Upcoming Events</h2>
+							{if:HasPastEvents}
+							<a href="{Link-EventsPast}" id="other-events">view past events</a>
+							{/if:HasPastEvents}
+							<div class="nocontent">
+								<p>Uh oh! No upcoming events...</p>
+							</div>
+						{/module:EventList}
+
+						{module:Pagination}
+							<div id="pagination">
+								{block:NextPage}
+								<a href="{NextPage}">Older</a>
+								{/block:NextPage}
+								{block:PreviousPage}
+								<a href="{PreviousPage}">Newer</a>
+								{/block:PreviousPage}
+							</div>
+						{/module:Pagination}
+					</div>
+				{/page:EventUpcomingList}
+
+				{page:EventPastList}
+					<div id="main-content">
+						{module:EventList upcoming="false" past="true" order="desc"}
+							<h2>Past Events</h2>
+							<a href="{Link-Events}" id="other-events">view upcoming events</a>
+							<ul class="events-list">
+								{block:EventView}
+								<li>
+									<span class="event-date">{EventStartDate format="M j"}</span>
+									<span class="event-venue"><a href="{EventUrl}">{VenueName}</a></span>
+									<span class="event-location">{EventLocation}</span>
+									<span class="event-actions">
+										<a class="event-more" href="{EventUrl}">more</a>
+									</span>
+								</li>
+								{/block:EventView}
+							</ul>
+						{Else}
+							<h2>Past Events</h2>
+							<a href="{Link-Events}" id="other-events">view upcoming events</a>
+							<div class="nocontent">
+								<p>Uh oh! No past events...</p>
+							</div>
+						{/module:EventList}
+
+						{module:Pagination}
+							<div id="pagination">
+								{block:NextPage}
+								<a href="{NextPage}">Older</a>
+								{/block:NextPage}
+								{block:PreviousPage}
+								<a href="{PreviousPage}">Newer</a>
+								{/block:PreviousPage}
+							</div>
+						{/module:Pagination}
+					</div>
+				{/page:EventPastList}
+
+				{page:EventView}
+						{module:EventView}
+							<div id="main-content">
+								{block:EventView}
+									<div id="event-datetime">
+										<span id="event-month">{EventStartDate format="M"}</span>
+										<span id="event-day">{EventStartDate format="j"}</span>
+										<span id="event-year">{EventStartDate format="Y"}</span>
+
+										<div id="event-datetime-sub">
+											{EventStartDate format="l"}<br />
+											{EventStartDate format="g:i a"}<br />
+											{if:EventHasMinimumAge}{EventAges}{/if:EventHasMinimumAge}
+										</div>
+									</div>
+
+									<div class="event-details">
+										<div id="event-header">
+											{VenueName}, {EventLocation}
+										</div>
+										{if:HasSupportingActs}
+										<div class="event-details">
+											<span id="event-supportingacts">with {SupportingActs}</span>
+										</div>
+										{/if:HasSupportingActs}
+										<div class="event-details">
+											{if:EventHasPrice}
+											<span id="event-price">${EventPrice}</span>
+											{/if:EventHasPrice}
+											{if:EventHasTicketsBuyLink}
+											<a href="{TicketsBuyLink}" id="event-tickets">buy tickets</a>
+											{/if:EventHasTicketsBuyLink}
+											<div id="event-description">{EventDescription}</div>
+										</div>
+									</div>
+									{if:HasTags}
+										<section id="tags" class="event-tags">
+											<h2>Tags</h2>
+											{module:TagList}
+												{block:TagView}
+													<span class="tag">{Tag}</span>
+												{/block:TagView}
+											{/module:TagList}
+										</section>
+									{/if:HasTags}
+								{/block:EventView}
+						{Else}
+							<div class="nocontent">
+								<p>Sorry, this event wasn't found!</p>
+							</div>
+						{/module:EventView}
+					</div>
+				{/page:EventView}
+
+				{page:VideoList}
+					{module:VideoList featured="true" embedWidth="500"}
+						<div class="video-container">
+						{block:VideoView}
+							<div class="video">
+								{VideoEmbedCode}
+								<h2><a href="{VideoUrl}">{VideoTitle}</a></h2>
+								{VideoDescription}
+							</div>
+
+							{if:HasTags}
+							<section id="tags" class="video-tags">
+								<h2>Tags</h2>
+								{module:TagList}
+									{block:TagView}
+										<span class="tag">{Tag}</span>
+									{/block:TagView}
+								{/module:TagList}
+							</section>
+							{/if:HasTags}
+						{/block:VideoView}
+						</div>
+					{/module:VideoList}
+
+					{module:VideoPlaylistList}
+						<div id="main-content">
+							<h2>Playlists</h2>
+							<ul class="playlists-block">
+							{block:VideoPlaylistView}
+								<li id="playlist{AudioPlaylistId}"><a href="{VideoPlaylistUrl}">
+									{if:VideoPlaylistHasThumbnail}
+										<img src="{VideoPlaylistCoverPhotoUrl}" title="{VideoPlaylistTitle}" />
+									{/if:VideoPlaylistHasThumbnail}
+									<h3>{VideoPlaylistTitle}</h3>
+									<span class="total">{VideoPlaylistVideoCount} videos</span>
+								</a></li>
+							{/block:VideoPlaylistView}
+							</ul>
+						</div>
+					{Else}
+						<div class="nocontent">
+							<p>Sorry, but we haven't added any video playlists yet!</p>
+						</div>
+					{/module:VideoPlaylistList}
+				{/page:VideoList}
+
+				{page:VideoPlaylistView}
+					{module:VideoPlaylistView}
+						{block:VideoPlaylistView}
+							<div class="video-container"></div>
+							<div id="playlistTitle">
+								Playlist: <span class="title">{VideoPlaylistTitle}</span><span class="total">{VideoPlaylistVideoCount} videos</span>
+							</div>
+							<div id="video-grid">
+							{module:VideoList videoplaylistid="{VideoPlaylistId}" limit="12" embedWidth="500"}
+								<script>sbVideoList = {};</script>
+								<ul class="video-blocks">
+								{block:VideoView}
+									<li><a href="{VideoUrl}" data-id="{VideoId}">
+										<div class="image"><img src="{VideoThumbnailUrl}" title="{VideoTitle}" /></div>
+										<span>{VideoTitle}</span><span class="nowPlaying">Now Playing</span>
+									</a></li>
+
+									<script>sbVideoList[{VideoId}] = '<div class="video">{VideoJavaScriptEscapedEmbedCode}<h2><a href="{VideoUrl}">{VideoJavaScriptEscapedTitle}</a></h2>{VideoJavaScriptEscapedDescription}</div>{if:HasTags block="VideoView"}<section id="tags" class="video-tags"><h2>Tags</h2>{module:TagList}{block:TagView}<span class="tag">{Tag}</span>{/block:TagView}{/module:TagList}</section>{/if:HasTags}'</script>
+								{/block:VideoView}
+								</ul>
+							{/module:VideoList}
+							{module:Pagination}
+								<div id="pagination">
+									{block:PreviousPage}
+									<a href="{PreviousPage}">Newer</a>
+									{/block:PreviousPage}
+									{block:NextPage}
+									<a href="{NextPage}">Older</a>
+									{/block:NextPage}
+								</div>
+							{/module:Pagination}
+							{if:HasTags}
+							<section id="tags" class="video-playlist-tags">
+								<h2>Tags</h2>
+								{module:TagList}
+									{block:TagView}
+										<span class="tag">{Tag}</span>
+									{/block:TagView}
+								{/module:TagList}
+							</section>
+							{/if:HasTags}
+							</div>
+						{/block:VideoPlaylistView}
+					{Else}
+						<div class="nocontent">
+							<p>Sorry, but this video playlist was not found!</p>
+						</div>
+					{/module:VideoPlaylistView}
+
+					{module:VideoPlaylistList}
+						<div id="main-content">
+							<h2>Playlists</h2>
+							<ul class="playlist-blocks">
+							{block:VideoPlaylistView}
+								<li id="block{VideoPlaylistId}"><a href="{VideoPlaylistUrl}">
+									{if:VideoPlaylistHasThumbnail}
+										<img src="{VideoPlaylistCoverPhotoUrl}" title="{VideoPlaylistTitle}" />
+									{/if:VideoPlaylistHasThumbnail}
+									<h3>{VideoPlaylistTitle}</h3>
+									<span class="total">{VideoPlaylistVideoCount} videos</span>
+								</a></li>
+							{/block:VideoPlaylistView}
+							</ul>
+						</div>
+					{/module:VideoPlaylistList}
+				{/page:VideoPlaylistView}
+
+				{page:VideoView}
+					{module:VideoView embedWidth="500"}
+						<div class="video-container">
+						{block:VideoView}
+							<div class="video">
+								{VideoEmbedCode}
+								<h2><a href="{VideoUrl}">{VideoTitle}</a></h2>
+								{VideoDescription}
+							</div>
+
+							{if:HasTags}
+							<section id="tags" class="video-tags">
+								<h2>Tags</h2>
+								{module:TagList}
+									{block:TagView}
+										<span class="tag">{Tag}</span>
+									{/block:TagView}
+								{/module:TagList}
+							</section>
+							{/if:HasTags}
+						{/block:VideoView}
+						</div>
+					{Else}
+						<div class="nocontent">
+							<p>Sorry, but this video was not found!</p>
+						</div>
+					{/module:VideoView}
+				{/page:VideoView}
+
+				{page:PhotoList}
+					{module:PhotoAlbumList}
+						<div id="main-content">
+							<h2>Photo Albums</h2>
+							<ul class="album-blocks">
+								{block:PhotoAlbumView}
+								<li>
+									<a href="{PhotoAlbumUrl}">
+										<img src="{Cover}" alt="{PhotoAlbumTitle} cover" title="{PhotoAlbumTitle} cover" />
+										<span class="title">{PhotoAlbumTitle}</span>
+										{PhotoAlbumPhotoCount} photos
+									</a>
+								</li>
+								{/block:PhotoAlbumView}
+							</ul>
+						</div>
+					{Else}
+						<div class="nocontent">
+							<p>No photos yet! Check back later.</p>
+						</div>
+					{/module:PhotoAlbumList}
+				{/page:PhotoList}
+
+				{page:PhotoView}
+					{module:PhotoView}
+						<div id="main-content">
+							{block:PhotoView}
+							<article class="post individual photo">
+								<img class="photo-image" src="{Source-Large}" alt="{PhotoTitle}" title="{PhotoTitle}" />
+								<h1 class="photo-title">{PhotoTitle}</h1>
+								<p class="photo-backtoalbum">{PhotoAlbumPhotoCount} photos in <a href="{PhotoAlbumUrl}">{PhotoAlbumTitle}</a></p>
+								<div class="photo-description">
+									{PhotoDescription}
+								</div>
+								<div class="single-item-navigation">
+									{if:HasNextPhoto}
+									<div><a href="{NextPhotoUrl}">Newer</a></div>
+									{/if:HasNextPhoto}
+									{if:HasPreviousPhoto}
+									<div><a href="{PreviousPhotoUrl}">Older</a></div>
+									{/if:HasPreviousPhoto}
+								</div>
+								<footer>
+									<span class="footer-info">
+										{LikeLink likeText="Like" unlikeText="Unlike"}
+									</span>
+									{CreatedDate format="D M j Y g:i A"}
+								</footer>
+
+								{if:HasTags}
+									<section id="tags" class="photo-tags">
+										<h2>Tags</h2>
+										{module:TagList}
+											{block:TagView}
+												<span class="tag">{Tag}</span>
+											{/block:TagView}
+										{/module:TagList}
+									</section>
+								{/if:HasTags}
+							</article>
+							{/block:PhotoView}
+						</div>
+					{Else}
+						<div class="nocontent">
+							<p>Sorry, but this photo couldn't be found! <a href="{Link-Photos}">View other photos instead?</a></p>
+						</div>
+					{/module:PhotoView}
+				{/page:PhotoView}
+
+				{page:PhotoAlbumView}
+					{module:PhotoAlbumView}
+						<div id="main-content">
+							{block:PhotoAlbumView}
+								<div class="photos-section">
+									<div id="album-info">
+										<img id="album-cover" src="{Cover}" alt="{PhotoAlbumTitle} cover" title="{PhotoAlbumTitle} cover"/>
+										<span id="album-title">{PhotoAlbumTitle}</span>
+										<div id="album-last-updated">last updated {ModifiedDate format="F j, Y"}</div>
+										<div id="description">{PhotoAlbumDescription}</div>
+										<div id="album-photo-count">{PhotoAlbumPhotoCount} photos</div>
+									</div>
+								</div>
+								{module:PhotoList albumid="{PhotoAlbumId}" limit="24"}
+									<ul class="photos-list">
+										{block:PhotoView}
+										<li><a href="{PhotoUrl}" title="{PhotoTitle}"><img src="{Source-Thumb}" alt="{PhotoTitle}" title="{PhotoTitle}" /></a></li>
+										{/block:PhotoView}
+									</ul>
+								{/module:PhotoList}
+
+								{module:Pagination}
+									<div id="pagination">
+										{block:NextPage}
+										<a href="{NextPage}">Older</a>
+										{/block:NextPage}
+										{block:PreviousPage}
+										<a href="{PreviousPage}">Newer</a>
+										{/block:PreviousPage}
+									</div>
+								{/module:Pagination}
+
+								{if:HasTags}
+									<section id="tags" class="photo-album-tags">
+										<h2>Tags</h2>
+										{module:TagList}
+											{block:TagView}
+												<span class="tag">{Tag}</span>
+											{/block:TagView}
+										{/module:TagList}
+									</section>
+								{/if:HasTags}
+							{/block:PhotoAlbumView}
+						</div>
+					{Else}
+						<div class="nocontent">
+							<p>Sorry, but this photo album was not found!</p>
+						</div>
+					{/module:PhotoAlbumView}
+				{/page:PhotoAlbumView}
+
+				{page:AudioList}
+					{module:AudioPlaylistList featured="true"}
+						<div id="main-content">
+							{block:AudioPlaylistView}
+								<div class="playlist-info">
+									{if:AudioPlaylistHasThumbnail}
+										<img src="{AudioPlaylistCoverPhotoUrl}" class="cover-photo" title="{AudioPlaylistTitle}" />
+									{/if:AudioPlaylistHasThumbnail}
+									{if:AudioPlaylistCanBeSold}
+									<div class="buy-link">
+										{AudioPlaylistAddToCartLink audioPlaylistId="{AudioPlaylistId}" text="Buy Now"}<br />
+										{if:AudioPlaylistCanNamePrice}min {/if:AudioPlaylistCanNamePrice}${AudioPlaylistPrice} USD
+									</div>
+									{/if:AudioPlaylistCanBeSold}
+									{if:AudioPlaylistCanBeDownloadedForFree}
+									<div class="buy-link">
+										{AudioPlaylistFreeDownloadLink audioPlaylistId="{AudioPlaylistId}" text="Download"}<br />
+										{AudioPlaylistFreeDownloadQuality}
+									</div>
+									{/if:AudioPlaylistCanBeDownloadedForFree}
+									<h2>{AudioPlaylistTitle}</h2>
+									<p>{AudioPlaylistArtist}</p>
+
+									<div class="description">
+										{AudioPlaylistDescription}
+										<p>{if:AudioPlaylistHasReleaseDate}
+											<strong>Released</strong> on {AudioPlaylistReleaseDate format="F n, Y"}{if:AudioPlaylistHasLabel} by {AudioPlaylistLabel}{/if:AudioPlaylistHasLabel}
+										{if:Else}{if:AudioPlaylistHasLabel}
+											<strong>Released</strong> by {AudioPlaylistLabel}
+										{/if:AudioPlaylistHasLabel}{/if:AudioPlaylistHasReleaseDate}
+
+										{module:BuyLinkList}
+											<span class="buy-links">{Block:BuyLinkView}<a href="{BuyLink}">{BuyLinkTitle}</a>{/Block:BuyLinkView}</span>
+										{/module:BuyLinkList}</p>
+									</div>
+								</div>
+
+								<div id="jquery_jplayer" class="jp-jplayer"></div>
+								<div id="jp_container" class="jp-audio">
+									<ul class="jp-controls">
+										<li><a href="javascript:;" class="jp-previous" tabindex="1"><span>previous</span></a></li>
+										<li><a href="javascript:;" class="jp-play" tabindex="1"><span>play</span></a></li>
+										<li><a href="javascript:;" class="jp-pause" tabindex="1"><span>pause</span></a></li>
+										<li><a href="javascript:;" class="jp-next" tabindex="1"><span>next</span></a></li>
+									</ul>
+									<div class="jp-current-time"></div>
+									<div class="jp-progress"><div class="jp-seek-bar"><div class="jp-play-bar"></div></div></div>
+									<div class="jp-time-left"></div>
+									<div class="clear"></div>
+								</div>
+
+								{module:AudioList audioplaylistid="{AudioPlaylistId}"}
+								<ul class="playlist-tracks">
+									{block:AudioView}
+									<li data-url="{AudioStreamUrl}">
+										<span class="number">{AudioOrderNumber}</span>
+										<span class="title">{AudioTitle}</span>
+										<div class="links">
+											{if:AudioCanBeSold}{AudioAddToCartLink audioId="{AudioId}" text="buy"}{/if:AudioCanBeSold}
+											{if:AudioCanBeDownloadedForFree}{AudioFreeDownloadLink audioId="{AudioId}"}{/if:AudioCanBeDownloadedForFree}
+											<a href="{AudioLink}">details</a>
+										</div>
+									</li>
+									{/block:AudioView}
+								</ul>
+								{/module:AudioList}
+							{/block:AudioPlaylistView}
+						</div>
+					{/module:AudioPlaylistList}
+
+					{module:AudioPlaylistList}
+						<div id="main-content">
+							<h2>Playlists</h2>
+							<ul class="playlist-blocks">
+							{block:AudioPlaylistView}
+								<li id="playlist{AudioPlaylistId}"><a href="{AudioPlaylistUrl}">
+									{if:AudioPlaylistHasThumbnail}
+										<img src="{AudioPlaylistCoverPhotoUrl}" title="{AudioPlaylistTitle}" />
+									{/if:AudioPlaylistHasThumbnail}
+									<span class="total">{AudioPlaylistAudioCount} tracks</span>
+									<h3>{AudioPlaylistTitle}</h3>
+								</a></li>
+							{/block:AudioPlaylistView}
+							</ul>
+						</div>
+						{Else}
+						<div class="nocontent">
+							<p>We haven't uploaded any audio tracks yet, check back later!</p>
+						</div>
+					{/module:AudioPlaylistList}
+				{/page:AudioList}
+
+				{page:AudioPlaylistView}
+					{module:AudioPlaylistView}
+						<div id="main-content">
+							{block:AudioPlaylistView}
+								<div class="playlist-info">
+									{if:AudioPlaylistHasThumbnail}
+										<img src="{AudioPlaylistCoverPhotoUrl}" class="cover-photo" title="{AudioPlaylistTitle}" />
+									{/if:AudioPlaylistHasThumbnail}
+									{if:AudioPlaylistCanBeSold}
+									<div class="buy-link">
+										{AudioPlaylistAddToCartLink audioPlaylistId="{AudioPlaylistId}" text="Buy Now"}<br />
+										{if:AudioPlaylistCanNamePrice}min {/if:AudioPlaylistCanNamePrice}${AudioPlaylistPrice} USD
+									</div>
+									{/if:AudioPlaylistCanBeSold}
+									{if:AudioPlaylistCanBeDownloadedForFree}
+									<div class="buy-link">
+										{AudioPlaylistFreeDownloadLink audioPlaylistId="{AudioPlaylistId}" text="Download"}<br />
+										{AudioPlaylistFreeDownloadQuality}
+									</div>
+									{/if:AudioPlaylistCanBeDownloadedForFree}
+									<h2>{AudioPlaylistTitle}</h2>
+									<p>{AudioPlaylistArtist}</p>
+
+									<div class="description">
+										{AudioPlaylistDescription}
+										<p>{if:AudioPlaylistHasReleaseDate}
+											<strong>Released</strong> on {AudioPlaylistReleaseDate format="F n, Y"}{if:AudioPlaylistHasLabel} by {AudioPlaylistLabel}{/if:AudioPlaylistHasLabel}
+										{if:Else}{if:AudioPlaylistHasLabel}
+											<strong>Released</strong> by {AudioPlaylistLabel}
+										{/if:AudioPlaylistHasLabel}{/if:AudioPlaylistHasReleaseDate}
+
+										{module:BuyLinkList}
+											<span class="buy-links">{Block:BuyLinkView}<a href="{BuyLink}">{BuyLinkTitle}</a>{/Block:BuyLinkView}</span>
+										{/module:BuyLinkList}</p>
+									</div>
+								</div>
+
+								<div id="jquery_jplayer" class="jp-jplayer"></div>
+								<div id="jp_container" class="jp-audio">
+									<ul class="jp-controls">
+										<li><a href="javascript:;" class="jp-previous" tabindex="1"><span>previous</span></a></li>
+										<li><a href="javascript:;" class="jp-play" tabindex="1"><span>play</span></a></li>
+										<li><a href="javascript:;" class="jp-pause" tabindex="1"><span>pause</span></a></li>
+										<li><a href="javascript:;" class="jp-next" tabindex="1"><span>next</span></a></li>
+									</ul>
+									<div class="jp-current-time"></div>
+									<div class="jp-progress"><div class="jp-seek-bar"><div class="jp-play-bar"></div></div></div>
+									<div class="jp-time-left"></div>
+									<div class="clear"></div>
+								</div>
+
+								{module:AudioList audioplaylistid="{AudioPlaylistId}"}
+								<ul class="playlist-tracks">
+									{block:AudioView}
+									<li data-url="{AudioStreamUrl}">
+										<span class="number">{AudioOrderNumber}</span>
+										<span class="title">{AudioTitle}</span>
+										<div class="links">
+											{if:AudioCanBeSold}{AudioAddToCartLink audioId="{AudioId}" text="buy"}{/if:AudioCanBeSold}
+											{if:AudioCanBeDownloadedForFree}{AudioFreeDownloadLink audioId="{AudioId}"}{/if:AudioCanBeDownloadedForFree}
+											<a href="{AudioLink}">details</a>
+										</div>
+									</li>
+									{/block:AudioView}
+								</ul>
+								{Else}
+								<div class="empty-audio-playlist">
+									<p>Sorry, this playlist is empty.</p>
+								</div>
+								{/module:AudioList}
+
+								{if:HasTags}
+								<section id="tags" class="audio-playlist-tags">
+									<h2>Tags</h2>
+									{module:TagList}
+										{block:TagView}
+											<span class="tag">{Tag}</span>
+										{/block:TagView}
+									{/module:TagList}
+								</section>
+								{/if:HasTags}
+							{/block:AudioPlaylistView}
+						</div>
+					{Else}
+						<div class="nocontent">
+							<p>Sorry, but this playlist was not found!</p>
+						</div>
+					{/module:AudioPlaylistView}
+
+					{module:AudioPlaylistList}
+						<div id="audio-playlist-list-container">
+							<h2>Playlists</h2>
+							<ul class="playlist-blocks">
+							{block:AudioPlaylistView}
+								<li id="playlist{AudioPlaylistId}"><a href="{AudioPlaylistUrl}">
+									{if:AudioPlaylistHasThumbnail}
+										<img src="{AudioPlaylistCoverPhotoUrl}" title="{AudioPlaylistTitle}" />
+									{/if:AudioPlaylistHasThumbnail}
+									<span class="total">{AudioPlaylistAudioCount} tracks</span>
+									<h3>{AudioPlaylistTitle}</h3>
+								</a></li>
+							{/block:AudioPlaylistView}
+							</ul>
+						</div>
+					{/module:AudioPlaylistList}
+				{/page:AudioPlaylistView}
+
+				{page:AudioView}
+					{module:AudioView}
+						<div id="main-content">
+							{block:AudioView}
+								<div class="single-info">
+									{if:AudioCanBeSold}
+									<div class="buy-link">
+										{AudioAddToCartLink audioId="{AudioId}" text="Buy Now"}<br />
+										{if:AudioCanNamePrice}min {/if:AudioCanNamePrice}${AudioPrice}
+									</div>
+									{/if:AudioCanBeSold}
+									{if:AudioCanBeDownloadedForFree}
+									<div class="buy-link">
+										{AudioFreeDownloadLink audioId="{AudioId}" text="Download"}<br />
+										{AudioFreeDownloadQuality}
+									</div>
+									{/if:AudioCanBeDownloadedForFree}
+									<h2>{AudioTitle}</h2>
+									<p>{AudioArtist}</p>
+
+									<div class="description">
+										{AudioDescription}
+										<p>{if:AudioHasRecordedDate}
+											<strong>Recorded</strong> on {AudioRecordedDate format="F n, Y"}
+										{/if:AudioHasRecordedDate}
+
+										{module:BuyLinkList}
+											<span class="buy-links">{Block:BuyLinkView}<a href="{BuyLink}">{BuyLinkTitle}</a>{/Block:BuyLinkView}</span>
+										{/module:BuyLinkList}</p>
+									</div>
+								</div>
+
+								<div id="jquery_jplayer" class="jp-jplayer"></div>
+								<div id="jp_container" class="jp-audio jp-audio-single" data-url="{AudioStreamUrl}">
+									<ul class="jp-controls">
+										<li><a href="javascript:;" class="jp-play" tabindex="1"><span>play</span></a></li>
+										<li><a href="javascript:;" class="jp-pause" tabindex="1"><span>pause</span></a></li>
+									</ul>
+									<div class="jp-current-time"></div>
+									<div class="jp-progress"><div class="jp-seek-bar"><div class="jp-play-bar"></div></div></div>
+									<div class="jp-time-left"></div>
+									<div class="clear"></div>
+								</div>
+								{if:AudioHasLyrics}
+								<div class="lyrics">{AudioLyrics}</div>
+								{/if:AudioHasLyrics}
+
+								{if:HasTags}
+								<section id="tags" class="audio-tags">
+									<h2>Tags</h2>
+									{module:TagList}
+										{block:TagView}
+											<span class="tag">{Tag}</span>
+										{/block:TagView}
+									{/module:TagList}
+								</section>
+								{/if:HasTags}
+							{/block:AudioView}
+						</div>
+					{Else}
+					<div class="nocontent">
+						<p>Sorry, but this audio file was not found!</p>
+					</div>
+					{/module:AudioView}
+				{/page:AudioView}
+
+				{page:About}
+					<div id="main-content">
+						{module:AccountAbout}
+							<div class="account-overview">
+								{block:AccountPhoto}
+									<img alt="{AccountName}'s account photo" id="account-photo" src="{PhotoSource-Small}" />
+								{/block:AccountPhoto}
+								<ul id="account-links">
+									{block:AccountLink}
+										<li><a href="{LinkUrl}" target="_blank">{LinkTitle}</a></li>
+									{/block:AccountLink}
+								</ul>
+							</div>
+							<div class="account-bio">
+								{block:AccountAbout}
+									{AccountAbout}
+								{/block:AccountAbout}
+							</div>
+						{Else}
+							<p>We're sure you'll find our story fascinating, but we haven't written it yet!</p>
+						{/module:AccountAbout}
+					</div>
+				{/page:About}
+				{page:Error404}
+					<div class="nocontent">
+						<p>Error 404: This page doesn't exist.</p>
+					</div>
+				{/page:Error404}
+			</div>
+			{JS}
+		</body>
+	</html>
+
+### CSS
+/* HTML5 Doctor CSS Reset - http://html5doctor.com/html-5-reset-stylesheet/ */
+	html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video { margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}
+	body{line-height:1}
+	p {word-wrap: break-word}
+	article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+	nav ul{list-style:none}
+	blockquote,q{quotes:none}
+	blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}
+	a{margin:0;padding:0;font-size:100%;vertical-align:baseline;background:transparent}
+	ins{background-color:#ff9;color:#000;text-decoration:none}
+	mark{background-color:#ff9;color:#000;font-style:italic;font-weight:bold}
+	del{text-decoration:line-through}
+	abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}
+	table{border-collapse:collapse;border-spacing:0}
+	hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}
+	input,select{vertical-align:middle}
+
+
+	/* General Styles */
+	a {}
+	a:hover {}
+	a:focus {}
+	p {}
+	.clear { display: block; clear: both; }
+	img { display: block; max-width: 100%; }
+
+	/* Page styles */
+	html {}
+	body {}
+
+	/* Navigation */
+	#main-nav {}
+	#main-nav li {}
+	#main-nav li.current {}
+	#main-nav li a {}
+
+	/* 404 Error Styles */
+	.nocontent {}
+	.nocontent.post {}
+
+	/* Content Styles */
+	#main-content {}
+
+	.post {}
+
+	.post.blog {}
+	.post.blog.repost {}
+
+	.post.status {}
+	.post.status.repost {}
+	.post.status .status-quote-mark {}
+
+	.post.event {}
+	.post.event ul.events-list.compact {}
+
+	.post.photo {}
+	.post.photo img {}
+
+	.post.photo-album {}
+
+	.post.video {}
+
+	.post.audio {}
+
+	.post .post-body {}
+
+	.post .repost {}
+	.post .repost .repost-account-image {}
+	.post .repost .repost-info {}
+
+	.post .read-more {}
+
+	.post .footer-info {}
+	.post .footer-info a {}
+	.post.footer-info .datetime-link {}
+
+	#pagination {}
+	#pagination a {}
+
+	.post.individual {}
+	.post.individual.blog {}
+	.post.individual.status {}
+	.post.individual.photo {}
+
+	.single-item-navigation {}
+	.single-item-navigation a {}
+
+	/* Tags */
+	#tags {}
+	#tags.blog-post-tags {}
+	#tags.event-tags {}
+	#tags.video-tags {}
+	#tags.video-playlist-tags {}
+	#tags.audio-tags {}
+	#tags.audio-playlist-tags {}
+
+	#tags .tag {}
+
+	/* Events */
+	a#other-events {}
+
+	.events-list { list-style: none; }
+	.events-list li {}
+	.events-list .event-date {}
+	.events-list .event-venue {}
+	.events-list .event-location {}
+	.events-list .event-actions {}
+	.events-list .event-actions .event-tickets {}
+	.events-list .event-actions .event-more {}
+
+	.event-datetime {}
+	.event-datetime .event-month {}
+	.event-datetime .event-day {}
+	.event-datetime .event-year {}
+	.event-datetime .event-datetime-sub {}
+
+	.event-details {}
+	.event-details + .event-details {}
+	.event-details #event-header {}
+	.event-details #event-supportingacts {}
+	.event-details #event-price {}
+	.event-details #event-tickets {}
+	.event-details #event-description {}
+	.event-details #event-description p {}
+
+	/* Video */
+	.playlists-block { list-style: none; }
+	.playlists-block li {}
+	.playlists-block li a { display: block; }
+	.playlists-block li img {}
+	.playlists-block li h3 {}
+	.playlists-block li .total {}
+
+	.video-container {}
+	#playlistTitle {}
+	#playlistTitle .title {}
+	#playlistTitle .total {}
+
+	.video-blocks {}
+	.video-blocks li {}
+	.video-blocks li.current {}
+	.video-blocks li a {}
+	.video-blocks li .image {}
+	.video-blocks li .image img {}
+	.video-blocks li span {}
+	.video-blocks li.nowPlaying { display: none; }
+
+	.video {}
+	.video h2 {}
+	.video h2 a {}
+	.video p {}
+
+	.playlist-blocks {}
+	.playlist-blocks li {}
+	.playlist-blocks li a {}
+	.playlist-blocks li a img {}
+	.playlist-blocks li a h3 {}
+	.playlist-blocks li a span {}
+
+	/* Photos */
+	.album-blocks { list-style: none; }
+	.album-blocks li {}
+	.album-blocks li a {}
+	.album-blocks li a img {}
+	.album-blocks li a .title {}
+
+	.photo-image {}
+	.photo-title {}
+	.photo-backtoalbum {}
+	.photo-description {}
+
+	#album-info {}
+	#album-info #album-cover {}
+	#album-info #album-title {}
+	#album-info #album-last-updated {}
+	#album-info #description {}
+	#album-info #album-photo-count {}
+
+	.photos-list { list-style: none; }
+	.photos-list li {}
+	.photos-list li a {}
+	.photos-list li a img {}
+
+	/* Audio */
+	.playlist-info {}
+	.playlist-info .buy-link {}
+	.playlist-info .description {}
+	.playlist-info .description p {}
+
+	.single-info {}
+	.single-info .buy-link {}
+	.single-info .description {}
+	.single-info .description p {}
+	.lyrics {}
+
+	.jp-audio {}
+	.jp-audio-single {}
+	.jp-audio-activity-stream {}
+	.jp-current-time {}
+	.jp-time-left {}
+	.jp-progress { overflow: hidden; cursor: pointer; }
+	.jp-play-bar { height: 15px; background: #000; }
+
+	.playlist-tracks { list-style: none; }
+	.playlist-tracks li {}
+	.playlist-tracks li .number {}
+	.playlist-tracks li .title {}
+	.playlist-tracks li .links {}
+	.playlist-tracks li .links a {}
+
+	.empty-audio-playlist {}
+
+	/* Account About */
+	.account-overview {}
+	.account-overview #account-photo {}
+	.account-overview #account-links { list-style: none; }
+	.account-overview #account-links li {}
+
+	.account-bio {}
+	.account-bio p {}
+
+### JavaScript
+	var firstClicked = false;
+	$('document').ready(function()
+	{
+		$('.video-blocks li a').click(function(e)
+		{
+			e.preventDefault();
+			$(this).parents('li').siblings('.current').removeClass('current').end().addClass('current');
+			if ( firstClicked )
+			{
+				var pos = $('.video-container').offset();
+				$('body').animate({ scrollTop: pos.top - 40});
+			}
+			else
+			{
+				firstClicked = true;
+			}
+			$('.video-container').html(sbVideoList[$(this).attr('data-id')]);
+		}).first().click();
+
+		$("#jquery_jplayer").jPlayer({
+			swfPath: "//stagebloc.com/assets/js/jplayer/",
+			wmode: "transparent",
+			supplied: "mp3",
+			cssSelectorAncestor: "#jp_container"
+		})
+		.bind($.jPlayer.event.timeupdate + " " + $.jPlayer.event.loadedmetadata, function(event)
+		{
+			var status = event.jPlayer.status;
+			$('#jp_container .jp-time-left').html($.jPlayer.convertTime(status.duration - status.currentTime));
+		})
+		.bind($.jPlayer.event.ended, function(event)
+		{
+			if ( $('#playlist-tracks li.current').next().length )
+			{
+				$('#playlist-tracks li.current').next().click();
+			}
+			else
+			{
+				$('#playlist-tracks li.current').removeClass('current');
+				$('#jquery_jplayer').jPlayer("clearMedia");
+			}
+		});
+
+		$('#playlist-tracks li').click(function()
+		{
+			$('#jquery_jplayer').jPlayer("setMedia", { mp3: $(this).attr('data-url') }).jPlayer("play");
+			$(this).siblings().removeClass('current').end().addClass('current');
+		});
+
+		if ( $('#playlist-tracks').length )
+		{
+			$('#jquery_jplayer').jPlayer("setMedia", { mp3: $('#playlist-tracks li').first().attr('data-url') });
+			$('#playlist-tracks li').first().addClass('current');
+		}
+		else if ( $('.jp-audio-activity-stream').length )
+		{
+			 $('.jp-audio-activity-stream').each(function()
+			 {
+			 	var id = $(this).attr('data-id'),
+			 		url = $(this).attr('data-url');
+
+			 	$("#jquery_jplayer" + id).jPlayer({ ready: function() { $(this).jPlayer("setMedia", { mp3: url }); },
+			 		swfPath: "//stagebloc.com/assets/js/jplayer/", wmode: "transparent", supplied: "mp3", cssSelectorAncestor: "#jp_container" + id })
+				.bind($.jPlayer.event.timeupdate + " " + $.jPlayer.event.loadedmetadata, function(event)
+				{ $('#jp_container' + id + ' .jp-time-left').html($.jPlayer.convertTime(event.jPlayer.status.duration - event.jPlayer.status.currentTime)); })
+				.bind($.jPlayer.event.play, function() { $(this).jPlayer("pauseOthers"); });
+			});
+		}
+		else if ( $('.jp-audio-single').length )
+		{
+			$('#jquery_jplayer').jPlayer("setMedia", { mp3: $('.jp-audio-single').attr('data-url') });
+		}
+
+		$('.jp-controls .jp-previous').click(function()
+		{
+			if ( $('#playlist-tracks li.current').prev().length )
+				$('#playlist-tracks li.current').prev().click();
+			else
+				$('#playlist-tracks li').last().click();
+		});
+		$('.jp-controls .jp-next').click(function()
+		{
+			if ( $('#playlist-tracks li.current').next().length )
+				$('#playlist-tracks li.current').next().click();
+			else
+				$('#playlist-tracks li').first().click();
+		});
+
+		$('#playlist-tracks li a').click(function(e)
+		{
+			e.stopPropagation();
+		});
+	});
