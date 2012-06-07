@@ -10,9 +10,9 @@ Here are a few tips and tricks that we have when writing a theme. These are just
 * Use semicolons in JavaScript. We do compress JavaScript before we upload it to our CDN, which may cause issues from time to time.
 
 # Pages
+Each view on StageBloc has a `{Page}` block. [#custom-pages](You can also create your own custom pages).
 
-## Available Pages
-Note: Not all pages are required. Define pages that make sense for your theme, and the rest will be taken care of by the engine. No links will be broken.
+*Note: Not all pages are required. Define pages that make sense for your theme, and the rest will be taken care of by the engine. No links will be broken.*
 
 ### page:About
 This page should show general information about the account.
@@ -1133,6 +1133,7 @@ position
 When submitting a theme, you can select a default color scheme that you feel best matches and fits in. Users have the option to override this in their account's theme management section.
 
 # Example Theme
+Here's a boilerplate theme to kickstart your development.
 
 ### HTML
 	<!DOCTYPE html>
