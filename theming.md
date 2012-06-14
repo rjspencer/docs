@@ -8,6 +8,7 @@ All of StageBloc's documentation are up on GitHub for you to fork, modify, and i
 Here are a few tips and tricks that we have when writing a theme. These are just some loose guidelines---don't follow them if necessary.
 
 * Use semicolons in JavaScript. We do compress JavaScript before we upload it to our CDN, which may cause issues from time to time.
+* Remember to keep metadata in mind. For instance, when people share links to Facebook, you have control over the information Facebook pulls from the page. [Obligatory StackOverflow Post](http://stackoverflow.com/a/7623986/115629)
 
 # Pages
 Each view on StageBloc has a `{Page}` block. [You can also create your own custom pages](#custom-pages).
