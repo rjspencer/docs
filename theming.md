@@ -513,6 +513,9 @@ supported
 groupPhotos
 :	should photos be grouped into album updates. defaults to true
 
+limit
+:	how many items per page. defaults to 10
+
 ### block:ActivityStreamView
 
 ActivityAuthorName
