@@ -122,6 +122,18 @@ This page should show an individual status.
 Url structure: /statuses/[%id]  
 Recommended modules: StatusView
 
+### page:StoreItemList
+This page should show a listing of store items posted by the account.
+
+Url structure: /store  
+Recommended modules: StoreItemList
+
+### page:StoreItemView
+This page should show an individual store item.
+
+Url structure: /store/[%id]  
+Recommended modules: StoreItemView
+
 ### page:VideoList
 This page should show a listing of videos.
 
@@ -334,6 +346,36 @@ text
 :	the text to be put inside the `<a>` tag *defaults to "Download"*
 
 audioplaylistid
+:	the ID of the audio playlist you want to download *required*
+
+class
+:	the class to assign to the `<a>` tag
+
+### StoreItemAddToCartLink
+Creates a link that, when clicked, will add the store item to the user's cart on StageBloc
+
+text
+:	the text to be put inside the `<a>` tag *defaults to "Add To Cart"*
+
+preorderText
+:	the text to be put inside the `<a>` tag when a preorder is set up for the playlist *defaults to "Pre-order"*
+
+preorderSoldOutText
+:	the text to be put inside the `<a>` tag when a preorder is set up for the playlist and it has sold out (if it has a limit on the amount of orders) *defaults to "Pre-order Sold Out"*
+
+storeitemid
+:	the ID of the audio you want to add to the user's cart *required*
+
+class
+:	the class to assign to the `<a>` tag
+
+### StoreItemFreeDownloadLink
+Creates a link that, when clicked, will download a store item (unless it requires a follow to download, in which a modal will first show up)
+
+text
+:	the text to be put inside the `<a>` tag *defaults to "Download"*
+
+storeitemid
 :	the ID of the audio playlist you want to download *required*
 
 class
@@ -868,6 +910,29 @@ AuthorPhotoUrl
 
 StatusText
 :	the actual text of the status post
+
+## StoreItemList
+A listing of store items.
+
+## StoreItemView
+A view for an individual store item. *Meant to be used with {Page:StoreItemView}*
+
+### block:StoreItemView
+
+StoreItemUrl
+:	the URL for the store item
+
+StoreItemTitle
+:	the title of the store item
+
+StoreItemDescription
+:	the description of the store item *Can contain HTML code*
+
+StoreItemPrice
+:	the price of the store item
+
+StoreItemId
+:	the ID for the store item
 
 ## TagList
 A listing of tags for the current content item
