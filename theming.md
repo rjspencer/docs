@@ -923,16 +923,19 @@ StoreItemUrl
 :	the URL for the store item
 
 StoreItemTitle
-:	the title of the store item
+:	the title of the store item *Note: if there is a pre-order currently active for the store item, it'll use that title instead*
 
 StoreItemDescription
 :	the description of the store item *Can contain HTML code*
 
 StoreItemPrice
-:	the price of the store item
+:	the price of the store item *Note: if there is a pre-order currently active for the sotre item, it'll use that price instead*
 
 StoreItemId
 :	the ID for the store item
+
+StoreItemImage
+:	the thumbnail image for the store item
 
 ## TagList
 A listing of tags for the current content item
