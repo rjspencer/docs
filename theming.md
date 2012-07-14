@@ -431,6 +431,44 @@ Use this if statement to compare if a certain activity list item is of a certain
 Supported types: Audio, Blog, BlogRepost, Event, Photo, PhotoAlbum, Status, StatusRepost, Video  
 Recommended modules: ActivityStreamList
 
+### if:AudioHasLyrics
+Check to see if the audio has lyrics
+
+### if:AudioCanBeDownloadedForFree
+Check to see if the audio can be downloaded for free
+
+Recommended block: AudioView
+
+### if:AudioCanBeSold
+Check to see if the audio is being sold
+
+Recommended block: AudioView
+
+### if:AudioPlaylistCanBeDownloadedForFree
+Check to see if the audio playlist can be downloaded for free
+
+Recommended block: AudioPlaylistView
+
+### if:AudioPlaylistCanBeSold
+Check to see if the audio playlist is being sold
+
+Recommended block: AudioPlaylistView
+
+### if:AudioPlaylistCanNamePrice
+Check to see if the audio playlist supports naming a price
+
+Recommended block: AudioPlaylistView
+
+### if:StoreItemCanBeDownloadedForFree
+Check to see if the store item can be downloaded for free
+
+Recommended block: StoreItemView
+
+### if:StoreItemCanBeSold
+Check to see if the store item is being sold
+
+Recommended block: StoreItemView
+
 ### if:EventHasEnded
 Check if an event's end time is after the current time.
 
@@ -1036,8 +1074,13 @@ VideoPlaylistTitle
 VideoPlaylistVideoCount
 :	the amount of videos in this playlist
 
-VideoPlaylistCoverPhotoUrl
-:	a 130x130px photo of the cover image for the video playlist or a default one if none exist
+VideoPlaylistPhotoUrl
+:	a photo of the cover of the playlist
+
+	**Options**
+	
+	size
+	:	accepted sizes are "thumbnail", "small", "medium", "large", "original"
 
 CreatedByPhotoUrl, ModifiedByPhotoUrl
 :	a URL to the photo for who created/modified the video playlist to be used in an `<img src="" />` tag
@@ -1636,7 +1679,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 							{block:VideoPlaylistView}
 								<li id="playlist{AudioPlaylistId}"><a href="{VideoPlaylistUrl}">
 									{if:VideoPlaylistHasThumbnail}
-										<img src="{VideoPlaylistCoverPhotoUrl}" title="{VideoPlaylistTitle}" />
+										<img src="{VideoPlaylistPhotoUrl}" title="{VideoPlaylistTitle}" />
 									{/if:VideoPlaylistHasThumbnail}
 									<h3>{VideoPlaylistTitle}</h3>
 									<span class="total">{VideoPlaylistVideoCount} videos</span>
@@ -1707,7 +1750,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 							{block:VideoPlaylistView}
 								<li id="block{VideoPlaylistId}"><a href="{VideoPlaylistUrl}">
 									{if:VideoPlaylistHasThumbnail}
-										<img src="{VideoPlaylistCoverPhotoUrl}" title="{VideoPlaylistTitle}" />
+										<img src="{VideoPlaylistPhotoUrl}" title="{VideoPlaylistTitle}" />
 									{/if:VideoPlaylistHasThumbnail}
 									<h3>{VideoPlaylistTitle}</h3>
 									<span class="total">{VideoPlaylistVideoCount} videos</span>
