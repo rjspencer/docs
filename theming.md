@@ -705,6 +705,14 @@ EventState
 EventDescription
 :	the description of the event
 
+EventPhotoUrl
+:	the cover photo representing the event
+
+	**Options**
+	
+	size
+	:	accepted sizes are "thumbnail", "small", "medium", "large", "original"
+
 Event[Start|End]Date
 :	the datetime the event is set to begin or end
 	
@@ -793,6 +801,7 @@ A view for a single photo album. *Meant to be used with {Page:PhotoAlbumView}*
 
 ### block:PhotoAlbumView
 PhotoAlbumPhotoUrl
+: the cover photo for the album
 
 	**Options**
 	
@@ -939,6 +948,7 @@ StoreItemId
 :	the ID for the store item
 
 StoreItemPhotoUrl
+: the image representing the store item
 
 	**Options**
 	
