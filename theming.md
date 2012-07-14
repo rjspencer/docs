@@ -792,8 +792,12 @@ A listing of photo albums for the account
 A view for a single photo album. *Meant to be used with {Page:PhotoAlbumView}*
 
 ### block:PhotoAlbumView
-Cover
-:	a 130x130 pixel image of the cover for the album or a default image if the album doesn't have a cover set
+PhotoAlbumPhotoUrl
+
+	**Options**
+	
+	size
+	:	accepted sizes are "thumbnail", "small", "medium", "large", "original"
 
 CreatedByPhotoUrl, ModifiedByPhotoUrl
 :	a URL to the photo for who created/modified the album to be used in an `<img src="" />` tag
@@ -1741,7 +1745,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 								{block:PhotoAlbumView}
 								<li>
 									<a href="{PhotoAlbumUrl}">
-										<img src="{Cover}" alt="{PhotoAlbumTitle} cover" title="{PhotoAlbumTitle} cover" />
+										<img src="{PhotoAlbumPhotoUrl}" alt="{PhotoAlbumTitle} cover" title="{PhotoAlbumTitle} cover" />
 										<span class="title">{PhotoAlbumTitle}</span>
 										{PhotoAlbumPhotoCount} photos
 									</a>
@@ -1808,7 +1812,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 							{block:PhotoAlbumView}
 								<div class="photos-section">
 									<div id="album-info">
-										<img id="album-cover" src="{Cover}" alt="{PhotoAlbumTitle} cover" title="{PhotoAlbumTitle} cover"/>
+										<img id="album-cover" src="{PhotoAlbumPhotoUrl}" alt="{PhotoAlbumTitle} cover" title="{PhotoAlbumTitle} cover"/>
 										<span id="album-title">{PhotoAlbumTitle}</span>
 										<div id="album-last-updated">last updated {ModifiedDate format="F j, Y"}</div>
 										<div id="description">{PhotoAlbumDescription}</div>
