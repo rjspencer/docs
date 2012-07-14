@@ -934,8 +934,12 @@ StoreItemPrice
 StoreItemId
 :	the ID for the store item
 
-StoreItemImage
-:	the thumbnail image for the store item
+StoreItemPhotoUrl
+
+	**Options**
+	
+	size
+	:	accepted sizes are "thumbnail", "small", "medium", "large", "original"
 
 ## TagList
 A listing of tags for the current content item
@@ -1127,8 +1131,13 @@ AudioPlaylistTitle
 AudioPlaylistAudioCount
 :	the amount of audio objects in this playlist
 
-AudioPlaylistCoverPhotoUrl
-:	a 130x130 pixel playlist cover image or a default one if there is no cover set
+AudioPlaylistPhotoUrl
+:	a playlist cover image or a default one if there is no cover set
+
+	**Options**
+	
+	size
+	:	accepted sizes are "thumbnail", "small", "medium", "large", "original"
 
 AudioPlaylistArtist
 :	the artist for the audio playlist
@@ -1850,7 +1859,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 							{block:AudioPlaylistView}
 								<div class="playlist-info">
 									{if:AudioPlaylistHasThumbnail}
-										<img src="{AudioPlaylistCoverPhotoUrl}" class="cover-photo" title="{AudioPlaylistTitle}" />
+										<img src="{AudioPlaylistPhotoUrl}" class="cover-photo" title="{AudioPlaylistTitle}" />
 									{/if:AudioPlaylistHasThumbnail}
 									{if:AudioPlaylistCanBeSold}
 									<div class="buy-link">
@@ -1921,7 +1930,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 							{block:AudioPlaylistView}
 								<li id="playlist{AudioPlaylistId}"><a href="{AudioPlaylistUrl}">
 									{if:AudioPlaylistHasThumbnail}
-										<img src="{AudioPlaylistCoverPhotoUrl}" title="{AudioPlaylistTitle}" />
+										<img src="{AudioPlaylistPhotoUrl}" title="{AudioPlaylistTitle}" />
 									{/if:AudioPlaylistHasThumbnail}
 									<span class="total">{AudioPlaylistAudioCount} tracks</span>
 									<h3>{AudioPlaylistTitle}</h3>
@@ -1942,7 +1951,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 							{block:AudioPlaylistView}
 								<div class="playlist-info">
 									{if:AudioPlaylistHasThumbnail}
-										<img src="{AudioPlaylistCoverPhotoUrl}" class="cover-photo" title="{AudioPlaylistTitle}" />
+										<img src="{AudioPlaylistPhotoUrl}" class="cover-photo" title="{AudioPlaylistTitle}" />
 									{/if:AudioPlaylistHasThumbnail}
 									{if:AudioPlaylistCanBeSold}
 									<div class="buy-link">
@@ -2032,7 +2041,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 							{block:AudioPlaylistView}
 								<li id="playlist{AudioPlaylistId}"><a href="{AudioPlaylistUrl}">
 									{if:AudioPlaylistHasThumbnail}
-										<img src="{AudioPlaylistCoverPhotoUrl}" title="{AudioPlaylistTitle}" />
+										<img src="{AudioPlaylistPhotoUrl}" title="{AudioPlaylistTitle}" />
 									{/if:AudioPlaylistHasThumbnail}
 									<span class="total">{AudioPlaylistAudioCount} tracks</span>
 									<h3>{AudioPlaylistTitle}</h3>
