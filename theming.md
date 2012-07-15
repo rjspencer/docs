@@ -428,7 +428,7 @@ Most if statements will only function in certain modules or blocks.
 ### if:ActivityIs[%type]
 Use this if statement to compare if a certain activity list item is of a certain type.
 
-Supported types: Audio, Blog, BlogRepost, Event, Photo, PhotoAlbum, Status, StatusRepost, Video  
+Supported types: Audio, Blog, BlogRepost, Event, Photo, PhotoAlbum, Status, StatusRepost, Video, StoreItem  
 Recommended modules: ActivityStreamList
 
 ### if:AudioHasLyrics
@@ -588,7 +588,7 @@ PhotoSource-Original
 Events are grouped in the activity stream.
 
 supported
-:	a comma separated list of supported content types. defaults to all. available: audio, blog, blog_reposts, events, photos, statuses, status_reposts, videos
+:	a comma separated list of supported content types. defaults to all. available: audio, blog, blog_reposts, events, photos, statuses, status_reposts, videos, store
 
 groupPhotos
 :	should photos be grouped into album updates. defaults to true
