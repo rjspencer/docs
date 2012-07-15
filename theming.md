@@ -199,7 +199,7 @@ Include the jPlayer JavaScript library. Requires that {jQuery} is also included 
 ### Link-\[%Section]
 Get a relative url to a particular section of the site.
 
-Supported: Audio, Events, EventsPast, Blog, Statuses, Photos, Videos, Home  
+Supported: Audio, Events, EventsPast, Blog, Statuses, Photos, Videos, Home, Store
 Example: `<a href="{Link-Videos}">See my killer video about how to weave baskets underwater!</a>`  
 Example return: `<a href="/account-name/videos">See my killer videos about how to weave baskets underwater!</a>`
 
