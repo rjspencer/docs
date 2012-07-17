@@ -469,6 +469,11 @@ Check to see if the store item is being sold
 
 Recommended block: StoreItemView
 
+### if:StoreItemCanNamePrice
+Check to see if the store item supports naming a price
+
+Recommended block: StoreItemView
+
 ### if:EventHasEnded
 Check if an event's end time is after the current time.
 
