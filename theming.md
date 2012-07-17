@@ -652,8 +652,13 @@ ActivityUrl
 ActivityPhotoCount
 :	number of photos added to a photo album item
 
-ActivityPhotoUrl-[%size]
-:	if content is a singular photo (see module options) and a photo, get photo url in size thumb, small, medium, large, or original
+ActivityPhotoUrl
+:	a playlist cover image or a default one if there is no cover set
+
+	**Options**
+	
+	size
+	:	accepted sizes are "thumbnail", "small", "medium", "large", "original"
 
 RepostedContentTimeAgo
 :	if reposted, how long ago in relative time
@@ -1390,7 +1395,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 										{/if:ActivityIsEvent}
 
 										{if:ActivityIsPhoto}
-										<a href="{ActivityUrl}"><img src="{ActivityPhotoUrl-Medium}" /></a>
+										<a href="{ActivityUrl}"><img src="{ActivityPhotoUrl size="medium"}" /></a>
 										{/if:ActivityIsPhotoAlbum}
 
 									{if:ReadMore}
