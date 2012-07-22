@@ -122,6 +122,18 @@ This page should show an individual status.
 Url structure: /statuses/[%id]  
 Recommended modules: StatusView
 
+### page:StoreItemList
+This page should show a listing of store items posted by the account.
+
+Url structure: /store  
+Recommended modules: StoreItemList
+
+### page:StoreItemView
+This page should show an individual store item.
+
+Url structure: /store/[%id]  
+Recommended modules: StoreItemView
+
 ### page:VideoList
 This page should show a listing of videos.
 
@@ -187,7 +199,7 @@ Include the jPlayer JavaScript library. Requires that {jQuery} is also included 
 ### Link-\[%Section]
 Get a relative url to a particular section of the site.
 
-Supported: Audio, Events, EventsPast, Blog, Statuses, Photos, Videos, Home  
+Supported: Audio, Events, EventsPast, Blog, Statuses, Photos, Videos, Home, Store
 Example: `<a href="{Link-Videos}">See my killer video about how to weave baskets underwater!</a>`  
 Example return: `<a href="/account-name/videos">See my killer videos about how to weave baskets underwater!</a>`
 
@@ -339,6 +351,36 @@ audioplaylistid
 class
 :	the class to assign to the `<a>` tag
 
+### StoreItemAddToCartLink
+Creates a link that, when clicked, will add the store item to the user's cart on StageBloc
+
+text
+:	the text to be put inside the `<a>` tag *defaults to "Add To Cart"*
+
+preorderText
+:	the text to be put inside the `<a>` tag when a preorder is set up for the playlist *defaults to "Pre-order"*
+
+preorderSoldOutText
+:	the text to be put inside the `<a>` tag when a preorder is set up for the playlist and it has sold out (if it has a limit on the amount of orders) *defaults to "Pre-order Sold Out"*
+
+storeitemid
+:	the ID of the audio you want to add to the user's cart *required*
+
+class
+:	the class to assign to the `<a>` tag
+
+### StoreItemFreeDownloadLink
+Creates a link that, when clicked, will download a store item (unless it requires a follow to download, in which a modal will first show up)
+
+text
+:	the text to be put inside the `<a>` tag *defaults to "Download"*
+
+storeitemid
+:	the ID of the audio playlist you want to download *required*
+
+class
+:	the class to assign to the `<a>` tag
+
 ### SecureEmail
 Securely put a mailto: link in a theme  
 
@@ -386,8 +428,51 @@ Most if statements will only function in certain modules or blocks.
 ### if:ActivityIs[%type]
 Use this if statement to compare if a certain activity list item is of a certain type.
 
-Supported types: Audio, Blog, BlogRepost, Event, Photo, PhotoAlbum, Status, StatusRepost, Video  
+Supported types: Audio, Blog, BlogRepost, Event, Photo, PhotoAlbum, Status, StatusRepost, Video, StoreItem  
 Recommended modules: ActivityStreamList
+
+### if:AudioHasLyrics
+Check to see if the audio has lyrics
+
+### if:AudioCanBeDownloadedForFree
+Check to see if the audio can be downloaded for free
+
+Recommended block: AudioView
+
+### if:AudioCanBeSold
+Check to see if the audio is being sold
+
+Recommended block: AudioView
+
+### if:AudioPlaylistCanBeDownloadedForFree
+Check to see if the audio playlist can be downloaded for free
+
+Recommended block: AudioPlaylistView
+
+### if:AudioPlaylistCanBeSold
+Check to see if the audio playlist is being sold
+
+Recommended block: AudioPlaylistView
+
+### if:AudioPlaylistCanNamePrice
+Check to see if the audio playlist supports naming a price
+
+Recommended block: AudioPlaylistView
+
+### if:StoreItemCanBeDownloadedForFree
+Check to see if the store item can be downloaded for free
+
+Recommended block: StoreItemView
+
+### if:StoreItemCanBeSold
+Check to see if the store item is being sold
+
+Recommended block: StoreItemView
+
+### if:StoreItemCanNamePrice
+Check to see if the store item supports naming a price
+
+Recommended block: StoreItemView
 
 ### if:EventHasEnded
 Check if an event's end time is after the current time.
@@ -508,7 +593,7 @@ PhotoSource-Original
 Events are grouped in the activity stream.
 
 supported
-:	a comma separated list of supported content types. defaults to all. available: audio, blog, blog_reposts, events, photos, statuses, status_reposts, videos
+:	a comma separated list of supported content types. defaults to all. available: audio, blog, blog_reposts, events, photos, statuses, status_reposts, videos, store
 
 groupPhotos
 :	should photos be grouped into album updates. defaults to true
@@ -572,8 +657,13 @@ ActivityUrl
 ActivityPhotoCount
 :	number of photos added to a photo album item
 
-ActivityPhotoUrl-[%size]
-:	if content is a singular photo (see module options) and a photo, get photo url in size thumb, small, medium, large, or original
+ActivityPhotoUrl
+:	a playlist cover image or a default one if there is no cover set
+
+	**Options**
+	
+	size
+	:	accepted sizes are "thumbnail", "small", "medium", "large", "original"
 
 RepostedContentTimeAgo
 :	if reposted, how long ago in relative time
@@ -663,6 +753,14 @@ EventState
 EventDescription
 :	the description of the event
 
+EventPhotoUrl
+:	the cover photo representing the event
+
+	**Options**
+	
+	size
+	:	accepted sizes are "thumbnail", "small", "medium", "large", "original"
+
 Event[Start|End]Date
 :	the datetime the event is set to begin or end
 	
@@ -750,8 +848,13 @@ A listing of photo albums for the account
 A view for a single photo album. *Meant to be used with {Page:PhotoAlbumView}*
 
 ### block:PhotoAlbumView
-Cover
-:	a 130x130 pixel image of the cover for the album or a default image if the album doesn't have a cover set
+PhotoAlbumPhotoUrl
+: the cover photo for the album
+
+	**Options**
+	
+	size
+	:	accepted sizes are "thumbnail", "small", "medium", "large", "original"
 
 CreatedByPhotoUrl, ModifiedByPhotoUrl
 :	a URL to the photo for who created/modified the album to be used in an `<img src="" />` tag
@@ -869,6 +972,37 @@ AuthorPhotoUrl
 StatusText
 :	the actual text of the status post
 
+## StoreItemList
+A listing of store items.
+
+## StoreItemView
+A view for an individual store item. *Meant to be used with {Page:StoreItemView}*
+
+### block:StoreItemView
+
+StoreItemUrl
+:	the URL for the store item
+
+StoreItemTitle
+:	the title of the store item *Note: if there is a pre-order currently active for the store item, it'll use that title instead*
+
+StoreItemDescription
+:	the description of the store item *Can contain HTML code*
+
+StoreItemPrice
+:	the price of the store item *Note: if there is a pre-order currently active for the sotre item, it'll use that price instead*
+
+StoreItemId
+:	the ID for the store item
+
+StoreItemPhotoUrl
+: the image representing the store item
+
+	**Options**
+	
+	size
+	:	accepted sizes are "thumbnail", "small", "medium", "large", "original"
+
 ## TagList
 A listing of tags for the current content item
 Options  
@@ -950,8 +1084,13 @@ VideoPlaylistTitle
 VideoPlaylistVideoCount
 :	the amount of videos in this playlist
 
-VideoPlaylistCoverPhotoUrl
-:	a 130x130px photo of the cover image for the video playlist or a default one if none exist
+VideoPlaylistPhotoUrl
+:	a photo of the cover of the playlist
+
+	**Options**
+	
+	size
+	:	accepted sizes are "thumbnail", "small", "medium", "large", "original"
 
 CreatedByPhotoUrl, ModifiedByPhotoUrl
 :	a URL to the photo for who created/modified the video playlist to be used in an `<img src="" />` tag
@@ -1059,8 +1198,13 @@ AudioPlaylistTitle
 AudioPlaylistAudioCount
 :	the amount of audio objects in this playlist
 
-AudioPlaylistCoverPhotoUrl
-:	a 130x130 pixel playlist cover image or a default one if there is no cover set
+AudioPlaylistPhotoUrl
+:	a playlist cover image or a default one if there is no cover set
+
+	**Options**
+	
+	size
+	:	accepted sizes are "thumbnail", "small", "medium", "large", "original"
 
 AudioPlaylistArtist
 :	the artist for the audio playlist
@@ -1256,7 +1400,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 										{/if:ActivityIsEvent}
 
 										{if:ActivityIsPhoto}
-										<a href="{ActivityUrl}"><img src="{ActivityPhotoUrl-Medium}" /></a>
+										<a href="{ActivityUrl}"><img src="{ActivityPhotoUrl size="medium"}" /></a>
 										{/if:ActivityIsPhotoAlbum}
 
 									{if:ReadMore}
@@ -1545,7 +1689,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 							{block:VideoPlaylistView}
 								<li id="playlist{AudioPlaylistId}"><a href="{VideoPlaylistUrl}">
 									{if:VideoPlaylistHasThumbnail}
-										<img src="{VideoPlaylistCoverPhotoUrl}" title="{VideoPlaylistTitle}" />
+										<img src="{VideoPlaylistPhotoUrl}" title="{VideoPlaylistTitle}" />
 									{/if:VideoPlaylistHasThumbnail}
 									<h3>{VideoPlaylistTitle}</h3>
 									<span class="total">{VideoPlaylistVideoCount} videos</span>
@@ -1616,7 +1760,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 							{block:VideoPlaylistView}
 								<li id="block{VideoPlaylistId}"><a href="{VideoPlaylistUrl}">
 									{if:VideoPlaylistHasThumbnail}
-										<img src="{VideoPlaylistCoverPhotoUrl}" title="{VideoPlaylistTitle}" />
+										<img src="{VideoPlaylistPhotoUrl}" title="{VideoPlaylistTitle}" />
 									{/if:VideoPlaylistHasThumbnail}
 									<h3>{VideoPlaylistTitle}</h3>
 									<span class="total">{VideoPlaylistVideoCount} videos</span>
@@ -1664,7 +1808,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 								{block:PhotoAlbumView}
 								<li>
 									<a href="{PhotoAlbumUrl}">
-										<img src="{Cover}" alt="{PhotoAlbumTitle} cover" title="{PhotoAlbumTitle} cover" />
+										<img src="{PhotoAlbumPhotoUrl}" alt="{PhotoAlbumTitle} cover" title="{PhotoAlbumTitle} cover" />
 										<span class="title">{PhotoAlbumTitle}</span>
 										{PhotoAlbumPhotoCount} photos
 									</a>
@@ -1731,7 +1875,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 							{block:PhotoAlbumView}
 								<div class="photos-section">
 									<div id="album-info">
-										<img id="album-cover" src="{Cover}" alt="{PhotoAlbumTitle} cover" title="{PhotoAlbumTitle} cover"/>
+										<img id="album-cover" src="{PhotoAlbumPhotoUrl}" alt="{PhotoAlbumTitle} cover" title="{PhotoAlbumTitle} cover"/>
 										<span id="album-title">{PhotoAlbumTitle}</span>
 										<div id="album-last-updated">last updated {ModifiedDate format="F j, Y"}</div>
 										<div id="description">{PhotoAlbumDescription}</div>
@@ -1782,7 +1926,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 							{block:AudioPlaylistView}
 								<div class="playlist-info">
 									{if:AudioPlaylistHasThumbnail}
-										<img src="{AudioPlaylistCoverPhotoUrl}" class="cover-photo" title="{AudioPlaylistTitle}" />
+										<img src="{AudioPlaylistPhotoUrl}" class="cover-photo" title="{AudioPlaylistTitle}" />
 									{/if:AudioPlaylistHasThumbnail}
 									{if:AudioPlaylistCanBeSold}
 									<div class="buy-link">
@@ -1853,7 +1997,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 							{block:AudioPlaylistView}
 								<li id="playlist{AudioPlaylistId}"><a href="{AudioPlaylistUrl}">
 									{if:AudioPlaylistHasThumbnail}
-										<img src="{AudioPlaylistCoverPhotoUrl}" title="{AudioPlaylistTitle}" />
+										<img src="{AudioPlaylistPhotoUrl}" title="{AudioPlaylistTitle}" />
 									{/if:AudioPlaylistHasThumbnail}
 									<span class="total">{AudioPlaylistAudioCount} tracks</span>
 									<h3>{AudioPlaylistTitle}</h3>
@@ -1874,7 +2018,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 							{block:AudioPlaylistView}
 								<div class="playlist-info">
 									{if:AudioPlaylistHasThumbnail}
-										<img src="{AudioPlaylistCoverPhotoUrl}" class="cover-photo" title="{AudioPlaylistTitle}" />
+										<img src="{AudioPlaylistPhotoUrl}" class="cover-photo" title="{AudioPlaylistTitle}" />
 									{/if:AudioPlaylistHasThumbnail}
 									{if:AudioPlaylistCanBeSold}
 									<div class="buy-link">
@@ -1964,7 +2108,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 							{block:AudioPlaylistView}
 								<li id="playlist{AudioPlaylistId}"><a href="{AudioPlaylistUrl}">
 									{if:AudioPlaylistHasThumbnail}
-										<img src="{AudioPlaylistCoverPhotoUrl}" title="{AudioPlaylistTitle}" />
+										<img src="{AudioPlaylistPhotoUrl}" title="{AudioPlaylistTitle}" />
 									{/if:AudioPlaylistHasThumbnail}
 									<span class="total">{AudioPlaylistAudioCount} tracks</span>
 									<h3>{AudioPlaylistTitle}</h3>
