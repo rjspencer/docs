@@ -425,6 +425,20 @@ If statements will check if a certain statement is true, and if it is, add the c
 
 Most if statements will only function in certain modules or blocks.
 
+Nesting of if statements is also supported. For example:
+
+	{if:AudioCanBeSold}
+		{AudioAddToCartLink audioId="{AudioId}" text="Buy Now"}<br/>
+		{if:AudioCanNamePrice}min {/if:AudioCanNamePrice}${AudioPrice} USD
+	{/if:AudioCanBeSold}
+	
+Lastly, if statements also support the user of `||` and `&&` for AND and OR logic. However, mixing of ANDs and ORs is not currently allowed. For example:
+
+	{if:ActivityIsBlog||ActivityIsAudio||ActivityIsVideo||ActivityIsAudio}
+		<h1><a href="{ActivityUrl}">{ActivityTitle}</a></h1>
+	{/if:ActivityIsBlog||ActivityIsAudio||ActivityIsVideo||ActivityIsAudio}
+
+
 ### if:ActivityIs[%type]
 Use this if statement to compare if a certain activity list item is of a certain type.
 
