@@ -235,7 +235,7 @@ Example:
 ### option:*
 These options are common across all of the following `{option}` variables.
 
-name (required)
+name (*required*)
 :	the name of the option field. Also the title in the left side of the theme management area
 
 group
@@ -303,8 +303,8 @@ Creates a link that, when clicked, will add the item to the user's cart on Stage
 text
 :	the text to be put inside the `<a>` tag *defaults to "Add To Cart"*
 
-audioid
-:	the ID of the audio you want to add to the user's cart *required*
+audioid (*required*)
+:	the ID of the audio you want to add to the user's cart
 
 class
 :	the class to assign to the `<a>` tag
@@ -315,8 +315,8 @@ Creates a link that, when clicked, will download an audio file (unless it requir
 text
 :	the text to be put inside the `<a>` tag *defaults to "Download"*
 
-audioid
-:	the ID of the audio you want to download *required*
+audioid (*required*)
+:	the ID of the audio you want to download
 
 class
 :	the class to assign to the `<a>` tag
@@ -333,8 +333,8 @@ preorderText
 preorderSoldOutText
 :	the text to be put inside the `<a>` tag when a preorder is set up for the playlist and it has sold out (if it has a limit on the amount of orders) *defaults to "Pre-order Sold Out"*
 
-audioplaylistid
-:	the ID of the audio you want to add to the user's cart *required*
+audioplaylistid (*required*)
+:	the ID of the audio you want to add to the user's cart
 
 class
 :	the class to assign to the `<a>` tag
@@ -345,8 +345,8 @@ Creates a link that, when clicked, will download an audio playlist (unless it re
 text
 :	the text to be put inside the `<a>` tag *defaults to "Download"*
 
-audioplaylistid
-:	the ID of the audio playlist you want to download *required*
+audioplaylistid (*required*)
+:	the ID of the audio playlist you want to download
 
 class
 :	the class to assign to the `<a>` tag
@@ -363,8 +363,8 @@ preorderText
 preorderSoldOutText
 :	the text to be put inside the `<a>` tag when a preorder is set up for the playlist and it has sold out (if it has a limit on the amount of orders) *defaults to "Pre-order Sold Out"*
 
-storeitemid
-:	the ID of the audio you want to add to the user's cart *required*
+storeitemid (*required*)
+:	the ID of the audio you want to add to the user's cart
 
 class
 :	the class to assign to the `<a>` tag
@@ -375,8 +375,8 @@ Creates a link that, when clicked, will download a store item (unless it require
 text
 :	the text to be put inside the `<a>` tag *defaults to "Download"*
 
-storeitemid
-:	the ID of the audio playlist you want to download *required*
+storeitemid (*required*)
+:	the ID of the audio playlist you want to download
 
 class
 :	the class to assign to the `<a>` tag
@@ -384,8 +384,8 @@ class
 ### SecureEmail
 Securely put a mailto: link in a theme  
 
-address
-:	the email address *required*
+address (*required*)
+:	the email address
 
 text
 :	the text inside the `<a>` tag *defaults to address*
@@ -426,9 +426,9 @@ If statements will check if a certain statement is true, and if it is, add the c
 Most if statements will only function in certain modules or blocks.
 
 ### if:ActivityIs[%type]
-Use this if statement to compare if a certain activity list item is of a certain type.
+Use this if statement to compare if a certain activity list item is of a certain type. The types `Blog`, `Status`, and `StoreItem` will also catch their respective `Repost` items, so use `if:ActivityIsRepost` to differentiate between reposts and non-reposts.
 
-Supported types: Audio, Blog, BlogRepost, Event, Photo, PhotoAlbum, Status, StatusRepost, Video, StoreItem  
+Supported types: Audio, Blog, Event, Photo, PhotoAlbum, Repost, Status, StoreItem, Video  
 Recommended modules: ActivityStreamList
 
 ### if:AudioHasLyrics
@@ -592,8 +592,10 @@ PhotoSource-Original
 ## ActivityStreamList
 Events are grouped in the activity stream.
 
-supported
-:	a comma separated list of supported content types. defaults to all. available: audio, blog, blog_reposts, events, photos, statuses, status_reposts, videos, store
+supported (*required*)
+:	a comma separated list of supported content types. defaults to none.
+
+	available: audio, blog, blog_reposts, events, photos, statuses, status_reposts, videos, store
 
 groupPhotos
 :	should photos be grouped into album updates. defaults to true
