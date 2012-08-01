@@ -28,27 +28,15 @@
 						{block:ActivityStreamView}
 							<article class="post {ActivityCSSClass}">
 								<header>
-									{if:ActivityIsBlog}
+									{if:ActivityIsBlog||ActivityIsRepost||ActivityIsVideo||ActivityIsAudio}
 										<h1><a href="{ActivityUrl}">{ActivityTitle}</a></h1>
-									{/if:ActivityIsBlog}
-									{if:ActivityIsBlogRepost}
-										<h1><a href="{ActivityUrl}">{ActivityTitle}</a></h1>
-									{/if:ActivityIsBlogRepost}
-									{if:ActivityIsVideo}
-										<h1><a href="{ActivityUrl}">{ActivityTitle}</a></h1>
-									{/if:ActivityIsVideo}
-									{if:ActivityIsAudio}
-										<h1><a href="{ActivityUrl}">{ActivityTitle}</a></h1>
-									{/if:ActivityIsAudio}
+									{/if:ActivityIsBlog||ActivityIsRepost||ActivityIsVideo||ActivityIsAudio}
 								</header>
 
 								<div class="post-body">
-									{if:ActivityIsBlog}
+									{if:ActivityIsBlog||ActivityIsVideo}
 										{ActivityExcerpt}
-									{/if:ActivityIsBlog}
-									{if:ActivityIsVideo}
-										{ActivityExcerpt}
-									{/if:ActivityIsVideo}
+									{/if:ActivityIsBlog||ActivityIsVideo}
 									{if:ActivityIsAudio}
 										<div id="jquery_jplayer{ActivityId}" class="jp-jplayer"></div>
 										<div id="jp_container{ActivityId}" class="jp-audio jp-audio-single jp-audio-activity-stream" data-id="{ActivityId}" data-url="{ActivityExcerpt}">
@@ -62,7 +50,7 @@
 											<div class="clear"></div>
 										</div>
 									{/if:ActivityIsAudio}
-									{if:ActivityIsBlogRepost}
+									{if:ActivityIsRepost}
 										{ActivityExcerpt}
 
 										<div class="repost">
@@ -74,23 +62,10 @@
 												{RepostedContentTimeAgo}
 											</div>
 										</div>
-									{/if:ActivityIsBlogRepost}
+									{/if:ActivityIsRepost}
 									{if:ActivityIsStatus}
 										<a href="{ActivityUrl}"><span class="status-quote-mark">&ldquo;</span>{ActivityExcerpt}</a>
 									{/if:ActivityIsStatus}
-									{if:ActivityIsStatusRepost}
-										<a href="{ActivityUrl}"><span class="status-quote-mark">&ldquo;</span>{ActivityExcerpt}</a>
-
-										<div class="repost">
-											<a href="{RepostedFromAccountUrl}" class="repost-account-image-link">
-												<img src="{RepostedFromAccountPhotoUrl}" class="repost-account-image" />
-											</a>
-											<div class="repost-info">
-												<a href="{RepostedFromAccountUrl}">{RepostedFromAccountName}</a>
-												{RepostedContentTimeAgo}
-											</div>
-										</div>
-									{/if:ActivityIsStatusRepost}
 									{if:ActivityIsEvent}
 										{ActivityTitle}
 									{/if:ActivityIsEvent}
@@ -114,7 +89,7 @@
 									{/if:ActivityIsEvent}
 
 									{if:ActivityIsPhoto}
-									<a href="{ActivityUrl}"><img src="{ActivityPhotoUrl-Medium}" /></a>
+									<a href="{ActivityUrl}"><img src="{ActivityPhotoUrl size="medium"}" /></a>
 									{/if:ActivityIsPhotoAlbum}
 
 								{if:ReadMore}
@@ -126,18 +101,9 @@
 								<footer>
 									<span class="footer-info">
 										{LikeLink likeText="Like" unlikeText="Unlike"}
-										{if:ActivityIsBlog}
+										{if:ActivityIsBlog||ActivityIsStatus||ActivityIsRepost}
 											{RepostLink repostText="Repost" unRepostText="UnRepost"}
-										{/if:ActivityIsBlog}
-										{if:ActivityIsStatus}
-											{RepostLink repostText="Repost" unRepostText="UnRepost"}
-										{/if:ActivityIsStatus}
-										{if:ActivityIsBlogRepost}
-											{RepostLink repostText="Repost" unRepostText="UnRepost"}
-										{/if:ActivityIsBlogRepost}
-										{if:ActivityIsStatusRepost}
-											{RepostLink repostText="Repost" unRepostText="UnRepost"}
-										{/if:ActivityIsStatusRepost}
+										{/if:ActivityIsBlog||ActivityIsStatus||ActivityIsRepost}
 										{if:ActivityIsPhotoAlbum}
 											{ActivityPhotoCount} photos <a href="{ActivityUrl}">view all photos</a>
 										{/if:ActivityIsPhotoAlbum}
@@ -403,7 +369,7 @@
 						{block:VideoPlaylistView}
 							<li id="playlist{AudioPlaylistId}"><a href="{VideoPlaylistUrl}">
 								{if:VideoPlaylistHasThumbnail}
-									<img src="{VideoPlaylistCoverPhotoUrl}" title="{VideoPlaylistTitle}" />
+									<img src="{VideoPlaylistPhotoUrl}" title="{VideoPlaylistTitle}" />
 								{/if:VideoPlaylistHasThumbnail}
 								<h3>{VideoPlaylistTitle}</h3>
 								<span class="total">{VideoPlaylistVideoCount} videos</span>
@@ -474,7 +440,7 @@
 						{block:VideoPlaylistView}
 							<li id="block{VideoPlaylistId}"><a href="{VideoPlaylistUrl}">
 								{if:VideoPlaylistHasThumbnail}
-									<img src="{VideoPlaylistCoverPhotoUrl}" title="{VideoPlaylistTitle}" />
+									<img src="{VideoPlaylistPhotoUrl}" title="{VideoPlaylistTitle}" />
 								{/if:VideoPlaylistHasThumbnail}
 								<h3>{VideoPlaylistTitle}</h3>
 								<span class="total">{VideoPlaylistVideoCount} videos</span>
@@ -522,7 +488,7 @@
 							{block:PhotoAlbumView}
 							<li>
 								<a href="{PhotoAlbumUrl}">
-									<img src="{Cover}" alt="{PhotoAlbumTitle} cover" title="{PhotoAlbumTitle} cover" />
+									<img src="{PhotoAlbumPhotoUrl}" alt="{PhotoAlbumTitle} cover" title="{PhotoAlbumTitle} cover" />
 									<span class="title">{PhotoAlbumTitle}</span>
 									{PhotoAlbumPhotoCount} photos
 								</a>
@@ -589,7 +555,7 @@
 						{block:PhotoAlbumView}
 							<div class="photos-section">
 								<div id="album-info">
-									<img id="album-cover" src="{Cover}" alt="{PhotoAlbumTitle} cover" title="{PhotoAlbumTitle} cover"/>
+									<img id="album-cover" src="{PhotoAlbumPhotoUrl}" alt="{PhotoAlbumTitle} cover" title="{PhotoAlbumTitle} cover"/>
 									<span id="album-title">{PhotoAlbumTitle}</span>
 									<div id="album-last-updated">last updated {ModifiedDate format="F j, Y"}</div>
 									<div id="description">{PhotoAlbumDescription}</div>
@@ -640,7 +606,7 @@
 						{block:AudioPlaylistView}
 							<div class="playlist-info">
 								{if:AudioPlaylistHasThumbnail}
-									<img src="{AudioPlaylistCoverPhotoUrl}" class="cover-photo" title="{AudioPlaylistTitle}" />
+									<img src="{AudioPlaylistPhotoUrl}" class="cover-photo" title="{AudioPlaylistTitle}" />
 								{/if:AudioPlaylistHasThumbnail}
 								{if:AudioPlaylistCanBeSold}
 								<div class="buy-link">
@@ -711,7 +677,7 @@
 						{block:AudioPlaylistView}
 							<li id="playlist{AudioPlaylistId}"><a href="{AudioPlaylistUrl}">
 								{if:AudioPlaylistHasThumbnail}
-									<img src="{AudioPlaylistCoverPhotoUrl}" title="{AudioPlaylistTitle}" />
+									<img src="{AudioPlaylistPhotoUrl}" title="{AudioPlaylistTitle}" />
 								{/if:AudioPlaylistHasThumbnail}
 								<span class="total">{AudioPlaylistAudioCount} tracks</span>
 								<h3>{AudioPlaylistTitle}</h3>
@@ -732,7 +698,7 @@
 						{block:AudioPlaylistView}
 							<div class="playlist-info">
 								{if:AudioPlaylistHasThumbnail}
-									<img src="{AudioPlaylistCoverPhotoUrl}" class="cover-photo" title="{AudioPlaylistTitle}" />
+									<img src="{AudioPlaylistPhotoUrl}" class="cover-photo" title="{AudioPlaylistTitle}" />
 								{/if:AudioPlaylistHasThumbnail}
 								{if:AudioPlaylistCanBeSold}
 								<div class="buy-link">
@@ -822,7 +788,7 @@
 						{block:AudioPlaylistView}
 							<li id="playlist{AudioPlaylistId}"><a href="{AudioPlaylistUrl}">
 								{if:AudioPlaylistHasThumbnail}
-									<img src="{AudioPlaylistCoverPhotoUrl}" title="{AudioPlaylistTitle}" />
+									<img src="{AudioPlaylistPhotoUrl}" title="{AudioPlaylistTitle}" />
 								{/if:AudioPlaylistHasThumbnail}
 								<span class="total">{AudioPlaylistAudioCount} tracks</span>
 								<h3>{AudioPlaylistTitle}</h3>

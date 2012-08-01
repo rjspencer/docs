@@ -1330,27 +1330,15 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 							{block:ActivityStreamView}
 								<article class="post {ActivityCSSClass}">
 									<header>
-										{if:ActivityIsBlog}
+										{if:ActivityIsBlog||ActivityIsRepost||ActivityIsVideo||ActivityIsAudio}
 											<h1><a href="{ActivityUrl}">{ActivityTitle}</a></h1>
-										{/if:ActivityIsBlog}
-										{if:ActivityIsBlogRepost}
-											<h1><a href="{ActivityUrl}">{ActivityTitle}</a></h1>
-										{/if:ActivityIsBlogRepost}
-										{if:ActivityIsVideo}
-											<h1><a href="{ActivityUrl}">{ActivityTitle}</a></h1>
-										{/if:ActivityIsVideo}
-										{if:ActivityIsAudio}
-											<h1><a href="{ActivityUrl}">{ActivityTitle}</a></h1>
-										{/if:ActivityIsAudio}
+										{/if:ActivityIsBlog||ActivityIsRepost||ActivityIsVideo||ActivityIsAudio}
 									</header>
 
 									<div class="post-body">
-										{if:ActivityIsBlog}
+										{if:ActivityIsBlog||ActivityIsVideo}
 											{ActivityExcerpt}
-										{/if:ActivityIsBlog}
-										{if:ActivityIsVideo}
-											{ActivityExcerpt}
-										{/if:ActivityIsVideo}
+										{/if:ActivityIsBlog||ActivityIsVideo}
 										{if:ActivityIsAudio}
 											<div id="jquery_jplayer{ActivityId}" class="jp-jplayer"></div>
 											<div id="jp_container{ActivityId}" class="jp-audio jp-audio-single jp-audio-activity-stream" data-id="{ActivityId}" data-url="{ActivityExcerpt}">
@@ -1364,7 +1352,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 												<div class="clear"></div>
 											</div>
 										{/if:ActivityIsAudio}
-										{if:ActivityIsBlogRepost}
+										{if:ActivityIsRepost}
 											{ActivityExcerpt}
 
 											<div class="repost">
@@ -1376,23 +1364,10 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 													{RepostedContentTimeAgo}
 												</div>
 											</div>
-										{/if:ActivityIsBlogRepost}
+										{/if:ActivityIsRepost}
 										{if:ActivityIsStatus}
 											<a href="{ActivityUrl}"><span class="status-quote-mark">&ldquo;</span>{ActivityExcerpt}</a>
 										{/if:ActivityIsStatus}
-										{if:ActivityIsStatusRepost}
-											<a href="{ActivityUrl}"><span class="status-quote-mark">&ldquo;</span>{ActivityExcerpt}</a>
-
-											<div class="repost">
-												<a href="{RepostedFromAccountUrl}" class="repost-account-image-link">
-													<img src="{RepostedFromAccountPhotoUrl}" class="repost-account-image" />
-												</a>
-												<div class="repost-info">
-													<a href="{RepostedFromAccountUrl}">{RepostedFromAccountName}</a>
-													{RepostedContentTimeAgo}
-												</div>
-											</div>
-										{/if:ActivityIsStatusRepost}
 										{if:ActivityIsEvent}
 											{ActivityTitle}
 										{/if:ActivityIsEvent}
@@ -1428,18 +1403,9 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 									<footer>
 										<span class="footer-info">
 											{LikeLink likeText="Like" unlikeText="Unlike"}
-											{if:ActivityIsBlog}
+											{if:ActivityIsBlog||ActivityIsStatus||ActivityIsRepost}
 												{RepostLink repostText="Repost" unRepostText="UnRepost"}
-											{/if:ActivityIsBlog}
-											{if:ActivityIsStatus}
-												{RepostLink repostText="Repost" unRepostText="UnRepost"}
-											{/if:ActivityIsStatus}
-											{if:ActivityIsBlogRepost}
-												{RepostLink repostText="Repost" unRepostText="UnRepost"}
-											{/if:ActivityIsBlogRepost}
-											{if:ActivityIsStatusRepost}
-												{RepostLink repostText="Repost" unRepostText="UnRepost"}
-											{/if:ActivityIsStatusRepost}
+											{/if:ActivityIsBlog||ActivityIsStatus||ActivityIsRepost}
 											{if:ActivityIsPhotoAlbum}
 												{ActivityPhotoCount} photos <a href="{ActivityUrl}">view all photos</a>
 											{/if:ActivityIsPhotoAlbum}
