@@ -988,6 +988,9 @@ AuthorPhotoUrl
 StatusText
 :	the actual text of the status post
 
+StatusTextWithLinks
+:	the actual text of the status post with links converted into HTML <a> tags
+
 ## StoreItemList
 A listing of store items.
 
