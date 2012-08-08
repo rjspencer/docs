@@ -12,10 +12,32 @@ All of StageBloc's documentation are up on GitHub for you to fork, modify, and i
 # General Information
 The root URL of the API is `https://api.stagebloc.com/2.0/`.
 
-Responses can be formatted in either JSON or XML by simply changing the extension of the endpoint between `.xml` and `.json`. For instance, to list an accounts blog entries, you could use either `/blog/list.xml` or `/blog/list.json`.
+Responses can be formatted in either JSON or XML by simply changing the extension of the endpoint between `.xml` and `.json`. For instance, to list an accounts blog entries, you could use either `/list.xml` or `/list.json`.
 
 ### Authorization
 Connecting with the StageBloc API uses the OAuth 2.0 standard. You must first register your application in the StageBloc backend to receive a client ID and secret that will allow users to connect with your application.
+
+### Errors
+
+Errors can be returned for any of the `/edit` endpoints and differ in content based on the endpoint you're using. However, they will have the following structure:
+
+JSON Example
+
+    {
+        "response": [{
+            "error": {
+                "message": "Description of error."
+            }
+        }]
+    }
+     
+   XML Example
+   
+    <response>
+        <error>
+            <message>No audio with an ound.</message>
+        </error>
+    </response>
 
 ### Wrappers
 There is currently a PHP wrapper available for connecting with the API. It can be found on [GitHub](https://github.com/stagebloc/php-stagebloc-api). Instructions for how to use it are included in the `README` file of that repository.
@@ -27,7 +49,7 @@ This endpoint is used for interacting with an account's audio.
 
 ## /audio/edit
 
-This endpoint can be used for editing existing audio tracks or adding new audio tracks to a StageBloc account. When adding audio, a WAV or AIFF file is required that is then encoded into two different MP3 files (128kb and 320kb).
+This endpoint can be used for editing existing audio tracks or adding new audio tracks to a StageBloc account. When adding audio, a WAV or AIFF file is required that is then encoded into two different MP3 files (128kb and 320kb). Upon successful editing/creation, the newly created audio track will be returned in the same manner `/audio/list` would return it. Otherwise, an error message will be returned explaining what was wrong.
 
 id _(required to edit an existing audio track)_
 :	the ID of the audio to edit
