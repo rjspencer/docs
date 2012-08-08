@@ -25,6 +25,102 @@ If you want to create your own wrapper in another language, please do! Let us kn
 # /audio
 This endpoint is used for interacting with an account's audio.
 
+## /audio/edit
+
+This endpoint can be used for editing existing audio tracks or adding new audio tracks to a StageBloc account. When adding audio, a WAV or AIFF file is required that is then encoded into two different MP3 files (128kb and 320kb).
+
+id _(required to edit an existing audio track)_
+:	the ID of the audio to edit
+
+	possible values are any audio ID that belongs to the authenticated account
+	
+title _(required)_
+:	the title of the audio
+
+	possible values are any string <= 100 characters
+	
+audio_data _(required when adding a new audio track (i.e. no `id` is given))_
+:	the file to upload and stream
+
+	possible values are any `WAV` or `AIFF` file < `200MB` in size
+
+artist
+:	the artist of this track
+
+	possible values are any string <= 250 characters
+	
+	defaults to empty
+	
+audio_playlist_id
+:	a comma seperated list of IDs that this playlist should belong to
+
+	possible values are any CSV string that contains IDs of playlists that the authenticated account has access to
+	
+	defaults to a "Mobile Uploads" playlist for new audio tracks or existing playlists when editing audio tracks
+	
+description
+:	a description for the audio track (can contain HTML)
+
+	possible values are any block of text
+	
+	defaults to empty
+	
+private
+:	whether or not this audio track should be private
+
+	possible values are `1` (private) or `0` (public)
+	
+	defaults to `0`
+	
+exclusive
+:	whether or not this audio track should be marked as exclusive
+
+	possible values are `1` (exclusive) or `0` (not exclusive)
+	
+	defaults to `0`
+	
+free_download_quality
+:	the quality of the free download to offer for this audio track
+
+	possible values are `0` (not downloadable), `1` (128kb MP3), `2` (320kb MP3), `3` (source WAV / AIFF file)
+	
+	defaults to `0`
+	
+paid_download_quality
+:	the quality of the paid download to offer for this audio track
+
+	possible values are `0` (not downloadable), `1` (128kb MP3), `2` (320kb MP3), `3` (source WAV / AIFF file)
+	
+	defaults to `0`
+
+free_download_require_follow
+:	whether or not a free download should require a follow, only applicable when `free_download_quality` is not `0`
+
+	possible values are `0` (not required) and `1` (required)
+	
+	defaults to `0`
+	
+paid_download_require_follow
+:	whether or not a paid download should require a follow, only applicable when `paid_download_quality` is not `0`
+
+	possible values are `0` (not required) and `1` (required)
+	
+	defaults to `0`
+	
+price
+:	the price of the audio track (in USD) for purchasing, only applicable when `paid_download_quality` is not `0`
+
+	possible values are any number > `0.50`
+	
+	defaults to `.5` ($0.50)
+	
+fans_name_price
+:	whether or not fans should be able to pay more than `price` when purchasing this audio track, only applicable when `paid_download_quality` is not `0`
+
+	possible values are `0` (can't name price) or `1` (can name price)
+	
+	defaults to `1`
+
 ## /audio/list
 id
 :	the ID of the audio to return
