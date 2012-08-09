@@ -44,164 +44,6 @@ There is currently a PHP wrapper available for connecting with the API. It can b
 
 If you want to create your own wrapper in another language, please do! Let us know, and we can link to it from here.
 
-# /audio/playlists
-This endpoint is used for interacting with an account's audio playlists.
-
-## /audio/playlists/list
-id
-:	the ID of the audio playlist to return
-
-	possible values are any audio playlist ID that belongs to the authenticated account
-	
-	no default
-	
-**_Important Note:_** If an id is passed, all other parameters will be ignored and only the requested audio playlist will be returned
-
-order_by
-:	how to order the results
-
-	possible values are `created`, `modified`, or `title`
-	
-	defaults to `created`
-
-direction
-:	what direction to return the results in
-
-	possible values are `ASC` or `DESC`
-	
-	defaults to `DESC`
-
-limit
-:	the limit of results to return
-
-	default is no limit
-
-offset
-:	the offset of the results to return
-
-	defaults to `0`
-	
-include_tracks
-:	whether or not the audio tracks in this playlist should also be returned
-
-	possible values are `0` (don't include tracks) and `1` (include tracks)
-	
-	defaults to `0`
-	
-### Example Response (XML)
-
-    <response>
-        <total>4</total>
-        <items>
-            <item>
-                <id>40</id>
-                <title>Animal Sounds</title>
-                <description>Nature at its finest!</description>
-                <created>2012-04-16 11:30:19</created>
-                <modified>2012-06-04 18:12:11</modified>
-                <short_url>http://stgb.lc/ap/G</short_url>
-                <exclusive>true</exclusive>
-                <private>false</private>
-                <download_details>
-                    <price>1.60</price>
-                    <fans_name_price>false</fans_name_price>
-                    <free_download_quality>0</free_download_quality>
-                    <paid_download_quality>2</paid_download_quality>
-                    <free_download_require_follow>false</free_download_require_follow>
-                    <paid_download_require_follow>true</paid_download_require_follow>
-                </download_details>
-                <images>
-                    <image>
-                        <size>thumbnail</size>
-                        <short_url>http://stgb.lc/p/PZ/t</short_url>
-                        <embed_url>http://cdn.stagebloc.com/local/photos/1/thumbnail/20120717_144734_1_2783.jpeg</embed_url>
-                    </image>
-                    <image>
-                        <size>small</size>
-                        <short_url>http://stgb.lc/p/PZ/s</short_url>
-                        <embed_url>http://cdn.stagebloc.com/local/photos/1/small/20120717_144734_1_2783.jpeg</embed_url>
-                    </image>
-                    <image>
-                        <size>medium</size>
-                        <short_url>http://stgb.lc/p/PZ/m</short_url>
-                        <embed_url>http://cdn.stagebloc.com/local/photos/1/medium/20120717_144734_1_2783.jpeg</embed_url>
-                    </image>
-                    <image>
-                        <size>large</size>
-                        <short_url>http://stgb.lc/p/PZ/l</short_url>
-                        <embed_url>http://cdn.stagebloc.com/local/photos/1/large/20120717_144734_1_2783.jpeg</embed_url>
-                    </image>
-                    <image>
-                        <size>original</size>
-                        <short_url>http://stgb.lc/p/PZ/o</short_url>
-                        <embed_url>http://cdn.stagebloc.com/local/photos/1/original/20120717_144734_1_2783.jpeg</embed_url>
-                    </image>
-                </images>
-                <track_count>6</track_count>
-            </item>
-        </items>
-    </response>
-
-### Example Response (JSON)
-
-    {
-        "response": {
-            "total": 4,
-            "items": [{
-                "item": {
-                    "id": 40,
-                    "title": "Animal Sounds",
-                    "description": "Nature at its finest!",
-                    "created": "2012-04-16 11:30:19",
-                    "modified": "2012-06-04 18:12:11",
-                    "short_url": "http:\/\/stgb.lc\/ap\/G",
-                    "exclusive": true,
-                    "private": false,
-                    "download_details": {
-                        "price": 1.60,
-                        "fans_name_price": false,
-                        "free_download_quality": 0,
-                        "paid_download_quality": 2,
-                        "free_download_require_follow": false,
-                        "paid_download_require_follow": true
-                    },
-                    "images": [{
-                        "image": {
-                            "size": "thumbnail",
-                            "short_url": "http:\/\/stgb.lc\/p\/PZ\/t",
-                            "embed_url": "http:\/\/cdn.stagebloc.com\/local\/photos\/1\/thumbnail\/20120717_144734_1_2783.jpeg"
-                        }
-                    }, {
-                        "image": {
-                            "size": "small",
-                            "short_url": "http:\/\/stgb.lc\/p\/PZ\/s",
-                            "embed_url": "http:\/\/cdn.stagebloc.com\/local\/photos\/1\/small\/20120717_144734_1_2783.jpeg"
-                        }
-                    }, {
-                        "image": {
-                            "size": "medium",
-                            "short_url": "http:\/\/stgb.lc\/p\/PZ\/m",
-                            "embed_url": "http:\/\/cdn.stagebloc.com\/local\/photos\/1\/medium\/20120717_144734_1_2783.jpeg"
-                        }
-                    }, {
-                        "image": {
-                            "size": "large",
-                            "short_url": "http:\/\/stgb.lc\/p\/PZ\/l",
-                            "embed_url": "http:\/\/cdn.stagebloc.com\/local\/photos\/1\/large\/20120717_144734_1_2783.jpeg"
-                        }
-                    }, {
-                        "image": {
-                            "size": "original",
-                            "short_url": "http:\/\/stgb.local\/p\/PZ\/o",
-                            "embed_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/1\/original\/20120717_144734_1_2783.jpeg"
-                        }
-                    }],
-                    "track_count": 6
-                }
-            }]
-        }
-    }
-
 # /audio
 This endpoint is used for interacting with an account's audio.
 
@@ -405,6 +247,164 @@ offset
             }]
         }
     }
+    
+# /audio/playlists
+This endpoint is used for interacting with an account's audio playlists.
+
+## /audio/playlists/list
+id
+:	the ID of the audio playlist to return
+
+	possible values are any audio playlist ID that belongs to the authenticated account
+	
+	no default
+	
+**_Important Note:_** If an id is passed, all other parameters will be ignored and only the requested audio playlist will be returned
+
+order_by
+:	how to order the results
+
+	possible values are `created`, `modified`, or `title`
+	
+	defaults to `created`
+
+direction
+:	what direction to return the results in
+
+	possible values are `ASC` or `DESC`
+	
+	defaults to `DESC`
+
+limit
+:	the limit of results to return
+
+	default is no limit
+
+offset
+:	the offset of the results to return
+
+	defaults to `0`
+	
+include_tracks
+:	whether or not the audio tracks in this playlist should also be returned
+
+	possible values are `0` (don't include tracks) and `1` (include tracks)
+	
+	defaults to `0`
+	
+### Example Response (XML)
+
+    <response>
+        <total>4</total>
+        <items>
+            <item>
+                <id>40</id>
+                <title>Animal Sounds</title>
+                <description>Nature at its finest!</description>
+                <created>2012-04-16 11:30:19</created>
+                <modified>2012-06-04 18:12:11</modified>
+                <short_url>http://stgb.lc/ap/G</short_url>
+                <exclusive>true</exclusive>
+                <private>false</private>
+                <download_details>
+                    <price>1.60</price>
+                    <fans_name_price>false</fans_name_price>
+                    <free_download_quality>0</free_download_quality>
+                    <paid_download_quality>2</paid_download_quality>
+                    <free_download_require_follow>false</free_download_require_follow>
+                    <paid_download_require_follow>true</paid_download_require_follow>
+                </download_details>
+                <images>
+                    <image>
+                        <size>thumbnail</size>
+                        <short_url>http://stgb.lc/p/PZ/t</short_url>
+                        <embed_url>http://cdn.stagebloc.com/local/photos/1/thumbnail/20120717_144734_1_2783.jpeg</embed_url>
+                    </image>
+                    <image>
+                        <size>small</size>
+                        <short_url>http://stgb.lc/p/PZ/s</short_url>
+                        <embed_url>http://cdn.stagebloc.com/local/photos/1/small/20120717_144734_1_2783.jpeg</embed_url>
+                    </image>
+                    <image>
+                        <size>medium</size>
+                        <short_url>http://stgb.lc/p/PZ/m</short_url>
+                        <embed_url>http://cdn.stagebloc.com/local/photos/1/medium/20120717_144734_1_2783.jpeg</embed_url>
+                    </image>
+                    <image>
+                        <size>large</size>
+                        <short_url>http://stgb.lc/p/PZ/l</short_url>
+                        <embed_url>http://cdn.stagebloc.com/local/photos/1/large/20120717_144734_1_2783.jpeg</embed_url>
+                    </image>
+                    <image>
+                        <size>original</size>
+                        <short_url>http://stgb.lc/p/PZ/o</short_url>
+                        <embed_url>http://cdn.stagebloc.com/local/photos/1/original/20120717_144734_1_2783.jpeg</embed_url>
+                    </image>
+                </images>
+                <track_count>6</track_count>
+            </item>
+        </items>
+    </response>
+
+### Example Response (JSON)
+
+    {
+        "response": {
+            "total": 4,
+            "items": [{
+                "item": {
+                    "id": 40,
+                    "title": "Animal Sounds",
+                    "description": "Nature at its finest!",
+                    "created": "2012-04-16 11:30:19",
+                    "modified": "2012-06-04 18:12:11",
+                    "short_url": "http:\/\/stgb.lc\/ap\/G",
+                    "exclusive": true,
+                    "private": false,
+                    "download_details": {
+                        "price": 1.60,
+                        "fans_name_price": false,
+                        "free_download_quality": 0,
+                        "paid_download_quality": 2,
+                        "free_download_require_follow": false,
+                        "paid_download_require_follow": true
+                    },
+                    "images": [{
+                        "image": {
+                            "size": "thumbnail",
+                            "short_url": "http:\/\/stgb.lc\/p\/PZ\/t",
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/local\/photos\/1\/thumbnail\/20120717_144734_1_2783.jpeg"
+                        }
+                    }, {
+                        "image": {
+                            "size": "small",
+                            "short_url": "http:\/\/stgb.lc\/p\/PZ\/s",
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/local\/photos\/1\/small\/20120717_144734_1_2783.jpeg"
+                        }
+                    }, {
+                        "image": {
+                            "size": "medium",
+                            "short_url": "http:\/\/stgb.lc\/p\/PZ\/m",
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/local\/photos\/1\/medium\/20120717_144734_1_2783.jpeg"
+                        }
+                    }, {
+                        "image": {
+                            "size": "large",
+                            "short_url": "http:\/\/stgb.lc\/p\/PZ\/l",
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/local\/photos\/1\/large\/20120717_144734_1_2783.jpeg"
+                        }
+                    }, {
+                        "image": {
+                            "size": "original",
+                            "short_url": "http:\/\/stgb.local\/p\/PZ\/o",
+                            "embed_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/1\/original\/20120717_144734_1_2783.jpeg"
+                        }
+                    }],
+                    "track_count": 6
+                }
+            }]
+        }
+    }
 
 # /blog
 This endpoint is used for interacting with an account's blog posts.
@@ -527,3 +527,32 @@ ignore_sticky
             }]
         }
     }
+    
+#/oauth2
+This is used during the [OAuth2](http://oauth.net/2/) authentication process to get an access token from a request token. Curious? Check out our OAuth2 [PHP](https://github.com/stagebloc/php-stagebloc-api) or [Objective-C](https://github.com/stagebloc/cocoa-stagebloc-api) wrapper on GitHub.
+
+**Note: The only response format for this endpoint is JSON!**
+
+##/oauth2/token
+client_id _(required)_
+:	the ID of the application an account is connecting to
+
+	possible values are any string that matches a registered application
+
+client_secret _(required)_
+:	the secret of the application an account is connecting to
+
+	possible values are any string that matches a registered application
+	
+grant_type _(required)_
+:	the grant type being requested
+
+	possible value is `authorization_code`
+	
+code _(required)_
+:	the request token code received after connecting with a registered application via `https://stagebloc.com/connect/`
+
+	possible values are any string received during the authentication / connection process
+	
+### Example Response (JSON)
+    {"access_token":"<access_token_here>","scope":"non-expiring"}
