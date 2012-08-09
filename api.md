@@ -482,17 +482,10 @@ ignore_sticky
           <modified>2012-07-17 15:33:11</modified>
           <sticky>false</sticky>
           <exclusive>true</exclusive>
-          <user>
+          <author>
             <id>8</id>
-            <email>hi@stagebloc.com</email>
             <name>Demo Admin</name>
-          </user>
-          <modified>2012-07-17 15:33:11</modified>
-          <modified_by>
-            <id>8</id>
-            <email>hi@stagebloc.com</email>
-            <name>Demo Admin</name>
-          </modified_by>
+          </author>
         </item>
       </items>
     </response>
@@ -513,14 +506,8 @@ ignore_sticky
                     "modified": "2012-07-17 15:33:11",
                     "sticky": false,
                     "exclusive": true,
-                    "user": {
+                    "author": {
                         "id": 8,
-                        "email": "hi@stagebloc.com",
-                        "name": "Demo Admin"
-                    },
-                    "modified_by": {
-                        "id": 8,
-                        "email": "hi@stagebloc.com",
                         "name": "Demo Admin"
                     }
                 }
