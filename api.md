@@ -100,15 +100,15 @@ include_tracks
                 <created>2012-04-16 11:30:19</created>
                 <modified>2012-06-04 18:12:11</modified>
                 <short_url>http://stgb.lc/ap/G</short_url>
-                <exclusive>1</exclusive>
-                <private>0</private>
+                <exclusive>true</exclusive>
+                <private>false</private>
                 <download_details>
                     <price>1.60</price>
-                    <fans_name_price>0</fans_name_price>
+                    <fans_name_price>false</fans_name_price>
                     <free_download_quality>0</free_download_quality>
                     <paid_download_quality>2</paid_download_quality>
-                    <free_download_require_follow>0</free_download_require_follow>
-                    <paid_download_require_follow>1</paid_download_require_follow>
+                    <free_download_require_follow>false</free_download_require_follow>
+                    <paid_download_require_follow>true</paid_download_require_follow>
                 </download_details>
                 <images>
                     <image>
@@ -146,7 +146,7 @@ include_tracks
 
     {
         "response": {
-            "total": "4",
+            "total": 4,
             "items": [{
                 "item": {
                     "id": 40,
@@ -155,8 +155,8 @@ include_tracks
                     "created": "2012-04-16 11:30:19",
                     "modified": "2012-06-04 18:12:11",
                     "short_url": "http:\/\/stgb.lc\/ap\/G",
-                    "exclusive": 1,
-                    "private": 0,
+                    "exclusive": true,
+                    "private": false,
                     "download_details": {
                         "price": 1.60,
                         "fans_name_price": false,
@@ -196,7 +196,7 @@ include_tracks
                             "embed_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/1\/original\/20120717_144734_1_2783.jpeg"
                         }
                     }],
-                    "track_count": "6"
+                    "track_count": 6
                 }
             }]
         }
@@ -360,15 +360,15 @@ offset
                 <created>2012-06-19 12:50:46</created>
                 <modified>2012-07-20 16:18:57</modified>
                 <length>21</length>
-                <exclusive>1</exclusive>
-                <private>0</private>
+                <exclusive>true</exclusive>
+                <private>false</private>
                 <download_details>
                     <price>0.50</price>
-                    <fans_name_price>1</fans_name_price>
+                    <fans_name_price>true</fans_name_price>
                     <free_download_quality>1</free_download_quality>
                     <paid_download_quality>2</paid_download_quality>
-                    <free_download_require_follow>1</free_download_require_follow>
-                    <paid_download_require_follow>1</paid_download_require_follow>
+                    <free_download_require_follow>true</free_download_require_follow>
+                    <paid_download_require_follow>true</paid_download_require_follow>
                 </download_details>
             </item>
         </items>
@@ -391,15 +391,15 @@ offset
                     "created": "2012-06-19 12:50:46",
                     "modified": "2012-07-20 16:18:57",
                     "length": "21",
-                    "exclusive": 1,
-                    "private": 0,
+                    "exclusive": true,
+                    "private": false,
                     "download_details": {
                         "price": 0.50,
-                        "fans_name_price": 1,
+                        "fans_name_price": true,
                         "free_download_quality": 1,
                         "paid_download_quality": 2,
-                        "free_download_require_follow": 1,
-                        "paid_download_require_follow": 1
+                        "free_download_require_follow": true,
+                        "paid_download_require_follow": true
                     }
                 }
             }]
@@ -480,8 +480,8 @@ ignore_sticky
           <published>2012-06-25 12:30:00</published>
           <created>2012-06-25 12:30:53</created>
           <modified>2012-07-17 15:33:11</modified>
-          <sticky>0</sticky>
-          <exclusive>1</exclusive>
+          <sticky>false</sticky>
+          <exclusive>true</exclusive>
           <user>
             <id>8</id>
             <email>hi@stagebloc.com</email>
@@ -511,8 +511,8 @@ ignore_sticky
                     "published": "2012-06-25 12:30:00",
                     "created": "2012-06-25 12:30:53",
                     "modified": "2012-07-17 15:33:11",
-                    "sticky": 0,
-                    "exclusive": 1,
+                    "sticky": false,
+                    "exclusive": true,
                     "user": {
                         "id": 8,
                         "email": "hi@stagebloc.com",
