@@ -12,7 +12,7 @@ All of StageBloc's documentation are up on GitHub for you to fork, modify, and i
 # General Information
 The root URL of the API is `https://api.stagebloc.com/2.0/`.
 
-Responses can be formatted in either JSON or XML by simply changing the extension of the endpoint between `.xml` and `.json`. For instance, to list an accounts blog entries, you could use either `/list.xml` or `/list.json`.
+Responses can be formatted in either JSON or XML by simply changing the extension of the endpoint between `.xml` and `.json`. For instance, to list an accounts blog entries, you could use either `/list.xml` or `/list.json`. This applies to all endpoints except `/oauth2/token` which only returns JSON.
 
 ### Authorization
 Connecting with the StageBloc API uses the OAuth 2.0 standard. You must first register your application in the StageBloc backend to receive a client ID and secret that will allow users to connect with your application.
@@ -179,7 +179,7 @@ direction
 limit
 :	the limit of results to return
 
-	default is no limit
+	defaults to `20`
 
 offset
 :	the offset of the results to return
@@ -196,7 +196,7 @@ offset
                 <title>Never Gonna Give You Up</title>
                 <artist>Rick Astley</artist>
                 <raw_url/>
-                <embed_url>http://cdn.stagebloc.com/local/audio/1/mp3_128kb/5190_20120619_175046_1_311.mp3</embed_url>
+                <embed_url>http://cdn.stagebloc.com/production/audio/1/mp3_128kb/5190_20120619_175046_1_311.mp3</embed_url>
                 <short_url>http://stgb.lc/a/6n</short_url>
                 <description>Audio description here!</description>
                 <created>2012-06-19 12:50:46</created>
@@ -227,7 +227,7 @@ offset
                     "title": "Never Gonna Give You Up",
                     "artist": "Rick Astley",
                     "raw_url": null,
-                    "embed_url": "http:\/\/cdn-staging.stagebloc.com\/local\/audio\/1\/mp3_128kb\/5190_20120619_175046_1_311.mp3",
+                    "embed_url": "http:\/\/cdn.stagebloc.com\/production\/audio\/1\/mp3_128kb\/5190_20120619_175046_1_311.mp3",
                     "short_url": "http:\/\/stgb.lc\/a\/6n",
                     "description": "Audio description here!",
                     "created": "2012-06-19 12:50:46",
@@ -278,7 +278,7 @@ direction
 limit
 :	the limit of results to return
 
-	default is no limit
+	defaults to `20`
 
 offset
 :	the offset of the results to return
@@ -318,27 +318,27 @@ include_tracks
                     <image>
                         <size>thumbnail</size>
                         <short_url>http://stgb.lc/p/PZ/t</short_url>
-                        <embed_url>http://cdn.stagebloc.com/local/photos/1/thumbnail/20120717_144734_1_2783.jpeg</embed_url>
+                        <embed_url>http://cdn.stagebloc.com/production/photos/1/thumbnail/20120717_144734_1_2783.jpeg</embed_url>
                     </image>
                     <image>
                         <size>small</size>
                         <short_url>http://stgb.lc/p/PZ/s</short_url>
-                        <embed_url>http://cdn.stagebloc.com/local/photos/1/small/20120717_144734_1_2783.jpeg</embed_url>
+                        <embed_url>http://cdn.stagebloc.com/production/photos/1/small/20120717_144734_1_2783.jpeg</embed_url>
                     </image>
                     <image>
                         <size>medium</size>
                         <short_url>http://stgb.lc/p/PZ/m</short_url>
-                        <embed_url>http://cdn.stagebloc.com/local/photos/1/medium/20120717_144734_1_2783.jpeg</embed_url>
+                        <embed_url>http://cdn.stagebloc.com/production/photos/1/medium/20120717_144734_1_2783.jpeg</embed_url>
                     </image>
                     <image>
                         <size>large</size>
                         <short_url>http://stgb.lc/p/PZ/l</short_url>
-                        <embed_url>http://cdn.stagebloc.com/local/photos/1/large/20120717_144734_1_2783.jpeg</embed_url>
+                        <embed_url>http://cdn.stagebloc.com/production/photos/1/large/20120717_144734_1_2783.jpeg</embed_url>
                     </image>
                     <image>
                         <size>original</size>
                         <short_url>http://stgb.lc/p/PZ/o</short_url>
-                        <embed_url>http://cdn.stagebloc.com/local/photos/1/original/20120717_144734_1_2783.jpeg</embed_url>
+                        <embed_url>http://cdn.stagebloc.com/production/photos/1/original/20120717_144734_1_2783.jpeg</embed_url>
                     </image>
                 </images>
                 <track_count>6</track_count>
@@ -373,31 +373,31 @@ include_tracks
                         "image": {
                             "size": "thumbnail",
                             "short_url": "http:\/\/stgb.lc\/p\/PZ\/t",
-                            "embed_url": "http:\/\/cdn.stagebloc.com\/local\/photos\/1\/thumbnail\/20120717_144734_1_2783.jpeg"
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/thumbnail\/20120717_144734_1_2783.jpeg"
                         }
                     }, {
                         "image": {
                             "size": "small",
                             "short_url": "http:\/\/stgb.lc\/p\/PZ\/s",
-                            "embed_url": "http:\/\/cdn.stagebloc.com\/local\/photos\/1\/small\/20120717_144734_1_2783.jpeg"
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/small\/20120717_144734_1_2783.jpeg"
                         }
                     }, {
                         "image": {
                             "size": "medium",
                             "short_url": "http:\/\/stgb.lc\/p\/PZ\/m",
-                            "embed_url": "http:\/\/cdn.stagebloc.com\/local\/photos\/1\/medium\/20120717_144734_1_2783.jpeg"
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/medium\/20120717_144734_1_2783.jpeg"
                         }
                     }, {
                         "image": {
                             "size": "large",
                             "short_url": "http:\/\/stgb.lc\/p\/PZ\/l",
-                            "embed_url": "http:\/\/cdn.stagebloc.com\/local\/photos\/1\/large\/20120717_144734_1_2783.jpeg"
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/large\/20120717_144734_1_2783.jpeg"
                         }
                     }, {
                         "image": {
                             "size": "original",
-                            "short_url": "http:\/\/stgb.local\/p\/PZ\/o",
-                            "embed_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/1\/original\/20120717_144734_1_2783.jpeg"
+                            "short_url": "http:\/\/stgb.lc\/p\/PZ\/o",
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/original\/20120717_144734_1_2783.jpeg"
                         }
                     }],
                     "track_count": 6
@@ -436,7 +436,7 @@ direction
 limit
 :	the limit of results to return
 
-	default is no limit
+	defaults to `20`
 
 offset
 :	the offset of the results to return
@@ -509,6 +509,168 @@ ignore_sticky
                     "author": {
                         "id": 8,
                         "name": "Demo Admin"
+                    }
+                }
+            }]
+        }
+    }
+    
+# /photos
+This endpoint is used for interacting with an account's photos.
+
+## /photos/list
+id
+:	the ID of the photo to return
+
+	possible values are any photo ID that belongs to the authenticated account
+	
+	no default
+	
+**_Important Note:_** If an id is passed, all other parameters will be ignored and only the requested photo will be returned
+
+album_id
+:	the ID of the album to receive the photos of
+
+	possible values are any album ID that belongs to the authenticated account
+	
+	no default
+	
+**_Important Note:_** If a album_id is passed, all other parameters will be ignored and only the photos belonging to that album will be returned
+
+order_by
+:	how to order the results
+
+	possible values are `created`, `modified`, or `title`
+	
+	defaults to `created`
+
+direction
+:	what direction to return the results in
+
+	possible values are `ASC` or `DESC`
+	
+	defaults to `DESC`
+
+limit
+:	the limit of results to return
+
+	defaults to `20`
+
+offset
+:	the offset of the results to return
+
+	defaults to `0`
+	
+### Example Response (XML)
+
+    <response>
+        <total>153</total>
+        <items>
+            <item>
+                <id>2797</id>
+                <title>Surface of Mars</title>
+                <description>Yay Curiosity!</description>
+                <exclusive>false</exclusive>
+                <modified>2012-07-23 21:16:32</modified>
+                <created>2012-07-23 21:16:29</created>
+                <images>
+                    <image>
+                        <size>thumbnail</size>
+                        <short_url>http://stgb.lc/p/Qe/t</short_url>
+                        <embed_url>http://cdn.stagebloc.com/production/photos/1/thumbnail/20120724_021629_1_2797.jpeg</embed_url>
+                    </image>
+                    <image>
+                        <size>small</size>
+                        <short_url>http://stgb.lc/p/Qe/s</short_url>
+                        embed_url>http://cdn.stagebloc.com/production/photos/1/small/20120724_021629_1_2797.jpeg</embed_url>
+                    </image>
+                    <image>
+                        <size>medium</size>
+                        <short_url>http://stgb.lc/p/Qe/m</short_url>
+                        embed_url>http://cdn.stagebloc.com/production/photos/1/medium/20120724_021629_1_2797.jpeg</embed_url>
+                    </image>
+                    <image>
+                        <size>large</size>
+                        <short_url>http://stgb.lc/p/Qe/l</short_url>
+                        embed_url>http://cdn.stagebloc.com/production/photos/1/large/20120724_021629_1_2797.jpeg</embed_url>
+                    </image>
+                    <image>
+                        <size>original</size>
+                        <short_url>http://stgb.lc/p/Qe/o</short_url>
+                        embed_url>http://cdn.stagebloc.com/production/photos/1/original/20120724_021629_1_2797.jpeg</embed_url>
+                    </image>
+                </images>
+                <location>
+                    <id>5</id>
+                    <name>Allen Hall</name>
+                    <website>http://illinois.edu</website>
+                    <address>
+                        <street_address>1005 West Gregory Avenue</street_address>
+                        <city>Urbana</city>
+                        <state_province>IL</state_province>
+                        <postal_code>61801</postal_code>
+                        <country>USA</country>
+                    </address>
+                </location>
+            </item>
+        </items>
+    </response>
+
+### Example Response (JSON)
+
+    {
+        "response": {
+            "total": 153,
+            "items": [{
+                "item": {
+                    "id": 2797,
+                    "title": "Surface of Mars",
+                    "description": "Yay Curiosity!",
+                    "exclusive": false,
+                    "modified": "2012-08-09 17:35:23",
+                    "created": "2012-07-23 21:16:29","
+                    "images": [{
+                        "image": {
+                            "size": "thumbnail",
+                            "short_url": "http:\/\/stgb.lc\/p\/Qe\/t",
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/thumbnail\/20120724_021629_1_2797.jpeg"
+                        }
+                    }, {
+                        "image": {
+                            "size": "small",
+                            "short_url": "http:\/\/stgb.lc\/p\/Qe\/s",
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/small\/20120724_021629_1_2797.jpeg"
+                        }
+                    }, {
+                        "image": {
+                            "size": "medium",
+                            "short_url": "http:\/\/stgb.lc\/p\/Qe\/m",
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/medium\/20120724_021629_1_2797.jpeg"
+                        }
+                    }, {
+                        "image": {
+                            "size": "large",
+                            "short_url": "http:\/\/stgb.lc\/p\/Qe\/l",
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/large\/20120724_021629_1_2797.jpeg"
+                        }
+                    }, {
+                        "image": {
+                            "size": "original",
+                            "short_url": "http:\/\/stgb.lc\/p\/Qe\/o",
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/original\/20120724_021629_1_2797.jpeg"
+                        }
+                     }],
+                    "location": {
+                        "id": 5,
+                        "name": "Allen Hall",
+                        "website": "http:\/\/illinois.edu",
+                        "address": {
+                            "street_address": "1005 West Gregory Avenue",
+                            "city": "Urbana",
+                            "state_province": "IL",
+                            "postal_code": "61801",
+                            "country": "USA"
+                        }
                     }
                 }
             }]
