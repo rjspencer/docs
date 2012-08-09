@@ -44,6 +44,106 @@ There is currently a PHP wrapper available for connecting with the API. It can b
 
 If you want to create your own wrapper in another language, please do! Let us know, and we can link to it from here.
 
+# /audio/playlists
+This endpoint is used for interacting with an account's audio playlists.
+
+## /audio/playlists/list
+id
+:	the ID of the audio playlist to return
+
+	possible values are any audio playlist ID that belongs to the authenticated account
+	
+	no default
+	
+**_Important Note:_** If an id is passed, all other parameters will be ignored and only the requested audio playlist will be returned
+
+order_by
+:	how to order the results
+
+	possible values are `created`, `modified`, or `title`
+	
+	defaults to `created`
+
+direction
+:	what direction to return the results in
+
+	possible values are `ASC` or `DESC`
+	
+	defaults to `DESC`
+
+limit
+:	the limit of results to return
+
+	default is no limit
+
+offset
+:	the offset of the results to return
+
+	defaults to `0`
+	
+include_tracks
+:	whether or not the audio tracks in this playlist should also be returned
+
+	possible values are `0` (don't include tracks) and `1` (include tracks)
+	
+	defaults to `0`
+	
+### Example Response (XML)
+
+    <response>
+        <total>4</total>
+        <items>
+            <item>
+                <id>40</id>
+                <title>Animal Sounds</title>
+                <description>Nature at its finest!</description>
+                <created>2012-04-16 11:30:19</created>
+                <modified>2012-06-04 18:12:11</modified>
+                <short_url>http://stgb.lc/ap/G</short_url>
+                <exclusive>1</exclusive>
+                <private>0</private>
+                <download_details>
+                    <price>1.60</price>
+                    <fans_name_price>0</fans_name_price>
+                    <free_download_quality>0</free_download_quality>
+                    <paid_download_quality>2</paid_download_quality>
+                    <free_download_require_follow>0</free_download_require_follow>
+                    <paid_download_require_follow>1</paid_download_require_follow>
+                </download_details>
+                <track_count>6</track_count>
+            </item>
+        </items>
+    </response>
+
+### Example Response (JSON)
+
+    {
+        "response": {
+            "total": "4",
+            "items": [{
+                "item": {
+                    "id": 40,
+                    "title": "Animal Sounds",
+                    "description": "Nature at its finest!",
+                    "created": "2012-04-16 11:30:19",
+                    "modified": "2012-06-04 18:12:11",
+                    "short_url": "http:\/\/stgb.lc\/ap\/G",
+                    "exclusive": 1,
+                    "private": 0,
+                    "download_details": {
+                        "price": 1.60,
+                        "fans_name_price": false,
+                        "free_download_quality": 0,
+                        "paid_download_quality": 2,
+                        "free_download_require_follow": false,
+                        "paid_download_require_follow": true
+                    },
+                    "track_count": "6"
+                }
+            }]
+        }
+    }
+
 # /audio
 This endpoint is used for interacting with an account's audio.
 
@@ -197,7 +297,7 @@ offset
                 <artist>Rick Astley</artist>
                 <raw_url/>
                 <embed_url>http://cdn.stagebloc.com/local/audio/1/mp3_128kb/5190_20120619_175046_1_311.mp3</embed_url>
-                <short_url>http://stgb.local/a/6n</short_url>
+                <short_url>http://stgb.lc/a/6n</short_url>
                 <description>Audio description here!</description>
                 <created>2012-06-19 12:50:46</created>
                 <modified>2012-07-20 16:18:57</modified>
@@ -220,28 +320,28 @@ offset
 
     {
         "response": {
-            "total": "18",
+            "total": 18,
             "items": [{
                 "item": {
-                    "id": "311",
+                    "id": 311,
                     "title": "Never Gonna Give You Up",
                     "artist": "Rick Astley",
                     "raw_url": null,
                     "embed_url": "http:\/\/cdn-staging.stagebloc.com\/local\/audio\/1\/mp3_128kb\/5190_20120619_175046_1_311.mp3",
-                    "short_url": "http:\/\/stgb.local\/a\/6n",
+                    "short_url": "http:\/\/stgb.lc\/a\/6n",
                     "description": "Audio description here!",
                     "created": "2012-06-19 12:50:46",
                     "modified": "2012-07-20 16:18:57",
                     "length": "21",
-                    "exclusive": "1",
+                    "exclusive": 1,
                     "private": 0,
                     "download_details": {
-                        "price": "0.50",
-                        "fans_name_price": true,
-                        "free_download_quality": "1",
-                        "paid_download_quality": "2",
-                        "free_download_require_follow": true,
-                        "paid_download_require_follow": true
+                        "price": 0.50,
+                        "fans_name_price": 1,
+                        "free_download_quality": 1,
+                        "paid_download_quality": 2,
+                        "free_download_require_follow": 1,
+                        "paid_download_require_follow": 1
                     }
                 }
             }]
@@ -318,7 +418,7 @@ ignore_sticky
           <title>50 Shades of Grey</title>
           <body>Lions, tables, and chairs, oh my!</body>
           <status>1</status>
-          <short_url>http://stgb.com/b/2SV</short_url>
+          <short_url>http://stgb.lc/b/2SV</short_url>
           <published>2012-06-25 12:30:00</published>
           <created>2012-06-25 12:30:53</created>
           <modified>2012-07-17 15:33:11</modified>
@@ -342,26 +442,26 @@ ignore_sticky
 ### Example Response (JSON)
     {
         "response": {
-            "total": "486",
+            "total": 486,
             "items": [{
                 "item": {
-                    "id": "6317",
+                    "id": 6317,
                     "title": "50 Shades of Grey",
                     "body": "Lions, tables, and chairs, oh my!",
-                    "status": "1",
-                    "short_url": "http:\/\/stgb.local\/b\/2SV",
+                    "status": 1,
+                    "short_url": "http:\/\/stgb.lc\/b\/2SV",
                     "published": "2012-06-25 12:30:00",
                     "created": "2012-06-25 12:30:53",
                     "modified": "2012-07-17 15:33:11",
-                    "sticky": "0",
-                    "exclusive": "1",
+                    "sticky": 0,
+                    "exclusive": 1,
                     "user": {
-                        "id": "8",
+                        "id": 8,
                         "email": "hi@stagebloc.com",
                         "name": "Demo Admin"
                     },
                     "modified_by": {
-                        "id": "8",
+                        "id": 8,
                         "email": "hi@stagebloc.com",
                         "name": "Demo Admin"
                     }
