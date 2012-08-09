@@ -110,6 +110,33 @@ include_tracks
                     <free_download_require_follow>0</free_download_require_follow>
                     <paid_download_require_follow>1</paid_download_require_follow>
                 </download_details>
+                <images>
+                    <image>
+                        <size>thumbnail</size>
+                        <short_url>http://stgb.lc/p/PZ/t</short_url>
+                        <embed_url>http://cdn.stagebloc.com/local/photos/1/thumbnail/20120717_144734_1_2783.jpeg</embed_url>
+                    </image>
+                    <image>
+                        <size>small</size>
+                        <short_url>http://stgb.lc/p/PZ/s</short_url>
+                        <embed_url>http://cdn.stagebloc.com/local/photos/1/small/20120717_144734_1_2783.jpeg</embed_url>
+                    </image>
+                    <image>
+                        <size>medium</size>
+                        <short_url>http://stgb.lc/p/PZ/m</short_url>
+                        <embed_url>http://cdn.stagebloc.com/local/photos/1/medium/20120717_144734_1_2783.jpeg</embed_url>
+                    </image>
+                    <image>
+                        <size>large</size>
+                        <short_url>http://stgb.lc/p/PZ/l</short_url>
+                        <embed_url>http://cdn.stagebloc.com/local/photos/1/large/20120717_144734_1_2783.jpeg</embed_url>
+                    </image>
+                    <image>
+                        <size>original</size>
+                        <short_url>http://stgb.lc/p/PZ/o</short_url>
+                        <embed_url>http://cdn.stagebloc.com/local/photos/1/original/20120717_144734_1_2783.jpeg</embed_url>
+                    </image>
+                </images>
                 <track_count>6</track_count>
             </item>
         </items>
@@ -138,6 +165,37 @@ include_tracks
                         "free_download_require_follow": false,
                         "paid_download_require_follow": true
                     },
+                    "images": [{
+                        "image": {
+                            "size": "thumbnail",
+                            "short_url": "http:\/\/stgb.lc\/p\/PZ\/t",
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/local\/photos\/1\/thumbnail\/20120717_144734_1_2783.jpeg"
+                        }
+                    }, {
+                        "image": {
+                            "size": "small",
+                            "short_url": "http:\/\/stgb.lc\/p\/PZ\/s",
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/local\/photos\/1\/small\/20120717_144734_1_2783.jpeg"
+                        }
+                    }, {
+                        "image": {
+                            "size": "medium",
+                            "short_url": "http:\/\/stgb.lc\/p\/PZ\/m",
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/local\/photos\/1\/medium\/20120717_144734_1_2783.jpeg"
+                        }
+                    }, {
+                        "image": {
+                            "size": "large",
+                            "short_url": "http:\/\/stgb.lc\/p\/PZ\/l",
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/local\/photos\/1\/large\/20120717_144734_1_2783.jpeg"
+                        }
+                    }, {
+                        "image": {
+                            "size": "original",
+                            "short_url": "http:\/\/stgb.local\/p\/PZ\/o",
+                            "embed_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/1\/original\/20120717_144734_1_2783.jpeg"
+                        }
+                    }],
                     "track_count": "6"
                 }
             }]
