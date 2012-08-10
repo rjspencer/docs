@@ -188,6 +188,8 @@ limit
 offset
 :	the offset of the results to return
 
+	possible values are any number > 0
+
 	defaults to `0`
 	
 ### Example Response (XML)
@@ -286,6 +288,8 @@ limit
 
 offset
 :	the offset of the results to return
+
+	possible values are any number > 0
 
 	defaults to `0`
 	
@@ -445,6 +449,8 @@ limit
 offset
 :	the offset of the results to return
 
+	possible values are any number > 0
+
 	defaults to `0`
 
 status
@@ -519,6 +525,203 @@ ignore_sticky
         }
     }
     
+# /events
+This endpoint is used for interacting with an account's events.
+
+## /events/list
+id
+:	the ID of the event to return
+
+	possible values are any event ID that belongs to the authenticated account
+	
+	no default
+	
+**_Important Note:_** If an id is passed, all other parameters will be ignored and only the requested event will be returned
+
+order_by
+:	how to order the results
+
+	possible values are `created`, `modified`, or `startDateTime`
+	
+	defaults to `startDateTime`
+
+direction
+:	what direction to return the results in
+
+	possible values are `ASC` or `DESC`
+	
+	defaults to `ASC`
+
+limit
+:	the limit of results to return
+
+	defaults to `20`
+
+offset
+:	the offset of the results to return
+
+	possible values are any number > 0
+
+	defaults to `0`
+	
+include_past
+:	whether or not to include events that have already occurred
+
+	possible values are `1` (include past events) or `0` (don't include past events)
+	
+	defaults to `0`
+	
+include_upcoming
+:	whether or not to include events that have not yet occurred
+
+	possible values are `1` (include upcoming events) or `0` (don't include upcoming events)
+	
+	defaults to `1`
+
+### Examples Response (XML)
+
+    <response>
+        <total>3</total>
+        <items>
+            <item>
+                <id>115</id>
+                <title>End of The World</title>
+                <minimum_age>21</minimum_age>
+                <buy_link>http://www.eventbrite.com/event/3906955810/es2?rank=1</buy_link>
+                <created>2012-01-04 08:19:53</created>
+                <modified>2012-08-10 08:47:24</modified>
+                <start_date>2013-01-04 13:00:00</start_date>
+                <end_date>2013-01-04 16:00:00</end_date>
+                <description>It's the end of the world as we know it...</description>
+                <price>1.50</price>
+                <currency>USD</currency>
+                <short_url>http://stgb.lc/e/2Z</short_url>
+                <images>
+                    <image>
+                        <size>thumbnail</size>
+                        <short_url>http://stgb.lc/p/Qg/t</short_url>
+                        <embed_url>http://cdn.stagebloc.com/production/photos/1/thumbnail/20120810_134720_1_2799.jpeg</embed_url>
+                    </image>
+                    <image>
+                        <size>small</size>
+                        <short_url>http://stgb.lc/p/Qg/s</short_url>
+                        <embed_url>http://cdn.stagebloc.com/production/photos/1/small/20120810_134720_1_2799.jpeg</embed_url>
+                    </image>
+                    <image>
+                        <size>medium</size>
+                        <short_url>http://stgb.lc/p/Qg/m</short_url>
+                        <embed_url>http://cdn.stagebloc.com/production/photos/1/medium/20120810_134720_1_2799.jpeg</embed_url>
+                    </image>
+                    <image>
+                        <size>large</size>
+                        <short_url>http://stgb.lc/p/Qg/l</short_url>
+                        <embed_url>http://cdn.stagebloc.com/production/photos/1/large/20120810_134720_1_2799.jpeg</embed_url>
+                    </image>
+                    <image>
+                        <size>original</size>
+                        <short_url>http://stgb.lc/p/Qg/o</short_url>
+                        <embed_url>http://cdn.stagebloc.com/production/photos/1/original/20120810_134720_1_2799.jpeg</embed_url>
+                    </image>
+                </images>
+                <location>
+                    <id>14</id>
+                    <global_id>17</global_id>
+                    <name>Best Place On Earth</name>
+                    <website></website>
+                    <address>
+                        <street_address>12345 Awesome Street</street_address>
+                        <city>Big Bend</city>
+                        <state_province>WI</state_province>
+                        <postal_code>53103</postal_code>
+                        <country>USA</country>
+                    </address>
+                </location>
+                <collaborators>
+                    <collaborator>
+                        <id>16</id>
+                        <name>Dirt Nasty</name>
+                        <website>http://dirtnastymusic.com/</website>
+                    </collaborator>
+                </collaborators>
+            </item>
+        </items>
+    </response>
+    
+### Examples Response (JSON)
+
+    {
+        "response": {
+            "total": 3,
+            "items": [{
+                "item": {
+                    "id": 115,
+                    "title": "End of The World",
+                    "minimum_age": 21,
+                    "buy_link": "http:\/\/www.eventbrite.com\/event\/3906955810\/es2?rank=1",
+                    "created": "2012-01-04 08:19:53",
+                    "modified": "2012-08-10 08:57:38",
+                    "start_date": "2013-01-04 13:00:00",
+                    "end_date": "2013-01-04 16:00:00",
+                    "description": "It's the end of the world we know it...",
+                    "price": "1.50",
+                    "currency": "USD",
+                    "short_url": "http:\/\/stgb.lc\/e\/2Z",
+                    "images": [{
+                        "image": {
+                            "size": "thumbnail",
+                            "short_url": "http:\/\/stgb.lc\/p\/Qg\/t",
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/thumbnail\/20120810_134720_1_2799.jpeg"
+                        }
+                    }, {
+                        "image": {
+                            "size": "small",
+                            "short_url": "http:\/\/stgb.lc\/p\/Qg\/s",
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/small\/20120810_134720_1_2799.jpeg"
+                        }
+                    }, {
+                        "image": {
+                            "size": "medium",
+                            "short_url": "http:\/\/stgb.lc\/p\/Qg\/m",
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/medium\/20120810_134720_1_2799.jpeg"
+                        }
+                    }, {
+                        "image": {
+                            "size": "large",
+                            "short_url": "http:\/\/stgb.lc\/p\/Qg\/l",
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/large\/20120810_134720_1_2799.jpeg"
+                        }
+                    }, {
+                        "image": {
+                            "size": "original",
+                            "short_url": "http:\/\/stgb.lc\/p\/Qg\/o",
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/original\/20120810_134720_1_2799.jpeg"
+                        }
+                    }],
+                    "location": {
+                        "id": 14,
+                        "global_id": 17,
+                        "name": "Best Place On Earth",
+                        "website": "",
+                        "address": {
+                            "street_address": "12345 Awesome Street",
+                            "city": "Big Bend",
+                            "state_province": "WI",
+                            "postal_code": "53103",
+                            "country": "USA"
+                        }
+                    },
+                    "collaborators": [{
+                        "collaborator": {
+                            "id": 16,
+                            "name": "Dirt Nasty",
+                            "website": "http:\/\/dirtnastymusic.com\/"
+                        }
+                    }]
+                }
+            }]
+        }
+    }
+    
 # /photos
 This endpoint is used for interacting with an account's photos.
 
@@ -562,6 +765,8 @@ limit
 
 offset
 :	the offset of the results to return
+
+	possible values are any number > 0
 
 	defaults to `0`
 	
@@ -715,6 +920,8 @@ limit
 
 offset
 :	the offset of the results to return
+
+	possible values are any number > 0
 
 	defaults to `0`
 	
@@ -903,6 +1110,8 @@ limit
 
 offset
 :	the offset of the results to return
+
+	possible values are any number > 0
 
 	defaults to `0`
 	
