@@ -280,14 +280,6 @@ Provides users with a textbox where they can input any string. Data returned is 
 
 ## Variables with Options
 
-### CreatedDate, ModifiedDate, PublishedDate
-Show the date of various objects
-  
-format
-:	the format of the date according to [PHP date() function](http://php.net/date) *defaults to n/j/y*  
-: if set to "relative", returns time ago such as "5 seconds ago"
-: if set to "gmdate", returns a GMT date in PHP date format 'Y-M-d h:i A' (see using `{EventList}` in the ActivityStream)
-
 ### AdminListLikeCount
 Shows the amount of likes the collective admins for an account have
 
@@ -351,6 +343,47 @@ audioplaylistid (*required*)
 class
 :	the class to assign to the `<a>` tag
 
+### CreatedDate, ModifiedDate, PublishedDate
+Show the date of various objects
+  
+format
+:	the format of the date according to [PHP date() function](http://php.net/date) *defaults to n/j/y*  
+: if set to "relative", returns time ago such as "5 seconds ago"
+: if set to "gmdate", returns a GMT date in PHP date format 'Y-M-d h:i A' (see using `{EventList}` in the ActivityStream)
+
+### LikeLink
+Add a link to like a specific item  
+
+likeText
+:	the text to show when the item hasn't yet been liked by the viewer *defaults to "Like"*
+
+unlikeText
+:	the text to show when the item has been liked by the viewer *defaults to "Unlike"*
+
+class
+:	the class to give the `<a>` tag
+
+### RepostLink
+Add a link to repost a specific item  
+
+repostText
+:	the text to show when the item hasn't yet been reposted by the viewer *defaults to "Repost"*
+
+unrepostText
+:	the text to show when the item has been reposted by the viewer *defaults to "Unrepost"*
+
+class
+:	the class to give the `<a>` tag
+
+### SecureEmail
+Securely put a mailto: link in a theme  
+
+address (*required*)
+:	the email address
+
+text
+:	the text inside the `<a>` tag *defaults to address*
+
 ### StoreItemAddToCartLink
 Creates a link that, when clicked, will add the store item to the user's cart on StageBloc
 
@@ -380,39 +413,6 @@ storeitemid (*required*)
 
 class
 :	the class to assign to the `<a>` tag
-
-### SecureEmail
-Securely put a mailto: link in a theme  
-
-address (*required*)
-:	the email address
-
-text
-:	the text inside the `<a>` tag *defaults to address*
-
-### LikeLink
-Add a link to like a specific item  
-
-likeText
-:	the text to show when the item hasn't yet been liked by the viewer *defaults to "Like"*
-
-unlikeText
-:	the text to show when the item has been liked by the viewer *defaults to "Unlike"*
-
-class
-:	the class to give the `<a>` tag
-
-### RepostLink
-Add a link to repost a specific item  
-
-repostText
-:	the text to show when the item hasn't yet been reposted by the viewer *defaults to "Repost"*
-
-unrepostText
-:	the text to show when the item has been reposted by the viewer *defaults to "Unrepost"*
-
-class
-:	the class to give the `<a>` tag
 
 # If Statements
 If statements will check if a certain statement is true, and if it is, add the code inside. We also support the use of `{if:Else}` delimiters that will add a different code block if false. For example:
