@@ -4,7 +4,7 @@
 Use the StageBloc API to develop custom, standalone integrations with StageBloc.
 
 ### Under Development
-The API (and therefore these docs) are still currently under development. That means that there will be changes made, so if you're planning on using the API, check back here for updates and changes frequently.
+The API (and therefore these docs) is still currently under development. That means there will be changes made, so if you're planning on using the API, check back here for updates and changes frequently.
 
 ### Fork us on GitHub!
 All of StageBloc's documentation are up on GitHub for you to fork, modify, and improve. Join us over there to request features, add suggestions, and report bugs. What are you waiting for? [Git to it!](https://github.com/stagebloc/docs)
