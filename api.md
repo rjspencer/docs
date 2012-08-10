@@ -12,10 +12,12 @@ All of StageBloc's documentation are up on GitHub for you to fork, modify, and i
 # General Information
 The root URL of the API is `https://api.stagebloc.com/2.0/`.
 
+All `/edit` endpoints are `POST` endpoints (as well as `/oauth2/token`) and all `/list` endpoints are `GET` endpoints.
+
 Responses can be formatted in either JSON or XML by simply changing the extension of the endpoint between `.xml` and `.json`. For instance, to list an accounts blog entries, you could use either `/list.xml` or `/list.json`. This applies to all endpoints except `/oauth2/token` which only returns JSON.
 
 ### Authorization
-Connecting with the StageBloc API uses the OAuth 2.0 standard. You must first register your application in the StageBloc backend to receive a client ID and secret that will allow users to connect with your application.
+Connecting with the StageBloc API uses the OAuth 2.0 standard. You must first [create a StageBloc account](http://stagebloc.com/signup) and then [register your application in the StageBloc backend](http://stagebloc.com/account/admin/management/applications/development/) to receive a client ID and secret that will allow users to connect with your application.
 
 ### Errors
 
@@ -677,10 +679,169 @@ offset
         }
     }
     
+# /photos/albums
+This endpoint is used for interacting with an account's photo albums.
+
+## /photos/albums/list
+id
+:	the ID of the photo to return
+
+	possible values are any photo album ID that belongs to the authenticated account
+	
+	no default
+	
+**_Important Note:_** If an id is passed, all other parameters will be ignored and only the requested photo will be returned
+
+order_by
+:	how to order the results
+
+	possible values are `created`, `modified`, or `title`
+	
+	defaults to `created`
+
+direction
+:	what direction to return the results in
+
+	possible values are `ASC` or `DESC`
+	
+	defaults to `DESC`
+
+limit
+:	the limit of results to return
+
+	defaults to `20`
+
+offset
+:	the offset of the results to return
+
+	defaults to `0`
+	
+### Example Response (XML)
+
+    <response>
+        <total>14</total>
+        <items>
+            <item>
+                <id>166</id>
+                <title>Cats</title>
+                <short_url>http://stgb.lc/pa/3S</short_url>
+                <photo_count>3</photo_count>
+                <description>Cats will one day rule the world!</description>
+                <private>false</private>
+                <exclusive>false</exclusive>
+                <modified>2012-08-09 19:12:26</modified>
+                <created>2011-11-16 13:31:57</created>
+                <images>
+                    <image>
+                        <size>thumbnail</size>
+                        <short_url>http://stgb.lc/p/zn/t</short_url>
+                        <embed_url>http://cdn.stagebloc.com/production/photos/1/thumbnail/20111116_193157_1_1935.jpeg</embed_url>
+                    </image>
+                    <image>
+                        <size>small</size>
+                        <short_url>http://stgb.lc/p/zn/s</short_url>
+                        <embed_url>http://cdn.stagebloc.com/production/photos/1/small/20111116_193157_1_1935.jpeg</embed_url>
+                    </image>
+                    <image>
+                        <size>medium</size>
+                        <short_url>http://stgb.lc/p/zn/m</short_url>
+                        <embed_url>http://cdn.stagebloc.com/production/photos/1/medium/20111116_193157_1_1935.jpeg</embed_url>
+                    </image>
+                    <image>
+                        <size>large</size>
+                        <short_url>http://stgb.lc/p/zn/l</short_url>
+                        <embed_url>http://cdn.stagebloc.com/production/photos/1/large/20111116_193157_1_1935.jpeg</embed_url>
+                    </image>
+                    <image>
+                        <size>original</size>
+                        <short_url>http://stgb.lc/p/zn/o</short_url>
+                        <embed_url>http://cdn.stagebloc.com/production/photos/1/original/20111116_193157_1_1935.jpeg</embed_url>
+                    </image>
+                </images>
+                <location>
+                    <id>7</id>
+                    <name>The Rave</name>
+                    <website>http://therave.com</website>
+                    <address>
+                        <street_address>12345 Street</street_address>
+                        <city>Milwaukee</city>
+                        <state_province>WI</state_province>
+                        <postal_code>53103</postal_code>
+                        <country>USA</country>
+                    </address>
+                </location>
+            </item>
+        </items>
+    </response>
+    
+### Example Response (JSON)
+
+    {
+        "response": {
+            "total": 14,
+            "items": [{
+                "item": {
+                    "id": 166,
+                    "title": "Cats",
+                    "short_url": "http:\/\/stgb.lc\/pa\/3S",
+                    "photo_count": 3,
+                    "description": "Cats will one day rule the world!",
+                    "private": false,
+                    "exclusive": false,
+                    "modified": "2012-08-09 19:12:26",
+                    "created": "2011-11-16 13:31:57",
+                    "images": [{
+                        "image": {
+                            "size": "thumbnail",
+                            "short_url": "http:\/\/stgb.lc\/p\/zn\/t",
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/thumbnail\/20111116_193157_1_1935.jpeg"
+                        }
+                    }, {
+                        "image": {
+                            "size": "small",
+                            "short_url": "http:\/\/stgb.lc\/p\/zn\/s",
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/small\/20111116_193157_1_1935.jpeg"
+                        }
+                    }, {
+                        "image": {
+                            "size": "medium",
+                            "short_url": "http:\/\/stgb.lc\/p\/zn\/m",
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/medium\/20111116_193157_1_1935.jpeg"
+                        }
+                    }, {
+                        "image": {
+                            "size": "large",
+                            "short_url": "http:\/\/stgb.lc\/p\/zn\/l",
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/large\/20111116_193157_1_1935.jpeg"
+                        }
+                    }, {
+                        "image": {
+                            "size": "original",
+                            "short_url": "http:\/\/stgb.lc\/p\/zn\/o",
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/original\/20111116_193157_1_1935.jpeg"
+                        }
+                    }],
+                    "location": {
+                        "id": 7,
+                        "name": "The Rave",
+                        "website": "http:\/\/therave.com",
+                        "address": {
+                            "street_address": "12345 Street",
+                            "city": "Milwaukee",
+                            "state_province": "WI",
+                            "postal_code": "53103",
+                            "country": "USA"
+                        }
+                    }
+                }
+            }]
+        }
+    }
+    
 #/oauth2
 This is used during the [OAuth2](http://oauth.net/2/) authentication process to get an access token from a request token. Curious? Check out our OAuth2 [PHP](https://github.com/stagebloc/php-stagebloc-api) or [Objective-C](https://github.com/stagebloc/cocoa-stagebloc-api) wrapper on GitHub.
 
-**Note: The only response format for this endpoint is JSON!**
+**Note: The only response format for this endpoint is JSON! Do not add an extension to this endpoint!**
 
 ##/oauth2/token
 client_id _(required)_
