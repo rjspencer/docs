@@ -280,14 +280,6 @@ Provides users with a textbox where they can input any string. Data returned is 
 
 ## Variables with Options
 
-### CreatedDate, ModifiedDate, PublishedDate
-Show the date of various objects
-  
-format
-:	the format of the date according to [PHP date() function](http://php.net/date) *defaults to n/j/y*  
-: if set to "relative", returns time ago such as "5 seconds ago"
-: if set to "gmdate", returns a GMT date in PHP date format 'Y-M-d h:i A' (see using `{EventList}` in the ActivityStream)
-
 ### AdminListLikeCount
 Shows the amount of likes the collective admins for an account have
 
@@ -351,6 +343,47 @@ audioplaylistid (*required*)
 class
 :	the class to assign to the `<a>` tag
 
+### CreatedDate, ModifiedDate, PublishedDate
+Show the date of various objects
+  
+format
+:	the format of the date according to [PHP date() function](http://php.net/date) *defaults to n/j/y*  
+: if set to "relative", returns time ago such as "5 seconds ago"
+: if set to "gmdate", returns a GMT date in PHP date format 'Y-M-d h:i A' (see using `{EventList}` in the ActivityStream)
+
+### LikeLink
+Add a link to like a specific item  
+
+likeText
+:	the text to show when the item hasn't yet been liked by the viewer *defaults to "Like"*
+
+unlikeText
+:	the text to show when the item has been liked by the viewer *defaults to "Unlike"*
+
+class
+:	the class to give the `<a>` tag
+
+### RepostLink
+Add a link to repost a specific item  
+
+repostText
+:	the text to show when the item hasn't yet been reposted by the viewer *defaults to "Repost"*
+
+unrepostText
+:	the text to show when the item has been reposted by the viewer *defaults to "Unrepost"*
+
+class
+:	the class to give the `<a>` tag
+
+### SecureEmail
+Securely put a mailto: link in a theme  
+
+address (*required*)
+:	the email address
+
+text
+:	the text inside the `<a>` tag *defaults to address*
+
 ### StoreItemAddToCartLink
 Creates a link that, when clicked, will add the store item to the user's cart on StageBloc
 
@@ -380,39 +413,6 @@ storeitemid (*required*)
 
 class
 :	the class to assign to the `<a>` tag
-
-### SecureEmail
-Securely put a mailto: link in a theme  
-
-address (*required*)
-:	the email address
-
-text
-:	the text inside the `<a>` tag *defaults to address*
-
-### LikeLink
-Add a link to like a specific item  
-
-likeText
-:	the text to show when the item hasn't yet been liked by the viewer *defaults to "Like"*
-
-unlikeText
-:	the text to show when the item has been liked by the viewer *defaults to "Unlike"*
-
-class
-:	the class to give the `<a>` tag
-
-### RepostLink
-Add a link to repost a specific item  
-
-repostText
-:	the text to show when the item hasn't yet been reposted by the viewer *defaults to "Repost"*
-
-unrepostText
-:	the text to show when the item has been reposted by the viewer *defaults to "Unrepost"*
-
-class
-:	the class to give the `<a>` tag
 
 # If Statements
 If statements will check if a certain statement is true, and if it is, add the code inside. We also support the use of `{if:Else}` delimiters that will add a different code block if false. For example:
@@ -693,6 +693,148 @@ RepostedFromAccountPhotoUrl
 RepostedFromAccountUrl
 :	if reposted, what was the original content permalink url
 
+## AudioList
+A listing of audio objects  
+
+### Options
+
+audioplaylistid
+:	a audio playlist id to limit the videos to. *defaults to none*
+
+limit
+:	a limit on the amount of returned audio objects
+
+order
+:	the order in which to show the videos. *defaults to asc*
+
+### Variables
+
+TotalAudio:
+:	the total amount of audio objects for the account
+
+## AudioView
+A view for a single audio object. *Meant to be used with {Page:AudioView}*  
+
+audioid
+: an ID for which audio to show *defaults to the one given to {Page:AudioView} if in that page
+
+### block:AudioView
+AudioLink
+:	a permalink to the audio's individual page
+
+AudioTitle
+:	the title of the audio
+
+AudioId
+:	the ID of the audio object
+
+AudioLyrics
+:	the lyrics for the audio
+
+AudioDescription
+:	the description for the audio object
+
+AudioRecordedDate
+:	the date this audio was recorded on
+	
+	**Options**
+	
+	format
+	:	the format of the date according to [PHP date() function](http://php.net/date) *defaults to n/j/y*  
+	:	if set to "relative", returns time ago such as "5 seconds ago"
+	:	if set to "gmdate", returns a GMT date in PHP date format 'Y-M-d h:i A' (see using `{EventList}` in the ActivityStream)
+
+AudioCredits
+:	the credits for the audio object
+
+AudioArtist
+:	the artist for the audio object
+
+AudioFreeDownloadQuality, AudioPaidDownloadQuaility
+:	a string representing the quality of the free/paid version of this audio. it will be one of the following:
+
+		* 128kb MP3
+		* 320kb MP3
+		* Original WAV
+		* Original AIFF
+		* Original WAV / AIFF
+		
+AudioOrderNumber
+:	the order of this audio in a potential playlist
+
+AudioStreamUrl
+:	the URL to use when streaming the audio
+
+## AudioPlaylistList
+A listing of audio playlists  
+
+featured
+:	whether or not to just show the featured audio playlist *defaults to false*
+
+featuredfirst
+:	whether or not to show the featured audio playlist first in the listing
+
+## AudioPlaylistView
+A single view for an audio playlist. *Meant to be used with {Page:AudioPlaylistView}*
+
+### block:AudioPlaylistView
+AudioPlaylistDescription
+:	the description for the audio playlist
+
+AudioPlaylistId
+:	the ID for the audio playlist
+
+AudioPlaylistUrl
+:	a permalink for the playlist's individual page
+
+AudioPlaylistTitle
+:	the title of the audio playlist *Note: if there is a pre-order currently active for the audio playlist, it'll use that instead*
+
+AudioPlaylistAudioCount
+:	the amount of audio objects in this playlist
+
+AudioPlaylistPhotoUrl
+:	a playlist cover image or a default one if there is no cover set
+
+	**Options**
+	
+	size
+	:	accepted sizes are "thumbnail", "small", "medium", "large", "original"
+
+AudioPlaylistArtist
+:	the artist for the audio playlist
+
+AudioPlaylistLabel
+:	the label for the audio playlist
+
+AudioPlaylistPrice
+:	the price for the playlist *Note: if there is a pre-order currently active for the playlist, it'll use that price instead*
+
+AudioPlaylistReleaseDate
+:	the datetime the audio playlist was released on
+	
+	**Options**
+	
+	format
+	:	the format of the date according to [PHP date() function](http://php.net/date) *defaults to n/j/y*  
+	:	if set to "relative", returns time ago such as "5 seconds ago"
+	:	if set to "gmdate", returns a GMT date in PHP date format 'Y-M-d h:i A' (see using `{EventList}` in the ActivityStream)
+
+AudioPlaylistFreeDownloadQuality, AudioPlaylistPaidDownloadQuaility
+:	a string representing the quality of the free/paid version of this audio playlist. it will be one of the following:
+
+		* 128kb MP3
+		* 320kb MP3
+		* Original WAV
+		* Original AIFF
+		* Original WAV / AIFF
+		
+CreatedByPhotoUrl, ModifiedByPhotoUrl
+:	a URL to the photo for who created/modified the audio playlist to be used in an `<img src="" />` tag
+
+CreatedByName, ModifiedByName
+:	the name of the user who created/modified the audio playlist
+
 ## BlogList
 A listing of blogs.  
 
@@ -729,6 +871,23 @@ PreviousBlogPostTitle, NextBlogPostTitle
 
 PreviousBlogPostUrl, NextBlogPostUrl
 :	the permalink of the blog post previous/next to the current one if it exists
+
+## BuyLinkList
+A listing of buy links for a the following modules: AudioView, AudioPlaylistView
+
+### block:BuyLinkView
+
+BuyLink
+:	the actual link
+
+BuyLinkTitle
+:	the title for the buy link
+
+BuyLinkPrice
+:	the price of the material for the buy link
+
+BuyLinkCurrency
+:	the currency of the material in the buy link
 
 ## EventList
 A listing of events.  
@@ -810,6 +969,17 @@ SupportingActs
 
 VenueWebsiteUrl
 :	the URL to the venue where the event is taking place. Also see {if:VenueHasWebsite}
+
+## FollowingList
+A list of accounts that this account's admins are following
+
+### block:FollowingView
+
+FollowingAccountName
+:	the name of the account being following
+
+FollowingAccountUrl
+:	the URL of the account being followed
 
 ## Navigation
 Display all the links to active, defined content sections. *Note: If you do not have the page defined in your theme, the link will not show to that section, however the section will still work with our ###LINK fallback no content page layout###.*
@@ -1116,176 +1286,6 @@ CreatedByPhotoUrl, ModifiedByPhotoUrl
 
 CreatedByName, ModifiedByName
 :	the name of the user who created/modified the video playlist
-
-## AudioList
-A listing of audio objects  
-
-### Options
-
-audioplaylistid
-:	a audio playlist id to limit the videos to. *defaults to none*
-
-limit
-:	a limit on the amount of returned audio objects
-
-order
-:	the order in which to show the videos. *defaults to asc*
-
-### Variables
-
-TotalAudio:
-:	the total amount of audio objects for the account
-
-## AudioView
-A view for a single audio object. *Meant to be used with {Page:AudioView}*  
-
-audioid
-: an ID for which audio to show *defaults to the one given to {Page:AudioView} if in that page
-
-### block:AudioView
-AudioLink
-:	a permalink to the audio's individual page
-
-AudioTitle
-:	the title of the audio
-
-AudioId
-:	the ID of the audio object
-
-AudioLyrics
-:	the lyrics for the audio
-
-AudioDescription
-:	the description for the audio object
-
-AudioRecordedDate
-:	the date this audio was recorded on
-	
-	**Options**
-	
-	format
-	:	the format of the date according to [PHP date() function](http://php.net/date) *defaults to n/j/y*  
-	:	if set to "relative", returns time ago such as "5 seconds ago"
-	:	if set to "gmdate", returns a GMT date in PHP date format 'Y-M-d h:i A' (see using `{EventList}` in the ActivityStream)
-
-AudioCredits
-:	the credits for the audio object
-
-AudioArtist
-:	the artist for the audio object
-
-AudioFreeDownloadQuality, AudioPaidDownloadQuaility
-:	a string representing the quality of the free/paid version of this audio. it will be one of the following:
-
-		* 128kb MP3
-		* 320kb MP3
-		* Original WAV
-		* Original AIFF
-		* Original WAV / AIFF
-		
-AudioOrderNumber
-:	the order of this audio in a potential playlist
-
-AudioStreamUrl
-:	the URL to use when streaming the audio
-
-## AudioPlaylistList
-A listing of audio playlists  
-
-featured
-:	whether or not to just show the featured audio playlist *defaults to false*
-
-featuredfirst
-:	whether or not to show the featured audio playlist first in the listing
-
-## AudioPlaylistView
-A single view for an audio playlist. *Meant to be used with {Page:AudioPlaylistView}*
-
-### block:AudioPlaylistView
-AudioPlaylistDescription
-:	the description for the audio playlist
-
-AudioPlaylistId
-:	the ID for the audio playlist
-
-AudioPlaylistUrl
-:	a permalink for the playlist's individual page
-
-AudioPlaylistTitle
-:	the title of the audio playlist *Note: if there is a pre-order currently active for the audio playlist, it'll use that instead*
-
-AudioPlaylistAudioCount
-:	the amount of audio objects in this playlist
-
-AudioPlaylistPhotoUrl
-:	a playlist cover image or a default one if there is no cover set
-
-	**Options**
-	
-	size
-	:	accepted sizes are "thumbnail", "small", "medium", "large", "original"
-
-AudioPlaylistArtist
-:	the artist for the audio playlist
-
-AudioPlaylistLabel
-:	the label for the audio playlist
-
-AudioPlaylistPrice
-:	the price for the playlist *Note: if there is a pre-order currently active for the playlist, it'll use that price instead*
-
-AudioPlaylistReleaseDate
-:	the datetime the audio playlist was released on
-	
-	**Options**
-	
-	format
-	:	the format of the date according to [PHP date() function](http://php.net/date) *defaults to n/j/y*  
-	:	if set to "relative", returns time ago such as "5 seconds ago"
-	:	if set to "gmdate", returns a GMT date in PHP date format 'Y-M-d h:i A' (see using `{EventList}` in the ActivityStream)
-
-AudioPlaylistFreeDownloadQuality, AudioPlaylistPaidDownloadQuaility
-:	a string representing the quality of the free/paid version of this audio playlist. it will be one of the following:
-
-		* 128kb MP3
-		* 320kb MP3
-		* Original WAV
-		* Original AIFF
-		* Original WAV / AIFF
-		
-CreatedByPhotoUrl, ModifiedByPhotoUrl
-:	a URL to the photo for who created/modified the audio playlist to be used in an `<img src="" />` tag
-
-CreatedByName, ModifiedByName
-:	the name of the user who created/modified the audio playlist
-
-## FollowingList
-A list of accounts that this account's admins are following
-
-### block:FollowingView
-
-FollowingAccountName
-:	the name of the account being following
-
-FollowingAccountUrl
-:	the URL of the account being followed
-
-## BuyLinkList
-A listing of buy links for a the following modules: AudioView, AudioPlaylistView
-
-### block:BuyLinkView
-
-BuyLink
-:	the actual link
-
-BuyLinkTitle
-:	the title for the buy link
-
-BuyLinkPrice
-:	the price of the material for the buy link
-
-BuyLinkCurrency
-:	the currency of the material in the buy link
 
 # SB Nav
 SB Nav is the little control box that appears in a corner of the screen. It allows users to log in; follow and unfollow accounts; and edit, like, repost, and buy content. As a theme author, you can change a few things.
