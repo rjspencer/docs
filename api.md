@@ -85,9 +85,9 @@ audio_playlist_id
 	defaults to a "Mobile Uploads" playlist for new audio tracks or existing playlists when editing audio tracks
 	
 description
-:	a description for the audio track (can contain HTML)
+:	a description for the audio track
 
-	possible values are any block of text
+	possible values are any block of text (can contain HTML)
 	
 	defaults to empty
 	
@@ -113,7 +113,7 @@ free_download_quality
 	defaults to `0`
 	
 paid_download_quality
-:	the quality of the paid download to offer for this audio track
+:	the quality of the paid download to offer for this audio track, only applicable if this track has been uploaded to StageBloc
 
 	possible values are `0` (not downloadable), `1` (128kb MP3), `2` (320kb MP3), `3` (source WAV / AIFF file)
 	
@@ -264,6 +264,89 @@ length
     
 # /audio/playlists
 This endpoint is used for interacting with an account's audio playlists.
+
+## /audio/playlists/edit
+This endpoint can be used for editing existing audio playlists or adding a new audio playlist to a StageBloc account. Upon successful editing/creation, the newly created audio playlist will be returned in the same manner `/audio/playlist/list` would return it. Otherwise, an error message will be returned explaining what was wrong.
+
+id _(required to edit an existing audio playlist)_
+:	the ID of the audio playlist to edit
+
+	possible values are any audio playlist ID that belongs to the authenticated account
+	
+title _(required)_
+:	the title of the audio playlist
+
+	possible values are any string <= 100 characters
+	
+description
+:	the description of the audio playlist
+
+	possible values are any block of text (can contain HTML)
+	
+	defaults to empty
+	
+audio_ids
+:	a comma separated list of IDs that this playlist should contain
+
+	possible values are any CSV string of audio IDs that belong to the authenticated account
+	
+	defaults to none (no audio tracks)
+	
+private
+:	whether or not this audio playlist should be private
+
+	possible values are `1` (private) or `0` (public)
+	
+	defaults to `0`
+	
+exclusive
+:	whether or not this audio playlist should be marked as exclusive
+
+	possible values are `1` (exclusive) or `0` (not exclusive)
+	
+	defaults to `0`
+	
+free_download_quality
+:	the quality of the free download to offer for this audio playlist
+
+	possible values are `0` (not downloadable), `1` (128kb MP3), `2` (320kb MP3), `3` (source WAV / AIFF file)
+	
+	defaults to `0`
+	
+paid_download_quality
+:	the quality of the paid download to offer for this audio playlist, only applicable when all tracks in this playlist have been uploaded to StageBloc
+
+	possible values are `0` (not downloadable), `1` (128kb MP3), `2` (320kb MP3), `3` (source WAV / AIFF file)
+	
+	defaults to `0`
+
+free_download_require_follow
+:	whether or not a free download should require a follow, only applicable when `free_download_quality` is not `0`
+
+	possible values are `0` (not required) and `1` (required)
+	
+	defaults to `0`
+	
+paid_download_require_follow
+:	whether or not a paid download should require a follow, only applicable when `paid_download_quality` is not `0`
+
+	possible values are `0` (not required) and `1` (required)
+	
+	defaults to `0`
+	
+price
+:	the price of the audio playlist (in USD) for purchasing, only applicable when `paid_download_quality` is not `0`
+
+	possible values are any number > `0.50`
+	
+	defaults to `.5` ($0.50)
+	
+fans_name_price
+:	whether or not fans should be able to pay more than `price` when purchasing this audio playlist, only applicable when `paid_download_quality` is not `0`
+
+	possible values are `0` (can't name price) or `1` (can name price)
+	
+	defaults to `1`
 
 ## /audio/playlists/list
 id
