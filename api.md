@@ -44,6 +44,8 @@ XML Example
 ### Wrappers
 There is currently a PHP wrapper available for connecting with the API. It can be found on [GitHub](https://github.com/stagebloc/php-stagebloc-api). Instructions for how to use it are included in the `README` file of that repository.
 
+An [Objective-C](https://github.com/stagebloc/cocoa-stagebloc-api) framework also exists for easy use with the StageBloc API in your iPhone, iPad, or Mac applications. Instructions on how to get setup with that can be found it its corresponding `README` file as well.
+
 If you want to create your own wrapper in another language, please do! Let us know, and we can link to it from here.
 
 # /audio
