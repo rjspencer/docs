@@ -192,6 +192,14 @@ offset
 
 	defaults to `0`
 	
+### Explanation of Returned Data
+
+total
+:	the total amount of audio tracks for the authenticated account
+
+length
+:	the returned length is in seconds
+	
 ### Example Response (XML)
 
     <response>
@@ -299,6 +307,17 @@ include_tracks
 	possible values are `0` (don't include tracks) and `1` (include tracks)
 	
 	defaults to `0`
+	
+### Explanation of Returned Data
+
+total
+:	the total amount of audio playlists for the authenticated account
+
+images
+:	the album art for this audio playlist (if one exists)
+
+track_count
+:	the amount of audio tracks currently in this playlist
 	
 ### Example Response (XML)
 
@@ -476,6 +495,14 @@ ignore_sticky
 	possible values are `1` (true) or `0` (false)
 	
 	defaults to `0`
+	
+### Explanation of Returned Data
+
+total
+:	the total amount of blog entries for the authenticated account
+
+status
+:	a value of `1` means published and a value of `0` means draft
 
 ### Example Response (XML)
     <response>
@@ -577,6 +604,20 @@ include_upcoming
 	possible values are `1` (include upcoming events) or `0` (don't include upcoming events)
 	
 	defaults to `1`
+	
+### Explanation of Returned Data
+
+total
+:	the total amount of events for the authenticated account
+
+buy_link
+:	a link to an external service where tickets can be purchased
+
+image
+:	the image used as the main image for the event
+
+collaborators
+:	a list of people also involved in this event
 
 ### Examples Response (XML)
 
@@ -770,6 +811,11 @@ offset
 
 	defaults to `0`
 	
+### Explanation of Returned Data
+
+total
+:	the total amount of photos for the authenticated account
+	
 ### Example Response (XML)
 
     <response>
@@ -924,6 +970,14 @@ offset
 	possible values are any number > 0
 
 	defaults to `0`
+	
+### Explanation of Returned Data
+
+total
+:	the total amount of photo albums for the authenticated account
+
+images
+:	the cover image used for the photo album
 	
 ### Example Response (XML)
 
@@ -1114,6 +1168,11 @@ offset
 	possible values are any number > 0
 
 	defaults to `0`
+
+### Explanation of Returned Data
+
+total
+:	the total amount of statuses for the authenticated account
 	
 ### Example Response (XML)
 
@@ -1126,16 +1185,16 @@ offset
                 <published>2012-08-01 22:23:41</published>
                 <author>
                     <id>8</id>
-                    <name>Demo Admin</name>
+                    <name>Lone Wolf</name>
                 </author>
             </item>
             <item>
                 <id>154</id>
-                <text>Insert quasi-interesting status here!</text>
+                <text>It's hard to breathe in this thing!</text>
                 <published>2012-07-16 15:05:26</published>
                 <author>
                     <id>8</id>
-                    <name>Demo Admin</name>
+                    <name>Lord Dark Helmet</name>
                 </author>
             </item>
         </items>
@@ -1153,17 +1212,17 @@ offset
                     "published": "2012-08-01 22:23:41",
                     "author": {
                         "id": 8,
-                        "name": "Demo Admin"
+                        "name": "Lone Wolf"
                     }
                 }
             }, {
                 "item": {
                     "id": 154,
-                    "text": "Insert quasi-interesting status here!",
+                    "text": "It's hard to breathe in this thing!",
                     "published": "2012-07-16 15:05:26",
                     "author": {
                         "id": 8,
-                        "name": "Demo Admin"
+                        "name": "Lord Dark Helmet"
                     }
                 }
             }]
