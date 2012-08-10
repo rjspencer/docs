@@ -866,3 +866,95 @@ code _(required)_
 	
 ### Example Response (JSON)
     {"access_token":"<access_token_here>","scope":"non-expiring"}
+    
+# /statuses
+This endpoint is used for interacting with an account's statuses.
+
+## /statuses/list
+id
+:	the ID of the status to return
+
+	possible values are any status ID that belongs to the authenticated account
+	
+	no default
+	
+**_Important Note:_** If an id is passed, all other parameters will be ignored and only the requested photo will be returned
+
+order_by
+:	how to order the results
+
+	possible values are `published`
+	
+	defaults to `published`
+
+direction
+:	what direction to return the results in
+
+	possible values are `ASC` or `DESC`
+	
+	defaults to `DESC`
+
+limit
+:	the limit of results to return
+
+	defaults to `20`
+
+offset
+:	the offset of the results to return
+
+	defaults to `0`
+	
+### Example Response (XML)
+
+    <response>
+    <total>29</total>
+        <items>
+            <item>
+                <id>161</id>
+                <text>Sometimes I feel like nobody cares about what I have to say.</text>
+                <published>2012-08-01 22:23:41</published>
+                <author>
+                    <id>8</id>
+                    <name>Demo Admin</name>
+                </author>
+            </item>
+            <item>
+                <id>154</id>
+                <text>Insert quasi-interesting status here!</text>
+                <published>2012-07-16 15:05:26</published>
+                <author>
+                    <id>8</id>
+                    <name>Demo Admin</name>
+                </author>
+            </item>
+        </items>
+    </response>
+    
+### Example Response (JSON)
+
+    {
+        "response": {
+            "total": 29,
+            "items": [{
+                "item": {
+                    "id": 161,
+                    "text": "Sometimes I feel like nobody cares about what I have to say.",
+                    "published": "2012-08-01 22:23:41",
+                    "author": {
+                        "id": 8,
+                        "name": "Demo Admin"
+                    }
+                }
+            }, {
+                "item": {
+                    "id": 154,
+                    "text": "Insert quasi-interesting status here!",
+                    "published": "2012-07-16 15:05:26",
+                    "author": {
+                        "id": 8,
+                        "name": "Demo Admin"
+                    }
+                }
+            }]
+        }
+    }
