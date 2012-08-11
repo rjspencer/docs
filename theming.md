@@ -1598,7 +1598,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 										{if:EventHasTicketsBuyLink}
 										<a class="event-tickets" href="{TicketsBuyLink}">tickets</a> |
 										{/if:EventHasTicketsBuyLink}
-										<a class="event-more" href="{EventLink}">more</a>
+										<a class="event-more" href="{EventUrl}”>more</a>
 									</span>
 								</li>
 								{/block:EventView}
