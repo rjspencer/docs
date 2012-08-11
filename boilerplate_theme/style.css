@@ -88,6 +88,7 @@ body {}
 /* Tags */
 #tags {}
 #tags.blog-post-tags {}
+#tags.store-tags {}
 #tags.event-tags {}
 #tags.video-tags {}
 #tags.video-playlist-tags {}
@@ -95,6 +96,21 @@ body {}
 #tags.audio-playlist-tags {}
 
 #tags .tag {}
+
+/* Store */
+.store-blocks { list-style: none; }
+.store-blocks li {}
+.store-blocks li a { display: block; }
+.store-blocks li img {}
+.store-blocks li .title {}
+.store-blocks li .price {}
+
+.store-item-container {}
+.store-item-container .store-item-info {}
+.store-item-container .store-item-info h2 {}
+.store-item-container .store-item-info .buy-link {}
+.store-item-container .store-item-info .description.long {}
+.store-item-container .store-item-info .description.long .inlineImage {}
 
 /* Events */
 a#other-events {}

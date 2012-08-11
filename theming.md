@@ -1329,19 +1329,19 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 			<div id="content">
 				{page:ActivityStreamList}
 					<div id="main-content">
-						{module:ActivityStreamList embedWidth="500"}
+						{module:ActivityStreamList embedWidth="500" supported="audio,blog,events,photos,statuses,videos,store"}
 							{block:ActivityStreamView}
 								<article class="post {ActivityCSSClass}">
 									<header>
-										{if:ActivityIsBlog||ActivityIsRepost||ActivityIsVideo||ActivityIsAudio}
+										{if:ActivityIsBlog||ActivityIsRepost||ActivityIsVideo||ActivityIsAudio||ActivityIsStoreItem}
 											<h1><a href="{ActivityUrl}">{ActivityTitle}</a></h1>
-										{/if:ActivityIsBlog||ActivityIsRepost||ActivityIsVideo||ActivityIsAudio}
+										{/if:ActivityIsBlog||ActivityIsRepost||ActivityIsVideo||ActivityIsAudio||ActivityIsStoreItem}
 									</header>
 
 									<div class="post-body">
-										{if:ActivityIsBlog||ActivityIsVideo}
+										{if:ActivityIsBlog||ActivityIsVideo||ActivityIsStoreItem}
 											{ActivityExcerpt}
-										{/if:ActivityIsBlog||ActivityIsVideo}
+										{/if:ActivityIsBlog||ActivityIsVideo||ActivityIsStoreItem}
 										{if:ActivityIsAudio}
 											<div id="jquery_jplayer{ActivityId}" class="jp-jplayer"></div>
 											<div id="jp_container{ActivityId}" class="jp-audio jp-audio-single jp-audio-activity-stream" data-id="{ActivityId}" data-url="{ActivityExcerpt}">
@@ -1376,7 +1376,6 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 										{/if:ActivityIsEvent}
 
 										{if:ActivityIsEvent}
-										<div>
 											{module:EventList upcoming="true" past="true" dateadded="{ActivityDate format="gmdate"}" limit="8"}
 												<ul class="events-list compact">
 												{block:EventView}
@@ -1390,11 +1389,10 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 												{/block:EventView}
 												</ul>
 											{/module:EventList}
-										</div>
 										{/if:ActivityIsEvent}
 
 										{if:ActivityIsPhoto}
-										<a href="{ActivityUrl}"><img src="{ActivityPhotoUrl size="medium"}" /></a>
+										<a href="{ActivityUrl}"><img src="{ActivityPhotoUrl size="medium"}" alt="{ActivityTitle}" title="{ActivityTitle}" /></a>
 										{/if:ActivityIsPhotoAlbum}
 
 									{if:ReadMore}
@@ -1505,6 +1503,83 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 						{/module:StatusView}
 					</div>
 				{/page:StatusView}
+
+				{page:StoreItemList}
+					<div id="main-content">
+						{module:StoreItemList}
+							<h2>Store Items</h2>
+							<ul class="store-blocks">
+								{block:StoreItemView}
+								<li>
+									<a href="{StoreItemUrl}">
+										<img src="{StoreItemPhotoUrl}" alt="{StoreItemTitle} cover" title="{StoreItemTitle} cover" />
+										<span class="title">{StoreItemTitle}</span>
+										<span class="price">{if:StoreItemCanBeSold}
+										${StoreItemPrice}
+										{if:Else}
+											{if:StoreItemCanBeDownloadedForFree}
+												Free
+											{/if:StoreItemCanBeDownloadedForFree}
+										{/if:StoreItemCanBeSold}</span>
+									</a>
+								</li>
+								{/block:StoreItemView}
+							</ul>
+						{Else}
+							<div class="nocontent">
+								<p>No store items yet! Check back later.</p>
+							</div>
+						{/module:StoreItemList}
+					</div>
+					{module:Pagination}
+						<div id="pagination">
+							{block:NextPage}<a href="{NextPage}">Older</a>{/block:NextPage}
+							{block:PreviousPage}<a href="{PreviousPage}">Newer</a>{/block:PreviousPage}
+						</div>
+					{/module:Pagination}
+				{/page:StoreItemList}
+				{page:StoreItemView}
+					{module:StoreItemView}
+						<div class="store-item-container">
+							{block:StoreItemView}
+								<div class="store-item-info">
+									{if:StoreItemCanBeSold}
+									<div class="buy-link">
+										{StoreItemAddToCartLink storeitemid="{StoreItemId}" text="Buy Now"}<br />
+										{if:StoreItemCanNamePrice}min {/if:StoreItemCanNamePrice}${StoreItemPrice} USD
+									</div>
+									{/if:StoreItemCanBeSold}
+									{if:StoreItemCanBeDownloadedForFree}
+									<div class="buy-link">
+										{StoreItemFreeDownloadLink storeitemid="{StoreItemId}" text="Download"}
+									</div>
+									{/if:StoreItemCanBeDownloadedForFree}
+									<h2>{StoreItemTitle}</h2>
+
+									<div class="description long">
+										<img class="inlineImage" src="{StoreItemPhotoUrl size="small"}" />
+										{StoreItemDescription}
+									</div>
+								</div>
+
+								{if:HasTags}
+								<section id="tags-sidebar" class="store-tags">
+									<h2>Tags</h2>
+									{module:TagList}
+										{block:TagView}
+											<span class="tag">{Tag}</span>
+										{/block:TagView}
+									{/module:TagList}
+								</section>
+								{/if:HasTags}
+							{/block:StoreItemView}
+						</div>
+					{Else}
+					<div class="nocontent">
+						<p>Sorry, but this store item wasn't found!</p>
+					</div>
+					{/module:StoreItemView}
+				{/page:StoreItemView}
 
 				{page:EventUpcomingList}
 					<div id="main-content">
@@ -2204,8 +2279,8 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 	</html>
 
 ### CSS
-	/* HTML5 Doctor CSS Reset - http://html5doctor.com/html-5-reset-stylesheet/ */
-		html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video { margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}
+/* HTML5 Doctor CSS Reset - http://html5doctor.com/html-5-reset-stylesheet/ */
+	html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video { margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}
 	body{line-height:1}
 	p {word-wrap: break-word}
 	article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
@@ -2294,6 +2369,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 	/* Tags */
 	#tags {}
 	#tags.blog-post-tags {}
+	#tags.store-tags {}
 	#tags.event-tags {}
 	#tags.video-tags {}
 	#tags.video-playlist-tags {}
@@ -2301,6 +2377,21 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 	#tags.audio-playlist-tags {}
 
 	#tags .tag {}
+
+	/* Store */
+	.store-blocks { list-style: none; }
+	.store-blocks li {}
+	.store-blocks li a { display: block; }
+	.store-blocks li img {}
+	.store-blocks li .title {}
+	.store-blocks li .price {}
+
+	.store-item-container {}
+	.store-item-container .store-item-info {}
+	.store-item-container .store-item-info h2 {}
+	.store-item-container .store-item-info .buy-link {}
+	.store-item-container .store-item-info .description.long {}
+	.store-item-container .store-item-info .description.long .inlineImage {}
 
 	/* Events */
 	a#other-events {}

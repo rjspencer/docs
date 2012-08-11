@@ -1,0 +1,9 @@
+## IDE-specific files
+# NetBeans
+.buildpath
+.project
+nbproject/*
+
+# Operating system-specific files
+.DS_Store
+Thumbs.db
