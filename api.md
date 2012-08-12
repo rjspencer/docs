@@ -53,7 +53,7 @@ This endpoint is used for interacting with an account's audio.
 
 ## /audio/edit
 
-This endpoint can be used for editing existing audio tracks or adding new audio tracks to a StageBloc account. When adding audio, a WAV or AIFF file is required that is then encoded into two different MP3 files (128kb and 320kb). Upon successful editing/creation, the newly created audio track will be returned in the same manner `/audio/list` would return it. Otherwise, an error message will be returned explaining what was wrong.
+This endpoint can be used for editing existing audio tracks or adding new audio tracks to a StageBloc account. When adding audio, a WAV or AIFF file is required that is then encoded into two different MP3 files (128kb and 320kb). Upon successful editing/creation, the audio track data will be returned in the same manner `/audio/list` would return it. Otherwise, an error message will be returned explaining what was wrong.
 
 id _(required to edit an existing audio track)_
 :	the ID of the audio to edit
@@ -848,6 +848,53 @@ collaborators
     
 # /photos
 This endpoint is used for interacting with an account's photos.
+
+## /photos/edit
+
+This endpoint can be used for editing existing photos or adding new photos to a StageBloc account. When adding a photo, a JPG, GIF, or PNG file is required that is less than 10MB in size. Upon successful editing/creation, the photo data will be returned in the same manner `/photos/list` would return it. Otherwise, an error message will be returned explaining what was wrong.
+
+id _(required to edit an existing photo)_
+:	the ID of the photo to edit
+
+	possible values are any photo ID that belongs to the authenticated account
+	
+title _(required)_
+:	the title of the photo
+
+	possible values are any string <= 100 characters
+	
+photo_data _(required when adding a new photo (i.e. no `id` is given))_
+:	the file to upload
+
+	possible values are any `JPG`, `GIF`, or `PNG` file < `10MB` in size
+
+album_id
+:	the ID of the photo album to add this photo to
+
+	possible values are any photo album ID that belongs to the authenticated account
+	
+	defaults to none
+	
+album_type
+:	an ID representing which type of album to upload this photo to, only applicable if `album_id` isn't given
+
+	possible values are `2` (mobile uploads), '5' (account images), `4` (blog images), or `6` (event images)
+	
+	defaults to `2`
+	
+description
+:	the description of the photo
+
+	possible values are any block of text (can contain HTML)
+	
+	default to none
+	
+exclusive
+:	whether or not this photo should be marked as exclusive
+
+	possible values are `1` (exclusive) or `0` (not exclusive)
+	
+	defaults to `0`
 
 ## /photos/list
 id
