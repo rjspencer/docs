@@ -48,11 +48,114 @@ An [Objective-C](https://github.com/stagebloc/cocoa-stagebloc-api) framework als
 
 If you want to create your own wrapper in another language, please do! Let us know, and we can link to it from here.
 
+# /accounts
+This endpoint is used for interacting with the accounts the authenticated user has admin access to.
+
+## /accounts/list
+No parameters are required for this endpoint.
+
+### Explanation of Returned Data
+
+total
+:	the total amount of accounts this user has admin access to
+
+stagebloc_url
+:	the URL for the account (i.e. `stagebloc.com/<stagebloc_url>/`)
+
+images
+:	the image for the account
+	
+### Example Response (XML)
+    <response>
+        <total>4</total>
+        <items>
+            <item>
+                <id>2</id>
+                <name>Team Edward</name>
+                <stagebloc_url>teamedward</stagebloc_url>
+                <about>We are much better than Team Jacob!</about>
+                <images>
+                    <image>
+                        <size>thumbnail</size>
+                        <short_url>http://stgb.lc/p/Qf/t</short_url>
+                        <embed_url>http://cdn.stagebloc.com/production/photos/2/thumbnail/20120807_202919_2_2798.jpeg</embed_url>
+                    </image>
+                    <image>
+                        <size>small</size>
+                        <short_url>http://stgb.lc/p/Qf/s</short_url>
+                        <embed_url>http://cdn.stagebloc.com/production/photos/2/small/20120807_202919_2_2798.jpeg</embed_url>
+                    </image>
+                    <image>
+                        <size>medium</size>
+                        <short_url>http://stgb.lc/p/Qf/m</short_url>
+                        <embed_url>http://cdn.stagebloc.com/production/photos/2/medium/20120807_202919_2_2798.jpeg</embed_url>
+                    </image>
+                    <image>
+                        <size>large</size>
+                        <short_url>http://stgb.lc/p/Qf/l</short_url>
+                        <embed_url>http://cdn.stagebloc.com/production/photos/2/large/20120807_202919_2_2798.jpeg</embed_url>
+                    </image>
+                    <image>
+                        <size>original</size>
+                        <short_url>http://stgb.lc/p/Qf/o</short_url>
+                        <embed_url>http://cdn.stagebloc.com/production/photos/2/original/20120807_202919_2_2798.jpeg</embed_url>
+                    </image>
+                </images>
+            </item>
+        <items>
+    </response>
+   
+### Example Response (JSON)
+
+    {
+        "response": {
+            "total": 4,
+            "items": [{
+                "item": {
+                    "id": 2,
+                    "name": "Team Edward",
+                    "stagebloc_url": "teamedward",
+                    "about": "We are much better than Team Jacob!",
+                    "images": [{
+                        "image": {
+                            "size": "thumbnail",
+                            "short_url": "http:\/\/stgb.lc\/p\/Qf\/t",
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/local\/photos\/2\/thumbnail\/20120807_202919_2_2798.jpeg"
+                        }
+                    }, {
+                        "image": {
+                            "size": "small",
+                            "short_url": "http:\/\/stgb.lc\/p\/Qf\/s",
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/local\/photos\/2\/small\/20120807_202919_2_2798.jpeg"
+                        }
+                    }, {
+                        "image": {
+                            "size": "medium",
+                            "short_url": "http:\/\/stgb.lc\/p\/Qf\/m",
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/local\/photos\/2\/medium\/20120807_202919_2_2798.jpeg"
+                        }
+                    }, {
+                        "image": {
+                            "size": "large",
+                            "short_url": "http:\/\/stgb.lc\/p\/Qf\/l",
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/local\/photos\/2\/large\/20120807_202919_2_2798.jpeg"
+                        }
+                    }, {
+                        "image": {
+                            "size": "original",
+                            "short_url": "http:\/\/stgb.lc\/p\/Qf\/o",
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/local\/photos\/2\/original\/20120807_202919_2_2798.jpeg"
+                        }
+                    }]
+                }
+            }]
+        }
+    }
+   
 # /audio
-This endpoint is used for interacting with an account's audio.
+These endpoints are used for interacting with an account's audio.
 
 ## /audio/edit
-
 This endpoint can be used for editing existing audio tracks or adding new audio tracks to a StageBloc account. When adding audio, a WAV or AIFF file is required that is then encoded into two different MP3 files (128kb and 320kb). Upon successful editing/creation, the audio track data will be returned in the same manner `/audio/list` would return it. Otherwise, an error message will be returned explaining what was wrong.
 
 id _(required to edit an existing audio track)_
@@ -847,7 +950,7 @@ collaborators
     }
     
 # /photos
-This endpoint is used for interacting with an account's photos.
+These endpoints are used for interacting with an account's photos.
 
 ## /photos/edit
 
