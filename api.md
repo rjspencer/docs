@@ -17,10 +17,9 @@ All `/edit` endpoints take `POST` parameters (as well as `/oauth2/token`) and al
 Responses can be formatted in either JSON or XML by simply changing the extension of the endpoint between `.xml` and `.json`. For instance, to list an account's blog entries, one could use either `/list.xml` or `/list.json`. This applies to all endpoints except `/oauth2/token` since it only returns JSON.
 
 ### Authorization
-Connecting with the StageBloc API uses the OAuth 2.0 standard. You must first [create a StageBloc account](http://stagebloc.com/signup) and then [register your application in the StageBloc backend](http://stagebloc.com/account/admin/management/applications/development/) to receive a client ID and secret that will allow users to connect with your application.
+Connecting with the StageBloc API uses the OAuth 2.0 standard. You must first [create a StageBloc account](http://stagebloc.com/signup) and then [register your application in the StageBloc backend](http://stagebloc.com/account/admin/management/developers/) to receive a client ID and secret that will allow users to connect with your application.
 
 ### Errors
-
 Errors can be returned for any of the `/edit` endpoints and differ in content based on the endpoint you're using. However, they will have the following structure:
 
 JSON Example
