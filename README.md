@@ -1,6 +1,6 @@
 # StageBloc Documentation
 
-This repo contains all the docs found at http://stagebloc.com/developers/.
+This repo contains all the docs found at http://stagebloc.com/developers/. This includes the [API](https://github.com/stagebloc/docs/blob/master/api.md) and [Theming Engine](https://github.com/stagebloc/docs/blob/master/theming.md).
 
 We are constantly working to make these docs awesome. Have a suggestion? Open an issue!
 
