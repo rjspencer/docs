@@ -1461,3 +1461,13 @@ total
             }]
         }
     }
+    
+## /statuses/edit
+This endpoint can be used for adding statuses to a StageBloc account (note: statuses cannot be edited, only deleted). Upon successful addition, the status data will be returned in the same manner `/statuses/list` would return it. Otherwise, an error message will be returned explaining what was wrong.
+
+*In the future, this endpoint will also allow you to post statuses to the authenticated user's connected social accounts (Twitter, Facebook, etc) as well as other accounts they are an admin for that aren't the currently authenticated account.*
+
+text _(required)_
+:	the text of the status update
+
+	possible values are any string (when sharing to services such as Twitter the text will be truncated to the character limit with a link to the status on StageBloc appended to the end)
