@@ -175,6 +175,7 @@ Variables use the following syntax:
 	{VariableWithOption option1="value" option2="value"}
 	  
 ## Global Variables
+To use a global variable, simply place `{VariableName}` anywhere inside of your theme.
 
 ### AccountName
 Returns the account's Account Name
@@ -206,7 +207,7 @@ Example return: `<a href="/account-name/videos">See my killer videos about how t
 ## {option} Variables
 You can set up ways for StageBloc users to customize their theme to their liking without them doing any HTML/CSS/JS editing with custom theme {option}s.
 
-*Note: these shouldn't be used as theme assets (things users won't change, such as sprites)*
+*Note: These shouldn't be used as theme assets (things users won't change, such as sprites)*
 
 *Note: Less is often more. If someone wants very specific, fine tune control, it's best if they just edit the theme.*
 
@@ -279,6 +280,9 @@ presets
 Provides users with a textbox where they can input any string. Data returned is user's string.
 
 ## Variables with Options
+Variables with options use the following syntax:
+
+	{VariableName option1="value" option2="value"}
 
 ### AdminListLikeCount
 Shows the amount of likes the collective admins for an account have
@@ -432,7 +436,7 @@ Nesting of if statements is also supported. For example:
 		{if:AudioCanNamePrice}min {/if:AudioCanNamePrice}${AudioPrice} USD
 	{/if:AudioCanBeSold}
 	
-Lastly, if statements also support the user of `||` and `&&` for AND and OR logic. However, mixing of ANDs and ORs is not currently allowed. For example:
+Lastly, if statements also support the use of `||` and `&&` for AND and OR logic. However, mixing of ANDs and ORs is not currently allowed. For example:
 
 	{if:ActivityIsBlog||ActivityIsAudio||ActivityIsVideo||ActivityIsAudio}
 		<h1><a href="{ActivityUrl}">{ActivityTitle}</a></h1>
@@ -568,13 +572,18 @@ The general syntax for modules and their blocks is as follows:
 ## AccountAbout
 
 ### block:AccountAbout
-Renders if there is a defined bio text for the account.
+
+AccountAboutName
+:    the name of the account
 
 AccountAbout
-:	the bio text
+:	the biography text of the account
 
 AccountAboutCleaned
 :	the bio text stripped of all tags except: `<span><em><strong><a><u><i><b>`
+
+AccountAboutUrl
+:    the main URL of the account
 
 ### block:AccountLink
 
@@ -607,12 +616,16 @@ PhotoSource-Original
 Events are grouped in the activity stream.
 
 supported (*required*)
-:	a comma separated list of supported content types. defaults to none.
+:	a comma separated list of supported content types
 
-	available: audio, blog, blog_reposts, events, photos, statuses, status_reposts, videos, store
+    accepted values are `audio`, `blog`, `blog_reposts`, `events`, `photos`, `statuses`, `status_reposts`, `videos`, `store`
+
+    defaults to none
 
 groupPhotos
-:	should photos be grouped into album updates. defaults to true
+:	should photos be grouped into album updates
+
+    defaults to `true`
 
 limit
 :	how many items per page. defaults to 10
@@ -699,13 +712,17 @@ A listing of audio objects
 ### Options
 
 audioplaylistid
-:	a audio playlist id to limit the videos to. *defaults to none*
+:	a audio playlist id to limit the videos to
+
+    defaults to none
 
 limit
 :	a limit on the amount of returned audio objects
 
 order
-:	the order in which to show the videos. *defaults to asc*
+:	the order in which to show the videos
+
+    defaults to `asc`
 
 ### Variables
 
@@ -769,7 +786,11 @@ AudioStreamUrl
 A listing of audio playlists  
 
 featured
-:	whether or not to just show the featured audio playlist *defaults to false*
+:	whether or not to just show the featured audio playlist
+
+    accepted values are `true` or `false`
+
+    defaults to `false`
 
 featuredfirst
 :	whether or not to show the featured audio playlist first in the listing
@@ -836,10 +857,22 @@ CreatedByName, ModifiedByName
 :	the name of the user who created/modified the audio playlist
 
 ## BlogList
-A listing of blogs.  
+A listing of blogs
+
+### Options
+
+limit
+: the amount of blogs to list per page
+
+    defaults to `5`
+    
+accountid
+: a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account
+
+    defaults to none (i.e. the current account)
 
 ## BlogView
-A view for a single blog post. Meant to be used with {Page:BlogView}
+A view for a single blog post. Meant to be used with `{Page:BlogView}`
 
 ### block:BlogPost
 AuthorName
@@ -847,6 +880,9 @@ AuthorName
 
 AuthorPhotoUrl
 :	url to a 130x130px user photo. if one isn't available, we'll use a default placeholder
+
+BlogPostAccountId
+:    the ID of the account that created this post
 
 BlogPostTitle
 :	the content's title
@@ -872,8 +908,30 @@ PreviousBlogPostTitle, NextBlogPostTitle
 PreviousBlogPostUrl, NextBlogPostUrl
 :	the permalink of the blog post previous/next to the current one if it exists
 
+## ChildAccountList
+A listing of accounts that are children of the current account
+
+### Options
+
+type
+:	the type of accounts to limit the results to
+
+    accepted values are any comma seperated combination of `alumni`, `artists`, or `management`
+
+    defaults to `alumni,artist,management` (all three)
+    
+### block:ChildAccountView
+ChildAccountName
+:	name of the child account
+
+ChildAccountUrl
+:    the URL of the child account
+
+ChildAccountId
+:    the ID of the child account
+
 ## BuyLinkList
-A listing of buy links for a the following modules: AudioView, AudioPlaylistView
+A listing of buy links for the following modules: AudioView, AudioPlaylistView
 
 ### block:BuyLinkView
 
@@ -895,16 +953,30 @@ A listing of events.
 ### Options
 
 limit
-: the amount of events to list per page *defaults to 50*
+: the amount of events to list per page
+
+    defaults to `50`
 
 upcoming
-: whether or not to show upcoming events *defaults to true*
+: whether or not to show upcoming events
+
+    accepted values are `true` or `false`
+
+    defaults to `true`
 
 past
-: whether or not to show past events *defaults to false* Also see {if:HasPastEvents}
+: whether or not to show past events, also see `{if:HasPastEvents}`
+
+    accepted values are `true` or `false`
+
+    defaults to `false`
 
 order
-: the other to show the events in *defaults to asc*
+: the other to show the events in
+
+    accepted values are `asc` or `desc`
+
+    defaults to `asc`
 
 ### Variables  
 
@@ -912,12 +984,12 @@ TotalEvents
 : the amount of events loaded based on your values for upcoming and/or past
 
 ## EventView
-A view for a single event. Meant to be used with {Page:EventView}
+A view for a single event. Meant to be used with `{Page:EventView}`
 
 ### block:EventView
 
 EventAges
-:	will return either "Any Age" or "[%Age]+" (meaning this age and up). Also see {if:EventHasMinimumAge}
+:	will return either "Any Age" or "[%Age]+" (meaning this age and up), also see `{if:EventHasMinimumAge}`
 
 EventCity 
 :	the city in which the event is taking place
@@ -953,10 +1025,10 @@ EventLocation
 :	a string constructed by StageBloc based on the information available for the location. if in the USA, it will return "city, state", otherwise it will return "city, state, country"
 
 EventPrice
-:	the event for the price. Also see {if:EventHasPrice}
+:	the event for the price, also see `{if:EventHasPrice}`
 
 EventTitle
-:	the title for the event. Also see {if:EventHasTitle}
+:	the title for the event, also see `{if:EventHasTitle}`
 
 TicketsBuyLink
 :	a link to where tickets for this event can be purchased
@@ -965,7 +1037,7 @@ VenueName
 :	the name of the venue where this event is taking place
 
 SupportingActs
-:	a comma separated listing of the supporting acts for the event. Also see {if:EventHasSupportingActs}
+:	a comma separated listing of the supporting acts for the event, also see `{if:EventHasSupportingActs}`
 
 VenueWebsiteUrl
 :	the URL to the venue where the event is taking place. Also see {if:VenueHasWebsite}
@@ -1067,7 +1139,9 @@ PhotoAlbumPhotoCount
 A listing of photos.  
 Options  
 albumid
-: an album id of which to limit the returned photos to *defaults to none*
+: an album id of which to limit the returned photos to
+
+    defaults to none
 
 ## PhotoView
 A view for a single photo. *Meant to be used with {Page:PhotoView}*  
@@ -1206,16 +1280,26 @@ Tag
 A listing of videos.
 
 videoplaylistid
-:	a video playlist id to limit the videos to. *defaults to none*
+:	a video playlist id to limit the videos to
+
+    defaults to none
 
 limit
 :	a limit on the amount of returned videos
 
 order
-:	the order in which to show the videos. *defaults to asc*
+:	the order in which to show the videos
+
+    accepted values are `asc` or `desc`
+
+    defaults to `asc`
 
 featured
-:	whether or not to show the just featured video *defaults to false*
+:	whether or not to show the just featured video
+
+    accepted values are `true` or `false`
+
+    defaults to `false`
 
 ## VideoView
 A view for a single video. *Meant to be used with {Page:VideoView}*  
@@ -1294,7 +1378,9 @@ SB Nav is the little control box that appears in a corner of the screen. It allo
 You can set the sbnav position with the {SBNav} variable. Place it anywhere in your theme and SB Nav will be placed in the specified corner. *Note: This will be ignored on mobile themes as SBNav is forced to the top of the screen*
 
 position
-:	which corner to be placed in. accepts two words in any order, separated by a space. top, bottom, left, right
+:	which corner to be placed in
+
+    accepted values are two words in any order, separated by a space: `top`, `bottom`, `left`, `right`
 
 ### SB Nav Color Scheme
 When submitting a theme, you can select a default color scheme that you feel best matches and fits in. Users have the option to override this in their account's theme management section.
