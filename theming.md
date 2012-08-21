@@ -297,7 +297,9 @@ numerousItemText
 Creates a link that, when clicked, will add the item to the user's cart on StageBloc
 
 text
-:	the text to be put inside the `<a>` tag *defaults to "Add To Cart"*
+:	the text to be put inside the `<a>` tag
+
+    defaults to `"Add To Cart"`
 
 audioid (*required*)
 :	the ID of the audio you want to add to the user's cart
@@ -309,7 +311,9 @@ class
 Creates a link that, when clicked, will download an audio file (unless it requires a follow to download, in which a modal will first show up)
 
 text
-:	the text to be put inside the `<a>` tag *defaults to "Download"*
+:	the text to be put inside the `<a>` tag
+
+    defaults to `"Download"`
 
 audioid (*required*)
 :	the ID of the audio you want to download
@@ -321,13 +325,19 @@ class
 Creates a link that, when clicked, will add the audio playlist to the user's cart on StageBloc
 
 text
-:	the text to be put inside the `<a>` tag *defaults to "Add To Cart"*
+:	the text to be put inside the `<a>` tag
+
+    defaults to `"Add To Cart"`
 
 preorderText
-:	the text to be put inside the `<a>` tag when a preorder is set up for the playlist *defaults to "Pre-order"*
+:	the text to be put inside the `<a>` tag when a preorder is set up for the playlist
+
+    defaults to `"Pre-order"`
 
 preorderSoldOutText
-:	the text to be put inside the `<a>` tag when a preorder is set up for the playlist and it has sold out (if it has a limit on the amount of orders) *defaults to "Pre-order Sold Out"*
+:	the text to be put inside the `<a>` tag when a preorder is set up for the playlist and it has sold out (if it has a limit on the amount of orders)
+
+    defaults to `"Pre-order Sold Out"`
 
 audioplaylistid (*required*)
 :	the ID of the audio you want to add to the user's cart
@@ -339,7 +349,9 @@ class
 Creates a link that, when clicked, will download an audio playlist (unless it requires a follow to download, in which a modal will first show up) *Note: This will check to make sure a playlist is capable of being downloaded for free as well*
 
 text
-:	the text to be put inside the `<a>` tag *defaults to "Download"*
+:	the text to be put inside the `<a>` tag
+
+    defaults to `"Download"`
 
 audioplaylistid (*required*)
 :	the ID of the audio playlist you want to download
@@ -347,22 +359,45 @@ audioplaylistid (*required*)
 class
 :	the class to assign to the `<a>` tag
 
+### ChildsAccountIDs
+A comma seperated list of children accountIDs of the current account, useful with the `accountid` parameter of some modules
+
+type
+:	the type of accounts to limit the results to
+
+    accepted values are any comma seperated combination of `alumni`, `artists`, or `management`
+
+    defaults to `alumni,artist,management` (all three)
+
+includeCurrent
+:    whether or not to include the current account with the children
+
+    accepted values are `true` or `false`
+    
+    defaults to `false`
+
 ### CreatedDate, ModifiedDate, PublishedDate
 Show the date of various objects
   
 format
-:	the format of the date according to [PHP date() function](http://php.net/date) *defaults to n/j/y*  
-: if set to "relative", returns time ago such as "5 seconds ago"
-: if set to "gmdate", returns a GMT date in PHP date format 'Y-M-d h:i A' (see using `{EventList}` in the ActivityStream)
+:	the format of the date according to [PHP date() function](http://php.net/date) 
+
+    accepted values are a formatted date, `relative` (returns time ago such as "5 seconds ago"), or `gmdate` (a GMT date in PHP date format 'Y-M-d h:i A' (see using `{EventList}` in the ActivityStream))
+
+    defaults to `n/j/y`
 
 ### LikeLink
 Add a link to like a specific item  
 
 likeText
-:	the text to show when the item hasn't yet been liked by the viewer *defaults to "Like"*
+:	the text to show when the item hasn't yet been liked by the viewer
+
+    defaults to `"Like"`
 
 unlikeText
-:	the text to show when the item has been liked by the viewer *defaults to "Unlike"*
+:	the text to show when the item has been liked by the viewer
+
+    defaults to `"Unlike"`
 
 class
 :	the class to give the `<a>` tag
@@ -371,10 +406,14 @@ class
 Add a link to repost a specific item  
 
 repostText
-:	the text to show when the item hasn't yet been reposted by the viewer *defaults to "Repost"*
+:	the text to show when the item hasn't yet been reposted by the viewer
+
+    defaults to `"Repost"`
 
 unrepostText
-:	the text to show when the item has been reposted by the viewer *defaults to "Unrepost"*
+:	the text to show when the item has been reposted by the viewer
+
+    defaults to `"Unrepost"`
 
 class
 :	the class to give the `<a>` tag
@@ -386,19 +425,25 @@ address (*required*)
 :	the email address
 
 text
-:	the text inside the `<a>` tag *defaults to address*
+:	the text inside the `<a>` tag
+
+    defaults to `address`
 
 ### StoreItemAddToCartLink
 Creates a link that, when clicked, will add the store item to the user's cart on StageBloc
 
 text
-:	the text to be put inside the `<a>` tag *defaults to "Add To Cart"*
+:	the text to be put inside the `<a>` tag
+
+    defaults to `"Add To Cart"`
 
 preorderText
 :	the text to be put inside the `<a>` tag when a preorder is set up for the playlist *defaults to "Pre-order"*
 
 preorderSoldOutText
-:	the text to be put inside the `<a>` tag when a preorder is set up for the playlist and it has sold out (if it has a limit on the amount of orders) *defaults to "Pre-order Sold Out"*
+:	the text to be put inside the `<a>` tag when a preorder is set up for the playlist and it has sold out (if it has a limit on the amount of orders)
+
+    defaults to `"Pre-order Sold Out"`
 
 storeitemid (*required*)
 :	the ID of the audio you want to add to the user's cart
@@ -410,7 +455,9 @@ class
 Creates a link that, when clicked, will download a store item (unless it requires a follow to download, in which a modal will first show up)
 
 text
-:	the text to be put inside the `<a>` tag *defaults to "Download"*
+:	the text to be put inside the `<a>` tag
+
+    defaults to `"Download"`
 
 storeitemid (*required*)
 :	the ID of the audio playlist you want to download
