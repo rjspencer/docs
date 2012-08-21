@@ -61,6 +61,9 @@ total
 stagebloc_url
 :	the URL for the account (i.e. `stagebloc.com/<stagebloc_url>/`)
 
+authenticated
+:    whether or not this account is the one currently authenciated with the OAuth access token
+
 images
 :	the image for the account
 	
@@ -72,7 +75,8 @@ images
                 <id>2</id>
                 <name>Team Edward</name>
                 <stagebloc_url>teamedward</stagebloc_url>
-                <about>We are much better than Team Jacob!</about>
+                <authenticated>true</authenticated>
+                <description>We are much better than Team Jacob!</description>
                 <images>
                     <image>
                         <size>thumbnail</size>
@@ -114,7 +118,8 @@ images
                     "id": 2,
                     "name": "Team Edward",
                     "stagebloc_url": "teamedward",
-                    "about": "We are much better than Team Jacob!",
+                    "authenticated": true,
+                    "description": "We are much better than Team Jacob!",
                     "images": [{
                         "image": {
                             "size": "thumbnail",
