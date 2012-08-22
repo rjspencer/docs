@@ -913,8 +913,8 @@ limit
 
     defaults to `5`
     
-order
-:	the order in which to show the videos
+direction
+:	the direction in which to order the blog posts
 
     accepted values are `asc` or `desc`
 
@@ -1025,12 +1025,17 @@ past
 
     defaults to `false`
 
-order
-: the other to show the events in
+direction
+: the direction to show the events in
 
     accepted values are `asc` or `desc`
 
     defaults to `asc`
+    
+accountid
+: a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account, see variable `{ChildAccountIDs}`
+
+    defaults to none (i.e. the current account)
 
 ### Variables  
 
@@ -1041,6 +1046,9 @@ TotalEvents
 A view for a single event. Meant to be used with `{Page:EventView}`
 
 ### block:EventView
+
+EventAccountId
+:    the ID of the account that created the event
 
 EventAges
 :	will return either "Any Age" or "[%Age]+" (meaning this age and up), also see `{if:EventHasMinimumAge}`
@@ -1199,8 +1207,8 @@ albumid
 
     defaults to none
 
-order
-:	the order in which to show the videos
+direction
+:	the direction in which to order the photos
 
     accepted values are `asc` or `desc`
 
@@ -1303,8 +1311,8 @@ limit
 
     defaults to `5`
     
-order
-:	the order in which to show the videos
+direction
+:	the direction in which to show the statuses
 
     accepted values are `asc` or `desc`
 
@@ -1389,8 +1397,8 @@ limit
 
     default to `50`
 
-order
-:	the order in which to show the videos
+direction
+:	the direction in which to order the videos
 
     accepted values are `asc` or `desc`
 
