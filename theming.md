@@ -913,6 +913,13 @@ limit
 
     defaults to `5`
     
+order
+:	the order in which to show the videos
+
+    accepted values are `asc` or `desc`
+
+    defaults to `desc`
+    
 accountid
 : a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account
 
@@ -1265,6 +1272,25 @@ PreviousPhotoUrl, NextPhotoUrl
 ## StatusList
 A listing of statuses.
 
+### Options
+
+limit
+: the amount of statuses to list per page
+
+    defaults to `5`
+    
+order
+:	the order in which to show the videos
+
+    accepted values are `asc` or `desc`
+
+    defaults to `desc`
+    
+accountid
+: a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account
+
+    defaults to none (i.e. the current account)
+
 ## StatusView
 A view for an individual status. *Meant to be used with {Page:StatusView}*
 
@@ -1275,6 +1301,9 @@ AuthorName
 
 AuthorPhotoUrl
 :	a 130x130 pixel image of the author of the photo or a placeholder if the photo doesn't exist
+
+StatusAccountId
+:    the ID of the account that posted this status
 
 StatusText
 :	the actual text of the status post
@@ -1334,6 +1363,8 @@ videoplaylistid
 limit
 :	a limit on the amount of returned videos
 
+    default to `50`
+
 order
 :	the order in which to show the videos
 
@@ -1347,6 +1378,11 @@ featured
     accepted values are `true` or `false`
 
     defaults to `false`
+    
+accountid
+: a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account
+
+    defaults to none (i.e. the current account)
 
 ## VideoView
 A view for a single video. *Meant to be used with {Page:VideoView}*  
@@ -1355,6 +1391,9 @@ videoid
 : an ID for which video to show *defaults to the one given to {Page:VideoView} if in that page
 
 ### block:VideoView
+VideoAccountId
+:    the ID of the account that posted the video
+
 VideoUrl
 :	a permalink to the video's individual page on StageBloc
 
