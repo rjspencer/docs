@@ -1348,9 +1348,9 @@ images
 #/oauth2
 This is used during the [OAuth2](http://oauth.net/2/) authentication process to get an access token from a request token. Curious? Check out our OAuth2 [PHP](https://github.com/stagebloc/php-stagebloc-api) or [Objective-C](https://github.com/stagebloc/cocoa-stagebloc-api) wrapper on GitHub.
 
-**Note: The only response format for this endpoint is JSON! Do not add an extension to this endpoint!**
-
 ##/oauth2/token
+**Note: The only response format for this endpoint is JSON! Do not add an XML extension to this endpoint!**
+
 client_id _(required)_
 :	the ID of the application an account is connecting to
 
@@ -1373,6 +1373,17 @@ code _(required)_
 	
 ### Example Response (JSON)
     {"access_token":"<access_token_here>","scope":"non-expiring"}
+    
+## /oauth2/token/disconnect
+No parameters required. Hitting this endpoint will simply invalidate the OAuth access token, essentially "logging out" the user.
+
+### Example Response (JSON)
+    {"response":{"message":"Token succesfully invalidated."}}
+    
+### Example Response (XML)
+    <response>
+        <message>Token succesfully invalidated.</message>
+    </response>
     
 # /statuses
 This endpoint is used for interacting with an account's statuses.
