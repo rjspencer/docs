@@ -921,7 +921,7 @@ order
     defaults to `desc`
     
 accountid
-: a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account
+: a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account, see variable `{ChildAccountIDs}`
 
     defaults to none (i.e. the current account)
 
@@ -1212,7 +1212,7 @@ limit
     defaults to `10`
     
 accountid
-: a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account
+: a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account, see variable `{ChildAccountIDs}`
 
     defaults to none (i.e. the current account)
 
@@ -1311,7 +1311,7 @@ order
     defaults to `desc`
     
 accountid
-: a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account
+: a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account, see variable `{ChildAccountIDs}`
 
     defaults to none (i.e. the current account)
 
@@ -1404,7 +1404,7 @@ featured
     defaults to `false`
     
 accountid
-: a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account
+: a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account, see variable `{ChildAccountIDs}`
 
     defaults to none (i.e. the current account)
 
