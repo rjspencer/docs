@@ -1378,10 +1378,32 @@ StatusTextWithLinks
 ## StoreItemList
 A listing of store items.
 
+### Options
+
+limit
+: the amount of store items to list per page
+
+    defaults to `20`
+    
+direction
+:	the direction in which to order the store items
+
+    accepted values are `asc` or `desc`
+
+    defaults to `desc`
+    
+accountid
+: a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account, see variable `{ChildAccountIDs}`
+
+    defaults to none (i.e. the current account)
+
 ## StoreItemView
 A view for an individual store item. *Meant to be used with {Page:StoreItemView}*
 
 ### block:StoreItemView
+
+StoreItemAccountId
+:    the ID of the account that created the store item
 
 StoreItemUrl
 :	the URL for the store item
