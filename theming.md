@@ -766,10 +766,17 @@ audioplaylistid
 limit
 :	a limit on the amount of returned audio objects
 
-order
-:	the order in which to show the videos
+    defaults to `50`
+
+direction
+:	the direction in which to show the audio
 
     defaults to `asc`
+    
+accountid
+: a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account, see variable `{ChildAccountIDs}`
+
+    defaults to none (i.e. the current account)
 
 ### Variables
 
@@ -783,6 +790,9 @@ audioid
 : an ID for which audio to show *defaults to the one given to {Page:AudioView} if in that page
 
 ### block:AudioView
+AudioAccountId
+:    the ID of the account that created this audio
+
 AudioLink
 :	a permalink to the audio's individual page
 
@@ -1164,6 +1174,25 @@ NextPage
 ## PhotoAlbumList
 A listing of photo albums for the account
 
+### Options
+
+limit
+: the amount of photo albums to list per page
+
+    defaults to `5`
+    
+direction
+:	the direction in which to order the photo albums
+
+    accepted values are `asc` or `desc`
+
+    defaults to `desc`
+    
+accountid
+: a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account, see variable `{ChildAccountIDs}`
+
+    defaults to none (i.e. the current account)
+
 ## PhotoAlbumView
 A view for a single photo album. *Meant to be used with {Page:PhotoAlbumView}*
 
@@ -1181,6 +1210,9 @@ CreatedByPhotoUrl, ModifiedByPhotoUrl
 
 CreatedByName, ModifiedByName
 :	the name of the user who created/modified the photo album
+
+PhotoAlbumAccountId
+:    the ID of the account that created the photo album
 
 PhotoAlbumDescription
 :	the description of the photo album
