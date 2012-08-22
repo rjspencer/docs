@@ -1190,20 +1190,44 @@ PhotoAlbumPhotoCount
 :	the number of photos in this photo album
 
 ## PhotoList
-A listing of photos.  
-Options  
+A listing of photos.
+
+### Options
+
 albumid
 : an album id of which to limit the returned photos to
 
     defaults to none
 
+order
+:	the order in which to show the videos
+
+    accepted values are `asc` or `desc`
+
+    defaults to `desc`
+    
+limit
+: the amount of photos to list per page
+
+    defaults to `10`
+    
+accountid
+: a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account
+
+    defaults to none (i.e. the current account)
+
 ## PhotoView
-A view for a single photo. *Meant to be used with {Page:PhotoView}*  
-Options  
+A view for a single photo. *Meant to be used with {Page:PhotoView}*
+
+### Options
+  
 photoid
 : an ID for which photo to show *defaults to the one given to {Page:PhotoView} if in that {Page}*
 
 ### block:PhotoView
+
+PhotoAccountId
+:    the ID of the account that created the photo
 
 PhotoUrl
 :	the permalink to this photo's individual page
