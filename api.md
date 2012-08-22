@@ -1002,6 +1002,13 @@ exclusive
 	possible values are `1` (exclusive) or `0` (not exclusive)
 	
 	defaults to `0`
+	
+tags
+:    the tags for the photo
+
+    possible values are a comma sepearated string of tags (i.e. `tag1,tag2`)
+    
+    defaults to no tags
 
 ## /photos/list
 id
