@@ -253,6 +253,13 @@ fans_name_price
 	possible values are `0` (can't name price) or `1` (can name price)
 	
 	defaults to `1`
+	
+tags
+:   the tags for the audio
+
+    possible values are a comma sepearated string of tags (i.e. `tag1,tag2`)
+    
+    defaults to no tags
 
 ## /audio/list
 id
@@ -1004,7 +1011,7 @@ exclusive
 	defaults to `0`
 	
 tags
-:    the tags for the photo
+:   the tags for the photo
 
     possible values are a comma sepearated string of tags (i.e. `tag1,tag2`)
     
