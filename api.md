@@ -990,9 +990,9 @@ album_id
 	defaults to none
 	
 album_type
-:	an ID representing which type of album to upload this photo to, only applicable if `album_id` isn't given
+:	an ID representing which type of album to upload this photo to, only applicable if `album_id` isn't given, setting it to `5` will change the account's profile image
 
-	possible values are `2` (mobile uploads), '5' (account images), `4` (blog images), or `6` (event images)
+	possible values are `2` (mobile uploads), `5` (account images), `4` (blog images), or `6` (event images)
 	
 	defaults to `2`
 	
