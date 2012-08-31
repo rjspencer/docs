@@ -631,7 +631,61 @@ track_count
     }
 
 # /blog
-This endpoint is used for interacting with an account's blog posts.
+This endpoint is used for interacting with an account's blog posts
+
+## /blog/edit
+
+This endpoint can be used for editing existing blog posts or adding new blog posts to a StageBloc account. Upon successful editing/creation, the blog post data will be returned in the same manner `/blog/list` would return it. Otherwise, an error message will be returned explaining what was wrong.
+
+id _(required to edit an existing blog post)_
+:	the ID of the blog post to edit
+
+	possible values are any blog post ID that belongs to the authenticated account
+	
+title _(required)_
+:	the title of the blog post
+
+	possible values are any string <= 100 characters
+	
+body _(required)_
+:	the body of the blog post
+
+	possible values are any block of text (can contain HTML)
+	
+published
+:	the published time of the post, setting it to a date in the future will cause it to be published at that date (assuming `status` is `1`)
+
+	possible values are a formatted timestamp of the form `"Y-m-d H:i:s O"` (capital o, not zero) (see [PHP's date() function formatters](http://php.net/manual/en/function.date.php))
+	
+	defaults to a UTC date of the current time in timezone America/Chicago (UTC/GMT -5)
+
+author_id
+:	the ID of the user who should be set as the author of the post
+
+	possible values are any ID of an admin for the currently authenticated account
+	
+	defaults to the authenticated user's ID
+
+status
+:	whether or not this blog post should be published
+
+	possible values are `1` (published) or `0` (draft)
+	
+	defaults to `1`
+	
+sticky
+:	whether or not this blog post should be sticky
+
+	possible values are `1` (sticky) or `0` (not sticky)
+	
+	defaults to `0`
+		
+exclusive
+:	whether or not this photo should be marked as exclusive
+
+	possible values are `1` (exclusive) or `0` (not exclusive)
+	
+	defaults to `0`
 
 ## /blog/list
 id
