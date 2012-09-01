@@ -124,31 +124,31 @@ images
                         "image": {
                             "size": "thumbnail",
                             "short_url": "http:\/\/stgb.lc\/p\/Qf\/t",
-                            "embed_url": "http:\/\/cdn.stagebloc.com\/local\/photos\/2\/thumbnail\/20120807_202919_2_2798.jpeg"
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/2\/thumbnail\/20120807_202919_2_2798.jpeg"
                         }
                     }, {
                         "image": {
                             "size": "small",
                             "short_url": "http:\/\/stgb.lc\/p\/Qf\/s",
-                            "embed_url": "http:\/\/cdn.stagebloc.com\/local\/photos\/2\/small\/20120807_202919_2_2798.jpeg"
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/2\/small\/20120807_202919_2_2798.jpeg"
                         }
                     }, {
                         "image": {
                             "size": "medium",
                             "short_url": "http:\/\/stgb.lc\/p\/Qf\/m",
-                            "embed_url": "http:\/\/cdn.stagebloc.com\/local\/photos\/2\/medium\/20120807_202919_2_2798.jpeg"
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/2\/medium\/20120807_202919_2_2798.jpeg"
                         }
                     }, {
                         "image": {
                             "size": "large",
                             "short_url": "http:\/\/stgb.lc\/p\/Qf\/l",
-                            "embed_url": "http:\/\/cdn.stagebloc.com\/local\/photos\/2\/large\/20120807_202919_2_2798.jpeg"
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/2\/large\/20120807_202919_2_2798.jpeg"
                         }
                     }, {
                         "image": {
                             "size": "original",
                             "short_url": "http:\/\/stgb.lc\/p\/Qf\/o",
-                            "embed_url": "http:\/\/cdn.stagebloc.com\/local\/photos\/2\/original\/20120807_202919_2_2798.jpeg"
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/2\/original\/20120807_202919_2_2798.jpeg"
                         }
                     }]
                 }
