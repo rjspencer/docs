@@ -4,10 +4,18 @@ Hello there. You are about to embark on an epic journey through StageBloc's them
 ### Fork us on GitHub!
 All of StageBloc's documentation are up on GitHub for you to fork, modify, and improve. Join us over there to request features, add suggestions, and report bugs. What are you waiting for? [Git to it!](https://github.com/stagebloc/docs)
 
+## Requirements
+Here are a few (loose) requirements to keep in mind when submitting and creating a theme:
+
+1. Please host all external assets on our CDN.
+
+2. If you're creating a mobile theme, please be sure to include the `ShowMobileSiteLink` and `ShowDesktopSiteLink` variables so that users can choose which version of a site to see.
+
 ## Code Style Guidelines
-Here are a few tips and tricks that we have when writing a theme. These are just some loose guidelines---don't follow them if necessary.
+Here are a few tips and tricks that we have when writing a theme. These are just some loose guidelines -- don't follow them if necessary.
 
 * Use semicolons in JavaScript. We do compress JavaScript before we upload it to our CDN, which may cause issues from time to time.
+
 * Remember to keep metadata in mind. For instance, when people share links to Facebook, you have control over the information Facebook pulls from the page. [Obligatory StackOverflow Post](http://stackoverflow.com/a/7623986/115629)
 
 # Pages
@@ -429,6 +437,28 @@ text
 
     defaults to `address`
 
+### ShowDesktopSiteLink
+Creates a link that, when clicked, will force the browser to show the desktop version of a site, this link will only be added if the browser is a mobile browser
+
+text
+:	the text to be put inside the `<a>` tag
+
+    defaults to `"Desktop Site"`
+    
+class
+:	the class to assign to the `<a>` tag
+
+### ShowMobileSiteLink
+Creates a link that, when clicked, will force the browser to show the mobile version of a site for a month (via a cookie), this link will only be added if the browser is a mobile browser
+
+text
+:	the text to be put inside the `<a>` tag
+
+    defaults to `"Mobile Site"`
+    
+class
+:	the class to assign to the `<a>` tag
+
 ### StoreItemAddToCartLink
 Creates a link that, when clicked, will add the store item to the user's cart on StageBloc
 
@@ -523,6 +553,9 @@ Recommended block: AudioPlaylistView
 Check to see if the audio playlist supports naming a price
 
 Recommended block: AudioPlaylistView
+
+### if:BrowserIsMobile
+Check to see if the viewer is on a mobile browser or not
 
 ### if:StoreItemCanBeDownloadedForFree
 Check to see if the store item can be downloaded for free
