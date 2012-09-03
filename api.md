@@ -328,6 +328,7 @@ raw_url
                 <id>311</id>
                 <title>Never Gonna Give You Up</title>
                 <artist>Rick Astley</artist>
+                <url>http://stagebloc.com/demo/audio/342</url>
                 <raw_url/>
                 <embed_url>http://cdn.stagebloc.com/production/audio/1/mp3_128kb/5190_20120619_175046_1_311.mp3</embed_url>
                 <short_url>http://stgb.lc/a/6n</short_url>
@@ -359,6 +360,7 @@ raw_url
                     "id": 311,
                     "title": "Never Gonna Give You Up",
                     "artist": "Rick Astley",
+                    "url":"http:\/\/stagebloc.com\/demo\/audio\/342",
                     "raw_url": null,
                     "embed_url": "http:\/\/cdn.stagebloc.com\/production\/audio\/1\/mp3_128kb\/5190_20120619_175046_1_311.mp3",
                     "short_url": "http:\/\/stgb.lc\/a\/6n",
@@ -532,6 +534,7 @@ track_count
                 <description>Nature at its finest!</description>
                 <created>2012-04-16 11:30:19</created>
                 <modified>2012-06-04 18:12:11</modified>
+                <url>http://stagebloc.com/demo/audio/playlists/42</url>
                 <short_url>http://stgb.lc/ap/G</short_url>
                 <exclusive>true</exclusive>
                 <private>false</private>
@@ -587,6 +590,7 @@ track_count
                     "description": "Nature at its finest!",
                     "created": "2012-04-16 11:30:19",
                     "modified": "2012-06-04 18:12:11",
+                    "url":"http:\/\/stagebloc.com\/demo\/audio\/playlists\/42",
                     "short_url": "http:\/\/stgb.lc\/ap\/G",
                     "exclusive": true,
                     "private": false,
@@ -769,6 +773,7 @@ status
           <title>50 Shades of Grey</title>
           <body>Lions, tables, and chairs, oh my!</body>
           <status>1</status>
+          <url>http://stagebloc.com/demo/blog/6319</url>
           <short_url>http://stgb.lc/b/2SV</short_url>
           <published>2012-06-25 12:30:00</published>
           <created>2012-06-25 12:30:53</created>
@@ -793,6 +798,7 @@ status
                     "title": "50 Shades of Grey",
                     "body": "Lions, tables, and chairs, oh my!",
                     "status": 1,
+                    "url":"http:\/\/stagebloc.com\/demo\/blog\/6319",
                     "short_url": "http:\/\/stgb.lc\/b\/2SV",
                     "published": "2012-06-25 12:30:00",
                     "created": "2012-06-25 12:30:53",
@@ -892,6 +898,7 @@ collaborators
                 <description>It's the end of the world as we know it...</description>
                 <price>1.50</price>
                 <currency>USD</currency>
+                <url>http://stagebloc.com/demo/events/115</url>
                 <short_url>http://stgb.lc/e/2Z</short_url>
                 <images>
                     <image>
@@ -962,6 +969,7 @@ collaborators
                     "description": "It's the end of the world we know it...",
                     "price": "1.50",
                     "currency": "USD",
+                    "url":"http:\/\/stagebloc.com\/demo\/events\/115",
                     "short_url": "http:\/\/stgb.lc\/e\/2Z",
                     "images": [{
                         "image": {
@@ -1138,6 +1146,7 @@ total
                 <exclusive>false</exclusive>
                 <modified>2012-07-23 21:16:32</modified>
                 <created>2012-07-23 21:16:29</created>
+                <url>http://stagebloc.com/demo/photos/2814</url>
                 <images>
                     <image>
                         <size>thumbnail</size>
@@ -1193,7 +1202,8 @@ total
                     "description": "Yay Curiosity!",
                     "exclusive": false,
                     "modified": "2012-08-09 17:35:23",
-                    "created": "2012-07-23 21:16:29","
+                    "created": "2012-07-23 21:16:29",
+                    "url":"http:\/\/stagebloc.com\/demo\/photos\/2814",
                     "images": [{
                         "image": {
                             "size": "thumbnail",
@@ -1297,6 +1307,7 @@ images
             <item>
                 <id>166</id>
                 <title>Cats</title>
+                <url>http://stagebloc.com/demo/photos/albums/166</url>
                 <short_url>http://stgb.lc/pa/3S</short_url>
                 <photo_count>3</photo_count>
                 <description>Cats will one day rule the world!</description>
@@ -1356,6 +1367,7 @@ images
                 "item": {
                     "id": 166,
                     "title": "Cats",
+                    "url":"http:\/\/stagebloc.com\/demo\/photos\/albums\/166",
                     "short_url": "http:\/\/stgb.lc\/pa\/3S",
                     "photo_count": 3,
                     "description": "Cats will one day rule the world!",
@@ -1564,6 +1576,8 @@ total
         <items>
             <item>
                 <id>161</id>
+                <url>http://stagebloc.com/demo/statuses/164</url>
+                <short_url>http://stgb.lc/s/3Q</short_url>
                 <text>Sometimes I feel like nobody cares about what I have to say.</text>
                 <published>2012-08-01 22:23:41</published>
                 <author>
@@ -1591,6 +1605,8 @@ total
             "items": [{
                 "item": {
                     "id": 161,
+                    "url":"http:\/\/stagebloc.com\/demo\/statuses\/164",
+                    "short_url":"http:\/\/stgb.lc\/s\/3Q",
                     "text": "Sometimes I feel like nobody cares about what I have to say.",
                     "published": "2012-08-01 22:23:41",
                     "author": {
