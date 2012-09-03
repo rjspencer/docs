@@ -4,7 +4,7 @@
 Use the StageBloc API to develop custom, standalone integrations with StageBloc.
 
 ### Under Development
-The API (and therefore these docs) is still currently under development. That means there will be changes made, so if you're planning on using the API, check back here for updates and changes frequently.
+The API (and therefore these docs) is still currently under development. That means there will be changes made, so if you're planning on using the API, check back here for updates and changes frequently. We also blog about updates on the [StageBloc Developers](http://stagebloc.com/sbdevs) site.
 
 ### Fork us on GitHub!
 All of StageBloc's documentation are up on GitHub for you to fork, modify, and improve. Join us over there to request features, add suggestions, and report bugs. What are you waiting for? [Git to it!](https://github.com/stagebloc/docs)
@@ -18,6 +18,8 @@ Responses can be formatted in either JSON or XML by simply changing the extensio
 
 ### Authorization
 Connecting with the StageBloc API uses the OAuth 2.0 standard. You must first [create a StageBloc account](http://stagebloc.com/signup) and then [register your application in the StageBloc backend](http://stagebloc.com/account/admin/management/developers/) to receive a client ID and secret that will allow users to connect with your application.
+
+Once you've gotten that far, check out the `oauth2/token` endpoint or look towards the bottom of this page to find a wrapper / framework in your language.
 
 ### Errors
 Errors can be returned for any of the `/edit` endpoints and differ in content based on the endpoint you're using. However, they will have the following structure:
@@ -43,7 +45,7 @@ XML Example
 ### Wrappers
 There is currently a PHP wrapper available for connecting with the API. It can be found on [GitHub](https://github.com/stagebloc/php-stagebloc-api). Instructions for how to use it are included in the `README` file of that repository.
 
-An [Objective-C](https://github.com/stagebloc/cocoa-stagebloc-api) framework also exists for easy use with the StageBloc API in your iPhone, iPad, or Mac applications. Instructions on how to get setup with that can be found it its corresponding `README` file as well.
+An [Objective-C](https://github.com/stagebloc/cocoa-stagebloc-api) framework also exists for easy use with the StageBloc API in your iPhone, iPad, or Mac applications. Instructions on how to get setup with that can be found it its corresponding `README` file as well. There's also a [demo project](https://github.com/stagebloc/stagebloc-cocoa-framework-demo) showcasing the abilities of that framework.
 
 If you want to create your own wrapper in another language, please do! Let us know, and we can link to it from here.
 
@@ -1407,10 +1409,17 @@ images
     }
     
 #/oauth2
-This is used during the [OAuth2](http://oauth.net/2/) authentication process to get an access token from a request token. Curious? Check out our OAuth2 [PHP](https://github.com/stagebloc/php-stagebloc-api) or [Objective-C](https://github.com/stagebloc/cocoa-stagebloc-api) wrapper on GitHub.
+This is used during the [OAuth2](http://oauth.net/2/) authentication process to get an access token from a request token for [StageBloc Connect](http://stagebloc.local/developers/connect/). Curious? Check out our OAuth2 [PHP](https://github.com/stagebloc/php-stagebloc-api) or [Objective-C](https://github.com/stagebloc/cocoa-stagebloc-api) wrapper on GitHub to get started.
+
+### General Flow
+In order to authenticate a user with our application, you must first send them to the `stagebloc.com/connect/` page along with a few `GET` parameters.
+
+	https://stagebloc.com/connect/?client_id=<your_client_id>&redirect_uri=<your_redirect_uri>&response_type=code&scope=non-expiring&consumer_key=<your_client_secret>
+	
+Once they authorize on that page, they'll be redirected back to your redirect URI with a request token as a `GET` parameter named `code`. Using that `code`, you must submit a `POST` request to `oauth2/token`.
 
 ##/oauth2/token
-**Note: The only response format for this endpoint is JSON! Do not add an XML extension to this endpoint!**
+This endpoint is used to get an access token once a request token is received from the `stagebloc.com/connect/` auth flow and the user is redirected back to your application. **The only response format for this endpoint is JSON! Do not add an XML extension to this endpoint!**
 
 client_id _(required)_
 :	the ID of the application an account is connecting to
@@ -1445,6 +1454,61 @@ No parameters required. Hitting this endpoint will simply invalidate the OAuth a
     <response>
         <message>Token succesfully invalidated.</message>
     </response>
+    
+## /oauth2/token/info
+This endpoint will return data about the currently authenticated user and account as well as the application for the given access token.
+
+### Example Response (JSON)
+    {
+        "response": [{
+            "items": [{
+                "item": {
+                    "access_token": "5badcaf789d3d1d09794d8f021f40f0e",
+                    "account": {
+                        "id": 1,
+                        "name": "The Jonas Brothers",
+                        "stagebloc_url": "jobros"
+                    },
+                    "user": {
+                        "id": 8,
+                        "name": "Carly Rae Jepsen"
+                    },
+                    "application": {
+                        "name": "Music Maker",
+                        "description": "Make all your music the bomb diggity!"
+                    }
+                }
+            }]
+        }]
+    }
+    
+### Example Response (XML)
+    <response>
+        <items>
+            <item>
+                <access_token>5badcaf789d3d1d09794d8f021f40f0e</access_token>
+                <account>
+                    <id>1</id>
+                    <name>The Jonas Brothers</name>
+                    <stagebloc_url>jobros</stagebloc_url>
+                </account>
+                <user>
+                    <id>8</id>
+                    <name>Carly Rae Jepsen</name>
+                </user>
+                <application>
+                    <name>Music Maker</name>
+                    <description>Make all your music the bomb diggity!</description>
+                </application>
+            </item>
+        </items>
+    </response>
+    
+## /oauth2/token/edit
+This endpoint will change the currently authenticated account for this access token. The response will be the same as `/oauth2/token/info`.
+
+account_id
+:	the ID of the account to use with this access token
     
 # /statuses
 This endpoint is used for interacting with an account's statuses.
