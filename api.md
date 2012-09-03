@@ -315,6 +315,9 @@ total
 
 length
 :	the returned length is in seconds
+
+raw_url
+:	if the audio wasn't uploader (i.e. was added from SoundCloud, etc), this will be a URL from the service it was added from
 	
 ### Example Response (XML)
 
@@ -1521,7 +1524,7 @@ id
 	
 	no default
 	
-**_Important Note:_** If an id is passed, all other parameters will be ignored and only the requested photo will be returned
+**_Important Note:_** If an id is passed, all other parameters will be ignored and only the requested status will be returned
 
 order_by
 :	how to order the results
@@ -1623,3 +1626,150 @@ account_id
 :	a comma seperated list of account IDs to post this status to, don't incude the currently authorized account's ID in this string
 
 	possible values are any IDs that the authenticated user has admin access to, see `/accounts/list`
+
+# /videos
+
+This endpoint is used for interacting with an account's videos.
+
+## /videos/list
+id
+:	the ID of the video to return
+
+	possible values are any video ID that belongs to the authenticated account
+	
+	no default
+	
+**_Important Note:_** If an id is passed, all other parameters will be ignored and only the requested video will be returned
+
+order_by
+:	how to order the results
+
+	possible values are `created` and `title`
+	
+	defaults to `created`
+
+direction
+:	what direction to return the results in
+
+	possible values are `ASC` or `DESC`
+	
+	defaults to `DESC`
+
+limit
+:	the limit of results to return
+
+	defaults to `20`
+
+offset
+:	the offset of the results to return
+
+	possible values are any number > 0
+
+	defaults to `0`
+
+### Explanation of Returned Data
+
+total
+:	the total amount of videos for the authenticated account
+
+raw_url
+:	the link to the video on the external service it belongs to
+	
+### Example Response (XML)
+
+    <response>
+        <total>29</total>
+        <items>
+            <item>
+                <id>663</id>
+                <title>Not A Rick Roll</title>
+                <description>I promise you, it's not a rick roll...</description>
+                <url>http://stagebloc.com/demo/videos/663</url>
+                <short_url>http://stgb.lc/v/cr</short_url>
+                <raw_url>http://www.youtube.com/watch?v=oHg5SJYRHA0</raw_url>
+                <created>2012-06-16 13:47:37</created>
+                <modified>2012-06-16 14:11:59</modified>
+                <embed_code>&lt;iframe width="460" height="259" src="http://www.youtube.com/embed/oHg5SJYRHA0?fs=1&amp;feature=oembed&amp;wmode=transparent" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</embed_code>
+                <images>
+                    <image>
+                        <size>thumbnail</size>
+                        <embed_url>http://cdn.stagebloc.com/production/photos/1/thumbnail/20120713_153517_1_2779.jpeg</embed_url>
+                        <short_url>http://stgb.lc/p/PV/t</short_url>
+                    </image>
+                    <image>
+                        <size>small</size>
+                        <embed_url>http://cdn.stagebloc.com/production/photos/1/small/20120713_153517_1_2779.jpeg</embed_url>
+                        <short_url>http://stgb.lc/p/PV/s</short_url>
+                    </image>
+                    <image>
+                        <size>medium</size>
+                        <embed_url>http://cdn.stagebloc.com/production/photos/1/medium/20120713_153517_1_2779.jpeg</embed_url>
+                        <short_url>http://stgb.lc/p/PV/m</short_url>
+                    </image>
+                    <image>
+                        <size>large</size>
+                        <embed_url>http://cdn.stagebloc.com/production/photos/1/large/20120713_153517_1_2779.jpeg</embed_url>
+                        <short_url>http://stgb.lc/p/PV/l</short_url>
+                    </image>
+                    <image>
+                        <size>original</size>
+                        <embed_url>http://cdn.stagebloc.com/production/photos/1/original/20120713_153517_1_2779.jpeg</embed_url>
+                        <short_url>http://stgb.lc/p/PV/o</short_url>
+                    </image>
+                </images>
+            </item>
+        </items>
+    </response>
+    
+### Example Response (JSON)
+
+    {
+        "response": {
+            "total": "29",
+            "items": [{
+                "item": {
+                    "id": 663,
+                    "title": "Not A Rick Roll",
+                    "description": "I promise you, it's not a rick roll...",
+                    "url": "http:\/\/stagebloc.com\/demo\/videos\/663",
+                    "short_url": "http:\/\/stgb.lc\/v\/cr",
+                    "raw_url": "https:\/\/www.youtube.com\/watch?v=oHg5SJYRHA0",
+                    "created": "2012-06-16 13:47:37",
+                    "modified": "2012-06-16 14:11:59",
+                    "embed_code": "<iframe width=\"460\" height=\"259\" src=\"http:\/\/www.youtube.com\/embed\/oHg5SJYRHA0?fs=1&feature=oembed&wmode=transparent\" frameborder=\"0\" allowfullscreen><\/iframe>",
+                    "images": [{
+                        "image": {
+                            "size": "thumbnail",
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/thumbnail\/20120713_153517_1_2779.jpeg",
+                            "short_url": "http:\/\/stgb.lc\/p\/PV\/t"
+                        }
+                    }, {
+                        "image": {
+                            "size": "small",
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/small\/20120713_153517_1_2779.jpeg",
+                            "short_url": "http:\/\/stgb.lc\/p\/PV\/s"
+                        }
+                    }, {
+                        "image": {
+                            "size": "medium",
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/medium\/20120713_153517_1_2779.jpeg",
+                            "short_url": "http:\/\/stgb.lc\/p\/PV\/m"
+                        }
+                    }, {
+                        "image": {
+                            "size": "large",
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/large\/20120713_153517_1_2779.jpeg",
+                            "short_url": "http:\/\/stgb.lc\/p\/PV\/l"
+                        }
+                    }, {
+                        "image": {
+                            "size": "original",
+                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/original\/20120713_153517_1_2779.jpeg",
+                            "short_url": "http:\/\/stgb.lc\/p\/PV\/o"
+                        }
+                    }]
+                }
+            }]
+        }
+    }
+	
