@@ -1618,3 +1618,8 @@ text _(required)_
 :	the text of the status update
 
 	possible values are any string (when sharing to services such as Twitter the text will be truncated to the character limit with a link to the status on StageBloc appended to the end)
+	
+account_id
+:	a comma seperated list of account IDs to post this status to, don't incude the currently authorized account's ID in this string
+
+	possible values are any IDs that the authenticated user has admin access to, see `/accounts/list`
