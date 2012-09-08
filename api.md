@@ -1042,7 +1042,7 @@ id _(required to edit an existing photo)_
 title _(required)_
 :	the title of the photo
 
-	possible values are any string <= 100 characters
+	possible values are any string <= 200 characters
 	
 photo_data _(required when adding a new photo (i.e. no `id` is given))_
 :	the file to upload
