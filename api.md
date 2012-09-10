@@ -1789,3 +1789,18 @@ raw_url
         }
     }
 	
+## /videos/edit
+This endpoint can be used for editing existing videos or adding new videos to a StageBloc account. Upon successful editing/creation, the video will be returned in the same manner `/videos/list` would return it. Otherwise, an error message will be returned explaining what was wrong.
+
+id _(required to edit an existing video)_
+:	the ID of the video to edit
+
+	possible values are any video ID that belongs to the authenticated account
+	
+url _(required if `id` isn't sent (i.e. adding a new video))_
+:	the url of the video, sending this will allow oEmbed to fetch a title and embed code automatically for the video
+
+	possible values are any valid video URL from the following services: YouTube, Vimeo, Hulu, Flickr, Viddler, Qik, Revision3, Blip, DailyMotion
+	
+title
+:	the title of the video, if `url` is sent this will be populated by the oEmbed request but can be overriden by passing an explicit `title`
