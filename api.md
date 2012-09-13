@@ -53,7 +53,7 @@ If you want to create your own wrapper in another language, please do! Let us kn
 This endpoint is used for interacting with the accounts the authenticated user has admin access to.
 
 ## /accounts/list
-No parameters are required for this endpoint.
+Lists the accounts the currently authenticated user has admin access to. No parameters are required for this endpoint.
 
 ### Explanation of Returned Data
 
@@ -158,6 +158,48 @@ images
         }
     }
    
+## /accounts/social/list
+Lists the social profiles the currently authenticated user and account has connected to StageBloc. No parameters are required for this endpoint. Useful with the `/statuses/edit` endpoint for posting to a user's connected social profiles.
+
+### Explanation of Returned Data
+
+total
+:	the total amount of social accounts this user has access to
+
+type
+:	whether or not this social profile is connected to the user or the account
+
+service
+:	the connected service
+
+### Example Response (XML)
+    <response>
+        <total>8</total>
+        <items>
+            <item>
+                <id>191</id>
+                <service>Twitter</service>
+                <type>account</type>
+                <display_name>Brand New Account!'s Twitter</display_name>
+            </item>
+        <items>
+    </response>
+    
+### Example Response (JSON)
+    {
+        "response": {
+            "total": 8,
+            "items": [{
+                "item": {
+                    "id": "191",
+                    "service": "Twitter",
+                    "type": "account",
+                    "display_name": "Brand New Account!'s Twitter"
+                }
+            }]
+        }
+    }
+
 # /audio
 These endpoints are used for interacting with an account's audio.
 
@@ -1631,17 +1673,20 @@ total
 ## /statuses/edit
 This endpoint can be used for adding statuses to a StageBloc account (note: statuses cannot be edited, only deleted). Upon successful addition, the status data will be returned in the same manner `/statuses/list` would return it. Otherwise, an error message will be returned explaining what was wrong.
 
-*In the future, this endpoint will also allow you to post statuses to the authenticated user's connected social accounts (Twitter, Facebook, etc) as well as other accounts they are an admin for that aren't the currently authenticated account.*
-
 text _(required)_
 :	the text of the status update
 
 	possible values are any string (when sharing to services such as Twitter the text will be truncated to the character limit with a link to the status on StageBloc appended to the end)
 	
 account_id
-:	a comma seperated list of account IDs to post this status to, don't incude the currently authorized account's ID in this string
+:	a comma seperated list of additional account IDs to post this status to, don't incude the currently authorized account's ID in this string as it will always post to at least that account
 
 	possible values are any IDs that the authenticated user has admin access to, see `/accounts/list`
+	
+profile_id
+:	a comma seperated list of social profile IDs to post this status to
+
+	possible values are IDs of social profiles (only Twitter or Facebook) that the authenticated user or account has connected to StageBloc, see `/accounts/social/list`
 
 # /videos
 
