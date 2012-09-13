@@ -454,7 +454,12 @@ audio_ids
 	possible values are any CSV string of audio IDs that belong to the authenticated account
 	
 	defaults to none (no audio tracks)
-	
+
+photo_data
+:	an image file to use as the playlist's cover art
+
+	possible values are any `JPG`, `GIF`, or `PNG` file < `10MB` in size
+
 private
 :	whether or not this audio playlist should be private
 
