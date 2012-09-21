@@ -410,6 +410,20 @@ unlikeText
 class
 :	the class to give the `<a>` tag
 
+### PhotoAddToCartLink
+Creates a link that, when clicked, will add the photo to the user's cart on StageBloc
+
+text
+:	the text to be put inside the `<a>` tag
+
+    defaults to `"Add Print To Cart"`
+
+photoid (*required*)
+:	the ID of the photo you want to add to the user's cart
+
+class
+:	the class to assign to the `<a>` tag
+
 ### RepostLink
 Add a link to repost a specific item  
 
@@ -624,6 +638,11 @@ Recommended blocks: BlogView, StatusView, PhotoView, PhotoAlbumView, EventView, 
 Check if the event has a ticket buy link attached
 
 Recommended blocks: EventView
+
+### if:PhotoCanBeSold
+Check to see if the photo can be sold
+
+Recommended block: PhotoView
 
 ### if:ReadMore
 Checks if the current excerpt is trimmed to length of 600 characters (give or take, depending on HTML tags).
@@ -1301,6 +1320,9 @@ photoid
 
 PhotoAccountId
 :    the ID of the account that created the photo
+
+PhotoId
+:	the ID of the photo
 
 PhotoUrl
 :	the permalink to this photo's individual page
