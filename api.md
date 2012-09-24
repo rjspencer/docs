@@ -14,6 +14,8 @@ The root URL of the API is `https://api.stagebloc.com/2.0/`.
 
 All `/edit` endpoints take `POST` parameters (as well as `/oauth2/token`) and all `/list` endpoints take `GET` parameters.
 
+All dates returned are in `GMT / UTC (+0000)`.
+
 Responses can be formatted in either JSON or XML by simply changing the extension of the endpoint between `.xml` and `.json`. For instance, to list an account's blog entries, one could use either `/list.xml` or `/list.json`. This applies to all endpoints except `/oauth2/token` since it only returns JSON.
 
 ### Authorization
