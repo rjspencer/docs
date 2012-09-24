@@ -891,6 +891,14 @@ AudioOrderNumber
 AudioStreamUrl
 :	the URL to use when streaming the audio
 
+AudioPhotoUrl
+:	a cover image or a default one if there is no cover set
+
+	**Options**
+	
+	size
+	:	accepted sizes are "thumbnail", "small", "medium", "large", "original"
+
 ## AudioPlaylistList
 A listing of audio playlists  
 
