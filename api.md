@@ -1196,6 +1196,7 @@ total
                 <modified>2012-07-23 21:16:32</modified>
                 <created>2012-07-23 21:16:29</created>
                 <url>http://stagebloc.com/demo/photos/2814</url>
+                <short_url>http://stgb.lc/p/QK</short_url>
                 <images>
                     <image>
                         <size>thumbnail</size>
@@ -1253,6 +1254,7 @@ total
                     "modified": "2012-08-09 17:35:23",
                     "created": "2012-07-23 21:16:29",
                     "url":"http:\/\/stagebloc.com\/demo\/photos\/2814",
+                    "short_url":"http:\/\/stgb.lc\/p\/QK",
                     "images": [{
                         "image": {
                             "size": "thumbnail",
