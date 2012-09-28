@@ -820,6 +820,13 @@ limit
 
     defaults to `50`
 
+featured
+:	whether or not to just show the featured audio track
+
+	accepted values are `true` or `false`
+
+	defaults to `false`
+
 direction
 :	the direction in which to show the audio
 
