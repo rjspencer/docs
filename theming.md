@@ -1645,8 +1645,8 @@ position
 
     accepted values are two words in any order, separated by a space: `top`, `bottom`, `left`, `right`
 
-### SB Nav Color Scheme
-When submitting a theme, you can select a default color scheme that you feel best matches and fits in. Users have the option to override this in their account's theme management section.
+### SB Nav Color
+When submitting a theme, you can select a default color (in HEX value format) that you feel best matches and fits in. Users have the option to override this in their account's theme management section.
 
 # Example Theme
 Here's a boilerplate theme to kickstart your development. [View these files on GitHub](https://github.com/stagebloc/docs/tree/master/boilerplate_theme).
