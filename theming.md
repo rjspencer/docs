@@ -218,7 +218,7 @@ You can define blocks of code to reuse throughout the rest of your theme. This c
 To define a variable, use the following syntax:
 
 	{variable:CustomMyCoolVariable}
-		<aside>Woah man, this variable sure is nifty!</aside>
+		<aside>Hi there, I am a nifty variable!</aside>
 	{/variable:CustomMyCoolVariable}
 
 In this example, your variable name is `MyCoolVariable`. Note that custom variables, like custom homepages, must start with the word `Custom`.
@@ -229,7 +229,7 @@ After defining your variable, you can access its data just like a normal global 
 
 This will return exactly what was inside your declaration.
 
-	<aside>Woah man, this variable sure is nifty!</aside>
+		<aside>Hi there, I am a nifty variable!</aside>
 
 You can put anything inside your variables, including modules, blocks, and pages. Get creative and build some unique sites!
 
