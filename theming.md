@@ -213,9 +213,9 @@ Example: `<a href="{Link-Videos}">See my killer video about how to weave baskets
 Example return: `<a href="/account-name/videos">See my killer videos about how to weave baskets underwater!</a>`
 
 ## Custom Variables
-You can define blocks of code to reuse throughout the rest of your theme. This can be useful when repeating layout elements throughout your site on some pages, but not others.
+You can define blocks of code to reuse throughout the rest of your theme. This can be useful when repeating layout elements on your site on some pages, but not others.
 
-To a variable, use the following syntax:
+To define a variable, use the following syntax:
 
 	{variable:CustomMyCoolVariable}
 		<aside>Woah man, this variable sure is nifty!</aside>
