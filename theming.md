@@ -212,6 +212,27 @@ Supported: Audio, Events, EventsPast, Blog, Statuses, Photos, Videos, Home, Stor
 Example: `<a href="{Link-Videos}">See my killer video about how to weave baskets underwater!</a>`  
 Example return: `<a href="/account-name/videos">See my killer videos about how to weave baskets underwater!</a>`
 
+## Custom Variables
+You can define blocks of code to reuse throughout the rest of your theme. This can be useful when repeating layout elements throughout your site on some pages, but not others.
+
+To a variable, use the following syntax:
+
+	{variable:CustomMyCoolVariable}
+		<aside>Woah man, this variable sure is nifty!</aside>
+	{/variable:CustomMyCoolVariable}
+
+In this example, your variable name is `MyCoolVariable`. Note that custom variables, like custom homepages, must start with the word `Custom`.
+
+After defining your variable, you can access its data just like a normal global variable.
+
+	{CustomMyCoolVariable}
+
+This will return exactly what was inside your declaration.
+
+	<aside>Woah man, this variable sure is nifty!</aside>
+
+You can put anything inside your variables, including modules, blocks, and pages. Get creative and build some unique sites!
+
 ## {option} Variables
 You can set up ways for StageBloc users to customize their theme to their liking without them doing any HTML/CSS/JS editing with custom theme {option}s.
 
