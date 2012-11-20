@@ -750,6 +750,14 @@ groupPhotos
 limit
 :	how many items per page. defaults to 10
 
+offset
+:	skip X number of items. Still returns `limit` items
+
+paging (advanced option)
+:	define how many items are on this page
+	
+	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitiy set how many items are on the current page, or pagination will return unexpected results
+
 ### block:ActivityStreamView
 
 ActivityAuthorName
@@ -757,16 +765,6 @@ ActivityAuthorName
 
 ActivityAuthorPhotoUrl
 :	url to a 130x130px user photo
-
-ActivityDate
-:	the datetime the activity was posted
-	
-	**Options**
-	
-	format
-	:	the format of the date according to [PHP date() function](http://php.net/date) *defaults to n/j/y*  
-	:	if set to "relative", returns time ago such as "5 seconds ago"
-	:	if set to "gmdate", returns a GMT date in PHP date format 'Y-M-d h:i A' (see using `{EventList}` in the ActivityStream)
 
 ActivityTitle
 :	the content's title
@@ -782,23 +780,32 @@ ActivityBody
 	* Blog: the full blog post HTML
 	* Event: the same as {ActivityTitle}: [%number] events added today!
 	* Statuses: full status content
-	* Photos albums: 
-	* Video:
-	* Audio:
+	* Photos albums: album description
+	* Videos: video embed code
+	* Video playlists: playlist description
+	* Audio: Link to streamable MP3
+	* Audio playlists: playlist description
+	* Store items: item description
 
 ActivityCSSClass
 :	the relevant classes from this list: repost, blog, status, event, video, audio, photo
 
-ActivityDateTime
-:	the time and date modified (photo albums), created (events, videos, audio), or published (blogs, statuses)
+ActivityDate
+:	the date modified (photo albums), created (events, videos, audio), or published (blogs, statuses)
+	
+	**Options**
+	
+	format
+	:	the format of the date according to [PHP date() function](http://php.net/date) *defaults to n/j/y*  
+	:	if set to "relative", returns time ago such as "5 seconds ago"
+	:	if set to "gmdate", returns a GMT date in PHP date format 'Y-M-d h:i A' (see using `{EventList}` in the ActivityStream)
 
-	See ### LINK how to format date variables ###
 
 ActivityExcerpt
 :	a trimmed version of {ActivityBody}, roughly 600 characters, taking into account HTML
 
 ActivityExcerptCleaned
-:	a trimmed version of {ActivityBody} stripped of all HTML except: `<span><em><strong><a><u><i><b>`
+:	a trimmed version of {ActivityExcerpt} stripped of all HTML except: `<span><em><strong><a><u><i><b>`
 
 ActivityUrl
 :	the permalink to the content's individual page
@@ -840,6 +847,14 @@ limit
 :	a limit on the amount of returned audio objects
 
     defaults to `50`
+
+offset
+:	skip X number of items. Still returns `limit` items
+
+paging (advanced option)
+:	define how many items are on this page
+	
+	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitiy set how many items are on the current page, or pagination will return unexpected results
 
 featured
 :	whether or not to just show the featured audio track
@@ -1010,6 +1025,14 @@ limit
 : the amount of blogs to list per page
 
     defaults to `5`
+
+offset
+:	skip X number of items. Still returns `limit` items
+
+paging (advanced option)
+:	define how many items are on this page
+	
+	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitiy set how many items are on the current page, or pagination will return unexpected results
     
 direction
 :	the direction in which to order the blog posts
@@ -1108,6 +1131,14 @@ limit
 : the amount of events to list per page
 
     defaults to `50`
+
+offset
+:	skip X number of items. Still returns `limit` items
+
+paging (advanced option)
+:	define how many items are on this page
+	
+	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitiy set how many items are on the current page, or pagination will return unexpected results
 
 upcoming
 : whether or not to show upcoming events
@@ -1214,7 +1245,7 @@ FollowingAccountUrl
 :	the URL of the account being followed
 
 ## Navigation
-Display all the links to active, defined content sections. *Note: If you do not have the page defined in your theme, the link will not show to that section, however the section will still work with our ###LINK fallback no content page layout###.*
+Display all the links to active, defined content sections. *Note: If you do not have the page defined in your theme, the link will not show to that section, however the section will still work with our fallback pages.
 
 You can override the link text in navigation modules as options. Example:
 
@@ -1269,6 +1300,14 @@ limit
 
     defaults to `5`
     
+offset
+:	skip X number of items. Still returns `limit` items
+
+paging (advanced option)
+:	define how many items are on this page
+	
+	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitiy set how many items are on the current page, or pagination will return unexpected results
+
 direction
 :	the direction in which to order the photo albums
 
@@ -1338,6 +1377,14 @@ limit
 : the amount of photos to list per page
 
     defaults to `10`
+
+offset
+:	skip X number of items. Still returns `limit` items
+
+paging (advanced option)
+:	define how many items are on this page
+	
+	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitiy set how many items are on the current page, or pagination will return unexpected results
     
 accountid
 : a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account, see variable `{ChildAccountIDs}`
@@ -1433,7 +1480,15 @@ limit
 : the amount of statuses to list per page
 
     defaults to `5`
-    
+
+offset
+:	skip X number of items. Still returns `limit` items
+
+paging (advanced option)
+:	define how many items are on this page
+	
+	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitiy set how many items are on the current page, or pagination will return unexpected results
+
 direction
 :	the direction in which to show the statuses
 
@@ -1475,7 +1530,15 @@ limit
 : the amount of store items to list per page
 
     defaults to `20`
-    
+
+offset
+:	skip X number of items. Still returns `limit` items
+
+paging (advanced option)
+:	define how many items are on this page
+	
+	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitiy set how many items are on the current page, or pagination will return unexpected results
+
 direction
 :	the direction in which to order the store items
 
@@ -1542,6 +1605,14 @@ limit
 
     default to `50`
 
+offset
+:	skip X number of items. Still returns `limit` items
+
+paging (advanced option)
+:	define how many items are on this page
+	
+	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitiy set how many items are on the current page, or pagination will return unexpected results
+
 direction
 :	the direction in which to order the videos
 
@@ -1600,6 +1671,20 @@ VideoThumbnailUrl
 
 ## VideoPlaylistList
 A listing of video playlists
+
+
+limit
+:	a limit on the amount of returned audio objects
+
+    defaults to `50`
+
+offset
+:	skip X number of items. Still returns `limit` items
+
+paging (advanced option)
+:	define how many items are on this page
+	
+	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitiy set how many items are on the current page, or pagination will return unexpected results
 
 ## VideoPlaylistView
 A view for a single video playlist
