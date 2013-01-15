@@ -607,6 +607,16 @@ Check to see if the store item supports naming a price
 
 Recommended block: StoreItemView
 
+### if:StoreItemIsPhysical
+Check to see if the store item is a physical good (instead of a digital good)
+
+Recommended block: StoreItemView
+
+### if:StoreItemIsSoldOut
+Check to see if the store item is sold out or not
+
+Recommended block: StoreItemView
+
 ### if:EventHasEnded
 Check if an event's end time is after the current time.
 
@@ -1545,6 +1555,18 @@ direction
     accepted values are `asc` or `desc`
 
     defaults to `desc`
+    
+type
+:	the type of store item
+
+	accepted values are any comma seperated string of the following constants: digital, physical
+    
+status
+:	the status of the store items
+
+	accepted values are any comma seperated string of the following constants: listed, coming_soon, sold_out
+	
+	defaults to all three
     
 accountid
 : a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account, see variable `{ChildAccountIDs}`
