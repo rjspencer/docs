@@ -14,9 +14,18 @@ Here are a few (loose) requirements to keep in mind when submitting and creating
 ## Code Style Guidelines
 Here are a few tips and tricks that we have when writing a theme. These are just some loose guidelines -- don't follow them if necessary.
 
-* Use semicolons in JavaScript. We do compress JavaScript before we upload it to our CDN, which may cause issues from time to time.
+* Use semicolons in JavaScript. We do compress / minify your JavaScript before we upload it to our CDN, which may cause issues from time to time.
 
-* Remember to keep metadata in mind. For instance, when people share links to Facebook, you have control over the information Facebook pulls from the page. [Obligatory StackOverflow Post](http://stackoverflow.com/a/7623986/115629)
+* Remember to keep metadata in mind. For instance, when people share links to Facebook, you have control over the information Facebook pulls from the page. Check out this [obligatory StackOverflow post](http://stackoverflow.com/a/7623986/115629) for more info.
+
+## General Information
+Here is some general information about custom themes.
+
+* If you don't explicitly provide a favicon in the `<head>` of your HTML, we'll add the [default StageBloc favicon](https://stagebloc.com/images/favicon.ico) for you. To add your own favicon, simply upload it as a Theme Asset and put it in your HTML `<head>` tag.
+
+* We allow you to upload assets *(images, fonts, favicons, etc)* to our CDN and encourage you to use this when creating a theme. This means you don't have to host any part of your theme outside of StageBloc, making it easier for you.
+
+* CSS and JS are both minified before being uploaded to our CDN so that you get the maximum performance and caching when users come to your site.
 
 # Pages
 Each view on StageBloc has a `{Page}` block. [You can also create your own custom pages](#custom-pages).
