@@ -885,7 +885,7 @@ accountid
 ### Variables
 
 TotalAudio:
-:	the total amount of audio objects for the account
+:	the total amount of audio tracks, or if `audioplaylistid` is set, how many audio tracks in that playlist
 
 ## AudioView
 A view for a single audio object. *Meant to be used with {Page:AudioView}*  
@@ -954,6 +954,8 @@ AudioPhotoUrl
 ## AudioPlaylistList
 A listing of audio playlists  
 
+### Options
+
 featured
 :	whether or not to just show the featured audio playlist
 
@@ -963,6 +965,11 @@ featured
 
 featuredfirst
 :	whether or not to show the featured audio playlist first in the listing
+
+### Variables
+
+TotalAudioPlaylists
+: the total amount of audio playlists
 
 ## AudioPlaylistView
 A single view for an audio playlist. *Meant to be used with {Page:AudioPlaylistView}*
@@ -1054,6 +1061,11 @@ accountid
 : a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account, see variable `{ChildAccountIDs}`
 
     defaults to none (i.e. the current account)
+
+### Variables
+
+TotalBlogs
+:	the total amount of blog posts
 
 ## BlogView
 A view for a single blog post. Meant to be used with `{Page:BlogView}`
@@ -1175,7 +1187,7 @@ accountid
 
     defaults to none (i.e. the current account)
 
-### Variables  
+### Variables
 
 TotalEvents
 : the amount of events loaded based on your values for upcoming and/or past
@@ -1329,6 +1341,11 @@ accountid
 
     defaults to none (i.e. the current account)
 
+### Variables
+
+TotalPhotoAlbums
+: the total amount of photo albums
+
 ## PhotoAlbumView
 A view for a single photo album. *Meant to be used with {Page:PhotoAlbumView}*
 
@@ -1399,6 +1416,11 @@ accountid
 : a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account, see variable `{ChildAccountIDs}`
 
     defaults to none (i.e. the current account)
+
+### Variables
+
+TotalPhotos
+: the total amount of photos, or if `albumid` is set, how many photos in this album
 
 ## PhotoView
 A view for a single photo. *Meant to be used with {Page:PhotoView}*
@@ -1510,6 +1532,11 @@ accountid
 
     defaults to none (i.e. the current account)
 
+### Variables
+
+TotalStatuses
+:	total amount of statuses
+
 ## StatusView
 A view for an individual status. *Meant to be used with {Page:StatusView}*
 
@@ -1560,6 +1587,11 @@ accountid
 
     defaults to none (i.e. the current account)
 
+### Variables
+
+TotalStoreItems
+:	total amount of store items
+
 ## StoreItemView
 A view for an individual store item. *Meant to be used with {Page:StoreItemView}*
 
@@ -1604,6 +1636,8 @@ Tag
 ## VideoList
 A listing of videos.
 
+### Options
+
 videoplaylistid
 :	a video playlist id to limit the videos to
 
@@ -1640,6 +1674,11 @@ accountid
 : a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account, see variable `{ChildAccountIDs}`
 
     defaults to none (i.e. the current account)
+
+### Variables
+
+TotalVideos
+: the total amount of videos, or if `videoplaylistid` is set, the total videos in this playlist
 
 ## VideoView
 A view for a single video. *Meant to be used with {Page:VideoView}*  
@@ -1681,6 +1720,7 @@ VideoThumbnailUrl
 ## VideoPlaylistList
 A listing of video playlists
 
+### Options
 
 limit
 :	a limit on the amount of returned audio objects
@@ -1694,6 +1734,11 @@ paging (advanced option)
 :	define how many items are on this page
 	
 	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitiy set how many items are on the current page, or pagination will return unexpected results
+
+### Variables
+
+TotalVideoPlaylists
+: the total amount of video playlists
 
 ## VideoPlaylistView
 A view for a single video playlist
