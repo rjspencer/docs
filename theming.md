@@ -23,6 +23,8 @@ Here is some general information about custom themes.
 
 * If you don't explicitly provide a favicon in the `<head>` of your HTML, we'll add the [default StageBloc favicon](https://stagebloc.com/images/favicon.ico) for you. To add your own favicon, simply upload it as a Theme Asset and put it in your HTML `<head>` tag.
 
+* We also add various `<meta>` tags to your `<head>` content if they aren't explicitly set to aid in SEO.
+
 * We allow you to upload assets *(images, fonts, favicons, etc)* to our CDN and encourage you to use this when creating a theme. This means you don't have to host any part of your theme outside of StageBloc, making it easier for you.
 
 * CSS and JS are both minified before being uploaded to our CDN so that you get the maximum performance and caching when users come to your site.
