@@ -618,6 +618,11 @@ Check to see if the store item supports naming a price
 
 Recommended block: StoreItemView
 
+### if:StoreItemIsOnSale
+Check to see if the store item is on sale or not
+
+Recommended block: StoreItemView
+
 ### if:StoreItemIsPhysical
 Check to see if the store item is a physical good (instead of a digital good)
 
