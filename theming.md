@@ -1639,7 +1639,10 @@ StoreItemDescription
 :	the description of the store item *Can contain HTML code*
 
 StoreItemPrice
-:	the price of the store item *Note: if there is a pre-order currently active for the sotre item, it'll use that price instead*
+:	the price of the store item with any active sales applied *Note: if there is a pre-order currently active for the store item, it'll use that price instead*
+
+StoreItemOriginalPrice
+:	the original price of the store item (i.e. no sales applied) *Note: if there is a pre-order currently active for the store item, it'll use that price instead*
 
 StoreItemId
 :	the ID for the store item
