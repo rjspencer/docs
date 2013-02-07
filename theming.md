@@ -1647,6 +1647,9 @@ StoreItemOriginalPrice
 StoreItemId
 :	the ID for the store item
 
+StoreItemPhotoAlbumId
+:	the ID of the photo album that holds the photos for this store item *Note: This can be used with the `PhotoList` module to easily list store item photos*
+
 StoreItemPhotoUrl
 : the image representing the store item
 
