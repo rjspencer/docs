@@ -618,6 +618,21 @@ Check to see if the store item supports naming a price
 
 Recommended block: StoreItemView
 
+### if:StoreItemIsOnSale
+Check to see if the store item is on sale or not
+
+Recommended block: StoreItemView
+
+### if:StoreItemIsPhysical
+Check to see if the store item is a physical good (instead of a digital good)
+
+Recommended block: StoreItemView
+
+### if:StoreItemIsSoldOut
+Check to see if the store item is sold out or not
+
+Recommended block: StoreItemView
+
 ### if:EventHasEnded
 Check if an event's end time is after the current time.
 
@@ -1584,6 +1599,18 @@ direction
 
     defaults to `desc`
     
+type
+:	the type of store item
+
+	accepted values are any comma seperated string of the following constants: digital, physical
+    
+status
+:	the status of the store items
+
+	accepted values are any comma seperated string of the following constants: listed, coming_soon, sold_out
+	
+	defaults to all three
+    
 accountid
 : a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account, see variable `{ChildAccountIDs}`
 
@@ -1612,10 +1639,16 @@ StoreItemDescription
 :	the description of the store item *Can contain HTML code*
 
 StoreItemPrice
-:	the price of the store item *Note: if there is a pre-order currently active for the sotre item, it'll use that price instead*
+:	the price of the store item with any active sales applied *Note: if there is a pre-order currently active for the store item, it'll use that price instead*
+
+StoreItemOriginalPrice
+:	the original price of the store item (i.e. no sales applied) *Note: if there is a pre-order currently active for the store item, it'll use that price instead*
 
 StoreItemId
 :	the ID for the store item
+
+StoreItemPhotoAlbumId
+:	the ID of the photo album that holds the photos for this store item *Note: This can be used with the `PhotoList` module to easily list store item photos*
 
 StoreItemPhotoUrl
 : the image representing the store item
