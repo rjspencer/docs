@@ -706,6 +706,9 @@ Checks if the current excerpt is trimmed to length of 600 characters (give or ta
 Recommended blocks: ActivityStreamView, BlogView  
 Recommended pages: ActivityStreamList, BlogList
 
+### if:UserIsFollowing
+Checks to see if the user is logged in and following the current account or not
+
 ### if:VenueHasWebsite
 Checks if a venue has a website.
 
