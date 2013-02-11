@@ -21,9 +21,9 @@ Here are a few tips and tricks that we have when writing a theme. These are just
 ## General Information
 Here is some general information about custom themes.
 
-* If you don't explicitly provide a favicon in the `<head>` of your HTML, we'll add the [default StageBloc favicon](https://stagebloc.com/images/favicon.ico) for you. To add your own favicon, simply upload it as a Theme Asset and put it in your HTML `<head>` tag.
+* If you don't explicitly provide a favicon in the `<head>` of your HTML, we'll add the [default StageBloc favicon](https://stagebloc.com/images/favicon.ico) for you. To add your own favicon, simply upload it as a Theme Asset and put it in your theme's `<head>` HTML tag.
 
-* We also add various `<meta>` tags to your `<head>` content if they aren't explicitly set to aid in SEO.
+* We also add various `<meta>` tags to your `<head>` content if they aren't explicitly set to aid in SEO. For instance, many tags from the [Open Graph Protocol](http://ogp.me/) are automatically added.
 
 * We allow you to upload assets *(images, fonts, favicons, etc)* to our CDN and encourage you to use this when creating a theme. This means you don't have to host any part of your theme outside of StageBloc, making it easier for you.
 
@@ -323,6 +323,15 @@ Provides users with a textbox where they can input any string. Data returned is 
 Variables with options use the following syntax:
 
 	{VariableName option1="value" option2="value"}
+	
+### AccountPhotoUrl
+The URL for the account's photo	
+
+size
+:	accepted sizes are "thumbnail", "small", "medium", "large", "original"
+
+defaultPhoto
+:	the URL of a photo to use if one isn't set and you don't want to use our default photo
 
 ### AdminListLikeCount
 Shows the amount of likes the collective admins for an account have
@@ -738,25 +747,6 @@ LinkUrl
 
 LinkTitle
 :	The name of the link
-
-### block:AccountPhoto
-
-PhotoSource-Thumb
-:	A square thumbnail, 130x130
-
-PhotoSource-Small
-:	Photo with max width of 250
-
-PhotoSource-Medium
-:	Photo with max width of 500
-
-PhotoSource-Large
-:	Photo with max width of 800
-
-PhotoSource-Original
-:	The originally uploaded photo.
-
-	Use PhotoSource-Large when possible
 
 ## ActivityStreamList
 Events are grouped in the activity stream.
@@ -1271,6 +1261,12 @@ SupportingActs
 VenueWebsiteUrl
 :	the URL to the venue where the event is taking place. Also see {if:VenueHasWebsite}
 
+## FanList
+A list of fans for this account
+
+### block:UserView
+See `UserView` module for `UserView` block variables
+
 ## FollowingList
 A list of accounts that this account's admins are following
 
@@ -1667,6 +1663,28 @@ limit
 ### block:TagView
 Tag
 :	the actual tag
+
+## UserView
+A view for a single user.
+
+### block:UserView
+
+UserName
+:    the real name of the user
+
+UserUsername
+:    the username of the user
+
+UserPhotoUrl
+: the image representing the user
+
+	**Options**
+	
+	size
+	:	accepted sizes are "thumbnail", "small", "medium", "large", "original"
+
+	defaultphoto
+	:	the URL of a photo to use if one isn't set and you don't want to use our default photo
 
 ## VideoList
 A listing of videos.
@@ -2772,9 +2790,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 					<div id="main-content">
 						{module:AccountAbout}
 							<div class="account-overview">
-								{block:AccountPhoto}
-									<img alt="{AccountName}'s account photo" id="account-photo" src="{PhotoSource-Small}" />
-								{/block:AccountPhoto}
+								<img alt="{AccountName}'s account photo" id="account-photo" src="{AccountPhotoUrl size="small"}" />
 								<ul id="account-links">
 									{block:AccountLink}
 										<li><a href="{LinkUrl}" target="_blank">{LinkTitle}</a></li>
@@ -3133,3 +3149,6 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 			e.stopPropagation();
 		});
 	});
+	
+# Deprecated
+### block:AccountPhoto
