@@ -434,6 +434,17 @@ format
     accepted values are a formatted date, `relative` (returns time ago such as "5 seconds ago"), or `gmdate` (a GMT date in PHP date format 'Y-M-d h:i A' (see using `{EventList}` in the ActivityStream))
 
     defaults to `n/j/y`
+    
+### JoinFansiteLink
+A link that opens a modal and allows a user to join the site's fansite
+
+text
+:	the text to be put inside the `<a>` tag
+
+    defaults to `"Join Fansite"`
+
+class
+:	the class to assign to the `<a>` tag
 
 ### LikeLink
 Add a link to like a specific item  
@@ -1403,6 +1414,16 @@ A listing of photos.
 
 ### Options
 
+accountcontent
+: whether or not to show photos created by admins of the account *Note: see `fancontent`*
+
+    defaults to true
+
+accountid
+: a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account, see variable `{ChildAccountIDs}`
+
+    defaults to just the ID of the current account
+
 albumid
 : an album id of which to limit the returned photos to
 
@@ -1415,6 +1436,11 @@ direction
 
     defaults to `desc`
     
+fancontent
+: whether or not to show photos submitted to the accounts by fans
+
+    defaults to false
+
 limit
 : the amount of photos to list per page
 
@@ -1427,11 +1453,11 @@ paging (advanced option)
 :	define how many items are on this page
 	
 	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitiy set how many items are on the current page, or pagination will return unexpected results
-    
-accountid
-: a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account, see variable `{ChildAccountIDs}`
+	
+userid
+:    the user to limit the photos to *Note: if `fancontent` is enabled, this must be a fan of the account, and if `accountcontent` is enabled, this must be an admin of the account
 
-    defaults to none (i.e. the current account)
+    defaults to empty (i.e. all fans and / or all admins)
 
 ### Variables
 
