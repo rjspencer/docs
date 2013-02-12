@@ -32,7 +32,7 @@ Here is some general information about custom themes.
 # Pages
 Each view on StageBloc has a `{Page}` block. [You can also create your own custom pages](#custom-pages).
 
-*Note: Not all pages are required. Define pages that make sense for your theme, and the rest will be taken care of by the engine. No links will be broken.*
+*Note: Not all pages are required. Define pages that make sense for your theme, and the rest will be taken care of by the theming engine. No links will be broken.*
 
 ### page:About
 This page should show general information about the account.
@@ -176,6 +176,25 @@ This page should show an individual video playlist.
 
 Url structure: /videos/playlists/[%id]  
 Recommended modules: ViewPlaylistView
+
+## Page Options
+Pages, like [Variables With Options](#variables-with-options), can have their own options.
+
+homepage
+:	flag representing if the page should be used as the homepage
+
+	accepted values are true or false
+	
+	default homepage is `ActivityStreamList`, if that Page isn't defined the first defined Page in the theme's HTML will be used as the homepage
+	
+url
+:	the URL to override the page's default URL
+
+	accepted values are any string valid in a URL
+
+		{Page:EventList url="shows"}
+			<!-- The events page would now be at /shows, not /events -->
+		{/Page:EventList}
 
 ## Custom Pages
 Custom pages can be defined using the following syntax:
