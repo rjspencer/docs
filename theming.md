@@ -105,6 +105,12 @@ This page should show information for an event.
 Url structure: /events/[%id]  
 Recommended modules: EventView
 
+### page:Fansite
+This page should use `{if:UserIsFollowing}` and show fansite content if true or a `JoinFansiteLink` if false
+
+Url structure: /fansite/
+Recommended modules: Any, mark `exclusive` as true if available
+
 ### page:PhotoAlbumList
 This page should show a listing of photo albums
 
