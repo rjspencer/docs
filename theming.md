@@ -30,7 +30,7 @@ Here is some general information about custom themes.
 * CSS and JS are both minified before being uploaded to our CDN so that you get the maximum performance and caching when users come to your site.
 
 # Pages
-Each view on StageBloc has a `{Page}` block. [You can also create your own custom pages](#custom-pages).
+Each view on StageBloc has a `{Page}` block. [You can also create your own custom pages](#custom-pages). The URL structure shown is the default, they can be altered via the `url` [Page Option](#page-options).
 
 *Note: Not all pages are required. Define pages that make sense for your theme, and the rest will be taken care of by the theming engine. No links will be broken.*
 
@@ -236,11 +236,13 @@ Include the latest version of jQuery on the page via Google's CDN.
 Include the jPlayer JavaScript library. Requires that {jQuery} is also included and comes before the {jPlayer} variable.
 
 ### Link-\[%Section]
-Get a relative url to a particular section of the site.
+Get a relative url to a particular section of the site. *Note: This will also reflect any changes to [Page URLs](#page-options) you might have made*
 
-Supported: Audio, Events, EventsPast, Blog, Statuses, Photos, Videos, Home, Store
-Example: `<a href="{Link-Videos}">See my killer video about how to weave baskets underwater!</a>`  
-Example return: `<a href="/account-name/videos">See my killer videos about how to weave baskets underwater!</a>`
+Supported: Audio, Events, EventsPast, Blog, Statuses, Photos, Videos, Home, Store, Fansite
+
+	<a href="{Link-Videos}">See my killer video about how to weave baskets underwater!</a>
+	becomes
+	<a href="/account-name-or-custom-domain/videos">See my killer videos about how to weave baskets underwater!</a>
 
 ## Custom Variables
 You can define blocks of code to reuse throughout the rest of your theme. This can be useful when repeating layout elements on your site on some pages, but not others.
@@ -259,7 +261,7 @@ After defining your variable, you can access its data just like a normal global 
 
 This will return exactly what was inside your declaration.
 
-		<aside>Hi there, I am a nifty variable!</aside>
+	<aside>Hi there, I am a nifty variable!</aside>
 
 You can put anything inside your variables, including modules, blocks, and pages. Get creative and build some unique sites!
 
