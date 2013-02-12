@@ -109,7 +109,7 @@ Recommended modules: EventView
 This page should use `{if:UserIsFollowing}` and show fansite content if true or a `JoinFansiteLink` if false
 
 Url structure: /fansite/
-Recommended modules: Any, mark `exclusive` as true if available
+Recommended modules: ActivityStreamList with `exclusive` as true
 
 ### page:PhotoAlbumList
 This page should show a listing of photo albums
