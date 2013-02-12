@@ -1447,7 +1447,7 @@ limit
     defaults to `10`
 
 offset
-:	skip X number of items. Still returns `limit` items
+:	skip X number of items, still returns `limit` items
 
 paging (advanced option)
 :	define how many items are on this page
@@ -1455,7 +1455,7 @@ paging (advanced option)
 	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitiy set how many items are on the current page, or pagination will return unexpected results
 	
 userid
-:    the user to limit the photos to *Note: if `fancontent` is enabled, this must be a fan of the account, and if `accountcontent` is enabled, this must be an admin of the account
+:    the user to limit the photos to *Note: if `fancontent` is enabled, this must be a fan of the account and / or if `accountcontent` is enabled, this must be an admin of the account*
 
     defaults to empty (i.e. all fans and / or all admins)
 
@@ -1549,10 +1549,32 @@ A listing of statuses.
 
 ### Options
 
+accountcontent
+: whether or not to show statuses created by admins of the account *Note: see `fancontent`*
+
+    defaults to true
+
+accountid
+: a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account, see variable `{ChildAccountIDs}`
+
+    defaults to just the ID of the current account
+
+direction
+:	the direction in which to order the photos
+
+    accepted values are `asc` or `desc`
+
+    defaults to `desc`
+    
+fancontent
+: whether or not to show statuses submitted to the accounts by fans
+
+    defaults to false
+
 limit
 : the amount of statuses to list per page
 
-    defaults to `5`
+    defaults to `10`
 
 offset
 :	skip X number of items. Still returns `limit` items
@@ -1561,18 +1583,11 @@ paging (advanced option)
 :	define how many items are on this page
 	
 	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitiy set how many items are on the current page, or pagination will return unexpected results
-
-direction
-:	the direction in which to show the statuses
-
-    accepted values are `asc` or `desc`
-
-    defaults to `desc`
     
-accountid
-: a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account, see variable `{ChildAccountIDs}`
+userid
+:    the user to limit the statuses to *Note: if `fancontent` is enabled, this must be a fan of the account and / or if `accountcontent` is enabled, this must be an admin of the account*
 
-    defaults to none (i.e. the current account)
+    defaults to empty (i.e. all fans and / or all admins)
 
 ### Variables
 
