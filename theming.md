@@ -1736,9 +1736,18 @@ Tag
 :	the actual tag
 
 ## UserView
-A view for a single user.
+A view for a single user
+
+### Options
+userid
+:	the ID of the user to show
+
+	defaults to the user in the URL
 
 ### block:UserView
+
+UserId
+:	the ID of the user
 
 UserName
 :    the real name of the user
