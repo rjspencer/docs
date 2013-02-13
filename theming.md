@@ -156,8 +156,14 @@ Recommended modules: StoreItemList
 ### page:StoreItemView
 This page should show an individual store item.
 
-Url structure: /store/[%id]  
+Url structure: /store/[%id]
 Recommended modules: StoreItemView
+
+### page:User
+This page shows an individual fan of an account
+
+Url structure: /fansite/user/[%id]
+Recommended modules: UserView
 
 ### page:VideoList
 This page should show a listing of videos.
