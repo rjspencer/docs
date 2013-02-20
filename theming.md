@@ -457,6 +457,17 @@ includeCurrent
     accepted values are `true` or `false`
     
     defaults to `false`
+    
+### CommentLink
+Add a link to comment on a specific item  
+
+CommentText
+:	the text to show in the link for adding a comment
+
+    defaults to `"Add A Comment"`
+
+class
+:	the class to give the `<a>` tag
 
 ### CreatedDate, ModifiedDate, PublishedDate
 Show the date of various objects
