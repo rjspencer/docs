@@ -585,8 +585,10 @@ preorderSoldOutText
 
     defaults to `"Pre-order Sold Out"`
 
-storeitemid (*required*)
+storeitemid
 :	the ID of the audio you want to add to the user's cart
+
+	defaults to the ID of the currently rendered `block`
 
 class
 :	the class to assign to the `<a>` tag
@@ -599,8 +601,26 @@ text
 
     defaults to `"Download"`
 
-storeitemid (*required*)
+storeitemid
 :	the ID of the audio playlist you want to download
+
+	defaults to the ID of the currently rendered `block`
+
+class
+:	the class to assign to the `<a>` tag
+
+### SubmitFanContentLink
+Creates a link that, when clicked, will open a modal to allow the fan to submit content
+
+linktext
+:	the text to be put inside the `<a>` tag
+
+    defaults to `"Add Content"`
+
+contenttype
+:	the content type to default to in the modal, either `status`, `photo`, `blog`, or `video`
+
+	defaults to `status`
 
 class
 :	the class to assign to the `<a>` tag
