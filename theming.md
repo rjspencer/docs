@@ -82,6 +82,12 @@ This page should show the content of an individual blog post.
 Url structure: /blog/[%id]  
 Recommended modules: BlogView
 
+### page:BlogCommentView
+This page should show the content of an individual blog post comment.
+
+Url structure: /blog/comment/[%id]  
+Recommended modules: CommentView, BlogView
+
 ### page:Error404
 This page will be loaded whenever a unknown URL structure is hit.  *Note: This page will not be called when no content is available for a defined view. Also see {Else} blocks for Modules*
 
@@ -459,7 +465,7 @@ includeCurrent
     defaults to `false`
     
 ### CommentLink
-Add a link to comment on a specific item  
+Add a link to comment on a specific item in a modal, will also show any previously existing comments
 
 CommentText
 :	the text to show in the link for adding a comment
@@ -1169,7 +1175,7 @@ BlogPostTitle
 :	the content's title
 
 BlogPostId
-:	the content's id
+:	the content's ID
 
 BlogPostBody
 :	the main content for the blog post
@@ -1188,6 +1194,34 @@ PreviousBlogPostTitle, NextBlogPostTitle
 
 PreviousBlogPostUrl, NextBlogPostUrl
 :	the permalink of the blog post previous/next to the current one if it exists
+
+## CommentList
+A view for a listing of the most recent comments, it will use the content of the currently rendered item
+
+### Options
+limit
+:	the amount to limit the comments to
+
+	accepted values are any number between 1 and 10 *Note: to show more then 10 comments, see the `CommentLink` variable*
+	
+	defaults to 10
+	
+## CommentView
+A view for a single comment
+
+### block:CommentView
+
+CommentText
+:	the text of the comment
+
+CommentUserId
+:	the ID of the user who posted the comment *Can be used with `block:UserView`
+
+CommentId
+:	the ID for the comment
+
+CommentItemId
+:	the ID of the item the comment was written about
 
 ## ChildAccountList
 A listing of accounts that are children of the current account
