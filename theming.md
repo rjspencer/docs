@@ -467,7 +467,7 @@ includeCurrent
 ### CommentLink
 Add a link to comment on a specific item in a modal, will also show any previously existing comments
 
-CommentText
+LinkText
 :	the text to show in the link for adding a comment
 
     defaults to `"Add A Comment"`
@@ -526,8 +526,19 @@ photoid (*required*)
 class
 :	the class to assign to the `<a>` tag
 
+### ReportContentLink
+A link to open a modal for reporting (flagging) content as inappropriate, etc
+
+linkText
+:	the text to show in the '<a>' tag
+
+	defaults to `"Report Content"`
+
+class
+:	the class to give the `<a>` tag
+
 ### RepostLink
-Add a link to repost a specific item  
+Add a link to repost a specific item
 
 repostText
 :	the text to show when the item hasn't yet been reposted by the viewer
