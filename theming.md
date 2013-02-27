@@ -85,7 +85,7 @@ Recommended modules: BlogView
 ### page:BlogCommentView
 This page should show the content of an individual blog post comment.
 
-Url structure: /blog/comment/[%id]  
+Url structure: /blog/[%blog_id]/comment/[%id]  
 Recommended modules: CommentView, BlogView
 
 ### page:Error404
@@ -208,11 +208,13 @@ homepage
 url
 :	the URL to override the page's default URL
 
-	accepted values are any string valid in a URL
+	accepted values are any string valid in a URL, the [%id] is always assumed to be at the end
 
 		{Page:EventList url="shows"}
 			<!-- The events page would now be at /shows, not /events -->
 		{/Page:EventList}
+		
+	*Note: If a `Page` has more than one [%id] (i.e. `Page:BlogCommentView`), use a `*` for the first [%id]*
 
 ## Custom Pages
 Custom pages can be defined using the following syntax:
