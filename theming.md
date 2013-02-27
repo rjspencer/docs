@@ -141,6 +141,12 @@ This page should show a single photo.
 Url structure: /photos/[%id]  
 Recommended modules: PhotoView
 
+### page:PhotoCommentView
+This page should show the content of an individual photo comment.
+
+Url structure: /photos/[%photo_id]/comment/[%id]  
+Recommended modules: CommentView, PhotoView
+
 ### page:StatusList
 This page should show a listing of statuses posted by the account.
 
@@ -150,8 +156,14 @@ Recommended modules: StatusList
 ### page:StatusView
 This page should show an individual status.
 
-Url structure: /statuses/[%id]  
+Url structure: /statuses/[%id]
 Recommended modules: StatusView
+
+### page:StatusCommentView
+This page should show the content of an individual status comment.
+
+Url structure: /statuses/[%status_id]/comment/[%id]  
+Recommended modules: CommentView, StatusView
 
 ### page:StoreItemList
 This page should show a listing of store items posted by the account.
@@ -180,8 +192,14 @@ Recommended modules: VideoList
 ### page:VideoView
 This page should show the content for an individual video.
 
-Url structure: /videos/[%id]  
+Url structure: /videos/[%id]
 Recommended modules: VideoView
+
+### page:VideoCommentView
+This page should show the content of an individual video comment.
+
+Url structure: /blog/[%video_id]/comment/[%id]  
+Recommended modules: CommentView, VideoView
 
 ### page:VideoPlaylistList
 This page should show a listing of video playlists.
