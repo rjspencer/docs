@@ -226,7 +226,7 @@ homepage
 url
 :	the URL to override the page's default URL
 
-	accepted values are any string valid in a URL, the [%id] is always assumed to be at the end
+	accepted values are any string valid in a URL, the [%id] is always assumed to be at the end *(Note: do not start the override URL with a `/`)*
 
 		{Page:EventList url="shows"}
 			<!-- The events page would now be at /shows, not /events -->
@@ -1856,6 +1856,12 @@ UserName
 
 UserUsername
 :    the username of the user
+
+UserUrl
+:	the URL to the user's page on StageBloc (i.e. stagebloc.com/user/[%id])
+
+UserFansiteUrl
+:	the URL to the user's pages on the current account's fansite (if they have one setup) (i.e. stagebloc.com/[%account_url]/fansite/user/[%user_id])
 
 UserPhotoUrl
 : the image representing the user
