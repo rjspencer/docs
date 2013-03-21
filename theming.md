@@ -180,7 +180,13 @@ Recommended modules: StoreItemView
 ### page:User
 This page shows an individual fan of an account
 
-Url structure: /fansite/user/[%id]
+Url structure: /fansite/users/[%id]
+Recommended modules: UserView
+
+### page:UserList
+This page shows a list of fans of an account
+
+Url structure: /fansite/users/
 Recommended modules: UserView
 
 ### page:VideoList
@@ -1861,7 +1867,7 @@ UserUrl
 :	the URL to the user's page on StageBloc (i.e. stagebloc.com/user/[%id])
 
 UserFansiteUrl
-:	the URL to the user's pages on the current account's fansite (if they have one setup) (i.e. stagebloc.com/[%account_url]/fansite/user/[%user_id])
+:	the URL to the user's pages on the current account's fansite (if they have one setup) (i.e. stagebloc.com/[%account_url]/fansite/users/[%user_id])
 
 UserPhotoUrl
 : the image representing the user
