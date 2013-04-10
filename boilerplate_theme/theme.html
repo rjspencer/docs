@@ -944,9 +944,7 @@
 				<div id="main-content">
 					{module:AccountAbout}
 						<div class="account-overview">
-							{block:AccountPhoto}
-								<img alt="{AccountName}'s account photo" id="account-photo" src="{PhotoSource-Small}" />
-							{/block:AccountPhoto}
+							<img alt="{AccountName}'s account photo" id="account-photo" src="{AccountPhotoUrl size="small"}" />
 							<ul id="account-links">
 								{block:AccountLink}
 									<li><a href="{LinkUrl}" target="_blank">{LinkTitle}</a></li>

@@ -21,18 +21,18 @@ Here are a few tips and tricks that we have when writing a theme. These are just
 ## General Information
 Here is some general information about custom themes.
 
-* If you don't explicitly provide a favicon in the `<head>` of your HTML, we'll add the [default StageBloc favicon](https://stagebloc.com/images/favicon.ico) for you. To add your own favicon, simply upload it as a Theme Asset and put it in your HTML `<head>` tag.
+* If you don't explicitly provide a favicon in the `<head>` of your HTML, we'll add the [default StageBloc favicon](https://stagebloc.com/images/favicon.ico) for you. To add your own favicon, simply upload it as a Theme Asset and put it in your theme's `<head>` HTML tag.
 
-* We also add various `<meta>` tags to your `<head>` content if they aren't explicitly set to aid in SEO.
+* We also add various `<meta>` tags to your `<head>` content if they aren't explicitly set to aid in SEO. For instance, many tags from the [Open Graph Protocol](http://ogp.me/) are automatically added.
 
 * We allow you to upload assets *(images, fonts, favicons, etc)* to our CDN and encourage you to use this when creating a theme. This means you don't have to host any part of your theme outside of StageBloc, making it easier for you.
 
 * CSS and JS are both minified before being uploaded to our CDN so that you get the maximum performance and caching when users come to your site.
 
 # Pages
-Each view on StageBloc has a `{Page}` block. [You can also create your own custom pages](#custom-pages).
+Each view on StageBloc has a `{Page}` block. [You can also create your own custom pages](#custom-pages). The URL structure shown is the default, they can be altered via the `url` [Page Option](#page-options).
 
-*Note: Not all pages are required. Define pages that make sense for your theme, and the rest will be taken care of by the engine. No links will be broken.*
+*Note: Not all pages are required. Define pages that make sense for your theme, and the rest will be taken care of by the theming engine. No links will be broken.*
 
 ### page:About
 This page should show general information about the account.
@@ -82,6 +82,12 @@ This page should show the content of an individual blog post.
 Url structure: /blog/[%id]  
 Recommended modules: BlogView
 
+### page:BlogCommentView
+This page should show the content of an individual blog post comment.
+
+Url structure: /blog/[%blog_id]/comment/[%id]  
+Recommended modules: CommentView, BlogView
+
 ### page:Error404
 This page will be loaded whenever a unknown URL structure is hit.  *Note: This page will not be called when no content is available for a defined view. Also see {Else} blocks for Modules*
 
@@ -104,6 +110,12 @@ This page should show information for an event.
 
 Url structure: /events/[%id]  
 Recommended modules: EventView
+
+### page:Fansite
+This page should use `{if:UserIsFollowing}` and show fansite content if true or a `JoinFansiteLink` if false
+
+Url structure: /fansite/
+Recommended modules: ActivityStreamList with `exclusive` as true
 
 ### page:PhotoAlbumList
 This page should show a listing of photo albums
@@ -129,6 +141,12 @@ This page should show a single photo.
 Url structure: /photos/[%id]  
 Recommended modules: PhotoView
 
+### page:PhotoCommentView
+This page should show the content of an individual photo comment.
+
+Url structure: /photos/[%photo_id]/comment/[%id]  
+Recommended modules: CommentView, PhotoView
+
 ### page:StatusList
 This page should show a listing of statuses posted by the account.
 
@@ -138,8 +156,14 @@ Recommended modules: StatusList
 ### page:StatusView
 This page should show an individual status.
 
-Url structure: /statuses/[%id]  
+Url structure: /statuses/[%id]
 Recommended modules: StatusView
+
+### page:StatusCommentView
+This page should show the content of an individual status comment.
+
+Url structure: /statuses/[%status_id]/comment/[%id]  
+Recommended modules: CommentView, StatusView
 
 ### page:StoreItemList
 This page should show a listing of store items posted by the account.
@@ -150,8 +174,20 @@ Recommended modules: StoreItemList
 ### page:StoreItemView
 This page should show an individual store item.
 
-Url structure: /store/[%id]  
+Url structure: /store/[%id]
 Recommended modules: StoreItemView
+
+### page:User
+This page shows an individual fan of an account
+
+Url structure: /fansite/users/[%id]
+Recommended modules: UserView
+
+### page:UserList
+This page shows a list of fans of an account
+
+Url structure: /fansite/users/
+Recommended modules: UserView
 
 ### page:VideoList
 This page should show a listing of videos.
@@ -162,8 +198,14 @@ Recommended modules: VideoList
 ### page:VideoView
 This page should show the content for an individual video.
 
-Url structure: /videos/[%id]  
+Url structure: /videos/[%id]
 Recommended modules: VideoView
+
+### page:VideoCommentView
+This page should show the content of an individual video comment.
+
+Url structure: /blog/[%video_id]/comment/[%id]  
+Recommended modules: CommentView, VideoView
 
 ### page:VideoPlaylistList
 This page should show a listing of video playlists.
@@ -176,6 +218,27 @@ This page should show an individual video playlist.
 
 Url structure: /videos/playlists/[%id]  
 Recommended modules: ViewPlaylistView
+
+## Page Options
+Pages, like [Variables With Options](#variables-with-options), can have their own options.
+
+homepage
+:	flag representing if the page should be used as the homepage
+
+	accepted values are true or false
+	
+	default homepage is `ActivityStreamList`, if that Page isn't defined the first defined Page in the theme's HTML will be used as the homepage
+	
+url
+:	the URL to override the page's default URL
+
+	accepted values are any string valid in a URL, the [%id] is always assumed to be at the end *(Note: do not start the override URL with a `/`)*
+
+		{Page:EventList url="shows"}
+			<!-- The events page would now be at /shows, not /events -->
+		{/Page:EventList}
+		
+	*Note: If a `Page` has more than one [%id] (i.e. `Page:BlogCommentView`), use a `*` for the first [%id]*
 
 ## Custom Pages
 Custom pages can be defined using the following syntax:
@@ -217,11 +280,13 @@ Include the latest version of jQuery on the page via Google's CDN.
 Include the jPlayer JavaScript library. Requires that {jQuery} is also included and comes before the {jPlayer} variable.
 
 ### Link-\[%Section]
-Get a relative url to a particular section of the site.
+Get a relative url to a particular section of the site. *Note: This will also reflect any changes to [Page URLs](#page-options) you might have made*
 
-Supported: Audio, Events, EventsPast, Blog, Statuses, Photos, Videos, Home, Store
-Example: `<a href="{Link-Videos}">See my killer video about how to weave baskets underwater!</a>`  
-Example return: `<a href="/account-name/videos">See my killer videos about how to weave baskets underwater!</a>`
+Supported: Audio, Events, EventsPast, Blog, Statuses, Photos, Videos, Home, Store, Fansite
+
+	<a href="{Link-Videos}">See my killer video about how to weave baskets underwater!</a>
+	becomes
+	<a href="/account-name-or-custom-domain/videos">See my killer videos about how to weave baskets underwater!</a>
 
 ## Custom Variables
 You can define blocks of code to reuse throughout the rest of your theme. This can be useful when repeating layout elements on your site on some pages, but not others.
@@ -240,7 +305,7 @@ After defining your variable, you can access its data just like a normal global 
 
 This will return exactly what was inside your declaration.
 
-		<aside>Hi there, I am a nifty variable!</aside>
+	<aside>Hi there, I am a nifty variable!</aside>
 
 You can put anything inside your variables, including modules, blocks, and pages. Get creative and build some unique sites!
 
@@ -323,6 +388,15 @@ Provides users with a textbox where they can input any string. Data returned is 
 Variables with options use the following syntax:
 
 	{VariableName option1="value" option2="value"}
+	
+### AccountPhotoUrl
+The URL for the account's photo	
+
+size
+:	accepted sizes are "thumbnail", "small", "medium", "large", "original"
+
+defaultPhoto
+:	the URL of a photo to use if one isn't set and you don't want to use our default photo
 
 ### AdminListLikeCount
 Shows the amount of likes the collective admins for an account have
@@ -415,6 +489,17 @@ includeCurrent
     accepted values are `true` or `false`
     
     defaults to `false`
+    
+### CommentLink
+Add a link to comment on a specific item in a modal, will also show any previously existing comments
+
+LinkText
+:	the text to show in the link for adding a comment
+
+    defaults to `"Add A Comment"`
+
+class
+:	the class to give the `<a>` tag
 
 ### CreatedDate, ModifiedDate, PublishedDate
 Show the date of various objects
@@ -425,6 +510,17 @@ format
     accepted values are a formatted date, `relative` (returns time ago such as "5 seconds ago"), or `gmdate` (a GMT date in PHP date format 'Y-M-d h:i A' (see using `{EventList}` in the ActivityStream))
 
     defaults to `n/j/y`
+    
+### JoinFansiteLink
+A link that opens a modal and allows a user to join the site's fansite
+
+text
+:	the text to be put inside the `<a>` tag
+
+    defaults to `"Join Fansite"`
+
+class
+:	the class to assign to the `<a>` tag
 
 ### LikeLink
 Add a link to like a specific item  
@@ -456,8 +552,19 @@ photoid (*required*)
 class
 :	the class to assign to the `<a>` tag
 
+### ReportContentLink
+A link to open a modal for reporting (flagging) content as inappropriate, etc
+
+linkText
+:	the text to show in the '<a>' tag
+
+	defaults to `"Report Content"`
+
+class
+:	the class to give the `<a>` tag
+
 ### RepostLink
-Add a link to repost a specific item  
+Add a link to repost a specific item
 
 repostText
 :	the text to show when the item hasn't yet been reposted by the viewer
@@ -521,8 +628,10 @@ preorderSoldOutText
 
     defaults to `"Pre-order Sold Out"`
 
-storeitemid (*required*)
+storeitemid
 :	the ID of the audio you want to add to the user's cart
+
+	defaults to the ID of the currently rendered `block`
 
 class
 :	the class to assign to the `<a>` tag
@@ -535,8 +644,26 @@ text
 
     defaults to `"Download"`
 
-storeitemid (*required*)
+storeitemid
 :	the ID of the audio playlist you want to download
+
+	defaults to the ID of the currently rendered `block`
+
+class
+:	the class to assign to the `<a>` tag
+
+### SubmitFanContentLink
+Creates a link that, when clicked, will open a modal to allow the fan to submit content
+
+linktext
+:	the text to be put inside the `<a>` tag
+
+    defaults to `"Add Content"`
+
+contenttype
+:	the content type to default to in the modal, either `status`, `photo`, `blog`, or `video`
+
+	defaults to `status`
 
 class
 :	the class to assign to the `<a>` tag
@@ -697,6 +824,9 @@ Checks if the current excerpt is trimmed to length of 600 characters (give or ta
 Recommended blocks: ActivityStreamView, BlogView  
 Recommended pages: ActivityStreamList, BlogList
 
+### if:UserIsFollowing
+Checks to see if the user is logged in and following the current account or not
+
 ### if:VenueHasWebsite
 Checks if a venue has a website.
 
@@ -738,25 +868,6 @@ LinkUrl
 
 LinkTitle
 :	The name of the link
-
-### block:AccountPhoto
-
-PhotoSource-Thumb
-:	A square thumbnail, 130x130
-
-PhotoSource-Small
-:	Photo with max width of 250
-
-PhotoSource-Medium
-:	Photo with max width of 500
-
-PhotoSource-Large
-:	Photo with max width of 800
-
-PhotoSource-Original
-:	The originally uploaded photo.
-
-	Use PhotoSource-Large when possible
 
 ## ActivityStreamList
 Events are grouped in the activity stream.
@@ -1101,7 +1212,7 @@ BlogPostTitle
 :	the content's title
 
 BlogPostId
-:	the content's id
+:	the content's ID
 
 BlogPostBody
 :	the main content for the blog post
@@ -1120,6 +1231,34 @@ PreviousBlogPostTitle, NextBlogPostTitle
 
 PreviousBlogPostUrl, NextBlogPostUrl
 :	the permalink of the blog post previous/next to the current one if it exists
+
+## CommentList
+A view for a listing of the most recent comments, it will use the content of the currently rendered item
+
+### Options
+limit
+:	the amount to limit the comments to
+
+	accepted values are any number between 1 and 10 *Note: to show more then 10 comments, see the `CommentLink` variable*
+	
+	defaults to 10
+	
+## CommentView
+A view for a single comment
+
+### block:CommentView
+
+CommentText
+:	the text of the comment
+
+CommentUserId
+:	the ID of the user who posted the comment *Can be used with `block:UserView`
+
+CommentId
+:	the ID for the comment
+
+CommentItemId
+:	the ID of the item the comment was written about
 
 ## ChildAccountList
 A listing of accounts that are children of the current account
@@ -1271,6 +1410,12 @@ SupportingActs
 VenueWebsiteUrl
 :	the URL to the venue where the event is taking place. Also see {if:VenueHasWebsite}
 
+## FanList
+A list of fans for this account
+
+### block:UserView
+See `UserView` module for `UserView` block variables
+
 ## FollowingList
 A list of accounts that this account's admins are following
 
@@ -1404,6 +1549,16 @@ A listing of photos.
 
 ### Options
 
+accountcontent
+: whether or not to show photos created by admins of the account *Note: see `fancontent`*
+
+    defaults to true
+
+accountid
+: a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account, see variable `{ChildAccountIDs}`
+
+    defaults to just the ID of the current account
+
 albumid
 : an album id of which to limit the returned photos to
 
@@ -1416,23 +1571,28 @@ direction
 
     defaults to `desc`
     
+fancontent
+: whether or not to show photos submitted to the accounts by fans
+
+    defaults to false
+
 limit
 : the amount of photos to list per page
 
     defaults to `10`
 
 offset
-:	skip X number of items. Still returns `limit` items
+:	skip X number of items, still returns `limit` items
 
 paging (advanced option)
 :	define how many items are on this page
 	
 	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitiy set how many items are on the current page, or pagination will return unexpected results
-    
-accountid
-: a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account, see variable `{ChildAccountIDs}`
+	
+userid
+:    the user to limit the photos to *Note: if `fancontent` is enabled, this must be a fan of the account and / or if `accountcontent` is enabled, this must be an admin of the account*
 
-    defaults to none (i.e. the current account)
+    defaults to empty (i.e. all fans and / or all admins)
 
 ### Variables
 
@@ -1524,10 +1684,32 @@ A listing of statuses.
 
 ### Options
 
+accountcontent
+: whether or not to show statuses created by admins of the account *Note: see `fancontent`*
+
+    defaults to true
+
+accountid
+: a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account, see variable `{ChildAccountIDs}`
+
+    defaults to just the ID of the current account
+
+direction
+:	the direction in which to order the photos
+
+    accepted values are `asc` or `desc`
+
+    defaults to `desc`
+    
+fancontent
+: whether or not to show statuses submitted to the accounts by fans
+
+    defaults to false
+
 limit
 : the amount of statuses to list per page
 
-    defaults to `5`
+    defaults to `10`
 
 offset
 :	skip X number of items. Still returns `limit` items
@@ -1536,18 +1718,11 @@ paging (advanced option)
 :	define how many items are on this page
 	
 	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitiy set how many items are on the current page, or pagination will return unexpected results
-
-direction
-:	the direction in which to show the statuses
-
-    accepted values are `asc` or `desc`
-
-    defaults to `desc`
     
-accountid
-: a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account, see variable `{ChildAccountIDs}`
+userid
+:    the user to limit the statuses to *Note: if `fancontent` is enabled, this must be a fan of the account and / or if `accountcontent` is enabled, this must be an admin of the account*
 
-    defaults to none (i.e. the current account)
+    defaults to empty (i.e. all fans and / or all admins)
 
 ### Variables
 
@@ -1667,6 +1842,43 @@ limit
 ### block:TagView
 Tag
 :	the actual tag
+
+## UserView
+A view for a single user
+
+### Options
+userid
+:	the ID of the user to show
+
+	defaults to the user in the URL
+
+### block:UserView
+
+UserId
+:	the ID of the user
+
+UserName
+:    the real name of the user
+
+UserUsername
+:    the username of the user
+
+UserUrl
+:	the URL to the user's page on StageBloc (i.e. stagebloc.com/user/[%id])
+
+UserFansiteUrl
+:	the URL to the user's pages on the current account's fansite (if they have one setup) (i.e. stagebloc.com/[%account_url]/fansite/users/[%user_id])
+
+UserPhotoUrl
+: the image representing the user
+
+	**Options**
+	
+	size
+	:	accepted sizes are "thumbnail", "small", "medium", "large", "original"
+
+	defaultphoto
+	:	the URL of a photo to use if one isn't set and you don't want to use our default photo
 
 ## VideoList
 A listing of videos.
@@ -2772,9 +2984,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 					<div id="main-content">
 						{module:AccountAbout}
 							<div class="account-overview">
-								{block:AccountPhoto}
-									<img alt="{AccountName}'s account photo" id="account-photo" src="{PhotoSource-Small}" />
-								{/block:AccountPhoto}
+								<img alt="{AccountName}'s account photo" id="account-photo" src="{AccountPhotoUrl size="small"}" />
 								<ul id="account-links">
 									{block:AccountLink}
 										<li><a href="{LinkUrl}" target="_blank">{LinkTitle}</a></li>
@@ -3133,3 +3343,6 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 			e.stopPropagation();
 		});
 	});
+	
+# Deprecated
+### block:AccountPhoto
