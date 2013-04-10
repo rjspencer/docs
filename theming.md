@@ -32,7 +32,7 @@ Here is some general information about custom themes.
 # Pages
 Each view on StageBloc has a `{Page}` block. [You can also create your own custom pages](#custom-pages).
 
-*Note: Not all pages are required. Define pages that make sense for your theme, and the rest will be taken care of by the engine. No links will be broken.*
+*Note: Not all pages are required. Define pages that make sense for your theme, and the rest will be taken care of by the theming engine via a beautiful fallback theme we've created. No links will be broken.*
 
 ### page:About
 This page should show general information about the account.
@@ -83,7 +83,7 @@ Url structure: /blog/[%id]
 Recommended modules: BlogView
 
 ### page:Error404
-This page will be loaded whenever a unknown URL structure is hit.  *Note: This page will not be called when no content is available for a defined view. Also see {Else} blocks for Modules*
+This page will be loaded whenever a unknown URL structure is hit.  *Note: This page will not be called when no content is available for a defined view. In that case, see {Else} blocks for Modules.*
 
 Url structure: /PageThatDoesNotExist
 
@@ -168,14 +168,14 @@ Recommended modules: VideoView
 ### page:VideoPlaylistList
 This page should show a listing of video playlists.
 
-Url structure: /videos/playlists
+Url structure: /videos/playlists	
 Recommended modules: ViewPlaylistList
 
 ### page:VideoPlaylistView
 This page should show an individual video playlist.
 
 Url structure: /videos/playlists/[%id]  
-Recommended modules: ViewPlaylistView
+Recommended modules: VideoPlaylistView
 
 ## Custom Pages
 Custom pages can be defined using the following syntax:
@@ -184,7 +184,7 @@ Custom pages can be defined using the following syntax:
 	
 	{/Page:CustomMyAwesomePage}
 
-They can contain any modules or blocks that you choose to put inside of them, however pagination may not be reliable. The page URL of the example page above will be /MyAwesomePage
+They can contain any modules or blocks that you choose to put inside of them, however pagination may not be reliable. The page URL of the example page above will be `/MyAwesomePage`
  
 # Variables
 
