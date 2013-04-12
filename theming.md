@@ -563,6 +563,11 @@ unlikeText
 class
 :	the class to give the `<a>` tag
 
+closeTag
+:	whether or not to close the `<a>` tag
+
+	defaults to `true`
+
 ### PhotoAddToCartLink
 Creates a link that, when clicked, will add the photo to the user's cart on StageBloc
 
