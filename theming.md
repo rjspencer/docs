@@ -114,8 +114,8 @@ Recommended modules: EventView
 ### page:Fansite
 This page should use `{if:UserIsFollowing}` and show fansite content if true or a `JoinFansiteLink` if false
 
-Url structure: /fansite/
-Recommended modules: ActivityStreamList with `exclusive` as true
+Url structure: /fansite/		
+Recommended modules: FanContentList and/or ActivityStreamList with `exclusive` as `true`
 
 ### page:PhotoAlbumList
 This page should show a listing of photo albums
@@ -174,19 +174,19 @@ Recommended modules: StoreItemList
 ### page:StoreItemView
 This page should show an individual store item.
 
-Url structure: /store/[%id]
+Url structure: /store/[%id]		
 Recommended modules: StoreItemView
 
-### page:User
+### page:UserView
 This page shows an individual fan of an account
 
-Url structure: /fansite/users/[%id]
+Url structure: /fansite/users/[%id]		
 Recommended modules: UserView
 
 ### page:UserList
 This page shows a list of fans of an account
 
-Url structure: /fansite/users/
+Url structure: /fansite/users/				
 Recommended modules: UserView
 
 ### page:VideoList
@@ -198,7 +198,7 @@ Recommended modules: VideoList
 ### page:VideoView
 This page should show the content for an individual video.
 
-Url structure: /videos/[%id]
+Url structure: /videos/[%id]		
 Recommended modules: VideoView
 
 ### page:VideoCommentView
@@ -282,7 +282,7 @@ Include the jPlayer JavaScript library. Requires that {jQuery} is also included 
 ### Link-\[%Section]
 Get a relative url to a particular section of the site. *Note: This will also reflect any changes to [Page URLs](#page-options) you might have made*
 
-Supported: Audio, Events, EventsPast, Blog, Statuses, Photos, Videos, Home, Store, Fansite
+Supported: Audio, Events, EventsPast, Blog, Statuses, Photos, Videos, Home, Store, Fansite, FansiteFans
 
 	<a href="{Link-Videos}">See my killer video about how to weave baskets underwater!</a>
 becomes
@@ -398,6 +398,30 @@ size
 
 defaultPhoto
 :	the URL of a photo to use if one isn't set and you don't want to use our default photo
+
+### AddCommentLink
+A link to open a modal for commenting on content
+
+href
+:	the URL to give the `<a>` tag as a fallback
+
+linkText
+:	the text to show in the '<a>' tag
+
+	defaults to `"Add Comment"`
+
+class
+:	the class to give the `<a>` tag
+
+contentType
+:	the content type slug of the content being reported
+
+	defaults to the current pages type
+	
+contentId
+:	the content ID of the content being reported
+
+	defaults to the current pages content ID
 
 ### AdminListLikeCount
 Shows the amount of likes the collective admins for an account have
@@ -563,6 +587,16 @@ linkText
 
 class
 :	the class to give the `<a>` tag
+
+contentType
+:	the content type slug of the content being reported
+
+	defaults to the current pages type
+	
+contentId
+:	the content ID of the content being reported
+
+	defaults to the current pages content ID
 
 ### RepostLink
 Add a link to repost a specific item
@@ -824,6 +858,9 @@ Checks if the current excerpt is trimmed to length of 600 characters (give or ta
 
 Recommended blocks: ActivityStreamView, BlogView  
 Recommended pages: ActivityStreamList, BlogList
+
+### if:UserIsAdmin
+Checks to see if the user is logged in and an admin of the current account
 
 ### if:UserIsFollowing
 Checks to see if the user is logged in and following the current account or not
@@ -1450,6 +1487,11 @@ This will generate links like this:
 
 All variables:
 
+fansitenavigation
+:	whether or not to show fansite navigation (filters) instead of overall navigation
+
+	default: false
+
 ignore
 :	list of top level links to ignore in navigation
 
@@ -1576,6 +1618,13 @@ fancontent
 : whether or not to show photos submitted to the accounts by fans
 
     defaults to false
+    
+exclusive
+:	whether or not to show exclusive content
+
+	accepted values are `true` or `false`
+
+	defaults to showing both in the case that the user is logged in and authorized to see it
 
 limit
 : the amount of photos to list per page
@@ -1612,6 +1661,12 @@ photoid
 
 PhotoAccountId
 :    the ID of the account that created the photo
+
+PhotoCreatorID
+:	the ID of the user who created the photo
+
+PhotoContentSlug
+:	a slug representing photo content as a whole (useful for CSS style names, etc)
 
 PhotoId
 :	the ID of the photo
@@ -1853,6 +1908,11 @@ userid
 
 	defaults to the user in the URL
 
+loggedin
+:	whether or not to use the currently logged in user, will override `userid` if `true`
+
+	defaults to false
+
 ### block:UserView
 
 UserId
@@ -1910,6 +1970,13 @@ direction
     accepted values are `asc` or `desc`
 
     defaults to `asc`
+    
+exclusive
+:	whether or not to show exclusive content
+
+	accepted values are `true` or `false`
+
+	defaults to showing both in the case that the user is logged in and authorized to see it
 
 featured
 :	whether or not to show the just featured video
@@ -1937,6 +2004,12 @@ videoid
 ### block:VideoView
 VideoAccountId
 :    the ID of the account that posted the video
+
+VideoCreatorId
+:	the ID of the user who created the video
+
+VideoContentSlug
+:	a slug representing video content as a whole (useful for CSS style names, etc)
 
 VideoUrl
 :	a permalink to the video's individual page on StageBloc
