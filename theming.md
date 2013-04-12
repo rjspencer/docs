@@ -853,6 +853,16 @@ Check if the event has a ticket buy link attached
 
 Recommended blocks: EventView
 
+### if:PaginationIs
+Checks if the pagination is within a certain bound
+
+## Options
+gt
+:	check if the pagination is greater than a certain page
+
+lt
+:	check if the paginations if less than a certain page
+
 ### if:PhotoCanBeSold
 Check to see if the photo can be sold
 
