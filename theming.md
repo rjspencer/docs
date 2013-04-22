@@ -2052,12 +2052,12 @@ direction
 
     defaults to `asc`
     
-exclusive
-:	whether or not to show exclusive content
+sticky
+:	whether or not to have sticky content return first
 
 	accepted values are `true` or `false`
 
-	defaults to showing both in the case that the user is logged in and authorized to see it
+	defaults to `false`
 
 featured
 :	whether or not to show the just featured video
