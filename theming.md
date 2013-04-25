@@ -239,6 +239,13 @@ url
 		{/Page:EventList}
 		
 	*Note: If a `Page` has more than one [%id] (i.e. `Page:BlogCommentView`), use a `*` for the first [%id]*
+	
+title
+:	what to force the `<title>` of the `<head>` content on the page to be
+
+	accepts any string
+	
+	default value will be based on the modules present on the rendered page
 
 ## Custom Pages
 Custom pages can be defined using the following syntax:
@@ -536,6 +543,13 @@ format
 
     defaults to `n/j/y`
     
+shorttime
+:	whether or not to show the units of time in a contracted manner (i.e. secs vs seconds)
+
+	accepted values are `true` or `false`, *Note: requires that `format` = `relative`*
+	
+	defaults to `false`
+    
 ### JoinFansiteLink
 A link that opens a modal and allows a user to join the site's fansite
 
@@ -546,6 +560,13 @@ text
 
 class
 :	the class to assign to the `<a>` tag
+
+view
+:	what to default the view to if the user isn't logged on
+
+	defaults to `login`
+	
+	accepted values are `login` or `signup`
 
 ### LikeLink
 Add a link to like a specific item  
@@ -732,6 +753,15 @@ Lastly, if statements also support the use of `||` and `&&` for AND and OR logic
 		<h1><a href="{ActivityUrl}">{ActivityTitle}</a></h1>
 	{/if:ActivityIsBlog||ActivityIsAudio||ActivityIsVideo||ActivityIsAudio}
 
+### if:AccountLikedContent
+Determines if an admin for the account has liked the content
+
+## Options
+contenttype
+:	the slug of the content type
+
+contentid
+:	the ID of the content
 
 ### if:ActivityIs[%type]
 Use this if statement to compare if a certain activity list item is of a certain type. The types `Blog`, `Status`, and `StoreItem` will also catch their respective `Repost` items, so use `if:ActivityIsRepost` to differentiate between reposts and non-reposts.
@@ -853,6 +883,16 @@ Check if the event has a ticket buy link attached
 
 Recommended blocks: EventView
 
+### if:OptionIsSet
+Determines if the given [{option} variable](#options-variables) has been set or not
+
+## Options
+group
+:	the group of the option
+
+name
+:	the name of the option
+
 ### if:PaginationIs
 Checks if the pagination is within a certain bound
 
@@ -879,6 +919,9 @@ Checks to see if the user is logged in and an admin of the current account
 
 ### if:UserIsFollowing
 Checks to see if the user is logged in and following the current account or not
+
+### if:UserIsMe
+Checks to see if the currently rendered user is the logged in user
 
 ### if:VenueHasWebsite
 Checks if a venue has a website.
@@ -1303,6 +1346,12 @@ A view for a single comment
 
 CommentText
 :	the text of the comment
+
+CommentAuthorFansiteUrl
+:	the URL of this user on the current fansite
+
+CommentAuthorUrl
+:	the URL to the main user page for the author
 
 CommentUserId
 :	the ID of the user who posted the comment *Can be used with `block:UserView`
@@ -1876,6 +1925,9 @@ AuthorName
 
 AuthorPhotoUrl
 :	a 130x130 pixel image of the author of the photo or a placeholder if the photo doesn't exist
+
+StatusId
+:	the ID of the status was posted
 
 StatusAccountId
 :    the ID of the account that posted this status
