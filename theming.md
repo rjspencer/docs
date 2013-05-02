@@ -286,6 +286,9 @@ Include the latest version of jQuery on the page via Google's CDN.
 ### jPlayer
 Include the jPlayer JavaScript library. Requires that {jQuery} is also included and comes before the {jPlayer} variable.
 
+### Link-StageBloc
+Get a URL to StageBloc.com
+
 ### Link-\[%Section]
 Get a relative url to a particular section of the site. *Note: This will also reflect any changes to [Page URLs](#page-options) you might have made*
 
@@ -588,6 +591,17 @@ closeTag
 :	whether or not to close the `<a>` tag
 
 	defaults to `true`
+	
+### LogoutLink
+Add a link to logout of StageBloc
+
+linkText
+:	the test to put in the link
+
+    defaults to `"Logout"`
+
+class
+:	the class to give the `<a>` tag
 
 ### PhotoAddToCartLink
 Creates a link that, when clicked, will add the photo to the user's cart on StageBloc
@@ -922,6 +936,9 @@ Checks to see if the user is logged in and following the current account or not
 
 ### if:UserIsMe
 Checks to see if the currently rendered user is the logged in user
+
+### if:UserIsLoggedIn
+Checks to see if there's a logged in user
 
 ### if:VenueHasWebsite
 Checks if a venue has a website.
@@ -1338,6 +1355,11 @@ limit
 	accepted values are any number between 1 and 10 *Note: to show more then 10 comments, see the `CommentLink` variable*
 	
 	defaults to 10
+	
+parents
+:	whether or not to get the parent comments for the individual comment
+
+	defaults to `false`
 	
 ## CommentView
 A view for a single comment
