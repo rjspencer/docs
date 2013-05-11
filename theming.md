@@ -1652,6 +1652,18 @@ ignore
 order
 :	comma separated list to push to beginning; unlisted items will remain in default position
 
+### block:NavigationItem
+The data available for each navigation item
+
+CSSClass
+:	a class that says what the navigation item is linking to, will automatically append a class `active` if the current navigation item
+
+LinkText
+:	the text for the navigation link
+
+Url
+:	the URL for the navigation link
+
 
 ## Pagination
 This module latches onto the last seen module and provides next/previous links to go through the pages. **Note:** this currently must be the first module *after* the module you wish to paginate
