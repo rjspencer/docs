@@ -900,7 +900,6 @@ Recommended blocks: EventView
 ### if:OptionIsSet
 Determines if the given [{option} variable](#options-variables) has been set or not
 
-## Options
 group
 :	the group of the option
 
@@ -910,7 +909,6 @@ name
 ### if:PaginationIs
 Checks if the pagination is within a certain bound
 
-## Options
 gt
 :	check if the pagination is greater than a certain page
 
