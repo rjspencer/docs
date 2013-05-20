@@ -1315,6 +1315,50 @@ CreatedByPhotoUrl, ModifiedByPhotoUrl
 CreatedByName, ModifiedByName
 :	the name of the user who created/modified the audio playlist
 
+## BandsInTownEventList
+A listing of events from the Bandsintown API  
+
+### Options
+
+limit
+:	the amount of events to return
+
+    defaults to 20
+    
+offset
+:	what to offset the results by
+
+past
+:	whether or not to include the past events for the artist
+
+## BandsInTownEventView
+A single view for a Bandsintown event.
+
+### block:BandsInTownEventView
+EventId
+:	the ID of the event on the external service
+
+EventTitle
+:	the title of the event
+
+EventTicketUrl
+:	a URL to get tickets for the events
+
+EventFacebookRSVPUrl
+:	a URL to RSVP to the event on Facebook
+
+EventLocation
+:	the formatter location of the event
+
+VenueLatitude
+:	the latitude of where the venus is
+
+VenueLongitude
+:	the longitude of where the venus is
+
+VenueName
+:	the name of the venue for the event
+
 ## BlogList
 A listing of blogs
 
