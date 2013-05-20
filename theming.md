@@ -117,6 +117,22 @@ This page should use `{if:UserIsFollowing}` and show fansite content if true or 
 Url structure: /fansite/		
 Recommended modules: FanContentList and/or ActivityStreamList with `exclusive` as `true`
 
+### page:LoginPage
+This page would be used if your site is enabled for white labeling, and you want a custom login page for users.
+
+Url structure: /login/
+Recommneded variable: `LoginUsernameInput`, `LoginPasswordInput`, `LoginPageFormAction`
+
+In it's simplest form, a login page may look like this:
+
+	{page:LoginPage}
+		<form {LoginPageFormAction}>
+			{LoginUsernameInput}
+			{LoginPasswordInput}
+			<input type="submit" />
+		</form>
+	{/page:LoginPage}
+
 ### page:PhotoAlbumList
 This page should show a listing of photo albums
 
@@ -591,6 +607,34 @@ closeTag
 :	whether or not to close the `<a>` tag
 
 	defaults to `true`
+	
+### LoginUsernameInput
+Add a text input field for a `page:LoginPage`
+
+class
+:	a class to give the `<input>`
+
+placeholder
+:	the placeholder for the `<input>` tag
+
+	defaults to "Email or username"
+
+### LoginPasswordInput
+Add a password input field for a `page:LoginPage`
+
+class
+:	a class to give the `<input>`
+
+placeholder
+:	the placeholder for the `<input>` tag
+
+	defaults to "Password"
+	
+### LoginPageFormAction
+The action for the `<form>` element for `page:LoginPage`, includes `method` and `action`
+
+url
+:	a URL to have the user be redirected to after logging in
 	
 ### LogoutLink
 Add a link to logout of StageBloc
