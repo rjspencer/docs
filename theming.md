@@ -787,6 +787,22 @@ contenttype
 class
 :	the class to assign to the `<a>` tag
 
+### TwitterShareButton
+Creates a Twitter sharing button on the page
+
+text
+:	the default text of the tweet
+
+    defaults to the page's title
+
+url
+:	the URL to share in the tweet
+
+	defaults to the current page's URL
+
+class
+:	the class to assign to the `<a>` tag
+
 # If Statements
 If statements will check if a certain statement is true, and if it is, add the code inside. We also support the use of `{if:Else}` delimiters that will add a different code block if false. For example:
 	
