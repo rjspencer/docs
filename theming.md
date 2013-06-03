@@ -836,12 +836,12 @@ Lastly, if statements also support the use of `||` and `&&` for AND and OR logic
 ### if:AccountLikedContent
 Determines if an admin for the account has liked the content
 
-	**Options**
-	contenttype
-	:	the slug of the content type
-	
-	contentid
-	:	the ID of the content
+**Options**
+contenttype
+:	the slug of the content type
+
+contentid
+:	the ID of the content
 
 ### if:ActivityIs[%type]
 Use this if statement to compare if a certain activity list item is of a certain type. The types `Blog`, `Status`, and `StoreItem` will also catch their respective `Repost` items, so use `if:ActivityIsRepost` to differentiate between reposts and non-reposts.
