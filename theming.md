@@ -86,6 +86,7 @@ Recommended modules: BlogList, BlogView
 This page should show the content of an individual blog post.
 
 Url structure: /blog/[%id]  
+*note: if the blog post has a category, the URL would be more like /blog/[category-slug]/[%id]*
 Recommended modules: BlogView
 
 ### page:BlogCommentView
@@ -646,10 +647,21 @@ url
 Add a link to logout of StageBloc
 
 linkText
-:	the test to put in the link
+:	the text to put in the link
 
     defaults to `"Logout"`
 
+class
+:	the class to give the `<a>` tag
+	
+### OpenShareModalLink
+Add a link to open the built in StageBloc sharing modal
+
+linkText
+:	the text to put inside of the link
+
+	default to `"Share"`
+	
 class
 :	the class to give the `<a>` tag
 
@@ -879,6 +891,9 @@ Recommended block: AudioPlaylistView
 
 ### if:BrowserIsMobile
 Check to see if the viewer is on a mobile browser or not
+
+### if:BlogPostHasPhoto
+Check to see if a blog post has one or more photos (`<img>` tags) in it
 
 ### if:StoreItemCanBeDownloadedForFree
 Check to see if the store item can be downloaded for free
@@ -1443,6 +1458,11 @@ BlogPostExcerpt
 
 BlogPostUrl
 :	the permalink to the content's individual page
+
+BlogPostPhotoUrl
+:	the URL of the first `<img>` in the blog post
+
+	see `if:BlogPostHasPhoto` as well
 
 PreviousBlogPostId, NextBlogPostId
 :	the ID of the blog post previous/next to the current one if it exists
