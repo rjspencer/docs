@@ -848,7 +848,7 @@ Lastly, if statements also support the use of `||` and `&&` for AND and OR logic
 ### if:AccountLikedContent
 Determines if an admin for the account has liked the content
 
-## Options
+**Options**
 contenttype
 :	the slug of the content type
 
