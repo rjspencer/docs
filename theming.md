@@ -89,6 +89,12 @@ Url structure: /blog/[%id]
 *note: if the blog post has a category, the URL would be more like /blog/[category-slug]/[%id]*
 Recommended modules: BlogView
 
+### page:BlogCategoryView
+This page should show a listing of blog posts posted by the account filtered by a category
+
+Url structure: /blog/[category-slug]/[%id]
+Recommended modules: BlogList, BlogView
+
 ### page:BlogCommentView
 This page should show the content of an individual blog post comment.
 
@@ -1397,7 +1403,7 @@ VenueName
 :	the name of the venue for the event
 
 ## BlogList
-A listing of blogs
+A listing of blogs *note: if inside of the `BlogCategoryView` `Page`, this will be automatically filtered by that category*
 
 ### Options
 
