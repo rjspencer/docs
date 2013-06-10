@@ -1773,7 +1773,12 @@ This will generate links like this:
 
 All variables:
 
-fansitenavigation
+blogCategoryNavigation
+:	whether or not to show links to various blog categories instead of overall navigation
+
+	default: false
+
+fansiteNavigation
 :	whether or not to show fansite navigation (filters) instead of overall navigation
 
 	default: false
