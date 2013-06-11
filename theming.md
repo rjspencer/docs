@@ -845,7 +845,12 @@ Nesting of if statements is also supported. For example:
 		{if:AudioCanNamePrice}min {/if:AudioCanNamePrice}${AudioPrice} USD
 	{/if:AudioCanBeSold}
 	
-Lastly, if statements also support the use of `||` and `&&` for AND and OR logic. However, mixing of ANDs and ORs is not currently allowed. For example:
+If you'd like for an `If` to be rendered inside of a specific block (instead of when the Theming Engine determines it should), you can simply set a `block="<block_name>"` inside of the `If`. For instance:
+
+	{if:PositionInModule gt="1" block="ActivityStreamList"}
+	{/if:PositionInModule}
+	
+Lastly, `If` statements also support the use of `||` and `&&` for AND and OR logic. However, mixing of ANDs and ORs is not currently allowed. For example:
 
 	{if:ActivityIsBlog||ActivityIsAudio||ActivityIsVideo||ActivityIsAudio}
 		<h1><a href="{ActivityUrl}">{ActivityTitle}</a></h1>
@@ -854,7 +859,6 @@ Lastly, if statements also support the use of `||` and `&&` for AND and OR logic
 ### if:AccountLikedContent
 Determines if an admin for the account has liked the content
 
-**Options**
 contenttype
 :	the slug of the content type
 
@@ -1000,12 +1004,21 @@ gt
 :	check if the pagination is greater than a certain page
 
 lt
-:	check if the paginations if less than a certain page
+:	check if the paginations is less than a certain page
 
 ### if:PhotoCanBeSold
 Check to see if the photo can be sold
 
 Recommended block: PhotoView
+
+### if:PositionInModule
+Checks to see what position the block is currently in inside of the module
+
+gt
+:	check if the position is greater than a certain point
+
+lt
+:	check if the position is less than a certain point
 
 ### if:ReadMore
 Checks if the current excerpt is trimmed to length of 600 characters (give or take, depending on HTML tags).
@@ -1455,6 +1468,9 @@ BlogPostTitle
 
 BlogPostId
 :	the content's ID
+
+BlogPostLikeCount
+:	the number of likes for the blog post
 
 BlogPostBody
 :	the main content for the blog post
