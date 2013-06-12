@@ -997,6 +997,15 @@ group
 name
 :	the name of the option
 
+### if:PageIsActive
+Checks to see if a page is the currently rendered theme engine page
+
+page
+:	the page to check *should be anything after the colon in `{Page:<Page_Name>}`
+
+uri
+:	if you need to be more exact, you can specify an exact URI *the part of the URL after your account name (non custom domains) or you custom domain, no leading forward slash*
+
 ### if:PaginationIs
 Checks if the pagination is within a certain bound
 
