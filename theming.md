@@ -1026,6 +1026,18 @@ Checks if the current excerpt is trimmed to length of 600 characters (give or ta
 Recommended blocks: ActivityStreamView, BlogView  
 Recommended pages: ActivityStreamList, BlogList
 
+### if:UserBelongsToFansiteTier
+Checks to see if the user is logged in and belongs to a specific tier in a fansite
+
+tier
+:	the specific tier to check to see if the user belongs to
+
+gt
+:	check to see if the user is greater than a specific tier
+
+lt
+:	check to see if the user is less than a specific tier
+
 ### if:UserIsAdmin
 Checks to see if the user is logged in and an admin of the current account
 
