@@ -590,6 +590,11 @@ text
 
     defaults to `"Join Fansite"`
 
+forceFreeTier
+:	the tier you want to force a joining of (override the join fansite modal)
+
+	defaults to none, requires that the tier you pass be free
+
 class
 :	the class to assign to the `<a>` tag
 
