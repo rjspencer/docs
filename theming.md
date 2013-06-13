@@ -666,12 +666,17 @@ class
 :	the class to give the `<a>` tag
 	
 ### OpenShareModalLink
-Add a link to open the built in StageBloc sharing modal
+Add a link to open the built in StageBloc sharing modal (requires that the user be logged in)
 
 linkText
 :	the text to put inside of the link
 
 	default to `"Share"`
+	
+shareText
+:	the text to default to in the sharing modal
+
+	defaults to empty
 	
 class
 :	the class to give the `<a>` tag
@@ -1183,6 +1188,9 @@ ActivityExcerptCleaned
 
 ActivityUrl
 :	the permalink to the content's individual page
+
+ActivityShortUrl
+:	the short URL to the content's individual page
 
 ActivityPhotoCount
 :	number of photos added to a photo album item
