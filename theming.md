@@ -310,7 +310,8 @@ Returns a `<script src="">` tag with a link to the theme's JS on StageBloc's CDN
 ### jQuery
 Include the latest version of jQuery on the page via Google's CDN.
 
-*Note: this variable will eventually support defining a specific version to grab from Google*
+v
+:	use this parameter if you want to include a specific version from Google
 
 ### jPlayer
 Include the jPlayer JavaScript library. Requires that {jQuery} is also included and comes before the {jPlayer} variable.
