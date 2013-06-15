@@ -1490,7 +1490,13 @@ A view for a single blog post. Meant to be used with `{Page:BlogView}`
 
 ### block:BlogPost
 AuthorName
-:	author's name
+:	the author's full name
+
+AuthorUsername
+:	the author's StageBloc username
+
+AuthorUrl
+:	the URL to the public facing user page for this author
 
 AuthorPhotoUrl
 :	url to a 130x130px user photo. if one isn't available, we'll use a default placeholder
