@@ -1516,6 +1516,9 @@ BlogPostLikeCount
 BlogPostBody
 :	the main content for the blog post
 
+BlogCategory
+:	the category for the blog post
+
 BlogPostExcerpt
 :	the 1500 character beginning of a blog post
 
