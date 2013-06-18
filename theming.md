@@ -1516,7 +1516,7 @@ BlogPostLikeCount
 BlogPostBody
 :	the main content for the blog post
 
-BlogCategory
+BlogPostCategory
 :	the category for the blog post
 
 BlogPostExcerpt
