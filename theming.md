@@ -33,7 +33,7 @@ In general, a theme consists of defining the pages that make sense for your webs
 
 It easiest to think of `{Module}`s as `for` loops that loop through various data from your StageBloc account (the "model" of the data). Within a `{Module}` a `{Block}` can be used to represent a "view" of the data by exposing various pieces of information about that data.
 
-StageBloc also then has various `{If}` statements and other helpful variables to make thtmes as customizable as possible.
+StageBloc also then has various `{If}` statements and other helpful variables to make themes as customizable as possible.
 
 # Pages
 Each view on StageBloc has a `{Page}` block. [You can also create your own custom pages](#custom-pages). The URL structure shown is the default, it can be altered via the `url` [Page Option](#page-options).
