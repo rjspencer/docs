@@ -1572,6 +1572,9 @@ A view for a single comment
 CommentText
 :	the text of the comment
 
+CommentAuthorUsername
+:	the comment author's username
+
 CommentAuthorFansiteUrl
 :	the URL of this user on the current fansite
 
