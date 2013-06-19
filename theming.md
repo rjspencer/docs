@@ -1444,10 +1444,10 @@ EventLocation
 :	the formatter location of the event
 
 VenueLatitude
-:	the latitude of where the venus is
+:	the latitude of where the venue is
 
 VenueLongitude
-:	the longitude of where the venus is
+:	the longitude of where the venue is
 
 VenueName
 :	the name of the venue for the event
@@ -1463,7 +1463,7 @@ limit
     defaults to `5`
 
 offset
-:	skip X number of items. Still returns `limit` items
+:	skip X number of items, still returns `limit` items
 
 paging (advanced option)
 :	define how many items are on this page
@@ -1478,9 +1478,16 @@ direction
     defaults to `desc`
     
 accountid
-: a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account, see variable `{ChildAccountIDs}`
+:	a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account, see variable `{ChildAccountIDs}`
 
     defaults to none (i.e. the current account)
+
+includeFanContent
+:	normally, content submitted by fans is for `FansiteContentList`, but this allows it to be included in `BlogList` as well
+
+	accepted values are `true` and `false`
+	
+	defaults to `false`
 
 ### Variables
 
