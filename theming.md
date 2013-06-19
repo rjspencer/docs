@@ -584,7 +584,7 @@ shorttime
 	defaults to `false`
     
 ### JoinFansiteLink
-A link that opens a modal and allows a user to join the site's fansite
+A link that opens a modal and allows a user to join the site's fansite *note: you must have a fansite setup for this link to render*
 
 text
 :	the text to be put inside the `<a>` tag
@@ -595,6 +595,8 @@ forceFreeTier
 :	the tier you want to force a joining of (override the join fansite modal)
 
 	defaults to none, requires that the tier you pass be free
+	
+	accepted values are 1, 2, or 3 assuming the tier you use is free
 
 class
 :	the class to assign to the `<a>` tag
