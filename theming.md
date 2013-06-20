@@ -439,30 +439,6 @@ size
 defaultPhoto
 :	the URL of a photo to use if one isn't set and you don't want to use our default photo
 
-### AddCommentLink
-A link to open a modal for commenting on content
-
-href
-:	the URL to give the `<a>` tag as a fallback
-
-linkText
-:	the text to show in the '<a>' tag
-
-	defaults to `"Add Comment"`
-
-class
-:	the class to give the `<a>` tag
-
-contentType
-:	the content type slug of the content being reported
-
-	defaults to the current pages type
-	
-contentId
-:	the content ID of the content being reported
-
-	defaults to the current pages content ID
-
 ### AdminListLikeCount
 Shows the amount of likes the collective admins for an account have
 
@@ -556,15 +532,28 @@ includeCurrent
     defaults to `false`
     
 ### CommentLink
-Add a link to comment on a specific item in a modal, will also show any previously existing comments
+A link to open a modal for commenting on content
 
-LinkText
-:	the text to show in the link for adding a comment
+href
+:	the URL to give the `<a>` tag as a fallback
 
-    defaults to `"Add A Comment"`
+linkText
+:	the text to show in the '<a>' tag
+
+	defaults to `"Add Comment"`
 
 class
 :	the class to give the `<a>` tag
+
+contentType
+:	the content type slug of the content being reported
+
+	defaults to the current pages type
+	
+contentId
+:	the content ID of the content being reported
+
+	defaults to the current pages content ID
 
 ### CreatedDate, ModifiedDate, PublishedDate
 Show the date of various objects
@@ -668,7 +657,7 @@ linkText
 class
 :	the class to give the `<a>` tag
 	
-### OpenShareModalLink
+### ShareLink
 Add a link to open the built in StageBloc sharing modal (requires that the user be logged in)
 
 linkText
@@ -1578,6 +1567,9 @@ A view for a single comment
 
 CommentText
 :	the text of the comment
+
+CommentAuthorUsername
+:	the comment author's username
 
 CommentAuthorFansiteUrl
 :	the URL of this user on the current fansite
