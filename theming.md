@@ -525,11 +525,14 @@ type
     defaults to `alumni,artist,management` (all three)
 
 includeCurrent
-:    whether or not to include the current account with the children
+:   whether or not to include the current account with the children
 
     accepted values are `true` or `false`
     
     defaults to `false`
+
+### CommentCount
+The number of comments on the current piece of content
     
 ### CommentLink
 A link to open a modal for commenting on content
@@ -596,6 +599,9 @@ view
 	defaults to `login`
 	
 	accepted values are `login` or `signup`
+	
+### LikeCount
+The number of likes on the current piece of content
 
 ### LikeLink
 Add a link to like a specific item  
