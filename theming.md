@@ -1497,6 +1497,13 @@ TotalBlogs
 ## BlogView
 A view for a single blog post. Meant to be used with `{Page:BlogView}`
 
+fanSubmittedIsExclusive
+:	whether or not to consider content submitted by fans to a fansite as exclusive or not
+
+	accepted values are `true` and `false`
+
+	defaults to `true`
+
 ### block:BlogPost
 AuthorName
 :	the author's full name
