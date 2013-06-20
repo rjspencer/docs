@@ -2273,6 +2273,9 @@ limit
 Tag
 :	the actual tag
 
+TagLink
+:	a link to content filtered by the tag *note: currently only works with `{page:BlogView}, contact us if you need another page added`
+
 ## UserView
 A view for a single user
 
