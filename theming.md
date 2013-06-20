@@ -657,7 +657,7 @@ linkText
 class
 :	the class to give the `<a>` tag
 	
-### OpenShareModalLink
+### ShareLink
 Add a link to open the built in StageBloc sharing modal (requires that the user be logged in)
 
 linkText
