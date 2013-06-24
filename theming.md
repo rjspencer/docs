@@ -449,6 +449,8 @@ Variables with options use the following syntax:
 
 	{VariableName option1="value" option2="value"}
 	
+All variables have the option of `block` available to them to force them to render within the context of a certain `{Block}`. This usually isn't necessary unless you have two nested `{Block}`s and want to make sure the variables renders at the correct time.
+	
 ### AccountPhotoUrl
 The URL for the account's photo	
 
