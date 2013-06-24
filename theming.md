@@ -301,6 +301,25 @@ Returns the account's name
 ### Body-ID
 Returns the general section the page is in. Eg: blog, statuses, video, audio
 
+### BootstrapCSS
+Returns the latest version of Bootstrap's combined (responsive with icons) CSS from [BootstrapCDN](http://www.bootstrapcdn.com/)
+
+v
+:	use this parameter to specify a particular version
+
+includeIcons
+:	whether or not to includes Bootstrap's icons with the CSS
+
+	defaults to true
+	
+	allowed values are `true` and `false`
+	
+### BootstrapJS
+Returns the latest version of Bootstrap's JS from [BootstrapCDN](http://www.bootstrapcdn.com/)
+
+v
+:	use this parameter to specify a particular version
+
 ### CSS
 Returns a `<link rel="stylesheet" />` tag with a link to the theme's CSS on StageBloc's CDN.
 
