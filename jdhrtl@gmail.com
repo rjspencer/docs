@@ -29,9 +29,9 @@ Here is some general information about custom themes.
 
 * CSS and JS are both minified before being uploaded to our CDN so that you get the maximum performance and caching when users come to your site.
 
-In general, a theme consists of defining the pages that make sense for your website. Each `{Page}` represents a seperate URL on the site. The data within each `{Page}` is built using any combination of `{Module}`s and `{Block}`s.
+In general, a theme consists of defining the pages that make sense for your website. Each `{Page}` represents a separate URL on the site. The data within each `{Page}` is built using any combination of `{module}`s and `{block}`s.
 
-It easiest to think of `{Module}`s as `for` loops that loop through various data from your StageBloc account (the "model" of the data). Within a `{Module}` a `{Block}` can be used to represent a "view" of the data by exposing various pieces of information about that data.
+It easiest to think of `{Module}`s as `for` loops that loop through various data from your StageBloc account (the "model" of the data). Within a `{Module}` a `{block}` can be used to represent a "view" of the data by exposing various pieces of information about that data.
 
 StageBloc also then has various `{If}` statements and other helpful variables to make themes as customizable as possible.
 
@@ -134,7 +134,7 @@ Recommended modules: FanContentList and/or ActivityStreamList with `exclusive` a
 This page would be used if your site is enabled for white labeling, and you want a custom login page for users.
 
 Url structure: /login/
-Recommneded variable: `LoginUsernameInput`, `LoginPasswordInput`, `LoginPageFormAction`
+Recommended variable: `LoginUsernameInput`, `LoginPasswordInput`, `LoginPageFormAction`
 
 In it's simplest form, a login page may look like this:
 
@@ -449,7 +449,7 @@ Variables with options use the following syntax:
 
 	{VariableName option1="value" option2="value"}
 	
-All variables have the option of `block` available to them to force them to render within the context of a certain `{Block}`. This usually isn't necessary unless you have two nested `{Block}`s and want to make sure the variables renders at the correct time.
+All variables have the option of `block` available to them to force them to render within the context of a certain `{block}`. This usually isn't necessary unless you have two nested `{block}`s and want to make sure the variables renders at the correct time.
 	
 ### AccountPhotoUrl
 The URL for the account's photo	
@@ -536,12 +536,12 @@ class
 :	the class to assign to the `<a>` tag
 
 ### ChildsAccountIDs
-A comma seperated list of children accountIDs of the current account, useful with the `accountid` parameter of some modules
+A comma separated list of children accountIDs of the current account, useful with the `accountid` parameter of some modules
 
 type
 :	the type of accounts to limit the results to
 
-    accepted values are any comma seperated combination of `alumni`, `artists`, or `management`
+    accepted values are any comma separated combination of `alumni`, `artists`, or `management`
 
     defaults to `alumni,artist,management` (all three)
 
@@ -554,6 +554,16 @@ includeCurrent
 
 ### CommentCount
 The number of comments on the current piece of content
+
+contentType
+:	the content type slug of the content being reported
+
+	defaults to the current pages type
+	
+contentId
+:	the content ID of the content being reported
+
+	defaults to the current pages content ID
     
 ### CommentLink
 A link to open a modal for commenting on content
@@ -562,7 +572,7 @@ href
 :	the URL to give the `<a>` tag as a fallback
 
 linkText
-:	the text to show in the '<a>' tag
+:	the text to show in the `<a>` tag
 
 	defaults to `"Add Comment"`
 
@@ -1154,7 +1164,7 @@ offset
 paging (advanced option)
 :	define how many items are on this page
 	
-	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitiy set how many items are on the current page, or pagination will return unexpected results
+	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitly set how many items are on the current page, or pagination will return unexpected results
 
 ### block:ActivityStreamView
 
@@ -1255,7 +1265,7 @@ offset
 paging (advanced option)
 :	define how many items are on this page
 	
-	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitiy set how many items are on the current page, or pagination will return unexpected results
+	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitly set how many items are on the current page, or pagination will return unexpected results
 
 featured
 :	whether or not to just show the featured audio track
@@ -1484,7 +1494,7 @@ offset
 paging (advanced option)
 :	define how many items are on this page
 	
-	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitiy set how many items are on the current page, or pagination will return unexpected results
+	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitly set how many items are on the current page, or pagination will return unexpected results
     
 direction
 :	the direction in which to order the blog posts
@@ -1621,7 +1631,7 @@ A listing of accounts that are children of the current account
 type
 :	the type of accounts to limit the results to
 
-    accepted values are any comma seperated combination of `alumni`, `artists`, or `management`
+    accepted values are any comma separated combination of `alumni`, `artists`, or `management`
 
     defaults to `alumni,artist,management` (all three)
     
@@ -1668,7 +1678,7 @@ offset
 paging (advanced option)
 :	define how many items are on this page
 	
-	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitiy set how many items are on the current page, or pagination will return unexpected results
+	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitly set how many items are on the current page, or pagination will return unexpected results
 
 upcoming
 : whether or not to show upcoming events
@@ -1930,7 +1940,7 @@ offset
 paging (advanced option)
 :	define how many items are on this page
 	
-	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitiy set how many items are on the current page, or pagination will return unexpected results
+	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitly set how many items are on the current page, or pagination will return unexpected results
 
 direction
 :	the direction in which to order the photo albums
@@ -2035,7 +2045,7 @@ offset
 paging (advanced option)
 :	define how many items are on this page
 	
-	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitiy set how many items are on the current page, or pagination will return unexpected results
+	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitly set how many items are on the current page, or pagination will return unexpected results
 	
 userid
 :    the user to limit the photos to *Note: if `fancontent` is enabled, this must be a fan of the account and / or if `accountcontent` is enabled, this must be an admin of the account*
@@ -2171,7 +2181,7 @@ offset
 paging (advanced option)
 :	define how many items are on this page
 	
-	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitiy set how many items are on the current page, or pagination will return unexpected results
+	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitly set how many items are on the current page, or pagination will return unexpected results
     
 userid
 :    the user to limit the statuses to *Note: if `fancontent` is enabled, this must be a fan of the account and / or if `accountcontent` is enabled, this must be an admin of the account*
@@ -2222,7 +2232,7 @@ offset
 paging (advanced option)
 :	define how many items are on this page
 	
-	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitiy set how many items are on the current page, or pagination will return unexpected results
+	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitly set how many items are on the current page, or pagination will return unexpected results
 
 direction
 :	the direction in which to order the store items
@@ -2234,12 +2244,12 @@ direction
 type
 :	the type of store item
 
-	accepted values are any comma seperated string of the following constants: digital, physical
+	accepted values are any comma separated string of the following constants: digital, physical
     
 status
 :	the status of the store items
 
-	accepted values are any comma seperated string of the following constants: listed, coming_soon, sold_out
+	accepted values are any comma separated string of the following constants: listed, coming_soon, sold_out
 	
 	defaults to all three
     
@@ -2366,7 +2376,7 @@ offset
 paging (advanced option)
 :	define how many items are on this page
 	
-	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitiy set how many items are on the current page, or pagination will return unexpected results
+	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitly set how many items are on the current page, or pagination will return unexpected results
 
 direction
 :	the direction in which to order the videos
@@ -2458,7 +2468,7 @@ offset
 paging (advanced option)
 :	define how many items are on this page
 	
-	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitiy set how many items are on the current page, or pagination will return unexpected results
+	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitly set how many items are on the current page, or pagination will return unexpected results
 
 ### Variables
 
