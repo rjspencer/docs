@@ -534,6 +534,12 @@ audioplaylistid (*required*)
 
 class
 :	the class to assign to the `<a>` tag
+	
+BlogPostCustomField
+A way to access custom field data from a blog post
+
+slug
+:	the slug of the custom field
 
 ### ChildsAccountIDs
 A comma seperated list of children accountIDs of the current account, useful with the `accountid` parameter of some modules
@@ -1550,6 +1556,9 @@ BlogPostBody
 
 BlogPostCategory
 :	the category for the blog post
+
+BlogPostCustomField
+:	a way to access custom field data in blog posts, see description in [Variables With Options](#variables-with-options)
 
 BlogPostExcerpt
 :	the 1500 character beginning of a blog post
