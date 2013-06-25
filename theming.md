@@ -29,14 +29,14 @@ Here is some general information about custom themes.
 
 * CSS and JS are both minified before being uploaded to our CDN so that you get the maximum performance and caching when users come to your site.
 
-In general, a theme consists of defining the pages that make sense for your website. Each `{Page}` represents a separate URL on the site. The data within each `{Page}` is built using any combination of `{module}`s and `{block}`s.
+In general, a theme consists of defining the pages that make sense for your website. Each `{page}` represents a separate URL on the site. The data within each `{page}` is built using any combination of `{module}`s and `{block}`s.
 
-It easiest to think of `{Module}`s as `for` loops that loop through various data from your StageBloc account (the "model" of the data). Within a `{Module}` a `{block}` can be used to represent a "view" of the data by exposing various pieces of information about that data.
+It is easiest to think of `{module}`s as `for` loops that loop through various data from your StageBloc account (the "model" of the data). Within a `{module}` a `{block}` can be used to represent a "view" of the data by exposing various pieces of information about that data.
 
-StageBloc also then has various `{If}` statements and other helpful variables to make themes as customizable as possible.
+StageBloc also then has various `{if}` statements and other helpful variables to make themes as customizable as possible.
 
 # Pages
-Each view on StageBloc has a `{Page}` block. [You can also create your own custom pages](#custom-pages). The URL structure shown is the default, it can be altered via the `url` [Page Option](#page-options).
+Each view on StageBloc has a `{page}` block. [You can also create your own custom pages](#custom-pages). The URL structure shown is the default, it can be altered via the `url` [Page Option](#page-options).
 
 *Note: Not all pages are required. Define pages that make sense for your theme, and the rest will be taken care of by the theming engine via a beautiful fallback theme we've created. No links will be broken.*
 
@@ -263,9 +263,9 @@ url
 
 	accepted values are any string valid in a URL, the [%id] is always assumed to be at the end *(Note: do not start the override URL with a `/`)*
 
-		{Page:EventList url="shows"}
+		{page:EventList url="shows"}
 			<!-- The events page would now be at /shows, not /events -->
-		{/Page:EventList}
+		{/page:EventList}
 		
 	*Note: If a `Page` has more than one [%id] (i.e. `Page:BlogCommentView`), use a `*` for the first [%id]*
 	
@@ -279,9 +279,9 @@ title
 ## Custom Pages
 Custom pages can be defined using the following syntax:
 	
-	{Page:CustomMyAwesomePage}
+	{page:CustomMyAwesomePage}
 	
-	{/Page:CustomMyAwesomePage}
+	{/page:CustomMyAwesomePage}
 
 They can contain any modules or blocks that you choose to put inside of them, however pagination may not be reliable. The page URL of the example page above will be `/MyAwesomePage`
  
@@ -1046,7 +1046,7 @@ name
 Checks to see if a page is the currently rendered theme engine page
 
 page
-:	the page to check *should be anything after the colon in `{Page:<Page_Name>}`
+:	the page to check *should be anything after the colon in `{page:<Page_Name>}`
 
 uri
 :	if you need to be more exact, you can specify an exact URI *the part of the URL after your account name (non custom domains) or you custom domain, no leading forward slash*
@@ -1121,6 +1121,8 @@ The general syntax for modules and their blocks is as follows:
 			...
 		{/block:BlockName}
 	{/module:ModuleName}
+	
+It is easiest to think of `{module}`s as `for` loops that loop through various data from your StageBloc account (the "model" of the data). Within a `{module}` a `{block}` can be used to represent a "view" of the data by exposing various pieces of information about that data.
 
 ## AccountAbout
 
@@ -1296,10 +1298,10 @@ TotalAudio:
 :	the total amount of audio tracks, or if `audioplaylistid` is set, how many audio tracks in that playlist
 
 ## AudioView
-A view for a single audio object. *Meant to be used with {Page:AudioView}*  
+A view for a single audio object. *Meant to be used with {page:AudioView}*  
 
 audioid
-: an ID for which audio to show *defaults to the one given to {Page:AudioView} if in that page
+: an ID for which audio to show *defaults to the one given to {page:AudioView} if in that page
 
 ### block:AudioView
 AudioAccountId
@@ -1380,7 +1382,7 @@ TotalAudioPlaylists
 : the total amount of audio playlists
 
 ## AudioPlaylistView
-A single view for an audio playlist. *Meant to be used with {Page:AudioPlaylistView}*
+A single view for an audio playlist. *Meant to be used with {page:AudioPlaylistView}*
 
 ### block:AudioPlaylistView
 AudioPlaylistDescription
@@ -1527,7 +1529,7 @@ TotalBlogs
 :	the total amount of blog posts
 
 ## BlogView
-A view for a single blog post. Meant to be used with `{Page:BlogView}`
+A view for a single blog post. Meant to be used with `{page:BlogView}`
 
 fanSubmittedIsExclusive
 :	whether or not to consider content submitted by fans to a fansite as exclusive or not
@@ -1721,7 +1723,7 @@ TotalEvents
 : the amount of events loaded based on your values for upcoming and/or past
 
 ## EventView
-A view for a single event. Meant to be used with `{Page:EventView}`
+A view for a single event. Meant to be used with `{page:EventView}`
 
 ### block:EventView
 
@@ -1969,7 +1971,7 @@ TotalPhotoAlbums
 : the total amount of photo albums
 
 ## PhotoAlbumView
-A view for a single photo album. *Meant to be used with {Page:PhotoAlbumView}*
+A view for a single photo album. *Meant to be used with {page:PhotoAlbumView}*
 
 ### block:PhotoAlbumView
 PhotoAlbumPhotoUrl
@@ -2067,12 +2069,12 @@ TotalPhotos
 : the total amount of photos, or if `albumid` is set, how many photos in this album
 
 ## PhotoView
-A view for a single photo. *Meant to be used with {Page:PhotoView}*
+A view for a single photo. *Meant to be used with {page:PhotoView}*
 
 ### Options
   
 photoid
-: an ID for which photo to show *defaults to the one given to {Page:PhotoView} if in that {Page}*
+: an ID for which photo to show *defaults to the one given to {page:PhotoView} if in that {page}*
 
 ### block:PhotoView
 
@@ -2203,7 +2205,7 @@ TotalStatuses
 :	total amount of statuses
 
 ## StatusView
-A view for an individual status. *Meant to be used with {Page:StatusView}*
+A view for an individual status. *Meant to be used with {page:StatusView}*
 
 ### block:StatusPost
 
@@ -2273,7 +2275,7 @@ TotalStoreItems
 :	total amount of store items
 
 ## StoreItemView
-A view for an individual store item. *Meant to be used with {Page:StoreItemView}*
+A view for an individual store item. *Meant to be used with {page:StoreItemView}*
 
 ### block:StoreItemView
 
@@ -2419,10 +2421,10 @@ TotalVideos
 : the total amount of videos, or if `videoplaylistid` is set, the total videos in this playlist
 
 ## VideoView
-A view for a single video. *Meant to be used with {Page:VideoView}*  
+A view for a single video. *Meant to be used with {page:VideoView}*  
 
 videoid
-: an ID for which video to show *defaults to the one given to {Page:VideoView} if in that page
+: an ID for which video to show *defaults to the one given to {page:VideoView} if in that page
 
 ### block:VideoView
 VideoAccountId
@@ -2516,6 +2518,49 @@ CreatedByPhotoUrl, ModifiedByPhotoUrl
 
 CreatedByName, ModifiedByName
 :	the name of the user who created/modified the video playlist
+
+# Advanced Functionality
+If you're looking for some advanced functionality, you've found the right place!
+
+## Inline Commenting
+Normally, commenting can be done very easily with the use of `{CommentLink}` variable that opens an SB Nav modal. However, sometimes you'll want to have comments inline within your page to give the user a different experience. This is fairly straightforward to do.
+
+**Step One**
+
+First, you'll obviously need some sort of `HTML` form. Here's an example:
+
+	<form id="commentForm">
+		<input type="hidden" name="content_slug" value="{ContentType-Photos}" />
+		<input type="hidden" name="content_id" value="{PhotoId}" />
+		<textarea id="commentText" name="commentText"></textarea>
+		<input type="submit" value="Post Comment" />
+	</form>
+	
+Note that `content_id` and `content_slug` will vary depending on the content you're trying to comment on and will most likely be received from some sort of `{block}` data within your theme.
+
+**Step Two**
+
+Next, when the user submits the form, you'll want to capture it with JavaScript similar to the following:
+
+	$('#commentForm').submit(function()
+	{
+		pm({target: window.frames['sbnav'], type: 'sbInlineComment', data: $(this).serialize() });
+		return false;
+	});
+	
+The postMessage JS library is already included for you. The `type` and `target` parameters must be exactly as shown above. The passed data must contain the keys `content_slug`, 'content_id', and 'commentText' with their respective values for it to be valid.
+
+**Step Three**
+
+Finally, you should add two bindings to your theme's JavaScript.
+
+	pm.bind('sbInlineComment', function(data) {		
+		// data will be a JSON string representing the comment that was posted (or an error if an error occurred)
+	});
+
+	pm.bind('sbError', function(data) {
+
+	});
 
 # SB Nav
 SB Nav is the little control box that appears in a corner of the screen. It allows users to log in; follow and unfollow accounts; and edit, like, repost, and buy content. As a theme author, you can change a few things.
