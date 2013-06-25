@@ -2548,18 +2548,18 @@ Next, when the user submits the form, you'll want to capture it with JavaScript 
 		return false;
 	});
 	
-The postMessage JS library is already included for you. The `type` and `target` parameters must be exactly as shown above. The passed data must contain the keys `content_slug`, 'content_id', and 'commentText' with their respective values for it to be valid.
+The postMessage JS library is already included for you. The `type` and `target` parameters must be exactly as shown above. The passed data must contain the keys `content_slug`, `content_id`, and `commentText` with their respective values for it to be valid.
 
 **Step Three**
 
 Finally, you should add two bindings to your theme's JavaScript.
 
 	pm.bind('sbInlineComment', function(data) {		
-		// data will be a JSON string representing the comment that was posted (or an error if an error occurred)
+		// data will be JSON representing the comment that was posted (or an error if an error occurred)
 	});
 
 	pm.bind('sbError', function(data) {
-
+		// This binding will handle generic errors. data will contain a `type` property for the action it came from (i.e. 'sbInlineComment')
 	});
 
 # SB Nav
