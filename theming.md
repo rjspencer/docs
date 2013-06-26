@@ -2531,6 +2531,51 @@ CreatedByName, ModifiedByName
 # Advanced Functionality
 If you're looking for some advanced functionality, you've found the right place!
 
+## Inline User Profile Editing
+Editing the logged in users profile can be done via SB Nav. The steps are outlined below.
+
+**Step One**
+
+First, you'll obviously need some sort of `HTML` form. Here's an example:
+
+ 	{module:API v="3.0" path="user/list" me="true"}
+ 		{block:API}
+		<form id="userEditForm">
+			<input type="hidden" name="email" value="{email}" />
+			<input type="hidden" name="username" value="{username}" />
+			<textarea name="bio">{bio}</textarea>
+			<input type="submit" value="Edit Profile" />
+		</form>
+		{/block:API}
+	{/module:API}
+	
+The currently available parameters you can send use are `name`, `username`, `email`, `bio`, and `birthday`.
+
+**Step Two**
+
+Next, when the user submits the form, you'll want to capture it with JavaScript similar to the following:
+
+	$('#userEditForm').submit(function()
+	{
+		pm({target: window.frames['sbnav'], type: 'sbInlineUserProfileEdit', data: $(this).serialize() });
+		return false;
+	});
+	
+The postMessage JS library is already included for you. The `type` and `target` parameters must be exactly as shown above.
+
+**Step Three**
+
+Finally, you should add two bindings to your theme's JavaScript. You can use these callbacks to handle the new data returned from the data in the case of a successful edit or the error in the case of a failed edit.
+
+	pm.bind('sbInlineUserProfileEdit', function(data)
+	{
+		// data will be JSON representing the comment that was posted (or an error if an error occurred)
+	});
+
+	pm.bind('sbError', function(data) {
+		// This binding will handle generic errors. data will contain a `type` property for the action it came from (i.e. 'sbInlineUserProfileEdit')
+	});
+
 ## Inline Commenting
 Normally, commenting can be done very easily with the use of `{CommentLink}` variable that opens an SB Nav modal. However, sometimes you'll want to have comments inline within your page to give the user a different experience. This is fairly straightforward to do.
 
@@ -2541,7 +2586,7 @@ First, you'll obviously need some sort of `HTML` form. Here's an example:
 	<form id="commentForm">
 		<input type="hidden" name="content_slug" value="{ContentType-Photos}" />
 		<input type="hidden" name="content_id" value="{PhotoId}" />
-		<textarea id="commentText" name="commentText"></textarea>
+		<textarea name="commentText"></textarea>
 		<input type="submit" value="Post Comment" />
 	</form>
 	
@@ -2563,7 +2608,8 @@ The postMessage JS library is already included for you. The `type` and `target` 
 
 Finally, you should add two bindings to your theme's JavaScript.
 
-	pm.bind('sbInlineComment', function(data) {		
+	pm.bind('sbInlineComment', function(data)
+	{
 		// data will be JSON representing the comment that was posted (or an error if an error occurred)
 	});
 
