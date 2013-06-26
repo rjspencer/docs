@@ -1634,6 +1634,9 @@ CommentAuthorFansiteUrl
 CommentAuthorUrl
 :	the URL to the main user page for the author
 
+CommentAuthorPhotoUrl
+:	the URL to the thumbnail image for the user who submitted this comment
+
 CommentUserId
 :	the ID of the user who posted the comment *Can be used with `block:UserView`
 
