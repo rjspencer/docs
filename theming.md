@@ -535,7 +535,7 @@ audioplaylistid (*required*)
 class
 :	the class to assign to the `<a>` tag
 	
-BlogPostCustomField
+### BlogPostCustomField
 A way to access custom field data from a blog post
 
 slug
@@ -1492,9 +1492,12 @@ A listing of blogs *note: if inside of the `BlogCategoryView` `Page`, this will 
 ### Options
 
 limit
-: the amount of blogs to list per page
+:	the amount of blogs to list per page
 
     defaults to `5`
+    
+category
+:	a category to filter the blog listing by
 
 offset
 :	skip X number of items, still returns `limit` items
