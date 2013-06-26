@@ -950,35 +950,11 @@ Check to see if the viewer is on a mobile browser or not
 ### if:BlogPostHasPhoto
 Check to see if a blog post has one or more photos (`<img>` tags) in it
 
-### if:StoreItemCanBeDownloadedForFree
-Check to see if the store item can be downloaded for free
+### if:CustomFieldIsSet
+Check to see if a particular custom field is set on a content item
 
-Recommended block: StoreItemView
-
-### if:StoreItemCanBeSold
-Check to see if the store item is being sold
-
-Recommended block: StoreItemView
-
-### if:StoreItemCanNamePrice
-Check to see if the store item supports naming a price
-
-Recommended block: StoreItemView
-
-### if:StoreItemIsOnSale
-Check to see if the store item is on sale or not
-
-Recommended block: StoreItemView
-
-### if:StoreItemIsPhysical
-Check to see if the store item is a physical good (instead of a digital good)
-
-Recommended block: StoreItemView
-
-### if:StoreItemIsSoldOut
-Check to see if the store item is sold out or not
-
-Recommended block: StoreItemView
+slug
+:	the slug of the custom field you want to check
 
 ### if:EventHasEnded
 Check if an event's end time is after the current time.
@@ -1005,6 +981,11 @@ Check if there is at least one supporting act for an event.
 
 Recommended block: EventView
 
+### if:EventHasTicketsBuyLink
+Check if the event has a ticket buy link attached
+
+Recommended blocks: EventView
+
 ### if:Has[%direction]BlogPost
 Check if a previous or next blog post exists.
 
@@ -1027,11 +1008,6 @@ Global: Yes, this if statement will run anywhere.
 Check if the current content item has any tags
 
 Recommended blocks: BlogView, StatusView, PhotoView, PhotoAlbumView, EventView, AudioView, AudioPlaylistView, VideoView, VideoPlaylistView
-
-### if:EventHasTicketsBuyLink
-Check if the event has a ticket buy link attached
-
-Recommended blocks: EventView
 
 ### if:OptionIsSet
 Determines if the given [{option} variable](#options-variables) has been set or not
@@ -1079,6 +1055,36 @@ Checks if the current excerpt is trimmed to length of 600 characters (give or ta
 
 Recommended blocks: ActivityStreamView, BlogView  
 Recommended pages: ActivityStreamList, BlogList
+
+### if:StoreItemCanBeDownloadedForFree
+Check to see if the store item can be downloaded for free
+
+Recommended block: StoreItemView
+
+### if:StoreItemCanBeSold
+Check to see if the store item is being sold
+
+Recommended block: StoreItemView
+
+### if:StoreItemCanNamePrice
+Check to see if the store item supports naming a price
+
+Recommended block: StoreItemView
+
+### if:StoreItemIsOnSale
+Check to see if the store item is on sale or not
+
+Recommended block: StoreItemView
+
+### if:StoreItemIsPhysical
+Check to see if the store item is a physical good (instead of a digital good)
+
+Recommended block: StoreItemView
+
+### if:StoreItemIsSoldOut
+Check to see if the store item is sold out or not
+
+Recommended block: StoreItemView
 
 ### if:UserBelongsToFansiteTier
 Checks to see if the user is logged in and belongs to a specific tier in a fansite
