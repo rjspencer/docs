@@ -914,7 +914,7 @@ contentid
 Use this if statement to compare if a certain activity list item is of a certain type. The types `Blog`, `Status`, and `StoreItem` will also catch their respective `Repost` items, so use `if:ActivityIsRepost` to differentiate between reposts and non-reposts.
 
 Supported types: Audio, Blog, Event, Photo, PhotoAlbum, Repost, Status, StoreItem, Video  
-Recommended modules: ActivityStreamList
+Recommended modules: ActivityStreamList, FansiteContentList
 
 ### if:AudioHasLyrics
 Check to see if the audio has lyrics
@@ -1646,6 +1646,9 @@ CommentId
 CommentItemId
 :	the ID of the item the comment was written about
 
+CreatedDate
+:	the date the comment was created *see [Variables With Options](#variables-with-options)*
+
 ## ChildAccountList
 A listing of accounts that are children of the current account
 
@@ -1811,7 +1814,7 @@ includeAccountContent
 	defaults to `false`
 
 ## FansiteContentView
-A view for a fansite content item piece.
+A view for a fansite content item piece. *Note: `{if:ActivityIs[%type]}` is also available within this module*
 
 ### block:FansiteContentView
 FansiteContentAuthorName
