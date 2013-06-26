@@ -1239,7 +1239,7 @@ ActivityPhotoCount
 :	number of photos added to a photo album item
 
 ActivityPhotoUrl
-:	a playlist cover image or a default one if there is no cover set
+:	a photo representing the content *note: see `{if:ActivityHasActivityPhoto}`*
 
 	**Options**
 	
@@ -1817,6 +1817,14 @@ includeAccountContent
 A view for a fansite content item piece. *Note: `{if:ActivityIs[%type]}` is also available within this module*
 
 ### block:FansiteContentView
+ActivityPhotoUrl
+:	a photo representing the content *note: see `{if:ActivityHasActivityPhoto}`*
+
+	**Options**
+	
+	size
+	:	accepted sizes are "thumbnail", "small", "medium", "large", "original"
+
 FansiteContentAuthorName
 :	the name of the user who created the content
 
