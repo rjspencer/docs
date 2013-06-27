@@ -1865,7 +1865,7 @@ FansiteContentBody
 :	the body of the content
 
 FansiteContentCSSClass
-:	a CSS class to use for the content
+:	a CSS class to use for the content *note: if `includeAccountContent` is set to `true` in the `{module}`, the CSS class will have "account" in it*
 
 FansiteContentExcerpt
 :	an excerpt of the content
@@ -2601,7 +2601,8 @@ Finally, you should add two bindings to your theme's JavaScript. You can use the
 		// data will be JSON representing the comment that was posted (or an error if an error occurred)
 	});
 
-	pm.bind('sbError', function(data) {
+	pm.bind('sbError', function(data)
+	{
 		// This binding will handle generic errors. data will contain a `type` property for the action it came from (i.e. 'sbInlineUserProfileEdit')
 	});
 
@@ -2642,8 +2643,47 @@ Finally, you should add two bindings to your theme's JavaScript.
 		// data will be JSON representing the comment that was posted (or an error if an error occurred)
 	});
 
-	pm.bind('sbError', function(data) {
+	pm.bind('sbError', function(data)
+	{
 		// This binding will handle generic errors. data will contain a `type` property for the action it came from (i.e. 'sbInlineComment')
+	});
+	
+## Inline Status Submission
+Normally, adding content can be done very easily with the use of `{SubmitFanContentLink}` variable that opens an SB Nav modal. However, sometimes you'll want to have comments inline within your page to give the user a different experience. This is fairly straightforward to do.
+
+**Step One**
+
+First, you'll obviously need some sort of `HTML` form. Here's an example:
+
+	<form id="statusSubmit">
+		<input type="text" name="statusText" />
+		<input type="submit" />
+	</form>
+
+**Step Two**
+
+Next, when the user submits the form, you'll want to capture it with JavaScript similar to the following:
+
+	$('#statusSubmit').submit(function()
+	{
+		pm({target: window.frames['sbnav'], type: 'sbInlineSubmitStatus', data: $(this).serialize() });
+		return false;
+	});
+	
+The postMessage JS library is already included for you. The `type` and `target` parameters must be exactly as shown above. The passed data must contain the key `statusText` for it to be valid.
+
+**Step Three**
+
+Finally, you should add two bindings to your theme's JavaScript.
+
+	pm.bind('sbInlineSubmitStatus', function(data)
+	{
+		// data will be JSON representing the status that was posted (or an error if an error occurred)
+	});
+
+	pm.bind('sbError', function(data)
+	{
+		// This binding will handle generic errors. data will contain a `type` property for the action it came from (i.e. 'sbInlineSubmitStatus')
 	});
 
 # SB Nav
