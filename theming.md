@@ -1813,6 +1813,21 @@ includeAccountContent
 
 	defaults to `false`
 
+supported
+:	a comma separated list of supported content types
+
+    accepted values are `blog`, `photos`, `statuses`, `videos`
+
+    defaults to `blog,statuses,videos,photos`
+
+limit
+:	the amount of blogs to list per page
+
+    defaults to `10`
+    
+offset
+:	skip X number of items, still returns `limit` items
+
 ## FansiteContentView
 A view for a fansite content item piece. *Note: `{if:ActivityIs[%type]}` is also available within this module*
 
