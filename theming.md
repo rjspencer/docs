@@ -1050,6 +1050,9 @@ gt
 lt
 :	check if the position is less than a certain point
 
+e
+:	check to see if the position is equal to a certain point
+
 ### if:ReadMore
 Checks if the current excerpt is trimmed to length of 600 characters (give or take, depending on HTML tags).
 
