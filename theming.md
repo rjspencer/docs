@@ -279,7 +279,7 @@ title
 ajax
 :	a GET parameter value that can be used to output ONLY the stuff within a specific page (i.e. strip out any headers, etc) *note: this is useful for infinite scrolling with AJAX*
 
-For instance, loading a theme consisting of the following via `url.com/?ajax=anyPage` would ONLY output the data in the page, the rest is stripped out
+	For instance, loading a theme consisting of the following via `url.com/?ajax=anyPage` would ONLY output the data in the page, the rest is stripped out
 
 	Content outside of the page
 	{page:AnyPage ajax="anyPage"}
