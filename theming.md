@@ -2631,7 +2631,7 @@ First, you'll obviously need some sort of `HTML` form. Here's an example:
 		<input type="submit" value="Post Comment" />
 	</form>
 	
-Note that `content_id` and `content_slug` will vary depending on the content you're trying to comment on and will most likely be received from some sort of `{block}` data within your theme.
+Note that `content_id` and `content_slug` will vary depending on the content you're trying to comment on and will most likely be received from some sort of `{block}` data within your theme. There is also an optional `replyToId` parameter that can be passed to serve as the `id` of the original comment if this new comment is meant to be a reply to it.
 
 **Step Two**
 
