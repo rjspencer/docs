@@ -281,10 +281,10 @@ ajax
 
 	For instance, loading a theme consisting of the following via `url.com/?ajax=anyPage` would ONLY output the data in the page, the rest is stripped out
 
-	Content outside of the page
-	{page:AnyPage ajax="anyPage"}
-		Content inside of the page
-	{/page:AnyPage}
+		Content outside of the page
+		{page:AnyPage ajax="anyPage"}
+			Content inside of the page
+		{/page:AnyPage}
 
 ## Custom Pages
 Custom pages can be defined using the following syntax:
