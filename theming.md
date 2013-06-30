@@ -1176,7 +1176,7 @@ Events are grouped in the activity stream.
 supported (*required*)
 :	a comma separated list of supported content types
 
-    accepted values are `audio`, `blog`, `blog_reposts`, `events`, `photos`, `statuses`, `status_reposts`, `videos`, `store`
+    accepted values are `{ContentType-Audio}`, `{ContentType-Blog}`, `blog_reposts`, `{ContentType-Events}`, `{ContentType-Photos}`, `{ContentType-Statuses}`, `status_reposts`, `{ContentType-Videos}`, `{ContentType-Store}`
 
     defaults to none
 
@@ -1837,7 +1837,7 @@ chunkSize
 supported
 :	a comma separated list of supported content types
 
-    accepted values are `blog`, `photos`, `statuses`, `videos`
+    accepted values are `{ContentType-Blog}`, `{ContentType-Photos}`, `{ContentType-Statuses}`, `{ContentType-Videos}`
 
     defaults to `blog,statuses,videos,photos`
 
