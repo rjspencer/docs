@@ -2746,6 +2746,44 @@ Finally, you should add two bindings to your theme's JavaScript.
 		// This binding will handle generic errors. data will contain a `type` property for the action it came from (i.e. 'sbInlineSubmitBlog')
 	});
 
+## Inline Video Submission
+Normally, adding content can be done very easily with the use of `{SubmitFanContentLink}` variable that opens an SB Nav modal. However, sometimes you'll want to have comments inline within your page to give the user a different experience. This is fairly straightforward to do.
+
+**Step One**
+
+First, you'll obviously need some sort of `HTML` form. Here's an example:
+
+	<form id="videoSubmit">
+		<input type="text" name="videoRawUrl" />
+		<input type="submit" />
+	</form>
+
+**Step Two**
+
+Next, when the user submits the form, you'll want to capture it with JavaScript similar to the following:
+
+	$('#videoSubmit').submit(function()
+	{
+		pm({target: window.frames['sbnav'], type: 'sbInlineSubmitVideo', data: $(this).serialize() });
+		return false;
+	});
+	
+The postMessage JS library is already included for you. The `type` and `target` parameters must be exactly as shown above. The passed data must contain the key `videoRawUrl` for it to be valid (we'll then use oEmbed to grab a lot of the data). You can explicitly pass `videoTitle` if you'd like. You can also pass a comma seperated list of words to use as tags with the key `videoTags`.
+
+**Step Three**
+
+Finally, you should add two bindings to your theme's JavaScript.
+
+	pm.bind('sbInlineSubmitVideo', function(data)
+	{
+		// data will be JSON representing the video that was posted (or an error if an error occurred)
+	});
+
+	pm.bind('sbError', function(data)
+	{
+		// This binding will handle generic errors. data will contain a `type` property for the action it came from (i.e. 'sbInlineSubmitVideo')
+	});
+
 # SB Nav
 SB Nav is the little control box that appears in a corner of the screen. It allows users to log in; follow and unfollow accounts; and edit, like, repost, and buy content. As a theme author, you can change a few things.
 
