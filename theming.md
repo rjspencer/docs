@@ -713,22 +713,6 @@ linkText
 
 class
 :	the class to give the `<a>` tag
-	
-### ShareLink
-Add a link to open the built in StageBloc sharing modal (requires that the user be logged in)
-
-linkText
-:	the text to put inside of the link
-
-	default to `"Share"`
-	
-shareText
-:	the text to default to in the sharing modal
-
-	defaults to empty
-	
-class
-:	the class to give the `<a>` tag
 
 ### PhotoAddToCartLink
 Creates a link that, when clicked, will add the photo to the user's cart on StageBloc
@@ -791,6 +775,22 @@ text
 :	the text inside the `<a>` tag
 
     defaults to `address`
+    
+### ShareLink
+Add a link to open the built in StageBloc sharing modal (requires that the user be logged in)
+
+linkText
+:	the text to put inside of the link
+
+	default to `"Share"`
+	
+shareText
+:	the text to default to in the sharing modal
+
+	defaults to empty
+	
+class
+:	the class to give the `<a>` tag
 
 ### ShowDesktopSiteLink
 Creates a link that, when clicked, will force the browser to show the desktop version of a site, this link will only be added if the browser is a mobile browser
