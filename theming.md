@@ -1645,6 +1645,9 @@ A view for a single comment
 CommentText
 :	the text of the comment
 
+CommentShortUrl`
+:	a short URL to the comment
+
 CommentAuthorUsername
 :	the comment author's username
 
