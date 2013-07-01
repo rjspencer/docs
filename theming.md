@@ -277,12 +277,16 @@ title
 	default value will be based on the modules present on the rendered page
 	
 ajax
-:	a GET parameter value that can be used to output ONLY the stuff within a specific page (i.e. strip out any headers, etc) *note: this is useful for infinite scrolling with AJAX*
+:	a GET parameter value that can be used to output ONLY the stuff within a specific page (i.e. strip out any headers, footers, etc) *note: this is useful for infinite scrolling with AJAX*
 
-	For instance, loading a theme consisting of the following via `url.com/?ajax=anyPage` would ONLY output the data in the page, the rest is stripped out
+	defaults to `false`
+	
+	accepted values are `true` and `false`
+
+	For instance, loading a theme consisting of the following via `url.com/?ajax=true` would ONLY output the data in the page, the rest is stripped out
 
 		Content outside of the page
-		{page:AnyPage ajax="anyPage"}
+		{page:AnyPage ajax="true"}
 			Content inside of the page
 		{/page:AnyPage}
 
