@@ -964,6 +964,9 @@ Check to see if the viewer is on a mobile browser or not
 ### if:BlogPostHasPhoto
 Check to see if a blog post has one or more photos (`<img>` tags) in it
 
+### if:ContentIsFanSubmitted
+Check to see if a content item was fan submitted or not
+
 ### if:CustomFieldIsSet
 Check to see if a particular custom field is set on a content item
 
