@@ -1839,7 +1839,7 @@ supported
 
     accepted values are `{ContentType-Blog}`, `{ContentType-Photos}`, `{ContentType-Statuses}`, `{ContentType-Videos}`
 
-    defaults to `blog,statuses,videos,photos`
+    defaults to no supported types
 
 limit
 :	the amount of blogs to list per page
