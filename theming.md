@@ -1068,7 +1068,7 @@ Check to see if the photo can be sold
 Recommended block: PhotoView
 
 ### if:PositionInModule
-Checks to see what position the block is currently in inside of the module
+Checks to see what position the block is currently in inside of the module. The first item in the module is "1" (e.g., it is 1 indexed)
 
 gt
 :	check if the position is greater than a certain point
@@ -1119,7 +1119,7 @@ Check to see if the store item is sold out or not
 Recommended block: StoreItemView
 
 ### if:UserBelongsToFansiteTier
-Checks to see if the user is logged in and belongs to a specific tier in a fansite
+Checks to see if the user is logged in and belongs to a specific tier in a fansite. Possible tiers are 1, 2, and 3.
 
 tier
 :	the specific tier to check to see if the user belongs to
