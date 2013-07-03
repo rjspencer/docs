@@ -964,6 +964,9 @@ Check to see if the viewer is on a mobile browser or not
 ### if:BlogPostHasPhoto
 Check to see if a blog post has one or more photos (`<img>` tags) in it
 
+### if:CommentIsReply
+Check to see if a comment is a reply to another comment
+
 ### if:ContentIsFanSubmitted
 Check to see if a content item was fan submitted or not
 
@@ -1776,6 +1779,9 @@ EventAges
 
 EventCity 
 :	the city in which the event is taking place
+
+EventLikeCount
+:	the number of likes for the event
 
 EventState
 :	the state in which the event is taking place
