@@ -2216,21 +2216,21 @@ Source-Original
 :	The originally uploaded photo.
 
 ShortUrl-Thumb
-:	A square thumbnail, 130x130
+:	Permalink to a square thumbnail, 130x130
 
 ShortUrl-Small
-:	Photo with max width of 250
+:	Permalink to photo with max width of 250
 
 ShortUrl-Medium
-:	Photo with max width of 500
+:	Permalink to photo with max width of 500
 
 ShortUrl-Large
-:	Photo with max width of 800
+:	Permalink to photo with max width of 800
 
 ShortUrl-Original
-:	The originally uploaded photo.
+:	Permalink to the originally uploaded photo.
 
-	Use ShortUrls when sharing photos
+	Use ShortUrls when sharing photos, otherwise use SourceUrl
 
 PreviousPhotoId, NextPhotoId
 :	the ID of the photo previous/next to the current one if it exists
