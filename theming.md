@@ -358,6 +358,9 @@ Include the jPlayer JavaScript library. Requires that {jQuery} is also included 
 ### Link-StageBloc
 Get a URL to StageBloc.com
 
+### Link-AbsoluteHome
+Returns a full `http://` link to your sites homepage, userful for things like filling out social share buttons
+
 ### Link-\[%Section]
 Get a relative url to a particular section of the site. *Note: This will also reflect any changes to [Page URLs](#page-options) you might have made*
 
