@@ -1113,7 +1113,7 @@ Check to see if the store item is sold out or not
 Recommended block: StoreItemView
 
 ### if:UserBelongsToFansiteTier
-Checks to see if the user is logged in and belongs to a specific tier in a fansite
+Checks to see if the user is logged in and belongs to a specific tier in a fansite. Possible tiers are 1, 2, and 3.
 
 tier
 :	the specific tier to check to see if the user belongs to
