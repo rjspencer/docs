@@ -355,7 +355,7 @@ Get a URL to StageBloc.com
 ### Link-\[%Section]
 Get a relative url to a particular section of the site. *Note: This will also reflect any changes to [Page URLs](#page-options) you might have made*
 
-Supported: Audio, Events, EventsPast, Blog, Statuses, Photos, Videos, Home, Store, Fansite, FansiteFans
+Supported: About, Audio, AudioPlaylists, Archive, Events, EventsPast, Blog, Statuses, Photos, PhotoAlbums, Videos, VideoPlaylists, Home, Store, Fansite, FansiteFans, UserSetup
 
 	<a href="{Link-Videos}">See my killer video about how to weave baskets underwater!</a>
 becomes
