@@ -52,6 +52,12 @@ This page should show a listing of content posted and reposted by the current ac
 Url structure: /activities  
 Recommended modules: ActivityStreamList
 
+### page:AudioCommentView
+This page should show the content of an individual audio comment.
+
+Url structure: /audio/[%audio_id]/comment/[%id]  
+Recommended modules: CommentView, AudioView
+
 ### page:AudioList
 This page should show a listing of audio content such as audio objects or audio playlists.
 
