@@ -130,6 +130,12 @@ This page should show information for an event.
 Url structure: /events/[%id]  
 Recommended modules: EventView
 
+### page:EventCommentView
+This page should show the content of an individual event comment.
+
+Url structure: /audio/[%event_id]/comment/[%id]  
+Recommended modules: CommentView, EventView
+
 ### page:Fansite
 This page should use `{if:UserIsFollowing}` and show fansite content if true or a `JoinFansiteLink` if false
 
