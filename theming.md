@@ -1584,6 +1584,8 @@ TotalBlogs
 ## BlogView
 A view for a single blog post. Meant to be used with `{page:BlogView}`
 
+### Options
+
 fanSubmittedIsExclusive
 :	whether or not to consider content submitted by fans to a fansite as exclusive or not
 
@@ -2169,6 +2171,13 @@ A view for a single photo. *Meant to be used with {page:PhotoView}*
 photoid
 : an ID for which photo to show *defaults to the one given to {page:PhotoView} if in that {page}*
 
+fanSubmittedIsExclusive
+:	whether or not to consider content submitted by fans to a fansite as exclusive or not
+
+	accepted values are `true` and `false`
+
+	defaults to `true`
+
 ### block:PhotoView
 
 PhotoAccountId
@@ -2516,6 +2525,15 @@ TotalVideos
 ## VideoView
 A view for a single video. *Meant to be used with {page:VideoView}*  
 
+### Options
+
+fanSubmittedIsExclusive
+:	whether or not to consider content submitted by fans to a fansite as exclusive or not
+
+	accepted values are `true` and `false`
+
+	defaults to `true`
+	
 videoid
 : an ID for which video to show *defaults to the one given to {page:VideoView} if in that page
 
