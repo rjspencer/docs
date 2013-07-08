@@ -2866,8 +2866,8 @@ First, you'll obviously need some sort of `HTML` form. Here's an example:
 		{block:API}
 			<form>
 				<input type="hidden" name="emailListId" value="{id}" />
-				<input type="radio" name="subscribedStatus" value="1" {if:APIKeyIsTrue key="user_is_subscribed"}checked{/if:APIKeyIsTrue} />Subscribe
-				<input type="radio" name="subscribedStatus" value="0" {if:APIKeyIsTrue key="user_is_subscribed"}{if:Else}checked{/if:APIKeyIsTrue} />Unsubscribe
+				<input type="radio" name="subscribedStatus" value="1" {if:APIKeyHasValue key="user_is_subscribed" value="true"}checked{/if:APIKeyIsTrue} />Subscribe
+				<input type="radio" name="subscribedStatus" value="0" {if:APIKeyHasValue key="user_is_subscribed" value="false"}checked{/if:APIKeyIsTrue} />Unsubscribe
 			</form
 			{title}
 		{/block:API}
