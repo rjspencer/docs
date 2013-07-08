@@ -192,6 +192,7 @@ Recommended modules: CommentView, PhotoView
 This page would be used if your site is enabled for white labeling, and you want a custom signup page for users.
 
 Url structure: /signup/
+Recommended variables: `SignupPageFormAction`
 
 ### page:StatusList
 This page should show a listing of statuses posted by the account.
@@ -699,7 +700,7 @@ closeTag
 	defaults to `true`
 	
 ### LoginUsernameInput
-Add a text input field for a `page:LoginPage`
+Add a text input field for a username *note: best with `page:Login`*
 
 class
 :	a class to give the `<input>`
@@ -710,7 +711,7 @@ placeholder
 	defaults to "Email or username"
 
 ### LoginPasswordInput
-Add a password input field for a `page:LoginPage`
+Add a password input field for a password *note: best with `page:Login`*
 
 class
 :	a class to give the `<input>`
@@ -721,10 +722,12 @@ placeholder
 	defaults to "Password"
 	
 ### LoginPageFormAction
-The action for the `<form>` element for `page:LoginPage`, includes `method` and `action`
+The action for the `<form>` element for `page:Login`, includes `method` and `action`
 
 url
 :	a URL to have the user be redirected to after logging in
+
+	defaults to the account's frontend homepage
 	
 ### LogoutLink
 Add a link to logout of StageBloc
@@ -836,6 +839,14 @@ text
     
 class
 :	the class to assign to the `<a>` tag
+
+### SignupPageFormAction
+The action for the `<form>` element for `page:Signup`, includes `method` and `action`
+
+url
+:	a URL to have the user be redirected to after logging in
+
+	defaults to the account's frontend homepage
 
 ### StoreItemAddToCartLink
 Creates a link that, when clicked, will add the store item to the user's cart on StageBloc
