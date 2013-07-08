@@ -142,7 +142,7 @@ This page should use `{if:UserIsFollowing}` and show fansite content if true or 
 Url structure: /fansite/		
 Recommended modules: FanContentList and/or ActivityStreamList with `exclusive` as `true`
 
-### page:LoginPage
+### page:Login
 This page would be used if your site is enabled for white labeling, and you want a custom login page for users.
 
 Url structure: /login/
@@ -150,13 +150,13 @@ Recommended variable: `LoginUsernameInput`, `LoginPasswordInput`, `LoginPageForm
 
 In it's simplest form, a login page may look like this:
 
-	{page:LoginPage}
+	{page:Login}
 		<form {LoginPageFormAction}>
 			{LoginUsernameInput}
 			{LoginPasswordInput}
 			<input type="submit" />
 		</form>
-	{/page:LoginPage}
+	{/page:Login}
 
 ### page:PhotoAlbumList
 This page should show a listing of photo albums
@@ -323,6 +323,9 @@ To use a global variable, simply place `{VariableName}` anywhere inside of your 
 
 ### AccountName
 Returns the account's name
+
+### AccountId
+Returns the account's ID
 
 ### Body-ID
 Returns the general section the page is in. Eg: blog, statuses, video, audio
@@ -2834,6 +2837,50 @@ Finally, you should add two bindings to your theme's JavaScript.
 	pm.bind('sbError', function(data)
 	{
 		// This binding will handle generic errors. data will contain a `type` property for the action it came from (i.e. 'sbInlineSubmitVideo')
+	});
+	
+## Inline Email Subscriptions
+When users are part of a fansite, they can manage their email subscriptions to that fansite in the backend. This is a way to add that functionality inline to your site.
+
+**Step One**
+
+First, you'll obviously need some sort of `HTML` form. Here's an example:
+
+	{module:API v="3.0" path="user/email_lists/list" account_id="{AccountId}"}
+		{block:API}
+			<form>
+				<input type="hidden" name="emailListId" value="{id}" />
+				<input type="radio" name="subscribedStatus" value="1" {if:APIKeyIsTrue key="user_is_subscribed"}checked{/if:APIKeyIsTrue} />Subscribe
+				<input type="radio" name="subscribedStatus" value="0" {if:APIKeyIsTrue key="user_is_subscribed"}{if:Else}checked{/if:APIKeyIsTrue} />Unsubscribe
+			</form
+			{title}
+		{/block:API}
+	{/module:API}
+
+**Step Two**
+
+Next, when the user updates their preference, you'll want to capture it with JavaScript similar to the following:
+
+	$('input[name="subscribedStatus"]').change(
+		function() {
+			pm({target: window.frames['sbnav'], type: 'sbInlineEmailSubscriptionEdit', data: $(this).parents('form').serialize() });
+		}
+	);
+	
+The postMessage JS library is already included for you. The `type` and `target` parameters must be exactly as shown above. The passed data must contain the key `subscribedStatus` for it to be valid.
+
+**Step Three**
+
+Finally, you should add two bindings to your theme's JavaScript.
+
+	pm.bind('sbInlineEmailSubscriptionEdit', function(data)
+	{
+		// data will be JSON representing the status that was posted (or an error if an error occurred)
+	});
+
+	pm.bind('sbError', function(data)
+	{
+		// This binding will handle generic errors. data will contain a `type` property for the action it came from (i.e. 'sbInlineEmailSubscriptionEdit')
 	});
 
 # SB Nav
