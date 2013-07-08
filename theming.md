@@ -146,7 +146,7 @@ Recommended modules: FanContentList and/or ActivityStreamList with `exclusive` a
 This page would be used if your site is enabled for white labeling, and you want a custom login page for users.
 
 Url structure: /login/
-Recommended variable: `LoginUsernameInput`, `LoginPasswordInput`, `LoginPageFormAction`
+Recommended variables: `LoginUsernameInput`, `LoginPasswordInput`, `LoginPageFormAction`
 
 In it's simplest form, a login page may look like this:
 
@@ -187,6 +187,11 @@ This page should show the content of an individual photo comment.
 
 Url structure: /photos/[%photo_id]/comment/[%id]  
 Recommended modules: CommentView, PhotoView
+
+### page:Signup
+This page would be used if your site is enabled for white labeling, and you want a custom signup page for users.
+
+Url structure: /signup/
 
 ### page:StatusList
 This page should show a listing of statuses posted by the account.
@@ -373,7 +378,7 @@ Returns a full `http://` link to your sites homepage, userful for things like fi
 ### Link-\[%Section]
 Get a relative url to a particular section of the site. *Note: This will also reflect any changes to [Page URLs](#page-options) you might have made*
 
-Supported: About, Audio, AudioPlaylists, Archive, Events, EventsPast, Blog, Statuses, Photos, PhotoAlbums, Videos, VideoPlaylists, Home, Store, Fansite, FansiteFans, UserSetup
+Supported: About, Audio, AudioPlaylists, Archive, Events, EventsPast, Blog, Statuses, Photos, PhotoAlbums, Videos, VideoPlaylists, Home, Store, Fansite, FansiteFans, UserSetup, Login, Signup
 
 	<a href="{Link-Videos}">See my killer video about how to weave baskets underwater!</a>
 becomes
