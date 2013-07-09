@@ -2864,11 +2864,10 @@ First, you'll obviously need some sort of `HTML` form. Here's an example:
 
 	{module:API v="3.0" path="user/email_lists/list" account_id="{AccountId}"}
 		{block:API}
-			<form>
-				<input type="hidden" name="emailListId" value="{id}" />
-				<input type="radio" name="subscribedStatus" value="1" {if:APIKeyHasValue key="user_is_subscribed" value="true"}checked{/if:APIKeyIsTrue} />Subscribe
-				<input type="radio" name="subscribedStatus" value="0" {if:APIKeyHasValue key="user_is_subscribed" value="false"}checked{/if:APIKeyIsTrue} />Unsubscribe
-			</form
+			<form id="emailSubscriptionEdit">
+				<input type="radio" name="subscribedStatus[{id}]" value="1" {if:APIKeyHasValue key="user_is_subscribed" value="true"}checked{/if:APIKeyHasValue} />Subscribe
+				<input type="radio" name="subscribedStatus[{id}]" value="0" {if:APIKeyHasValue key="user_is_subscribed" value="false"}checked{/if:APIKeyHasValue} />Unsubscribe
+			</form>
 			{title}
 		{/block:API}
 	{/module:API}
@@ -2877,11 +2876,9 @@ First, you'll obviously need some sort of `HTML` form. Here's an example:
 
 Next, when the user updates their preference, you'll want to capture it with JavaScript similar to the following:
 
-	$('input[name="subscribedStatus"]').change(
-		function() {
-			pm({target: window.frames['sbnav'], type: 'sbInlineEmailSubscriptionEdit', data: $(this).parents('form').serialize() });
-		}
-	);
+	$('#emailSubscriptionEdit :input').change(function() {
+		pm({target: window.frames['sbnav'], type: 'sbInlineEmailSubscriptionEdit', data: $(this).parents('form').serialize() });
+	});
 	
 The postMessage JS library is already included for you. The `type` and `target` parameters must be exactly as shown above. The passed data must contain the key `subscribedStatus` for it to be valid.
 
