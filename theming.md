@@ -1546,15 +1546,6 @@ EventFacebookRSVPUrl
 EventLocation
 :	the formatter location of the event
 
-EventAttendingCount
-:	the number of users that have RSVPed "Yes"
-
-EventMaybeAttendingCount
-:	the number of users that have RSVPed "Maybe"
-
-EventNotAttendingCount
-:	the number of users that have RSVPed "No"
-
 VenueLatitude
 :	the latitude of where the venue is
 
@@ -1837,6 +1828,15 @@ EventCity
 
 EventLikeCount
 :	the number of likes for the event
+
+EventAttendingCount
+:	the number of users that have RSVPed "Yes"
+
+EventMaybeAttendingCount
+:	the number of users that have RSVPed "Maybe"
+
+EventNotAttendingCount
+:	the number of users that have RSVPed "No"
 
 EventState
 :	the state in which the event is taking place
