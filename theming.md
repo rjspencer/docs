@@ -1774,6 +1774,13 @@ paging (advanced option)
 	
 	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitly set how many items are on the current page, or pagination will return unexpected results
 
+sticky
+:	whether or not to get sticky posts
+	
+	accepted values are `true` or `false`
+	
+	defaults to neither `true` or `false` (gets both sticky and non-sticky events)
+
 upcoming
 : whether or not to show upcoming events
 
@@ -1821,6 +1828,15 @@ EventCity
 
 EventLikeCount
 :	the number of likes for the event
+
+EventAttendingCount
+:	the number of users that have RSVPed "Yes"
+
+EventMaybeAttendingCount
+:	the number of users that have RSVPed "Maybe"
+
+EventNotAttendingCount
+:	the number of users that have RSVPed "No"
 
 EventState
 :	the state in which the event is taking place
