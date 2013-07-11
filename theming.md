@@ -2665,12 +2665,12 @@ First, you'll obviously need some sort of `HTML` form. Here's an example:
 			<input type="hidden" name="email" value="{email}" />
 			<input type="hidden" name="username" value="{username}" />
 			<textarea name="bio">{bio}</textarea>
-			<input type="submit" value="Edit Profile" />
+			<input type="submit" value="Save Profile" />
 		</form>
 		{/block:API}
 	{/module:API}
 	
-The currently available parameters you can send use are `name`, `username`, `email`, `bio`, and `birthday`.
+The currently available parameters you can send use are `name`, `username`, `email`, `bio`, `gender`, and `password` *note: `password` will overwrite their current password*. You can also pass a `birthday` parameter with the array values `day`, `month`, and `year`;
 
 **Step Two**
 
