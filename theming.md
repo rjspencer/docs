@@ -649,6 +649,18 @@ shorttime
 	accepted values are `true` or `false`, *Note: requires that `format` = `relative`*
 	
 	defaults to `false`
+	
+### FormatTimestamp
+A way to format timestamps
+
+timestamp
+:	the timestamp to format *required*
+
+format
+:	the format to use on the timestamp
+
+date
+:	if the date isn't a timestamp, but a randomly formatted date, use this instead of `timestamp`
     
 ### JoinFansiteLink
 A link that opens a modal and allows a user to join the site's fansite *note: you must have a fansite setup for this link to render*
@@ -1057,6 +1069,12 @@ Recommended block: PhotoView
 
 ### if:HasPastEvents
 Check if past events exist for current account.
+
+Recommended page: EventList  
+Global: Yes, this if statement will run anywhere.
+
+### if:HasUpcomingEvents
+Check if upcoming events exist for the current account
 
 Recommended page: EventList  
 Global: Yes, this if statement will run anywhere.
@@ -1546,6 +1564,9 @@ EventFacebookRSVPUrl
 EventLocation
 :	the formatter location of the event
 
+EventStreetAddress
+:	the street address of the event
+
 VenueLatitude
 :	the latitude of where the venue is
 
@@ -1634,6 +1655,9 @@ BlogPostTitle
 BlogPostId
 :	the content's ID
 
+BlogPostShortUrl
+:	a short URL for the blog post
+
 BlogPostLikeCount
 :	the number of likes for the blog post
 
@@ -1681,6 +1705,16 @@ parents
 :	whether or not to get the parent comments for the individual comment
 
 	defaults to `false`
+	
+includeFirstLevelReplies
+:	whether or not to include the first level of replies, maybe return more items than `limit` *note: see `if:CommentIsReply`*
+
+	defaults to `false`
+	
+userId
+:	a user to filter the comments by
+
+	defaults to none
 	
 ## CommentView
 A view for a single comment
@@ -1782,35 +1816,47 @@ sticky
 	defaults to neither `true` or `false` (gets both sticky and non-sticky events)
 
 upcoming
-: whether or not to show upcoming events
+:	whether or not to show upcoming events
 
     accepted values are `true` or `false`
 
     defaults to `true`
 
 past
-: whether or not to show past events, also see `{if:HasPastEvents}`
+:	whether or not to show past events, also see `{if:HasPastEvents}`
 
     accepted values are `true` or `false`
 
     defaults to `false`
 
 direction
-: the direction to show the events in
+:	the direction to show the events in
 
     accepted values are `asc` or `desc`
 
     defaults to `asc`
     
 accountid
-: a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account, see variable `{ChildAccountIDs}`
+:	a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account, see variable `{ChildAccountIDs}`
 
     defaults to none (i.e. the current account)
+    
+userId
+:	a userId to limit the events to those this user has RSVPed to
+
+	defaults to none
+	
+attending
+:	when used in combination with `user`, a way to filter the attending status of those events
+
+	accepted values are any combination of `yes`, `no`, and `maybe`
+
+	defaults to none
 
 ### Variables
 
 TotalEvents
-: the amount of events loaded based on your values for upcoming and/or past
+:	the amount of events loaded based on your values for upcoming and/or past
 
 ## EventView
 A view for a single event. Meant to be used with `{page:EventView}`
@@ -1826,6 +1872,9 @@ EventAges
 EventCity 
 :	the city in which the event is taking place
 
+EventId
+:	the ID of the event
+
 EventLikeCount
 :	the number of likes for the event
 
@@ -1837,6 +1886,9 @@ EventMaybeAttendingCount
 
 EventNotAttendingCount
 :	the number of users that have RSVPed "No"
+
+EventShortUrl
+:	a short URL for the event
 
 EventState
 :	the state in which the event is taking place
@@ -2230,6 +2282,9 @@ PhotoId
 PhotoUrl
 :	the permalink to this photo's individual page
 
+PhotoShortUrl
+:	a short URL for the photo
+
 PhotoTitle
 :	the title of this photo
 
@@ -2357,6 +2412,9 @@ StatusId
 
 StatusAccountId
 :    the ID of the account that posted this status
+
+StatusShortUrl
+:	a short URL for the status
 
 StatusText
 :	the actual text of the status post
@@ -2590,6 +2648,9 @@ VideoJavaScriptEscapedTitle
 
 VideoID
 :	the ID of the video
+
+VideoShortUrl
+:	a short URL for the video
 
 VideoDescription
 :	the description of the video
