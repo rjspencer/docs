@@ -1040,6 +1040,9 @@ Check if an event has a title.
 
 Recommended block: EventView
 
+### if:EventHasPhoto
+Check to see if an has a photo associated with it
+
 ### if:EventHasPrice
 Check if an event has a price. Note that a price of "0" is considered a price, as it is free.
 
@@ -1207,9 +1210,13 @@ The general syntax for modules and their blocks is as follows:
 			{BlockVariable2}
 			...
 		{/block:BlockName}
+	{Else:ModuleName}
+		Data to show if the module doesn't return any
 	{/module:ModuleName}
 	
 It is easiest to think of `{module}`s as `for` loops that loop through various data from your StageBloc account (the "model" of the data). Within a `{module}` a `{block}` can be used to represent a "view" of the data by exposing various pieces of information about that data.
+
+Using `{Else:<module_name>}` will cause that data to render if the module doesn't have any.
 
 ## AccountAbout
 
@@ -1249,6 +1256,13 @@ groupPhotos
 :	should photos be grouped into album updates
 
     defaults to `true`
+
+exclusive
+:	whether or not to also show exclusive content if the user is logged in
+
+	defaults to true
+	
+	accepted values are `true` or `false`
 
 limit
 :	how many items per page. defaults to 10
@@ -1585,7 +1599,7 @@ limit
 :	the amount of blogs to list per page
 
     defaults to `5`
-    
+
 category
 :	a category to filter the blog listing by
 
@@ -1596,6 +1610,13 @@ paging (advanced option)
 :	define how many items are on this page
 	
 	This option is only useful if you are using multiple modules with both `limit`s and `offset`s. You need to explicitly set how many items are on the current page, or pagination will return unexpected results
+	
+sticky
+:	whether or not to include sticky posts
+
+	defaults to showing both
+	
+	accepted values are `true` or `false`
     
 direction
 :	the direction in which to order the blog posts
@@ -1899,6 +1920,8 @@ EventDescription
 EventPhotoUrl
 :	the cover photo representing the event
 
+	see `if:EventHasPhoto` as well
+
 	**Options**
 	
 	size
@@ -1986,6 +2009,9 @@ ActivityPhotoUrl
 
 FansiteContentAuthorName
 :	the name of the user who created the content
+
+FansiteContentAuthorUrl
+:	the URL to the user page for the author of this content
 
 FansiteContentAuthorUsername
 :	the username of the user who created the content
@@ -3103,7 +3129,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 									</footer>
 								</article>
 							{/block:ActivityStreamView}
-						{Else}
+						{Else:ActivityStreamList}
 							<article class="post nocontent">
 								<p>Oh snap! We haven't written anything yet.</p>
 							</article>
@@ -3159,7 +3185,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 									</section>
 								{/if:HasTags}
 							{/block:BlogPost}
-						{Else}
+						{Else:BlogView}
 							<div class="nocontent">
 								<p>Sorry, but this blog post was not found!</p>
 							</div>
@@ -3184,7 +3210,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 									</footer>
 								</article>
 							{/block:StatusPost}
-						{Else}
+						{Else:StatusView}
 							<div class="nocontent">
 								<p>Sorry, but this status was not found!</p>
 							</div>
@@ -3213,7 +3239,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 								</li>
 								{/block:StoreItemView}
 							</ul>
-						{Else}
+						{Else:StoreItemList}
 							<div class="nocontent">
 								<p>No store items yet! Check back later.</p>
 							</div>
@@ -3262,7 +3288,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 								{/if:HasTags}
 							{/block:StoreItemView}
 						</div>
-					{Else}
+					{Else:StoreItemView}
 					<div class="nocontent">
 						<p>Sorry, but this store item wasn't found!</p>
 					</div>
@@ -3291,7 +3317,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 								</li>
 								{/block:EventView}
 							</ul>
-						{Else}
+						{Else:EventList}
 							<h2>Upcoming Events</h2>
 							{if:HasPastEvents}
 							<a href="{Link-EventsPast}" id="other-events">view past events</a>
@@ -3331,7 +3357,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 								</li>
 								{/block:EventView}
 							</ul>
-						{Else}
+						{Else:EventList}
 							<h2>Past Events</h2>
 							<a href="{Link-Events}" id="other-events">view upcoming events</a>
 							<div class="nocontent">
@@ -3398,7 +3424,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 										</section>
 									{/if:HasTags}
 								{/block:EventView}
-						{Else}
+						{Else:EventView}
 							<div class="nocontent">
 								<p>Sorry, this event wasn't found!</p>
 							</div>
@@ -3445,7 +3471,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 							{/block:VideoPlaylistView}
 							</ul>
 						</div>
-					{Else}
+					{Else:VideoList}
 						<div class="nocontent">
 							<p>Sorry, but we haven't added any video playlists yet!</p>
 						</div>
@@ -3495,7 +3521,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 							{/if:HasTags}
 							</div>
 						{/block:VideoPlaylistView}
-					{Else}
+					{Else:module:VideoPlaylistView}
 						<div class="nocontent">
 							<p>Sorry, but this video playlist was not found!</p>
 						</div>
@@ -3541,7 +3567,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 							{/if:HasTags}
 						{/block:VideoView}
 						</div>
-					{Else}
+					{Else:VideoView}
 						<div class="nocontent">
 							<p>Sorry, but this video was not found!</p>
 						</div>
@@ -3564,7 +3590,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 								{/block:PhotoAlbumView}
 							</ul>
 						</div>
-					{Else}
+					{Else:PhotoAlbumList}
 						<div class="nocontent">
 							<p>No photos yet! Check back later.</p>
 						</div>
@@ -3610,7 +3636,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 							</article>
 							{/block:PhotoView}
 						</div>
-					{Else}
+					{Else:PhotoView}
 						<div class="nocontent">
 							<p>Sorry, but this photo couldn't be found! <a href="{Link-Photos}">View other photos instead?</a></p>
 						</div>
@@ -3661,7 +3687,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 								{/if:HasTags}
 							{/block:PhotoAlbumView}
 						</div>
-					{Else}
+					{Else:PhotoAlbumView}
 						<div class="nocontent">
 							<p>Sorry, but this photo album was not found!</p>
 						</div>
@@ -3753,7 +3779,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 							{/block:AudioPlaylistView}
 							</ul>
 						</div>
-						{Else}
+						{Else:AudioPlaylistList}
 						<div class="nocontent">
 							<p>We haven't uploaded any audio tracks yet, check back later!</p>
 						</div>
@@ -3825,7 +3851,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 									</li>
 									{/block:AudioView}
 								</ul>
-								{Else}
+								{Else:AudioList}
 								<div class="empty-audio-playlist">
 									<p>Sorry, this playlist is empty.</p>
 								</div>
@@ -3843,7 +3869,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 								{/if:HasTags}
 							{/block:AudioPlaylistView}
 						</div>
-					{Else}
+					{Else:AudioPlaylistView}
 						<div class="nocontent">
 							<p>Sorry, but this playlist was not found!</p>
 						</div>
@@ -3926,7 +3952,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 								{/if:HasTags}
 							{/block:AudioView}
 						</div>
-					{Else}
+					{Else:AudioView}
 					<div class="nocontent">
 						<p>Sorry, but this audio file was not found!</p>
 					</div>
@@ -3949,7 +3975,7 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 									{AccountAbout}
 								{/block:AccountAbout}
 							</div>
-						{Else}
+						{Else:AccountAbout}
 							<p>We're sure you'll find our story fascinating, but we haven't written it yet!</p>
 						{/module:AccountAbout}
 					</div>
