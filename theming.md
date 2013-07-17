@@ -650,6 +650,12 @@ shorttime
 	
 	defaults to `false`
 	
+### EventCustomField
+A way to access custom field data from an event
+
+slug
+:	the slug of the custom field
+
 ### FormatTimestamp
 A way to format timestamps
 
@@ -710,6 +716,14 @@ closeTag
 :	whether or not to close the `<a>` tag
 
 	defaults to `true`
+	
+### Link
+A way to link to various pages within StageBloc
+
+to
+:	the page to link to
+
+	accepted values are `tos` (Terms Of Service), `PrivacyPolicy`, `Contact`, `StageBloc` (our home page), and `ForgotPassword`
 	
 ### LoginUsernameInput
 Add a text input field for a username *note: best with `page:Login`*
@@ -1689,7 +1703,7 @@ BlogPostCategory
 :	the category for the blog post
 
 BlogPostCustomField
-:	a way to access custom field data in blog posts, see description in [Variables With Options](#variables-with-options)
+:	a way to access custom field data in blog posts, see description in [Variables With Options](#variables-with-options) *note: see `if:CustomFieldIsSet`*
 
 BlogPostExcerpt
 :	the 1500 character beginning of a blog post
@@ -1893,6 +1907,9 @@ EventAges
 EventCity 
 :	the city in which the event is taking place
 
+EventCustomField
+:	a way to access custom field data in event, see description in [Variables With Options](#variables-with-options) *note: see `if:CustomFieldIsSet`*
+
 EventId
 :	the ID of the event
 
@@ -1952,6 +1969,9 @@ EventTitle
 TicketsBuyLink
 :	a link to where tickets for this event can be purchased
 
+EventPresaleTicketsBuyLink
+:	a link to where tickets for this event's presale can be purchased
+
 VenueName
 :	the name of the venue where this event is taking place
 
@@ -1991,6 +2011,11 @@ limit
 :	the amount of blogs to list per page
 
     defaults to `10`
+    
+likedBy
+:	a user ID to filter the content to that which this user has liked
+
+	defaults to none
     
 offset
 :	skip X number of items, still returns `limit` items
