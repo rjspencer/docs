@@ -723,7 +723,10 @@ A way to link to various pages within StageBloc
 to
 :	the page to link to
 
-	accepted values are `tos` (Terms Of Service), `PrivacyPolicy`, `Contact`, `StageBloc` (our home page), and `ForgotPassword`
+	accepted values are `TOS` (Terms Of Service), `ConnectTwitter`, `ConnectFacebook`, `ConnectInstagram`, `PrivacyPolicy`, `Contact`, `StageBloc` (our home page), and `ForgotPassword`
+	
+redirectUrl
+:	where to redirect the user to after authenticating using `ConnectTwitter`, `ConnectFacebook`, or `ConnectInstagram` with the `to` option
 	
 ### LoginUsernameInput
 Add a text input field for a username *note: best with `page:Login`*
@@ -1068,9 +1071,12 @@ Check if there is at least one supporting act for an event.
 Recommended block: EventView
 
 ### if:EventHasTicketsBuyLink
-Check if the event has a ticket buy link attached
+Check if the event has a ticket buy link attached, if the event has a presale and the presale hasn't started yet then this will return `false`
 
 Recommended blocks: EventView
+
+### if:if:EventPresaleIsActive
+Check to see if the presale for an event is active, best when combined with `if:EventHasTicketsBuyLink`
 
 ### if:Has[%direction]BlogPost
 Check if a previous or next blog post exists.
@@ -1195,6 +1201,15 @@ gt
 
 lt
 :	check to see if the user is less than a specific tier
+
+### if:UserHasTwitterConnected
+Checks to see if the currently logged in user has Twitter connected
+
+### if:UserHasFacebookConnected
+Checks to see if the currently logged in user has Facebook connected
+
+### if:UserHasInstagramConnected
+Checks to see if the currently logged in user has Instagram connected
 
 ### if:UserIsAdmin
 Checks to see if the user is logged in and an admin of the current account
@@ -1967,10 +1982,7 @@ EventTitle
 :	the title for the event, also see `{if:EventHasTitle}`
 
 TicketsBuyLink
-:	a link to where tickets for this event can be purchased
-
-EventPresaleTicketsBuyLink
-:	a link to where tickets for this event's presale can be purchased
+:	a link to where tickets for this event can be purchased, will return a link to the presale tickets if it's a presale or the normal tickets if not *note: see `if:EventPresaleIsActive`*
 
 VenueName
 :	the name of the venue where this event is taking place
@@ -2244,17 +2256,17 @@ A listing of photos.
 
 ### Options
 
-accountcontent
-: whether or not to show photos created by admins of the account *Note: see `fancontent`*
+accountContent
+: whether or not to show photos created by admins of the account *Note: see `includeFancContent`*
 
     defaults to true
 
-accountid
+accountId
 : a comma separated list of the IDs of the accounts to limit the results to, must be children accounts of the current account, see variable `{ChildAccountIDs}`
 
     defaults to just the ID of the current account
 
-albumid
+albumId
 : an album id of which to limit the returned photos to
 
     defaults to none
@@ -2266,7 +2278,7 @@ direction
 
     defaults to `desc`
     
-fancontent
+includeFanContent
 : whether or not to show photos submitted to the accounts by fans
 
     defaults to false
@@ -2594,6 +2606,18 @@ UserName
 
 UserUsername
 :    the username of the user
+
+UserFansitePostCount
+:	the number of posts the user has on the current account's fansite
+
+UserFansiteLikeCount
+:	the number of likes the user has on the current account's fansite
+
+UserFansiteCommentCount
+:	the number of comments the user has on the current account's fansite
+
+UserEventAttendingCount
+:	the number of events the user is attending for the current account
 
 UserUrl
 :	the URL to the user's page on StageBloc (i.e. stagebloc.com/user/[%id])
