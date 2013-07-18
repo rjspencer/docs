@@ -2089,6 +2089,9 @@ FansiteContentTagCount
 FansiteContentUrl
 :	the URL to the original content
 
+FansiteContentShortUrl
+:	the short URL to the content's individual page
+
 FansiteContentPhotoCount
 :	the number of photos related to the content
 
