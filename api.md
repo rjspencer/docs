@@ -35,14 +35,6 @@ JSON Example
             }
         }]
     }
-     
-XML Example
-   
-    <response>
-        <error>
-            <message>Description of error.</message>
-        </error>
-    </response>
 
 ### Wrappers
 There is currently a PHP wrapper available for connecting with the API. It can be found on [GitHub](https://github.com/stagebloc/php-stagebloc-api). Instructions for how to use it are included in the `README` file of that repository.
