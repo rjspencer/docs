@@ -63,47 +63,6 @@ authenticated
 images
 :	the image for the account
 	
-### Example Response (XML)
-    <response>
-        <total>4</total>
-        <items>
-            <item>
-                <id>2</id>
-                <name>Team Edward</name>
-                <stagebloc_url>teamedward</stagebloc_url>
-                <authenticated>true</authenticated>
-                <description>We are much better than Team Jacob!</description>
-                <images>
-                    <image>
-                        <size>thumbnail</size>
-                        <short_url>http://stgb.lc/p/Qf/t</short_url>
-                        <embed_url>http://cdn.stagebloc.com/production/photos/2/thumbnail/20120807_202919_2_2798.jpeg</embed_url>
-                    </image>
-                    <image>
-                        <size>small</size>
-                        <short_url>http://stgb.lc/p/Qf/s</short_url>
-                        <embed_url>http://cdn.stagebloc.com/production/photos/2/small/20120807_202919_2_2798.jpeg</embed_url>
-                    </image>
-                    <image>
-                        <size>medium</size>
-                        <short_url>http://stgb.lc/p/Qf/m</short_url>
-                        <embed_url>http://cdn.stagebloc.com/production/photos/2/medium/20120807_202919_2_2798.jpeg</embed_url>
-                    </image>
-                    <image>
-                        <size>large</size>
-                        <short_url>http://stgb.lc/p/Qf/l</short_url>
-                        <embed_url>http://cdn.stagebloc.com/production/photos/2/large/20120807_202919_2_2798.jpeg</embed_url>
-                    </image>
-                    <image>
-                        <size>original</size>
-                        <short_url>http://stgb.lc/p/Qf/o</short_url>
-                        <embed_url>http://cdn.stagebloc.com/production/photos/2/original/20120807_202919_2_2798.jpeg</embed_url>
-                    </image>
-                </images>
-            </item>
-        <items>
-    </response>
-   
 ### Example Response (JSON)
 
     {
@@ -165,19 +124,6 @@ type
 
 service
 :	the connected service
-
-### Example Response (XML)
-    <response>
-        <total>8</total>
-        <items>
-            <item>
-                <id>191</id>
-                <service>Twitter</service>
-                <type>account</type>
-                <display_name>Brand New Account!'s Twitter</display_name>
-            </item>
-        <items>
-    </response>
     
 ### Example Response (JSON)
     {
@@ -355,37 +301,6 @@ length
 raw_url
 :	if the audio wasn't uploader (i.e. was added from SoundCloud, etc), this will be a URL from the service it was added from
 	
-### Example Response (XML)
-
-    <response>
-        <total>18</total>
-        <items>
-            <item>
-                <id>311</id>
-                <title>Never Gonna Give You Up</title>
-                <artist>Rick Astley</artist>
-                <url>http://stagebloc.com/demo/audio/342</url>
-                <raw_url/>
-                <embed_url>http://cdn.stagebloc.com/production/audio/1/mp3_128kb/5190_20120619_175046_1_311.mp3</embed_url>
-                <short_url>http://stgb.lc/a/6n</short_url>
-                <description>Audio description here!</description>
-                <created>2012-06-19 12:50:46</created>
-                <modified>2012-07-20 16:18:57</modified>
-                <length>21</length>
-                <exclusive>true</exclusive>
-                <private>false</private>
-                <download_details>
-                    <price>0.50</price>
-                    <fans_name_price>true</fans_name_price>
-                    <free_download_quality>1</free_download_quality>
-                    <paid_download_quality>2</paid_download_quality>
-                    <free_download_require_follow>true</free_download_require_follow>
-                    <paid_download_require_follow>true</paid_download_require_follow>
-                </download_details>
-            </item>
-        </items>
-    </response>
-    
 ### Example Response (JSON)
 
     {
@@ -563,61 +478,6 @@ images
 
 track_count
 :	the amount of audio tracks currently in this playlist
-	
-### Example Response (XML)
-
-    <response>
-        <total>4</total>
-        <items>
-            <item>
-                <id>40</id>
-                <title>Animal Sounds</title>
-                <description>Nature at its finest!</description>
-                <created>2012-04-16 11:30:19</created>
-                <modified>2012-06-04 18:12:11</modified>
-                <url>http://stagebloc.com/demo/audio/playlists/42</url>
-                <short_url>http://stgb.lc/ap/G</short_url>
-                <exclusive>true</exclusive>
-                <private>false</private>
-                <download_details>
-                    <price>1.60</price>
-                    <fans_name_price>false</fans_name_price>
-                    <free_download_quality>0</free_download_quality>
-                    <paid_download_quality>2</paid_download_quality>
-                    <free_download_require_follow>false</free_download_require_follow>
-                    <paid_download_require_follow>true</paid_download_require_follow>
-                </download_details>
-                <images>
-                    <image>
-                        <size>thumbnail</size>
-                        <short_url>http://stgb.lc/p/PZ/t</short_url>
-                        <embed_url>http://cdn.stagebloc.com/production/photos/1/thumbnail/20120717_144734_1_2783.jpeg</embed_url>
-                    </image>
-                    <image>
-                        <size>small</size>
-                        <short_url>http://stgb.lc/p/PZ/s</short_url>
-                        <embed_url>http://cdn.stagebloc.com/production/photos/1/small/20120717_144734_1_2783.jpeg</embed_url>
-                    </image>
-                    <image>
-                        <size>medium</size>
-                        <short_url>http://stgb.lc/p/PZ/m</short_url>
-                        <embed_url>http://cdn.stagebloc.com/production/photos/1/medium/20120717_144734_1_2783.jpeg</embed_url>
-                    </image>
-                    <image>
-                        <size>large</size>
-                        <short_url>http://stgb.lc/p/PZ/l</short_url>
-                        <embed_url>http://cdn.stagebloc.com/production/photos/1/large/20120717_144734_1_2783.jpeg</embed_url>
-                    </image>
-                    <image>
-                        <size>original</size>
-                        <short_url>http://stgb.lc/p/PZ/o</short_url>
-                        <embed_url>http://cdn.stagebloc.com/production/photos/1/original/20120717_144734_1_2783.jpeg</embed_url>
-                    </image>
-                </images>
-                <track_count>6</track_count>
-            </item>
-        </items>
-    </response>
 
 ### Example Response (JSON)
 
@@ -804,30 +664,6 @@ total
 
 status
 :	a value of `1` means published and a value of `0` means draft
-
-### Example Response (XML)
-    <response>
-      <total>486</total>
-      <items>
-        <item>
-          <id>6317</id>
-          <title>50 Shades of Grey</title>
-          <body>Lions, tables, and chairs, oh my!</body>
-          <status>1</status>
-          <url>http://stagebloc.com/demo/blog/6319</url>
-          <short_url>http://stgb.lc/b/2SV</short_url>
-          <published>2012-06-25 12:30:00</published>
-          <created>2012-06-25 12:30:53</created>
-          <modified>2012-07-17 15:33:11</modified>
-          <sticky>false</sticky>
-          <exclusive>true</exclusive>
-          <author>
-            <id>8</id>
-            <name>Demo Admin</name>
-          </author>
-        </item>
-      </items>
-    </response>
     
 ### Example Response (JSON)
     {
@@ -921,76 +757,6 @@ image
 
 collaborators
 :	a list of people also involved in this event
-
-### Examples Response (XML)
-
-    <response>
-        <total>3</total>
-        <items>
-            <item>
-                <id>115</id>
-                <title>End of The World</title>
-                <minimum_age>21</minimum_age>
-                <buy_link>http://www.eventbrite.com/event/3906955810/es2?rank=1</buy_link>
-                <created>2012-01-04 08:19:53</created>
-                <modified>2012-08-10 08:47:24</modified>
-                <start_date>2013-01-04 13:00:00</start_date>
-                <end_date>2013-01-04 16:00:00</end_date>
-                <description>It's the end of the world as we know it...</description>
-                <price>1.50</price>
-                <currency>USD</currency>
-                <url>http://stagebloc.com/demo/events/115</url>
-                <short_url>http://stgb.lc/e/2Z</short_url>
-                <images>
-                    <image>
-                        <size>thumbnail</size>
-                        <short_url>http://stgb.lc/p/Qg/t</short_url>
-                        <embed_url>http://cdn.stagebloc.com/production/photos/1/thumbnail/20120810_134720_1_2799.jpeg</embed_url>
-                    </image>
-                    <image>
-                        <size>small</size>
-                        <short_url>http://stgb.lc/p/Qg/s</short_url>
-                        <embed_url>http://cdn.stagebloc.com/production/photos/1/small/20120810_134720_1_2799.jpeg</embed_url>
-                    </image>
-                    <image>
-                        <size>medium</size>
-                        <short_url>http://stgb.lc/p/Qg/m</short_url>
-                        <embed_url>http://cdn.stagebloc.com/production/photos/1/medium/20120810_134720_1_2799.jpeg</embed_url>
-                    </image>
-                    <image>
-                        <size>large</size>
-                        <short_url>http://stgb.lc/p/Qg/l</short_url>
-                        <embed_url>http://cdn.stagebloc.com/production/photos/1/large/20120810_134720_1_2799.jpeg</embed_url>
-                    </image>
-                    <image>
-                        <size>original</size>
-                        <short_url>http://stgb.lc/p/Qg/o</short_url>
-                        <embed_url>http://cdn.stagebloc.com/production/photos/1/original/20120810_134720_1_2799.jpeg</embed_url>
-                    </image>
-                </images>
-                <location>
-                    <id>14</id>
-                    <global_id>17</global_id>
-                    <name>Best Place On Earth</name>
-                    <website></website>
-                    <address>
-                        <street_address>12345 Awesome Street</street_address>
-                        <city>Big Bend</city>
-                        <state_province>WI</state_province>
-                        <postal_code>53103</postal_code>
-                        <country>USA</country>
-                    </address>
-                </location>
-                <collaborators>
-                    <collaborator>
-                        <id>16</id>
-                        <name>Dirt Nasty</name>
-                        <website>http://dirtnastymusic.com/</website>
-                    </collaborator>
-                </collaborators>
-            </item>
-        </items>
-    </response>
     
 ### Examples Response (JSON)
 
@@ -1175,63 +941,6 @@ offset
 total
 :	the total amount of photos for the authenticated account
 	
-### Example Response (XML)
-
-    <response>
-        <total>153</total>
-        <items>
-            <item>
-                <id>2797</id>
-                <title>Surface of Mars</title>
-                <description>Yay Curiosity!</description>
-                <exclusive>false</exclusive>
-                <modified>2012-07-23 21:16:32</modified>
-                <created>2012-07-23 21:16:29</created>
-                <url>http://stagebloc.com/demo/photos/2814</url>
-                <short_url>http://stgb.lc/p/QK</short_url>
-                <images>
-                    <image>
-                        <size>thumbnail</size>
-                        <short_url>http://stgb.lc/p/Qe/t</short_url>
-                        <embed_url>http://cdn.stagebloc.com/production/photos/1/thumbnail/20120724_021629_1_2797.jpeg</embed_url>
-                    </image>
-                    <image>
-                        <size>small</size>
-                        <short_url>http://stgb.lc/p/Qe/s</short_url>
-                        embed_url>http://cdn.stagebloc.com/production/photos/1/small/20120724_021629_1_2797.jpeg</embed_url>
-                    </image>
-                    <image>
-                        <size>medium</size>
-                        <short_url>http://stgb.lc/p/Qe/m</short_url>
-                        embed_url>http://cdn.stagebloc.com/production/photos/1/medium/20120724_021629_1_2797.jpeg</embed_url>
-                    </image>
-                    <image>
-                        <size>large</size>
-                        <short_url>http://stgb.lc/p/Qe/l</short_url>
-                        embed_url>http://cdn.stagebloc.com/production/photos/1/large/20120724_021629_1_2797.jpeg</embed_url>
-                    </image>
-                    <image>
-                        <size>original</size>
-                        <short_url>http://stgb.lc/p/Qe/o</short_url>
-                        embed_url>http://cdn.stagebloc.com/production/photos/1/original/20120724_021629_1_2797.jpeg</embed_url>
-                    </image>
-                </images>
-                <location>
-                    <id>5</id>
-                    <name>Allen Hall</name>
-                    <website>http://illinois.edu</website>
-                    <address>
-                        <street_address>1005 West Gregory Avenue</street_address>
-                        <city>Urbana</city>
-                        <state_province>IL</state_province>
-                        <postal_code>61801</postal_code>
-                        <country>USA</country>
-                    </address>
-                </location>
-            </item>
-        </items>
-    </response>
-
 ### Example Response (JSON)
 
     {
@@ -1342,65 +1051,6 @@ total
 images
 :	the cover image used for the photo album
 	
-### Example Response (XML)
-
-    <response>
-        <total>14</total>
-        <items>
-            <item>
-                <id>166</id>
-                <title>Cats</title>
-                <url>http://stagebloc.com/demo/photos/albums/166</url>
-                <short_url>http://stgb.lc/pa/3S</short_url>
-                <photo_count>3</photo_count>
-                <description>Cats will one day rule the world!</description>
-                <private>false</private>
-                <exclusive>false</exclusive>
-                <modified>2012-08-09 19:12:26</modified>
-                <created>2011-11-16 13:31:57</created>
-                <images>
-                    <image>
-                        <size>thumbnail</size>
-                        <short_url>http://stgb.lc/p/zn/t</short_url>
-                        <embed_url>http://cdn.stagebloc.com/production/photos/1/thumbnail/20111116_193157_1_1935.jpeg</embed_url>
-                    </image>
-                    <image>
-                        <size>small</size>
-                        <short_url>http://stgb.lc/p/zn/s</short_url>
-                        <embed_url>http://cdn.stagebloc.com/production/photos/1/small/20111116_193157_1_1935.jpeg</embed_url>
-                    </image>
-                    <image>
-                        <size>medium</size>
-                        <short_url>http://stgb.lc/p/zn/m</short_url>
-                        <embed_url>http://cdn.stagebloc.com/production/photos/1/medium/20111116_193157_1_1935.jpeg</embed_url>
-                    </image>
-                    <image>
-                        <size>large</size>
-                        <short_url>http://stgb.lc/p/zn/l</short_url>
-                        <embed_url>http://cdn.stagebloc.com/production/photos/1/large/20111116_193157_1_1935.jpeg</embed_url>
-                    </image>
-                    <image>
-                        <size>original</size>
-                        <short_url>http://stgb.lc/p/zn/o</short_url>
-                        <embed_url>http://cdn.stagebloc.com/production/photos/1/original/20111116_193157_1_1935.jpeg</embed_url>
-                    </image>
-                </images>
-                <location>
-                    <id>7</id>
-                    <name>The Rave</name>
-                    <website>http://therave.com</website>
-                    <address>
-                        <street_address>12345 Street</street_address>
-                        <city>Milwaukee</city>
-                        <state_province>WI</state_province>
-                        <postal_code>53103</postal_code>
-                        <country>USA</country>
-                    </address>
-                </location>
-            </item>
-        </items>
-    </response>
-    
 ### Example Response (JSON)
 
     {
@@ -1477,7 +1127,7 @@ In order to authenticate a user with our application, you must first send them t
 Once they authorize on that page, they'll be redirected back to your redirect URI with a request token as a `GET` parameter named `code`. Using that `code`, you must submit a `POST` request to `oauth2/token`.
 
 ##/oauth2/token
-This endpoint is used to get an access token once a request token is received from the `stagebloc.com/connect/` auth flow and the user is redirected back to your application. **The only response format for this endpoint is JSON! Do not add an XML extension to this endpoint!**
+This endpoint is used to get an access token once a request token is received from the `stagebloc.com/connect/` auth flow and the user is redirected back to your application.
 
 client_id _(required)_
 :	the ID of the application an account is connecting to
@@ -1507,12 +1157,7 @@ No parameters required. Hitting this endpoint will simply invalidate the OAuth a
 
 ### Example Response (JSON)
     {"response":{"message":"Token succesfully invalidated."}}
-    
-### Example Response (XML)
-    <response>
-        <message>Token succesfully invalidated.</message>
-    </response>
-    
+
 ## /oauth2/token/info
 This endpoint will return data about the currently authenticated user and account as well as the application for the given access token.
 
@@ -1539,28 +1184,6 @@ This endpoint will return data about the currently authenticated user and accoun
             }]
         }]
     }
-    
-### Example Response (XML)
-    <response>
-        <items>
-            <item>
-                <access_token>5badcaf789d3d1d09794d8f021f40f0e</access_token>
-                <account>
-                    <id>1</id>
-                    <name>The Jonas Brothers</name>
-                    <stagebloc_url>jobros</stagebloc_url>
-                </account>
-                <user>
-                    <id>8</id>
-                    <name>Carly Rae Jepsen</name>
-                </user>
-                <application>
-                    <name>Music Maker</name>
-                    <description>Make all your music the bomb diggity!</description>
-                </application>
-            </item>
-        </items>
-    </response>
     
 ## /oauth2/token/edit
 This endpoint will change the currently authenticated account for this access token. The response will be the same as `/oauth2/token/info`.
@@ -1611,34 +1234,6 @@ offset
 
 total
 :	the total amount of statuses for the authenticated account
-	
-### Example Response (XML)
-
-    <response>
-    <total>29</total>
-        <items>
-            <item>
-                <id>161</id>
-                <url>http://stagebloc.com/demo/statuses/164</url>
-                <short_url>http://stgb.lc/s/3Q</short_url>
-                <text>Sometimes I feel like nobody cares about what I have to say.</text>
-                <published>2012-08-01 22:23:41</published>
-                <author>
-                    <id>8</id>
-                    <name>Lone Wolf</name>
-                </author>
-            </item>
-            <item>
-                <id>154</id>
-                <text>It's hard to breathe in this thing!</text>
-                <published>2012-07-16 15:05:26</published>
-                <author>
-                    <id>8</id>
-                    <name>Lord Dark Helmet</name>
-                </author>
-            </item>
-        </items>
-    </response>
     
 ### Example Response (JSON)
 
@@ -1737,52 +1332,6 @@ total
 raw_url
 :	the link to the video on the external service it belongs to
 	
-### Example Response (XML)
-
-    <response>
-        <total>29</total>
-        <items>
-            <item>
-                <id>663</id>
-                <title>Not A Rick Roll</title>
-                <description>I promise you, it's not a rick roll...</description>
-                <url>http://stagebloc.com/demo/videos/663</url>
-                <short_url>http://stgb.lc/v/cr</short_url>
-                <raw_url>http://www.youtube.com/watch?v=oHg5SJYRHA0</raw_url>
-                <created>2012-06-16 13:47:37</created>
-                <modified>2012-06-16 14:11:59</modified>
-                <embed_code>&lt;iframe width="460" height="259" src="http://www.youtube.com/embed/oHg5SJYRHA0?fs=1&amp;feature=oembed&amp;wmode=transparent" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</embed_code>
-                <images>
-                    <image>
-                        <size>thumbnail</size>
-                        <embed_url>http://cdn.stagebloc.com/production/photos/1/thumbnail/20120713_153517_1_2779.jpeg</embed_url>
-                        <short_url>http://stgb.lc/p/PV/t</short_url>
-                    </image>
-                    <image>
-                        <size>small</size>
-                        <embed_url>http://cdn.stagebloc.com/production/photos/1/small/20120713_153517_1_2779.jpeg</embed_url>
-                        <short_url>http://stgb.lc/p/PV/s</short_url>
-                    </image>
-                    <image>
-                        <size>medium</size>
-                        <embed_url>http://cdn.stagebloc.com/production/photos/1/medium/20120713_153517_1_2779.jpeg</embed_url>
-                        <short_url>http://stgb.lc/p/PV/m</short_url>
-                    </image>
-                    <image>
-                        <size>large</size>
-                        <embed_url>http://cdn.stagebloc.com/production/photos/1/large/20120713_153517_1_2779.jpeg</embed_url>
-                        <short_url>http://stgb.lc/p/PV/l</short_url>
-                    </image>
-                    <image>
-                        <size>original</size>
-                        <embed_url>http://cdn.stagebloc.com/production/photos/1/original/20120713_153517_1_2779.jpeg</embed_url>
-                        <short_url>http://stgb.lc/p/PV/o</short_url>
-                    </image>
-                </images>
-            </item>
-        </items>
-    </response>
-    
 ### Example Response (JSON)
 
     {
