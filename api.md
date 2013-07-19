@@ -1360,6 +1360,12 @@ profile_id
 
 	possible values are IDs of social profiles (only Twitter or Facebook) that the authenticated user or account has connected to StageBloc, see `/accounts/social/list`
 
+latitude
+:   a string value of the latitude the status was posted at
+
+longitude
+:   a string value of the longitude the status was posted at  
+
 # /videos
 
 This endpoint is used for interacting with an account's videos.
