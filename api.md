@@ -16,7 +16,7 @@ All `/edit` endpoints take `POST` parameters (as well as `/oauth2/token`) and al
 
 All dates returned are in `GMT / UTC (+0000)`.
 
-Responses can be formatted in either JSON, JSONP, or XML by simply changing the extension of the endpoint between `.json`, `.jsonp`, or `.xml`. For instance, to list an account's blog entries, one could use either `/list.xml` or `/list.json`. This applies to all endpoints except `/oauth2/token` since it only returns JSON. Any request that specifies JSONP as the format must include a `GET` parameter named `callback` to handle the callback function.
+Responses can be formatted in either JSON or JSONP by simply changing the extension of the endpoint between `.json` or `.jsonp`. For instance, to list an account's blog entries, one could use either `/list.jsonp` or `/list.json`. This applies to all endpoints except `/oauth2/token` since it only returns JSON. Any request that specifies JSONP as the format must include a `GET` parameter named `callback` to handle the callback function.
 
 ### Authorization
 Connecting with the StageBloc API uses the OAuth 2.0 standard. You must first [create a StageBloc account](http://stagebloc.com/signup) and then [register your application in the StageBloc backend](http://stagebloc.com/account/admin/management/developers/) to receive a client ID and secret that will allow users to connect with your application.
