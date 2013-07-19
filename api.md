@@ -51,16 +51,16 @@ Lists the accounts the currently authenticated user has admin access to. No para
 
 ### Explanation of Returned Data
 
-`color`
+color
 :   the color affiliated with the account
 
-`stagebloc_url`
+stagebloc_url
 :	the URL for the account (i.e. `stagebloc.com/<stagebloc_url>/`)
 
-`images`
+images
 :	the image for the account
 
-`user_is_following`
+user_is_following
 :   whether the active user is following the particular account.
 	
 ### Example Response (JSON)
@@ -132,13 +132,13 @@ Lists the social profiles the currently authenticated user and account has conne
 
 ### Explanation of Returned Data
 
-`id`
+id
 :   a unique identifier for the social account
 
-`name`
+name
 :   the name of the account or user that the social account is connected to
 
-`service`
+service
 :	the connected service
     
 ### Example Response (JSON)
@@ -1104,11 +1104,8 @@ offset
 	possible values are any number > 0
 
 	defaults to `0`
-	
-### Explanation of Returned Data
 
-total
-:	the total amount of photo albums for the authenticated account
+### Explanation of returned data
 
 images
 :	the cover image used for the photo album
@@ -1116,67 +1113,42 @@ images
 ### Example Response (JSON)
 
     {
-        "response": {
-            "total": 14,
-            "items": [{
-                "item": {
-                    "id": 166,
-                    "title": "Cats",
-                    "url":"http:\/\/stagebloc.com\/demo\/photos\/albums\/166",
-                    "short_url": "http:\/\/stgb.lc\/pa\/3S",
-                    "photo_count": 3,
-                    "description": "Cats will one day rule the world!",
-                    "private": false,
-                    "exclusive": false,
-                    "modified": "2012-08-09 19:12:26",
-                    "created": "2011-11-16 13:31:57",
-                    "images": [{
-                        "image": {
-                            "size": "thumbnail",
-                            "short_url": "http:\/\/stgb.lc\/p\/zn\/t",
-                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/thumbnail\/20111116_193157_1_1935.jpeg"
-                        }
-                    }, {
-                        "image": {
-                            "size": "small",
-                            "short_url": "http:\/\/stgb.lc\/p\/zn\/s",
-                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/small\/20111116_193157_1_1935.jpeg"
-                        }
-                    }, {
-                        "image": {
-                            "size": "medium",
-                            "short_url": "http:\/\/stgb.lc\/p\/zn\/m",
-                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/medium\/20111116_193157_1_1935.jpeg"
-                        }
-                    }, {
-                        "image": {
-                            "size": "large",
-                            "short_url": "http:\/\/stgb.lc\/p\/zn\/l",
-                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/large\/20111116_193157_1_1935.jpeg"
-                        }
-                    }, {
-                        "image": {
-                            "size": "original",
-                            "short_url": "http:\/\/stgb.lc\/p\/zn\/o",
-                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/original\/20111116_193157_1_1935.jpeg"
-                        }
-                    }],
-                    "location": {
-                        "id": 7,
-                        "name": "The Rave",
-                        "website": "http:\/\/therave.com",
-                        "address": {
-                            "street_address": "12345 Street",
-                            "city": "Milwaukee",
-                            "state_province": "WI",
-                            "postal_code": "53103",
-                            "country": "USA"
-                        }
-                    }
-                }
-            }]
-        }
-    }
+    response = {
+        items = ({
+            created = "2013-06-12 20:59:12";
+            description = "The description of the album.";
+            id = 2219;
+            modified = "2013-06-13 17:00:13";
+            "short_url" = "http://stgb.lc/pa/Eg";
+            title = "Application Images";
+        }, {
+            created = "2010-09-23 19:01:50";
+            description = "The description of the album.";
+            id = 3;
+            modified = "2012-10-11 02:52:07";
+            photo = {
+                "comment_count" = 0;
+                description = "Another description";
+                height = 323;
+                id = 5;
+                images = {
+                    "large_url" = "http://cdn.stagebloc.com/production/photos/205/large/20100923_190330_205_5.jpg";
+                    "medium_url" = "http://cdn.stagebloc.com/production/photos/205/medium/20100923_190330_205_5.jpg";
+                    "small_url" = "http://cdn.stagebloc.com/production/photos/205/small/20100923_190330_205_5.jpg";
+                    "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/205/thumbnail/20100923_190330_205_5.jpg";
+                };
+                "like_count" = 0;
+                "repost_count" = 0;
+                "short_url" = "http://stgb.lc/p/6";
+                title = "The Social Network";
+                "user_has_liked" = 0;
+                width = 600;
+            };
+            "short_url" = "http://stgb.lc/pa/4";
+            title = "Screen Grabs";
+        });
+    };
+}
     
 #/oauth2
 This is used during the [OAuth2](http://oauth.net/2/) authentication process to get an access token from a request token for [StageBloc Connect](http://stagebloc.local/developers/connect/). Curious? Check out our OAuth2 [PHP](https://github.com/stagebloc/php-stagebloc-api) or [Objective-C](https://github.com/stagebloc/cocoa-stagebloc-api) wrapper on GitHub to get started.
