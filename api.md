@@ -1033,45 +1033,45 @@ total
 :	the total amount of photos for the authenticated account
 	
 ### Example Response (JSON)
-{
-    response = {
-    items = ({
-        "comment_count" = 0;
-        description = "";
-        height = 1936;
-        id = 631718;
-        images = {
-            "large_url" = "http://cdn.stagebloc.com/production/photos/205/large/20130719_182538_205_631718.jpeg";
-            "medium_url" = "http://cdn.stagebloc.com/production/photos/205/medium/20130719_182538_205_631718.jpeg";
-            "small_url" = "http://cdn.stagebloc.com/production/photos/205/small/20130719_182538_205_631718.jpeg";
-            "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/205/thumbnail/20130719_182538_205_631718.jpeg";
-        };
-        "like_count" = 0;
-        "repost_count" = 0;
-        "short_url" = "http://stgb.lc/p/4eMG";
-        title = "SB shirt";
-        "user_has_liked" = 0;
-        width = 1936;
-    }, {
-        "comment_count" = 0;
-        description = "";
-        height = 465;
-        id = 631213;
-        images = {
-            "large_url" = "http://cdn.stagebloc.com/production/photos/205/large/20130711_173911_205_631213.png";
-            "medium_url" = "http://cdn.stagebloc.com/production/photos/205/medium/20130711_173911_205_631213.png";
-            "small_url" = "http://cdn.stagebloc.com/production/photos/205/small/20130711_173911_205_631213.png";
-            "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/205/thumbnail/20130711_173911_205_631213.png";
-        };
-        "like_count" = 0;
-        "repost_count" = 0;
-        "short_url" = "http://stgb.lc/p/4eCZ";
-        title = "Kid Rock signup";
-        "user_has_liked" = 0;
-        width = 565;
-    });
-};
-}
+    {
+        response = {
+        items = ({
+            "comment_count" = 0;
+            description = "";
+            height = 1936;
+            id = 631718;
+            images = {
+                "large_url" = "http://cdn.stagebloc.com/production/photos/205/large/20130719_182538_205_631718.jpeg";
+                "medium_url" = "http://cdn.stagebloc.com/production/photos/205/medium/20130719_182538_205_631718.jpeg";
+                "small_url" = "http://cdn.stagebloc.com/production/photos/205/small/20130719_182538_205_631718.jpeg";
+                "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/205/thumbnail/20130719_182538_205_631718.jpeg";
+            };
+            "like_count" = 0;
+            "repost_count" = 0;
+            "short_url" = "http://stgb.lc/p/4eMG";
+            title = "SB shirt";
+            "user_has_liked" = 0;
+            width = 1936;
+        }, {
+            "comment_count" = 0;
+            description = "";
+            height = 465;
+            id = 631213;
+            images = {
+                "large_url" = "http://cdn.stagebloc.com/production/photos/205/large/20130711_173911_205_631213.png";
+                "medium_url" = "http://cdn.stagebloc.com/production/photos/205/medium/20130711_173911_205_631213.png";
+                "small_url" = "http://cdn.stagebloc.com/production/photos/205/small/20130711_173911_205_631213.png";
+                "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/205/thumbnail/20130711_173911_205_631213.png";
+            };
+            "like_count" = 0;
+            "repost_count" = 0;
+            "short_url" = "http://stgb.lc/p/4eCZ";
+            title = "Kid Rock signup";
+            "user_has_liked" = 0;
+            width = 565;
+        });
+    };
+    }
     
 # /photos/albums
 This endpoint is used for interacting with an account's photo albums.
