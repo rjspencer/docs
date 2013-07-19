@@ -46,18 +46,24 @@ If you want to create your own wrapper in another language, please do! Let us kn
 # /accounts
 This endpoint is used for interacting with the accounts the authenticated user has admin access to.
 
-### /accounts/list
+## /accounts/list
 Lists the accounts the currently authenticated user has admin access to. No parameters are required for this endpoint.
 
-#### Explanation of Returned Data
+### Explanation of Returned Data
+
+`color`
+:   the color affiliated with the account
 
 `stagebloc_url`
 :	the URL for the account (i.e. `stagebloc.com/<stagebloc_url>/`)
 
 `images`
 :	the image for the account
+
+`user_is_following`
+:   whether the active user is following the particular account.
 	
-#### Example Response (JSON)
+### Example Response (JSON)
 
     {
     response = {
@@ -121,10 +127,10 @@ Lists the accounts the currently authenticated user has admin access to. No para
     };
 }
    
-### /accounts/social/list
+## /accounts/social/list
 Lists the social profiles the currently authenticated user and account has connected to StageBloc. No parameters are required for this endpoint. Useful with the `/statuses/edit` endpoint for posting to a user's connected social profiles.
 
-#### Explanation of Returned Data
+### Explanation of Returned Data
 
 `id`
 :   a unique identifier for the social account
@@ -146,22 +152,10 @@ Lists the social profiles the currently authenticated user and account has conne
                 name = Twitter;
             };
         }, {
-            id = 1449;
-            name = austin;
-            service = {
-                name = Twitter;
-            };
-        }, {
             id = 1446;
             name = austin;
             service = {
                 name = Facebook;
-            };
-        }, {
-            id = 1836;
-            name = bark;
-            service = {
-                name = Twitter;
             };
         }, {
             id = 1246;
