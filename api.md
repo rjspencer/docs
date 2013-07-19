@@ -697,13 +697,11 @@ ignore_sticky
 	
 ### Explanation of Returned Data
 
-total
-:	the total amount of blog entries for the authenticated account
-
 status
 :	a value of `1` means published and a value of `0` means draft
     
 ### Example Response (JSON)
+    {
     response = {
     items = ({
         account = {
@@ -1027,11 +1025,6 @@ offset
 
 	defaults to `0`
 	
-### Explanation of Returned Data
-
-total
-:	the total amount of photos for the authenticated account
-	
 ### Example Response (JSON)
     {
         response = {
@@ -1303,11 +1296,6 @@ offset
 	possible values are any number > 0
 
 	defaults to `0`
-
-### Explanation of Returned Data
-
-total
-:	the total amount of statuses for the authenticated account
     
 ### Example Response (JSON)
 
