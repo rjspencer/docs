@@ -46,99 +46,138 @@ If you want to create your own wrapper in another language, please do! Let us kn
 # /accounts
 This endpoint is used for interacting with the accounts the authenticated user has admin access to.
 
-## /accounts/list
+### /accounts/list
 Lists the accounts the currently authenticated user has admin access to. No parameters are required for this endpoint.
 
-### Explanation of Returned Data
+#### Explanation of Returned Data
 
-total
-:	the total amount of accounts this user has admin access to
-
-stagebloc_url
+`stagebloc_url`
 :	the URL for the account (i.e. `stagebloc.com/<stagebloc_url>/`)
 
-authenticated
-:    whether or not this account is the one currently authenciated with the OAuth access token
-
-images
+`images`
 :	the image for the account
 	
-### Example Response (JSON)
+#### Example Response (JSON)
 
     {
-        "response": {
-            "total": 4,
-            "items": [{
-                "item": {
-                    "id": 2,
-                    "name": "Team Edward",
-                    "stagebloc_url": "teamedward",
-                    "authenticated": true,
-                    "description": "We are much better than Team Jacob!",
-                    "images": [{
-                        "image": {
-                            "size": "thumbnail",
-                            "short_url": "http:\/\/stgb.lc\/p\/Qf\/t",
-                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/2\/thumbnail\/20120807_202919_2_2798.jpeg"
-                        }
-                    }, {
-                        "image": {
-                            "size": "small",
-                            "short_url": "http:\/\/stgb.lc\/p\/Qf\/s",
-                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/2\/small\/20120807_202919_2_2798.jpeg"
-                        }
-                    }, {
-                        "image": {
-                            "size": "medium",
-                            "short_url": "http:\/\/stgb.lc\/p\/Qf\/m",
-                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/2\/medium\/20120807_202919_2_2798.jpeg"
-                        }
-                    }, {
-                        "image": {
-                            "size": "large",
-                            "short_url": "http:\/\/stgb.lc\/p\/Qf\/l",
-                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/2\/large\/20120807_202919_2_2798.jpeg"
-                        }
-                    }, {
-                        "image": {
-                            "size": "original",
-                            "short_url": "http:\/\/stgb.lc\/p\/Qf\/o",
-                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/2\/original\/20120807_202919_2_2798.jpeg"
-                        }
-                    }]
-                }
-            }]
-        }
-    }
+    response = {
+        items = ({
+            color = "#cce8ff";
+            "custom_domain" = "";
+            description = "CS Purdue University. Interested in mobile + web development";
+            id = 2362;
+            name = austin;
+            photo = {
+                "comment_count" = 0;
+                description = "Account Image";
+                height = 1200;
+                id = 629624;
+                images = {
+                    "large_url" = "http://cdn.stagebloc.com/production/photos/2362/large/20130524_233241_2362_629624.png";
+                    "medium_url" = "http://cdn.stagebloc.com/production/photos/2362/medium/20130524_233241_2362_629624.png";
+                    "small_url" = "http://cdn.stagebloc.com/production/photos/2362/small/20130524_233241_2362_629624.png";
+                    "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/2362/thumbnail/20130524_233241_2362_629624.png";
+                };
+                "like_count" = 0;
+                "repost_count" = 0;
+                "short_url" = "http://stgb.lc/p/4eaA";
+                title = "Account Image";
+                "user_has_liked" = 0;
+                width = 1200;
+            };
+            "stagebloc_url" = austin;
+            type = personal;
+            "user_is_following" = 1;
+            "user_role" = 0;
+        }, {
+            color = "#e6eaef";
+            "custom_domain" = "";
+            description = "The world's a stage. Get on it.";
+            id = 205;
+            name = StageBloc;
+            photo = {
+                "comment_count" = 0;
+                description = "Account Image";
+                height = 1024;
+                id = 630003;
+                images = {
+                    "large_url" = "http://cdn.stagebloc.com/production/photos/205/large/20130613_171101_205_630003.png";
+                    "medium_url" = "http://cdn.stagebloc.com/production/photos/205/medium/20130613_171101_205_630003.png";
+                    "small_url" = "http://cdn.stagebloc.com/production/photos/205/small/20130613_171101_205_630003.png";
+                    "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/205/thumbnail/20130613_171101_205_630003.png";
+                };
+                "like_count" = 0;
+                "repost_count" = 0;
+                "short_url" = "http://stgb.lc/p/4eh8";
+                title = "Account Image";
+                "user_has_liked" = 0;
+                width = 1024;
+            };
+            "stagebloc_url" = stagebloc;
+            type = business;
+            "user_is_following" = 1;
+            "user_role" = 5;
+        });
+    };
+}
    
-## /accounts/social/list
+### /accounts/social/list
 Lists the social profiles the currently authenticated user and account has connected to StageBloc. No parameters are required for this endpoint. Useful with the `/statuses/edit` endpoint for posting to a user's connected social profiles.
 
-### Explanation of Returned Data
+#### Explanation of Returned Data
 
-total
-:	the total amount of social accounts this user has access to
+`id`
+:   a unique identifier for the social account
 
-type
-:	whether or not this social profile is connected to the user or the account
+`name`
+:   the name of the account or user that the social account is connected to
 
-service
+`service`
 :	the connected service
     
 ### Example Response (JSON)
+
     {
-        "response": {
-            "total": 8,
-            "items": [{
-                "item": {
-                    "id": "191",
-                    "service": "Twitter",
-                    "type": "account",
-                    "display_name": "Brand New Account!'s Twitter"
-                }
-            }]
-        }
-    }
+    response = {
+        items = ({
+            id = 180;
+            name = StageBloc;
+            service = {
+                name = Twitter;
+            };
+        }, {
+            id = 1449;
+            name = austin;
+            service = {
+                name = Twitter;
+            };
+        }, {
+            id = 1446;
+            name = austin;
+            service = {
+                name = Facebook;
+            };
+        }, {
+            id = 1836;
+            name = bark;
+            service = {
+                name = Twitter;
+            };
+        }, {
+            id = 1246;
+            name = "Austin Louden";
+            service = {
+                name = Twitter;
+            };
+        }, {
+            id = 1452;
+            name = "Austin Louden";
+            service = {
+                name = Facebook;
+            };
+        });
+    };
+}
 
 # /audio
 These endpoints are used for interacting with an account's audio.
