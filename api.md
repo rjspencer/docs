@@ -72,7 +72,7 @@ Lists the accounts the currently authenticated user has admin access to. No para
             "custom_domain" = "";
             description = "CS Purdue University. Interested in mobile + web development";
             id = 2362;
-            name = austin;
+            name = john;
             photo = {
                 "comment_count" = 0;
                 description = "Account Image";
@@ -91,7 +91,7 @@ Lists the accounts the currently authenticated user has admin access to. No para
                 "user_has_liked" = 0;
                 width = 1200;
             };
-            "stagebloc_url" = austin;
+            "stagebloc_url" = john;
             type = personal;
             "user_is_following" = 1;
             "user_role" = 0;
@@ -153,19 +153,19 @@ Lists the social profiles the currently authenticated user and account has conne
             };
         }, {
             id = 1446;
-            name = austin;
+            name = john;
             service = {
                 name = Facebook;
             };
         }, {
             id = 1246;
-            name = "Austin Louden";
+            name = "John Smith";
             service = {
                 name = Twitter;
             };
         }, {
             id = 1452;
-            name = "Austin Louden";
+            name = "John Smith";
             service = {
                 name = Facebook;
             };
@@ -1228,6 +1228,11 @@ account_id
 This endpoint is used for interacting with an account's statuses.
 
 ## /statuses/list
+
+### Returning a specific status
+
+Pass the `id` of a status to return a specific status. If an `id `is passed, all other parameters will be ignored and only the requested status will be returned
+
 id
 :	the ID of the status to return
 
@@ -1235,7 +1240,7 @@ id
 	
 	no default
 	
-**_Important Note:_** If an id is passed, all other parameters will be ignored and only the requested status will be returned
+### List the statuses the belong to an account
 
 order_by
 :	how to order the results
@@ -1270,34 +1275,72 @@ total
     
 ### Example Response (JSON)
 
-    {
-        "response": {
-            "total": 29,
-            "items": [{
-                "item": {
-                    "id": 161,
-                    "url":"http:\/\/stagebloc.com\/demo\/statuses\/164",
-                    "short_url":"http:\/\/stgb.lc\/s\/3Q",
-                    "text": "Sometimes I feel like nobody cares about what I have to say.",
-                    "published": "2012-08-01 22:23:41",
-                    "author": {
-                        "id": 8,
-                        "name": "Lone Wolf"
-                    }
-                }
-            }, {
-                "item": {
-                    "id": 154,
-                    "text": "It's hard to breathe in this thing!",
-                    "published": "2012-07-16 15:05:26",
-                    "author": {
-                        "id": 8,
-                        "name": "Lord Dark Helmet"
-                    }
-                }
-            }]
-        }
-    }
+    response = {
+    items = ({
+        author = {
+            bio = "Developer at StageBloc.";
+            birthday = "2000-01-01";
+            created = "2013-01-03 00:17:53";
+            email = "johnsmith@gmail.com";
+            gender = male;
+            id = 2673;
+            name = "John Smith";
+            photo = {
+                height = 1200;
+                id = 191;
+                images = {
+                    "large_url" = "http://cdn.stagebloc.com/production/photos/users/2673/large/20130524_233142_2673_191.png";
+                    "medium_url" = "http://cdn.stagebloc.com/production/photos/users/2673/medium/20130524_233142_2673_191.png";
+                    "small_url" = "http://cdn.stagebloc.com/production/photos/users/2673/small/20130524_233142_2673_191.png";
+                    "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/users/2673/thumbnail/20130524_233142_2673_191.png";
+                };
+                width = 1200;
+            };
+            url = "https://stagebloc.com/user/john/";
+            username = john;
+        };
+        "comment_count" = 0;
+        id = 776;
+        "like_count" = 0;
+        published = "2013-07-19 18:18:15";
+        "repost_count" = 0;
+        "short_url" = "http://stgb.lc/s/eo";
+        text = "Second post from the new app";
+        "user_has_liked" = 0;
+    }, {
+        author = {
+            bio = "Developer at StageBloc.";
+            birthday = "2000-01-01";
+            created = "2013-01-03 00:17:53";
+            email = "johnsmith@gmail.com";
+            gender = male;
+            id = 2673;
+            name = "John Smith";
+            photo = {
+                height = 1200;
+                id = 191;
+                images = {
+                    "large_url" = "http://cdn.stagebloc.com/production/photos/users/2673/large/20130524_233142_2673_191.png";
+                    "medium_url" = "http://cdn.stagebloc.com/production/photos/users/2673/medium/20130524_233142_2673_191.png";
+                    "small_url" = "http://cdn.stagebloc.com/production/photos/users/2673/small/20130524_233142_2673_191.png";
+                    "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/users/2673/thumbnail/20130524_233142_2673_191.png";
+                };
+                width = 1200;
+            };
+            url = "https://stagebloc.com/user/john/";
+            username = john;
+        };
+        "comment_count" = 0;
+        id = 602;
+        "like_count" = 1;
+        published = "2013-05-01 05:28:03";
+        "repost_count" = 0;
+        "short_url" = "http://stgb.lc/s/bo";
+        text = "2 more exams, then moving to Chicago";
+        "user_has_liked" = 0;
+    });
+};
+}
     
 ## /statuses/edit
 This endpoint can be used for adding statuses to a StageBloc account (note: statuses cannot be edited, only deleted). Upon successful addition, the status data will be returned in the same manner `/statuses/list` would return it. Otherwise, an error message will be returned explaining what was wrong.
