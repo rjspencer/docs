@@ -976,6 +976,9 @@ tags
     defaults to no tags
 
 ## /photos/list
+
+### Returning a single photo
+
 id
 :	the ID of the photo to return
 
@@ -985,6 +988,8 @@ id
 	
 **_Important Note:_** If an id is passed, all other parameters will be ignored and only the requested photo will be returned
 
+### Returning all of the photos in an album
+
 album_id
 :	the ID of the album to receive the photos of
 
@@ -993,6 +998,8 @@ album_id
 	no default
 	
 **_Important Note:_** If a album_id is passed, all other parameters will be ignored and only the photos belonging to that album will be returned
+
+### Returning all of the photos belonging to an account
 
 order_by
 :	how to order the results
@@ -1026,67 +1033,45 @@ total
 :	the total amount of photos for the authenticated account
 	
 ### Example Response (JSON)
-
-    {
-        "response": {
-            "total": 153,
-            "items": [{
-                "item": {
-                    "id": 2797,
-                    "title": "Surface of Mars",
-                    "description": "Yay Curiosity!",
-                    "exclusive": false,
-                    "modified": "2012-08-09 17:35:23",
-                    "created": "2012-07-23 21:16:29",
-                    "url":"http:\/\/stagebloc.com\/demo\/photos\/2814",
-                    "short_url":"http:\/\/stgb.lc\/p\/QK",
-                    "images": [{
-                        "image": {
-                            "size": "thumbnail",
-                            "short_url": "http:\/\/stgb.lc\/p\/Qe\/t",
-                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/thumbnail\/20120724_021629_1_2797.jpeg"
-                        }
-                    }, {
-                        "image": {
-                            "size": "small",
-                            "short_url": "http:\/\/stgb.lc\/p\/Qe\/s",
-                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/small\/20120724_021629_1_2797.jpeg"
-                        }
-                    }, {
-                        "image": {
-                            "size": "medium",
-                            "short_url": "http:\/\/stgb.lc\/p\/Qe\/m",
-                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/medium\/20120724_021629_1_2797.jpeg"
-                        }
-                    }, {
-                        "image": {
-                            "size": "large",
-                            "short_url": "http:\/\/stgb.lc\/p\/Qe\/l",
-                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/large\/20120724_021629_1_2797.jpeg"
-                        }
-                    }, {
-                        "image": {
-                            "size": "original",
-                            "short_url": "http:\/\/stgb.lc\/p\/Qe\/o",
-                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/original\/20120724_021629_1_2797.jpeg"
-                        }
-                     }],
-                    "location": {
-                        "id": 5,
-                        "name": "Allen Hall",
-                        "website": "http:\/\/illinois.edu",
-                        "address": {
-                            "street_address": "1005 West Gregory Avenue",
-                            "city": "Urbana",
-                            "state_province": "IL",
-                            "postal_code": "61801",
-                            "country": "USA"
-                        }
-                    }
-                }
-            }]
-        }
-    }
+{
+    response = {
+    items = ({
+        "comment_count" = 0;
+        description = "";
+        height = 1936;
+        id = 631718;
+        images = {
+            "large_url" = "http://cdn.stagebloc.com/production/photos/205/large/20130719_182538_205_631718.jpeg";
+            "medium_url" = "http://cdn.stagebloc.com/production/photos/205/medium/20130719_182538_205_631718.jpeg";
+            "small_url" = "http://cdn.stagebloc.com/production/photos/205/small/20130719_182538_205_631718.jpeg";
+            "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/205/thumbnail/20130719_182538_205_631718.jpeg";
+        };
+        "like_count" = 0;
+        "repost_count" = 0;
+        "short_url" = "http://stgb.lc/p/4eMG";
+        title = "SB shirt";
+        "user_has_liked" = 0;
+        width = 1936;
+    }, {
+        "comment_count" = 0;
+        description = "";
+        height = 465;
+        id = 631213;
+        images = {
+            "large_url" = "http://cdn.stagebloc.com/production/photos/205/large/20130711_173911_205_631213.png";
+            "medium_url" = "http://cdn.stagebloc.com/production/photos/205/medium/20130711_173911_205_631213.png";
+            "small_url" = "http://cdn.stagebloc.com/production/photos/205/small/20130711_173911_205_631213.png";
+            "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/205/thumbnail/20130711_173911_205_631213.png";
+        };
+        "like_count" = 0;
+        "repost_count" = 0;
+        "short_url" = "http://stgb.lc/p/4eCZ";
+        title = "Kid Rock signup";
+        "user_has_liked" = 0;
+        width = 565;
+    });
+};
+}
     
 # /photos/albums
 This endpoint is used for interacting with an account's photo albums.
