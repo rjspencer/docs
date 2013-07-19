@@ -578,7 +578,7 @@ This endpoint is used for interacting with an account's blog posts
 
 ## /blog/edit
 
-This endpoint can be used for editing existing blog posts or adding new blog posts to a StageBloc account. Upon successful editing/creation, the blog post data will be returned in the same manner `/blog/list` would return it. Otherwise, an error message will be returned explaining what was wrong.
+This endpoint can be used for editing existing blog posts or adding new blog posts to a StageBloc account. Upon successful editing/creation, the blog post data will be returned in the same manner `/blog/list` would return it. Otherwise, an error message will be returned explaining what went wrong.
 
 id _(required to edit an existing blog post)_
 :	the ID of the blog post to edit
@@ -772,8 +772,8 @@ status
         title = "Meet BARK";
         "user_has_liked" = 0;
     });
-};
-}
+    };
+    }
     
 # /events
 This endpoint is used for interacting with an account's events.
