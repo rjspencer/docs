@@ -631,14 +631,19 @@ exclusive
 	defaults to `0`
 
 ## /blog/list
+
+### Returning a specific blog post
+
 id
 :	the ID of the blog entry to return
 
 	possible values are any blog entry ID that belongs to the authenticated account
 	
 	no default
-	
+
 **_Important Note:_** If an id is passed, all other parameters will be ignored and only the requested blog entry will be returned
+
+### Returning all blog posts for an account
 
 order_by
 :	how to order the results
@@ -699,30 +704,141 @@ status
 :	a value of `1` means published and a value of `0` means draft
     
 ### Example Response (JSON)
-    {
-        "response": {
-            "total": 486,
-            "items": [{
-                "item": {
-                    "id": 6317,
-                    "title": "50 Shades of Grey",
-                    "body": "Lions, tables, and chairs, oh my!",
-                    "status": 1,
-                    "url":"http:\/\/stagebloc.com\/demo\/blog\/6319",
-                    "short_url": "http:\/\/stgb.lc\/b\/2SV",
-                    "published": "2012-06-25 12:30:00",
-                    "created": "2012-06-25 12:30:53",
-                    "modified": "2012-07-17 15:33:11",
-                    "sticky": false,
-                    "exclusive": true,
-                    "author": {
-                        "id": 8,
-                        "name": "Demo Admin"
-                    }
-                }
-            }]
-        }
-    }
+    response = {
+    items = ({
+        account = {
+            color = "#e6eaef";
+            "custom_domain" = "";
+            description = "The world's a stage. Get on it.";
+            id = 205;
+            name = StageBloc;
+            photo = {
+                "comment_count" = 0;
+                description = "Account Image";
+                height = 1024;
+                id = 630003;
+                images = {
+                    "large_url" = "http://cdn.stagebloc.com/production/photos/205/large/20130613_171101_205_630003.png";
+                    "medium_url" = "http://cdn.stagebloc.com/production/photos/205/medium/20130613_171101_205_630003.png";
+                    "small_url" = "http://cdn.stagebloc.com/production/photos/205/small/20130613_171101_205_630003.png";
+                    "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/205/thumbnail/20130613_171101_205_630003.png";
+                };
+                "like_count" = 0;
+                "repost_count" = 0;
+                "short_url" = "http://stgb.lc/p/4eh8";
+                title = "Account Image";
+                "user_has_liked" = 0;
+                width = 1024;
+            };
+            "stagebloc_url" = stagebloc;
+            type = business;
+            "user_is_following" = 1;
+            "user_role" = 5;
+        };
+        author = {
+            bio = "Developer at StageBloc.";
+            birthday = "2000-01-01";
+            created = "2013-01-03 00:17:53";
+            email = "austinlouden@gmail.com";
+            gender = male;
+            id = 2673;
+            name = "Austin Louden";
+            photo = {
+                height = 1200;
+                id = 191;
+                images = {
+                    "large_url" = "http://cdn.stagebloc.com/production/photos/users/2673/large/20130524_233142_2673_191.png";
+                    "medium_url" = "http://cdn.stagebloc.com/production/photos/users/2673/medium/20130524_233142_2673_191.png";
+                    "small_url" = "http://cdn.stagebloc.com/production/photos/users/2673/small/20130524_233142_2673_191.png";
+                    "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/users/2673/thumbnail/20130524_233142_2673_191.png";
+                };
+                width = 1200;
+            };
+            url = "https://stagebloc.com/user/austin/";
+            username = austin;
+        };
+        body = "Example blog body";
+        category = "";
+        "comment_count" = 0;
+        created = "2013-07-18 00:59:29";
+        exclusive = 0;
+        id = 324962;
+        "like_count" = 1;
+        modified = "2013-07-18 16:28:46";
+        published = "2013-07-18 16:00:00";
+        "repost_count" = 1;
+        "short_url" = "http://stgb.lc/b/2EAN";
+        sticky = 0;
+        title = "Meet BARK";
+        "user_has_liked" = 0;
+    }, {
+        account = {
+            color = "#e6eaef";
+            "custom_domain" = "";
+            description = "<p>
+\n\t  The world's a stage. Get on it.
+\n</p>";
+            id = 205;
+            name = StageBloc;
+            photo = {
+                "comment_count" = 0;
+                description = "Account Image";
+                height = 1024;
+                id = 630003;
+                images = {
+                    "large_url" = "http://cdn.stagebloc.com/production/photos/205/large/20130613_171101_205_630003.png";
+                    "medium_url" = "http://cdn.stagebloc.com/production/photos/205/medium/20130613_171101_205_630003.png";
+                    "small_url" = "http://cdn.stagebloc.com/production/photos/205/small/20130613_171101_205_630003.png";
+                    "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/205/thumbnail/20130613_171101_205_630003.png";
+                };
+                "like_count" = 0;
+                "repost_count" = 0;
+                "short_url" = "http://stgb.lc/p/4eh8";
+                title = "Account Image";
+                "user_has_liked" = 0;
+                width = 1024;
+            };
+            "stagebloc_url" = stagebloc;
+            type = business;
+            "user_is_following" = 1;
+            "user_role" = 5;
+        };
+        author = {
+            bio = "Lead front-end developer at @StageBloc. Hopelessly addicted to Doctor Who and really awful puns. ";
+            created = "2010-09-16 18:11:30";
+            id = 585;
+            name = "JD Hartley";
+            photo = {
+                height = 478;
+                id = 1;
+                images = {
+                    "large_url" = "http://cdn.stagebloc.com/production/photos/users/585/large/20120110_203253_585_1.jpeg";
+                    "medium_url" = "http://cdn.stagebloc.com/production/photos/users/585/medium/20120110_203253_585_1.jpeg";
+                    "small_url" = "http://cdn.stagebloc.com/production/photos/users/585/small/20120110_203253_585_1.jpeg";
+                    "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/users/585/thumbnail/20120110_203253_585_1.jpeg";
+                };
+                width = 478;
+            };
+            url = "https://stagebloc.com/user/jdhartley/";
+            username = jdhartley;
+        };
+        body = "Blog post #2";
+        category = "";
+        "comment_count" = 0;
+        created = "2012-09-13 15:17:23";
+        exclusive = 0;
+        id = 136761;
+        "like_count" = 2;
+        modified = "2012-09-16 00:05:43";
+        published = "2012-09-13 18:16:00";
+        "repost_count" = 0;
+        "short_url" = "http://stgb.lc/b/GDX";
+        sticky = 0;
+        title = "New Photo Viewer";
+        "user_has_liked" = 0;
+    });
+};
+}
     
 # /events
 This endpoint is used for interacting with an account's events.
