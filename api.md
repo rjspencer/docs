@@ -10,7 +10,7 @@ The API (and therefore these docs) is still currently under development. That me
 All of StageBloc's documentation are up on GitHub for you to fork, modify, and improve. Join us over there to request features, add suggestions, and report bugs. What are you waiting for? [Git to it!](https://github.com/stagebloc/docs)
 
 # General Information
-The root URL of the API is `https://api.stagebloc.com/2.0/`.
+The root URL of the API is `https://api.stagebloc.com/3.0/`.
 
 All `/edit` endpoints take `POST` parameters (as well as `/oauth2/token`) and all `/list` endpoints take `GET` parameters.
 
