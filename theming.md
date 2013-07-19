@@ -1202,6 +1202,14 @@ gt
 lt
 :	check to see if the user is less than a specific tier
 
+### if:UserEventAttendingStatus
+Checks to see the status of the event the user is attending
+
+status
+:	what status to check
+
+	accepted values are `yes`, `no`, or `maybe`
+
 ### if:UserHasTwitterConnected
 Checks to see if the currently logged in user has Twitter connected
 
