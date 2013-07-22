@@ -747,8 +747,7 @@ images
             "short_url" = "http://stgb.lc/pa/4";
             title = "Screen Grabs";
         });
-    };
-}
+    };}
     
 #/oauth2
 This is used during the [OAuth2](http://oauth.net/2/) authentication process to get an access token from a request token for [StageBloc Connect](http://stagebloc.local/developers/connect/). Curious? Check out our OAuth2 [PHP](https://github.com/stagebloc/php-stagebloc-api) or [Objective-C](https://github.com/stagebloc/cocoa-stagebloc-api) wrapper on GitHub to get started.
