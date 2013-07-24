@@ -1231,6 +1231,9 @@ Checks to see if the currently rendered user is the logged in user
 ### if:UserIsLoggedIn
 Checks to see if there's a logged in user
 
+### if:UserIsVerified
+Checks to see if a user has verified their email or not
+
 ### if:VenueHasWebsite
 Checks if a venue has a website.
 
