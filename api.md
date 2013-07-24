@@ -12,7 +12,7 @@ All of StageBloc's documentation are up on GitHub for you to fork, modify, and i
 # General Information
 The root URL of the API is `https://api.stagebloc.com/3.0/`.
 
-All `/edit` endpoints take `POST` parameters (as well as `/oauth2/token`) and all `/list` endpoints take `GET` parameters.
+All `/edit` endpoints take `POST` parameters (as well as `/oauth2/token`) and all `/list` endpoints take `GET` parameters. It can generally be assumed that writing endpoints use `POST` and reading endpoints use `GET`.
 
 All dates returned are in `GMT / UTC (+0000)`.
 
@@ -66,66 +66,66 @@ user_is_following
 ### Example Response (JSON)
 
     {
-    response = {
-        items = ({
-            color = "#cce8ff";
-            "custom_domain" = "";
-            description = "CS Purdue University. Interested in mobile + web development";
-            id = 2362;
-            name = john;
-            photo = {
-                "comment_count" = 0;
-                description = "Account Image";
-                height = 1200;
-                id = 629624;
-                images = {
-                    "large_url" = "http://cdn.stagebloc.com/production/photos/2362/large/20130524_233241_2362_629624.png";
-                    "medium_url" = "http://cdn.stagebloc.com/production/photos/2362/medium/20130524_233241_2362_629624.png";
-                    "small_url" = "http://cdn.stagebloc.com/production/photos/2362/small/20130524_233241_2362_629624.png";
-                    "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/2362/thumbnail/20130524_233241_2362_629624.png";
-                };
-                "like_count" = 0;
-                "repost_count" = 0;
-                "short_url" = "http://stgb.lc/p/4eaA";
-                title = "Account Image";
-                "user_has_liked" = 0;
-                width = 1200;
-            };
-            "stagebloc_url" = john;
-            type = personal;
-            "user_is_following" = 1;
-            "user_role" = 0;
-        }, {
-            color = "#e6eaef";
-            "custom_domain" = "";
-            description = "The world's a stage. Get on it.";
-            id = 205;
-            name = StageBloc;
-            photo = {
-                "comment_count" = 0;
-                description = "Account Image";
-                height = 1024;
-                id = 630003;
-                images = {
-                    "large_url" = "http://cdn.stagebloc.com/production/photos/205/large/20130613_171101_205_630003.png";
-                    "medium_url" = "http://cdn.stagebloc.com/production/photos/205/medium/20130613_171101_205_630003.png";
-                    "small_url" = "http://cdn.stagebloc.com/production/photos/205/small/20130613_171101_205_630003.png";
-                    "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/205/thumbnail/20130613_171101_205_630003.png";
-                };
-                "like_count" = 0;
-                "repost_count" = 0;
-                "short_url" = "http://stgb.lc/p/4eh8";
-                title = "Account Image";
-                "user_has_liked" = 0;
-                width = 1024;
-            };
-            "stagebloc_url" = stagebloc;
-            type = business;
-            "user_is_following" = 1;
-            "user_role" = 5;
-        });
-    };
-}
+	    response = {
+	        items = ({
+	            color = "#cce8ff";
+	            "custom_domain" = "";
+	            description = "CS Purdue University. Interested in mobile + web development";
+	            id = 2362;
+	            name = john;
+	            photo = {
+	                "comment_count" = 0;
+	                description = "Account Image";
+	                height = 1200;
+	                id = 629624;
+	                images = {
+	                    "large_url" = "http://cdn.stagebloc.com/production/photos/2362/large/20130524_233241_2362_629624.png";
+	                    "medium_url" = "http://cdn.stagebloc.com/production/photos/2362/medium/20130524_233241_2362_629624.png";
+	                    "small_url" = "http://cdn.stagebloc.com/production/photos/2362/small/20130524_233241_2362_629624.png";
+	                    "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/2362/thumbnail/20130524_233241_2362_629624.png";
+	                };
+	                "like_count" = 0;
+	                "repost_count" = 0;
+	                "short_url" = "http://stgb.lc/p/4eaA";
+	                title = "Account Image";
+	                "user_has_liked" = 0;
+	                width = 1200;
+	            };
+	            "stagebloc_url" = john;
+	            type = personal;
+	            "user_is_following" = 1;
+	            "user_role" = 0;
+	        }, {
+	            color = "#e6eaef";
+	            "custom_domain" = "";
+	            description = "The world's a stage. Get on it.";
+	            id = 205;
+	            name = StageBloc;
+	            photo = {
+	                "comment_count" = 0;
+	                description = "Account Image";
+	                height = 1024;
+	                id = 630003;
+	                images = {
+	                    "large_url" = "http://cdn.stagebloc.com/production/photos/205/large/20130613_171101_205_630003.png";
+	                    "medium_url" = "http://cdn.stagebloc.com/production/photos/205/medium/20130613_171101_205_630003.png";
+	                    "small_url" = "http://cdn.stagebloc.com/production/photos/205/small/20130613_171101_205_630003.png";
+	                    "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/205/thumbnail/20130613_171101_205_630003.png";
+	                };
+	                "like_count" = 0;
+	                "repost_count" = 0;
+	                "short_url" = "http://stgb.lc/p/4eh8";
+	                title = "Account Image";
+	                "user_has_liked" = 0;
+	                width = 1024;
+	            };
+	            "stagebloc_url" = stagebloc;
+	            type = business;
+	            "user_is_following" = 1;
+	            "user_role" = 5;
+	        });
+	    };
+	}
    
 ## /accounts/social/list
 Lists the social profiles the currently authenticated user and account has connected to StageBloc. No parameters are required for this endpoint. Useful with the `/statuses/edit` endpoint for posting to a user's connected social profiles.
@@ -139,39 +139,39 @@ name
 :   the name of the account or user that the social account is connected to
 
 service
-:	the connected service
+:	the connected service type
     
 ### Example Response (JSON)
 
     {
-    response = {
-        items = ({
-            id = 180;
-            name = StageBloc;
-            service = {
-                name = Twitter;
-            };
-        }, {
-            id = 1446;
-            name = john;
-            service = {
-                name = Facebook;
-            };
-        }, {
-            id = 1246;
-            name = "John Smith";
-            service = {
-                name = Twitter;
-            };
-        }, {
-            id = 1452;
-            name = "John Smith";
-            service = {
-                name = Facebook;
-            };
-        });
-    };
-}
+	    response = {
+	        items = ({
+	            id = 180;
+	            name = StageBloc;
+	            service = {
+	                name = Twitter;
+	            };
+	        }, {
+	            id = 1446;
+	            name = john;
+	            service = {
+	                name = Facebook;
+	            };
+	        }, {
+	            id = 1246;
+	            name = "John Smith";
+	            service = {
+	                name = Twitter;
+	            };
+	        }, {
+	            id = 1452;
+	            name = "John Smith";
+	            service = {
+	                name = Facebook;
+	            };
+	        });
+	    };
+	}
 
 # /blog
 This endpoint is used for interacting with an account's blog posts
@@ -302,75 +302,75 @@ status
     
 ### Example Response (JSON)
     {
-    response = {
-    items = ({
-        account = {
-            color = "#e6eaef";
-            "custom_domain" = "";
-            description = "The world's a stage. Get on it.";
-            id = 205;
-            name = StageBloc;
-            photo = {
-                "comment_count" = 0;
-                description = "Account Image";
-                height = 1024;
-                id = 630003;
-                images = {
-                    "large_url" = "http://cdn.stagebloc.com/production/photos/205/large/20130613_171101_205_630003.png";
-                    "medium_url" = "http://cdn.stagebloc.com/production/photos/205/medium/20130613_171101_205_630003.png";
-                    "small_url" = "http://cdn.stagebloc.com/production/photos/205/small/20130613_171101_205_630003.png";
-                    "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/205/thumbnail/20130613_171101_205_630003.png";
-                };
-                "like_count" = 0;
-                "repost_count" = 0;
-                "short_url" = "http://stgb.lc/p/4eh8";
-                title = "Account Image";
-                "user_has_liked" = 0;
-                width = 1024;
-            };
-            "stagebloc_url" = stagebloc;
-            type = business;
-            "user_is_following" = 1;
-            "user_role" = 5;
-        };
-        author = {
-            bio = "Developer at StageBloc.";
-            birthday = "2000-01-01";
-            created = "2013-01-03 00:17:53";
-            email = "austinlouden@gmail.com";
-            gender = male;
-            id = 2673;
-            name = "Austin Louden";
-            photo = {
-                height = 1200;
-                id = 191;
-                images = {
-                    "large_url" = "http://cdn.stagebloc.com/production/photos/users/2673/large/20130524_233142_2673_191.png";
-                    "medium_url" = "http://cdn.stagebloc.com/production/photos/users/2673/medium/20130524_233142_2673_191.png";
-                    "small_url" = "http://cdn.stagebloc.com/production/photos/users/2673/small/20130524_233142_2673_191.png";
-                    "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/users/2673/thumbnail/20130524_233142_2673_191.png";
-                };
-                width = 1200;
-            };
-            url = "https://stagebloc.com/user/austin/";
-            username = austin;
-        };
-        body = "Example blog body";
-        category = "";
-        "comment_count" = 0;
-        created = "2013-07-18 00:59:29";
-        exclusive = 0;
-        id = 324962;
-        "like_count" = 1;
-        modified = "2013-07-18 16:28:46";
-        published = "2013-07-18 16:00:00";
-        "repost_count" = 1;
-        "short_url" = "http://stgb.lc/b/2EAN";
-        sticky = 0;
-        title = "Meet BARK";
-        "user_has_liked" = 0;
-    });
-    };
+	    response = {
+	    items = ({
+	        account = {
+	            color = "#e6eaef";
+	            "custom_domain" = "";
+	            description = "The world's a stage. Get on it.";
+	            id = 205;
+	            name = StageBloc;
+	            photo = {
+	                "comment_count" = 0;
+	                description = "Account Image";
+	                height = 1024;
+	                id = 630003;
+	                images = {
+	                    "large_url" = "http://cdn.stagebloc.com/production/photos/205/large/20130613_171101_205_630003.png";
+	                    "medium_url" = "http://cdn.stagebloc.com/production/photos/205/medium/20130613_171101_205_630003.png";
+	                    "small_url" = "http://cdn.stagebloc.com/production/photos/205/small/20130613_171101_205_630003.png";
+	                    "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/205/thumbnail/20130613_171101_205_630003.png";
+	                };
+	                "like_count" = 0;
+	                "repost_count" = 0;
+	                "short_url" = "http://stgb.lc/p/4eh8";
+	                title = "Account Image";
+	                "user_has_liked" = 0;
+	                width = 1024;
+	            };
+	            "stagebloc_url" = stagebloc;
+	            type = business;
+	            "user_is_following" = 1;
+	            "user_role" = 5;
+	        };
+	        author = {
+	            bio = "Developer at StageBloc.";
+	            birthday = "2000-01-01";
+	            created = "2013-01-03 00:17:53";
+	            email = "austinlouden@gmail.com";
+	            gender = male;
+	            id = 2673;
+	            name = "Austin Louden";
+	            photo = {
+	                height = 1200;
+	                id = 191;
+	                images = {
+	                    "large_url" = "http://cdn.stagebloc.com/production/photos/users/2673/large/20130524_233142_2673_191.png";
+	                    "medium_url" = "http://cdn.stagebloc.com/production/photos/users/2673/medium/20130524_233142_2673_191.png";
+	                    "small_url" = "http://cdn.stagebloc.com/production/photos/users/2673/small/20130524_233142_2673_191.png";
+	                    "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/users/2673/thumbnail/20130524_233142_2673_191.png";
+	                };
+	                width = 1200;
+	            };
+	            url = "https://stagebloc.com/user/austin/";
+	            username = austin;
+	        };
+	        body = "Example blog body";
+	        category = "";
+	        "comment_count" = 0;
+	        created = "2013-07-18 00:59:29";
+	        exclusive = 0;
+	        id = 324962;
+	        "like_count" = 1;
+	        modified = "2013-07-18 16:28:46";
+	        published = "2013-07-18 16:00:00";
+	        "repost_count" = 1;
+	        "short_url" = "http://stgb.lc/b/2EAN";
+	        sticky = 0;
+	        title = "Meet BARK";
+	        "user_has_liked" = 0;
+	    });
+	    };
     }
     
 # /events
@@ -442,79 +442,7 @@ collaborators
     
 ### Examples Response (JSON)
 
-    {
-        "response": {
-            "total": 3,
-            "items": [{
-                "item": {
-                    "id": 115,
-                    "title": "End of The World",
-                    "minimum_age": 21,
-                    "buy_link": "http:\/\/www.eventbrite.com\/event\/3906955810\/es2?rank=1",
-                    "created": "2012-01-04 08:19:53",
-                    "modified": "2012-08-10 08:57:38",
-                    "start_date": "2013-01-04 13:00:00",
-                    "end_date": "2013-01-04 16:00:00",
-                    "description": "It's the end of the world we know it...",
-                    "price": "1.50",
-                    "currency": "USD",
-                    "url":"http:\/\/stagebloc.com\/demo\/events\/115",
-                    "short_url": "http:\/\/stgb.lc\/e\/2Z",
-                    "images": [{
-                        "image": {
-                            "size": "thumbnail",
-                            "short_url": "http:\/\/stgb.lc\/p\/Qg\/t",
-                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/thumbnail\/20120810_134720_1_2799.jpeg"
-                        }
-                    }, {
-                        "image": {
-                            "size": "small",
-                            "short_url": "http:\/\/stgb.lc\/p\/Qg\/s",
-                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/small\/20120810_134720_1_2799.jpeg"
-                        }
-                    }, {
-                        "image": {
-                            "size": "medium",
-                            "short_url": "http:\/\/stgb.lc\/p\/Qg\/m",
-                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/medium\/20120810_134720_1_2799.jpeg"
-                        }
-                    }, {
-                        "image": {
-                            "size": "large",
-                            "short_url": "http:\/\/stgb.lc\/p\/Qg\/l",
-                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/large\/20120810_134720_1_2799.jpeg"
-                        }
-                    }, {
-                        "image": {
-                            "size": "original",
-                            "short_url": "http:\/\/stgb.lc\/p\/Qg\/o",
-                            "embed_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/original\/20120810_134720_1_2799.jpeg"
-                        }
-                    }],
-                    "location": {
-                        "id": 14,
-                        "global_id": 17,
-                        "name": "Best Place On Earth",
-                        "website": "",
-                        "address": {
-                            "street_address": "12345 Awesome Street",
-                            "city": "Big Bend",
-                            "state_province": "WI",
-                            "postal_code": "53103",
-                            "country": "USA"
-                        }
-                    },
-                    "collaborators": [{
-                        "collaborator": {
-                            "id": 16,
-                            "name": "Dirt Nasty",
-                            "website": "http:\/\/dirtnastymusic.com\/"
-                        }
-                    }]
-                }
-            }]
-        }
-    }
+    
     
 # /photos
 These endpoints are used for interacting with an account's photos.
@@ -627,43 +555,43 @@ offset
 	
 ### Example Response (JSON)
     {
-        response = {
-        items = ({
-            "comment_count" = 0;
-            description = "";
-            height = 1936;
-            id = 631718;
-            images = {
-                "large_url" = "http://cdn.stagebloc.com/production/photos/205/large/20130719_182538_205_631718.jpeg";
-                "medium_url" = "http://cdn.stagebloc.com/production/photos/205/medium/20130719_182538_205_631718.jpeg";
-                "small_url" = "http://cdn.stagebloc.com/production/photos/205/small/20130719_182538_205_631718.jpeg";
-                "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/205/thumbnail/20130719_182538_205_631718.jpeg";
-            };
-            "like_count" = 0;
-            "repost_count" = 0;
-            "short_url" = "http://stgb.lc/p/4eMG";
-            title = "SB shirt";
-            "user_has_liked" = 0;
-            width = 1936;
-        }, {
-            "comment_count" = 0;
-            description = "";
-            height = 465;
-            id = 631213;
-            images = {
-                "large_url" = "http://cdn.stagebloc.com/production/photos/205/large/20130711_173911_205_631213.png";
-                "medium_url" = "http://cdn.stagebloc.com/production/photos/205/medium/20130711_173911_205_631213.png";
-                "small_url" = "http://cdn.stagebloc.com/production/photos/205/small/20130711_173911_205_631213.png";
-                "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/205/thumbnail/20130711_173911_205_631213.png";
-            };
-            "like_count" = 0;
-            "repost_count" = 0;
-            "short_url" = "http://stgb.lc/p/4eCZ";
-            title = "Kid Rock signup";
-            "user_has_liked" = 0;
-            width = 565;
-        });
-    };
+    	response = {
+	        items = ({
+	            "comment_count" = 0;
+	            description = "";
+	            height = 1936;
+	            id = 631718;
+	            images = {
+	                "large_url" = "http://cdn.stagebloc.com/production/photos/205/large/20130719_182538_205_631718.jpeg";
+	                "medium_url" = "http://cdn.stagebloc.com/production/photos/205/medium/20130719_182538_205_631718.jpeg";
+	                "small_url" = "http://cdn.stagebloc.com/production/photos/205/small/20130719_182538_205_631718.jpeg";
+	                "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/205/thumbnail/20130719_182538_205_631718.jpeg";
+	            };
+	            "like_count" = 0;
+	            "repost_count" = 0;
+	            "short_url" = "http://stgb.lc/p/4eMG";
+	            title = "SB shirt";
+	            "user_has_liked" = 0;
+	            width = 1936;
+	        }, {
+	            "comment_count" = 0;
+	            description = "";
+	            height = 465;
+	            id = 631213;
+	            images = {
+	                "large_url" = "http://cdn.stagebloc.com/production/photos/205/large/20130711_173911_205_631213.png";
+	                "medium_url" = "http://cdn.stagebloc.com/production/photos/205/medium/20130711_173911_205_631213.png";
+	                "small_url" = "http://cdn.stagebloc.com/production/photos/205/small/20130711_173911_205_631213.png";
+	                "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/205/thumbnail/20130711_173911_205_631213.png";
+	            };
+	            "like_count" = 0;
+	            "repost_count" = 0;
+	            "short_url" = "http://stgb.lc/p/4eCZ";
+	            title = "Kid Rock signup";
+	            "user_has_liked" = 0;
+	            width = 565;
+	        });
+	    };
     }
     
 # /photos/albums
@@ -713,41 +641,42 @@ images
 ### Example Response (JSON)
 
     {
-    response = {
-        items = ({
-            created = "2013-06-12 20:59:12";
-            description = "The description of the album.";
-            id = 2219;
-            modified = "2013-06-13 17:00:13";
-            "short_url" = "http://stgb.lc/pa/Eg";
-            title = "Application Images";
-        }, {
-            created = "2010-09-23 19:01:50";
-            description = "The description of the album.";
-            id = 3;
-            modified = "2012-10-11 02:52:07";
-            photo = {
-                "comment_count" = 0;
-                description = "Another description";
-                height = 323;
-                id = 5;
-                images = {
-                    "large_url" = "http://cdn.stagebloc.com/production/photos/205/large/20100923_190330_205_5.jpg";
-                    "medium_url" = "http://cdn.stagebloc.com/production/photos/205/medium/20100923_190330_205_5.jpg";
-                    "small_url" = "http://cdn.stagebloc.com/production/photos/205/small/20100923_190330_205_5.jpg";
-                    "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/205/thumbnail/20100923_190330_205_5.jpg";
-                };
-                "like_count" = 0;
-                "repost_count" = 0;
-                "short_url" = "http://stgb.lc/p/6";
-                title = "The Social Network";
-                "user_has_liked" = 0;
-                width = 600;
-            };
-            "short_url" = "http://stgb.lc/pa/4";
-            title = "Screen Grabs";
-        });
-    };}
+	    response = {
+	        items = ({
+	            created = "2013-06-12 20:59:12";
+	            description = "The description of the album.";
+	            id = 2219;
+	            modified = "2013-06-13 17:00:13";
+	            "short_url" = "http://stgb.lc/pa/Eg";
+	            title = "Application Images";
+	        }, {
+	            created = "2010-09-23 19:01:50";
+	            description = "The description of the album.";
+	            id = 3;
+	            modified = "2012-10-11 02:52:07";
+	            photo = {
+	                "comment_count" = 0;
+	                description = "Another description";
+	                height = 323;
+	                id = 5;
+	                images = {
+	                    "large_url" = "http://cdn.stagebloc.com/production/photos/205/large/20100923_190330_205_5.jpg";
+	                    "medium_url" = "http://cdn.stagebloc.com/production/photos/205/medium/20100923_190330_205_5.jpg";
+	                    "small_url" = "http://cdn.stagebloc.com/production/photos/205/small/20100923_190330_205_5.jpg";
+	                    "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/205/thumbnail/20100923_190330_205_5.jpg";
+	                };
+	                "like_count" = 0;
+	                "repost_count" = 0;
+	                "short_url" = "http://stgb.lc/p/6";
+	                title = "The Social Network";
+	                "user_has_liked" = 0;
+	                width = 600;
+	            };
+	            "short_url" = "http://stgb.lc/pa/4";
+	            title = "Screen Grabs";
+	        });
+	    };
+    }
     
 #/oauth2
 This is used during the [OAuth2](http://oauth.net/2/) authentication process to get an access token from a request token for [StageBloc Connect](http://stagebloc.local/developers/connect/). Curious? Check out our OAuth2 [PHP](https://github.com/stagebloc/php-stagebloc-api) or [Objective-C](https://github.com/stagebloc/cocoa-stagebloc-api) wrapper on GitHub to get started.
@@ -870,72 +799,73 @@ offset
     
 ### Example Response (JSON)
 
-    response = {
-    items = ({
-        author = {
-            bio = "Developer at StageBloc.";
-            birthday = "2000-01-01";
-            created = "2013-01-03 00:17:53";
-            email = "johnsmith@gmail.com";
-            gender = male;
-            id = 2673;
-            name = "John Smith";
-            photo = {
-                height = 1200;
-                id = 191;
-                images = {
-                    "large_url" = "http://cdn.stagebloc.com/production/photos/users/2673/large/20130524_233142_2673_191.png";
-                    "medium_url" = "http://cdn.stagebloc.com/production/photos/users/2673/medium/20130524_233142_2673_191.png";
-                    "small_url" = "http://cdn.stagebloc.com/production/photos/users/2673/small/20130524_233142_2673_191.png";
-                    "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/users/2673/thumbnail/20130524_233142_2673_191.png";
-                };
-                width = 1200;
-            };
-            url = "https://stagebloc.com/user/john/";
-            username = john;
-        };
-        "comment_count" = 0;
-        id = 776;
-        "like_count" = 0;
-        published = "2013-07-19 18:18:15";
-        "repost_count" = 0;
-        "short_url" = "http://stgb.lc/s/eo";
-        text = "Second post from the new app";
-        "user_has_liked" = 0;
-    }, {
-        author = {
-            bio = "Developer at StageBloc.";
-            birthday = "2000-01-01";
-            created = "2013-01-03 00:17:53";
-            email = "johnsmith@gmail.com";
-            gender = male;
-            id = 2673;
-            name = "John Smith";
-            photo = {
-                height = 1200;
-                id = 191;
-                images = {
-                    "large_url" = "http://cdn.stagebloc.com/production/photos/users/2673/large/20130524_233142_2673_191.png";
-                    "medium_url" = "http://cdn.stagebloc.com/production/photos/users/2673/medium/20130524_233142_2673_191.png";
-                    "small_url" = "http://cdn.stagebloc.com/production/photos/users/2673/small/20130524_233142_2673_191.png";
-                    "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/users/2673/thumbnail/20130524_233142_2673_191.png";
-                };
-                width = 1200;
-            };
-            url = "https://stagebloc.com/user/john/";
-            username = john;
-        };
-        "comment_count" = 0;
-        id = 602;
-        "like_count" = 1;
-        published = "2013-05-01 05:28:03";
-        "repost_count" = 0;
-        "short_url" = "http://stgb.lc/s/bo";
-        text = "2 more exams, then moving to Chicago";
-        "user_has_liked" = 0;
-    });
-};
-}
+	{
+		response = {
+		    items = ({
+		        author = {
+		            bio = "Developer at StageBloc.";
+		            birthday = "2000-01-01";
+		            created = "2013-01-03 00:17:53";
+		            email = "johnsmith@gmail.com";
+		            gender = male;
+		            id = 2673;
+		            name = "John Smith";
+		            photo = {
+		                height = 1200;
+		                id = 191;
+		                images = {
+		                    "large_url" = "http://cdn.stagebloc.com/production/photos/users/2673/large/20130524_233142_2673_191.png";
+		                    "medium_url" = "http://cdn.stagebloc.com/production/photos/users/2673/medium/20130524_233142_2673_191.png";
+		                    "small_url" = "http://cdn.stagebloc.com/production/photos/users/2673/small/20130524_233142_2673_191.png";
+		                    "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/users/2673/thumbnail/20130524_233142_2673_191.png";
+		                };
+		                width = 1200;
+		            };
+		            url = "https://stagebloc.com/user/john/";
+		            username = john;
+		        };
+		        "comment_count" = 0;
+		        id = 776;
+		        "like_count" = 0;
+		        published = "2013-07-19 18:18:15";
+		        "repost_count" = 0;
+		        "short_url" = "http://stgb.lc/s/eo";
+		        text = "Second post from the new app";
+		        "user_has_liked" = 0;
+		    }, {
+		        author = {
+		            bio = "Developer at StageBloc.";
+		            birthday = "2000-01-01";
+		            created = "2013-01-03 00:17:53";
+		            email = "johnsmith@gmail.com";
+		            gender = male;
+		            id = 2673;
+		            name = "John Smith";
+		            photo = {
+		                height = 1200;
+		                id = 191;
+		                images = {
+		                    "large_url" = "http://cdn.stagebloc.com/production/photos/users/2673/large/20130524_233142_2673_191.png";
+		                    "medium_url" = "http://cdn.stagebloc.com/production/photos/users/2673/medium/20130524_233142_2673_191.png";
+		                    "small_url" = "http://cdn.stagebloc.com/production/photos/users/2673/small/20130524_233142_2673_191.png";
+		                    "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/users/2673/thumbnail/20130524_233142_2673_191.png";
+		                };
+		                width = 1200;
+		            };
+		            url = "https://stagebloc.com/user/john/";
+		            username = john;
+		        };
+		        "comment_count" = 0;
+		        id = 602;
+		        "like_count" = 1;
+		        published = "2013-05-01 05:28:03";
+		        "repost_count" = 0;
+		        "short_url" = "http://stgb.lc/s/bo";
+		        text = "2 more exams, then moving to Chicago";
+		        "user_has_liked" = 0;
+		    });
+		};
+	}
     
 ## /statuses/edit
 This endpoint can be used for adding statuses to a StageBloc account (note: statuses cannot be edited, only deleted). Upon successful addition, the status data will be returned in the same manner `/statuses/list` would return it. Otherwise, an error message will be returned explaining what was wrong.
