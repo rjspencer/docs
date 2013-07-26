@@ -723,7 +723,9 @@ A way to link to various pages within StageBloc
 to
 :	the page to link to
 
-	accepted values are `TOS` (Terms Of Service), `ConnectTwitter`, `ConnectFacebook`, `ConnectInstagram`, `PrivacyPolicy`, `Contact`, `StageBloc` (our home page), and `ForgotPassword`
+	accepted values are `TOS` (Terms Of Service), `PrivacyPolicy`, `Contact`, `StageBloc` (our home page), and `ForgotPassword`
+	
+	also allows `ConnectTwitter`, `DisconnectTwitter`, `ConnectFacebook`, `DisconnectFacebook`, `ConnectInstagram`, `DisconnectInstagram`
 	
 redirectUrl
 :	where to redirect the user to after authenticating using `ConnectTwitter`, `ConnectFacebook`, or `ConnectInstagram` with the `to` option
@@ -1033,6 +1035,9 @@ Check to see if a blog post has one or more photos (`<img>` tags) in it
 ### if:CommentIsReply
 Check to see if a comment is a reply to another comment
 
+### if:ContentIsExclusive
+Check to see if content is exclusive or not
+
 ### if:ContentIsFanSubmitted
 Check to see if a content item was fan submitted or not
 
@@ -1202,6 +1207,9 @@ gt
 lt
 :	check to see if the user is less than a specific tier
 
+### if:UserCanViewContent
+Checks to see if a user can view the current content based on its exclusivity and any other relevant factors
+
 ### if:UserEventAttendingStatus
 Checks to see the status of the event the user is attending
 
@@ -1302,7 +1310,7 @@ exclusive
 
 	defaults to true
 	
-	accepted values are `true` or `false`
+	accepted values are `true`, `false`, or `always` *note: `always` will always show it, even for non-authorized users, see `if:UserCanViewContent` 
 
 limit
 :	how many items per page. defaults to 10
