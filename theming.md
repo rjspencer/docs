@@ -1266,6 +1266,23 @@ It is easiest to think of `{module}`s as `for` loops that loop through various d
 
 Using `{Else:<module_name>}` will cause that data to render if the module doesn't have any.
 
+## Module Options
+Modules, like [Variables With Options](#variables-with-options), can have their own options.
+
+pagination
+:	flag representing if the module should be used as the primary module for pagination
+
+	accepted values are `true` or `false`
+	
+	defaults to what the Theming Engine decides is best
+	
+ignorepaging
+:	available on most listing modules to make the module ignore any pagination that might be preset in the header
+
+	accepted values are `true` or `false`
+	
+	defaults `false`
+
 ## AccountAbout
 
 ### block:AccountAbout
