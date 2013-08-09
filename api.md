@@ -65,7 +65,61 @@ action _(required)_
 account_id _(required)_
 :	the id(s) of the account you wish to repost to in string format separated by commas. Example: `"1231,1232"`
 
+The response will return the reposted object.
+
 ## /comment.json
+
+Comments are infinitely nested in StageBloc. All comments are organized by the id of their parent, which can be either an object like a blog post or photo, or another comment.
+
+id _(required)_
+:	the id of the object you wish to comment on
+
+text _(required)_
+:	the text of comment
+
+reply_to_id _(sometimes required)_
+:	if it's a comment on a comment, you must also pass the id of the parent comment
+
+### Example Response
+	{
+	    response =     {
+	        items =         (
+	                        {
+	                "account_id" = 1;
+	                "content_id" = 213;
+	                created = "2013-08-09 21:08:05";
+	                id = 47;
+	                "reply_count" = 0;
+	                "reply_to_id" = "<null>";
+	                "short_url" = "http://stgb.dev/c//P";
+	                text = sadsadsad;
+	                type = accountStatus;
+	                user =                 {
+	                    bio = "I really love cats, they are super awesome and i want to eat them yum yum yum";
+	                    birthday = "1993-02-13";
+	                    created = "2009-10-27 14:29:16";
+	                    email = "hi@stagebloc.com";
+	                    gender = male;
+	                    id = 8;
+	                    name = "JoshDude HolatMan";
+	                    photo =                     {
+	                        height = 0;
+	                        id = 49;
+	                        images =                         {
+	                            "large_url" = "http://cdn-staging.stagebloc.com/local/photos/users/8/large/20130108_170544_8_49.jpeg";
+	                            "medium_url" = "http://cdn-staging.stagebloc.com/local/photos/users/8/medium/20130108_170544_8_49.jpeg";
+	                            "small_url" = "http://cdn-staging.stagebloc.com/local/photos/users/8/small/20130108_170544_8_49.jpeg";
+	                            "thumbnail_url" = "http://cdn-staging.stagebloc.com/local/photos/users/8/thumbnail/20130108_170544_8_49.jpeg";
+	                        };
+	                        width = 0;
+	                    };
+	                    url = "http://stagebloc.dev/user/joshholat62man/";
+	                    username = joshholat62man;
+	                };
+	            }
+	        );
+	    };
+	}
 
 ## /flag.json
 
