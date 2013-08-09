@@ -889,4 +889,78 @@ latitude
 :   a string value of the latitude the status was posted at
 
 longitude
-:   a string value of the longitude the status was posted at  
+:   a string value of the longitude the status was posted at
+
+# /user
+
+## /user/edit
+
+Used for creating a new user or editing an existing one. If the user with the specific email does not exist, a new one will be created. Returns a `user` object.
+
+email _(required)_
+:	the user's email
+
+password _(required)_
+:	the user's password
+
+bio
+:	the user's bio
+
+birthday
+:	formatted like 1969-12-31
+
+gender
+:	takes "male", "female", or "cupcake"
+
+name
+:	the name of user - distinct from username
+
+username
+:	the user's username
+
+settings
+:	should mirror the settings dictionary shown below, with 0 for off, 1 for on
+
+
+	{
+	    response =     {
+	        items =         (
+	                        {
+	                bio = "<null>";
+	                birthday = "1969-12-31";
+	                created = "2013-08-09 12:08:14";
+	                email = "ratchet@stagebloc.com";
+	                gender = cupcake;
+	                id = 165528;
+	                name = ratchet;
+	                settings =                 {
+	                    "dashboard_popular_content" = 1;
+	                    notifications =                     {
+	                        comments =                         {
+	                            email = 1;
+	                            push = 1;
+	                            web = 1;
+	                        };
+	                        follows =                         {
+	                            email = 1;
+	                            push = 1;
+	                            web = 1;
+	                        };
+	                        likes =                         {
+	                            email = 1;
+	                            push = 1;
+	                            web = 1;
+	                        };
+	                        reposts =                         {
+	                            email = 1;
+	                            push = 1;
+	                            web = 1;
+	                        };
+	                    };
+	                };
+	                url = "https://stagebloc.com/user/ratchet/";
+	                username = ratchet;
+	            }
+	        );
+	    };
+	}
