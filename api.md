@@ -9,7 +9,7 @@ Use the StageBloc API to develop custom, standalone integrations with StageBloc.
 
 
 ### Under Development
-The API is actively evolving - olease check back here for updates and changes. We also blog about updates on the [StageBloc Developers](http://stagebloc.com/sbdevs) site.
+The API is actively evolving - please check back here for updates and changes. We also blog about updates on the [StageBloc Developers](http://stagebloc.com/sbdevs) site.
 
 ### Fork us on GitHub!
 All of StageBloc's documentation is up on GitHub for you to fork, modify, and improve. Join us over there to request features, add suggestions, and report bugs. What are you waiting for? [Git to it!](https://github.com/stagebloc/docs)
