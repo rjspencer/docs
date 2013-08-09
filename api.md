@@ -12,7 +12,7 @@ Use the StageBloc API to develop custom, standalone integrations with StageBloc.
 The API is frequently updated, . That means there will be changes made, so if you're planning on using the API, check back here for updates and changes frequently. We also blog about updates on the [StageBloc Developers](http://stagebloc.com/sbdevs) site.
 
 ### Fork us on GitHub!
-All of StageBloc's documentation are up on GitHub for you to fork, modify, and improve. Join us over there to request features, add suggestions, and report bugs. What are you waiting for? [Git to it!](https://github.com/stagebloc/docs)
+All of StageBloc's documentation is up on GitHub for you to fork, modify, and improve. Join us over there to request features, add suggestions, and report bugs. What are you waiting for? [Git to it!](https://github.com/stagebloc/docs)
 
 # General Information
 The root URL of the API is `https://api.stagebloc.com/3.0/`.
@@ -53,7 +53,7 @@ id _(required)_
 action: _(required)_
 :	acceptable values are "like" or "unlike"
 
-The response will return the liked object, with the like count updated.
+The response will return the liked object with the like count updated.
 
 ## /repost.json
 
@@ -64,9 +64,11 @@ action _(required)_
 :	acceptable values are "repost" or "unrepost"
 
 account_id _(required)_
-:	the id(s) of the account you wish to repost to in string format separated by commas. Example: `"1231,1232"`
+:	the id(s) of the account you wish to repost to
 
-The response will return the reposted object.
+	seperate numerous account IDs with commas
+
+The response will return the reposted object with the repost count updated.
 
 ## /comment.json
 
@@ -78,20 +80,20 @@ id _(required)_
 text _(required)_
 :	the text of comment
 
-reply_to_id _(sometimes required)_
+reply_to_id
 :	if it's a comment on a comment, you must also pass the id of the parent comment
 
 ### Example Response
 	{
 	    response =     {
-	        items =         (
+	        items =      (
 	                        {
 	                "account_id" = 1;
 	                "content_id" = 213;
 	                created = "2013-08-09 21:08:05";
 	                id = 47;
 	                "reply_count" = 0;
-	                "reply_to_id" = "<null>";
+	                "reply_to_id" = 0;
 	                "short_url" = "http://stgb.dev/c//P";
 	                text = sadsadsad;
 	                type = accountStatus;
@@ -131,10 +133,10 @@ Lists the accounts the currently authenticated user has admin access to. No para
 ### Explanation of Returned Data
 
 color
-:   the color affiliated with the account
+:   the color associated with the account
 
 stagebloc_url
-:	the URL for the account (i.e. `stagebloc.com/<stagebloc_url>/`)
+:	the StageBloc URL for the account (i.e. `stagebloc.com/<stagebloc_url>/`)
 
 images
 :	the image for the account
