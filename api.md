@@ -26,7 +26,9 @@ Responses can be formatted in either JSON or JSONP by simply changing the extens
 ### Authorization
 Connecting with the StageBloc API uses the OAuth 2.0 standard. You must first [create a StageBloc account](http://stagebloc.com/signup) and then [register your application in the StageBloc backend](http://stagebloc.com/account/admin/management/developers/) to receive a client ID and secret that will allow users to connect with your application.
 
-Once you've gotten that far, check out the `oauth2/token` endpoint or look towards the bottom of this page to find a wrapper / framework in your language.
+Requests can be be made with just a `client_id` parameter, but this is restricted to reading (listing) endpoints. In order to make use of any writing (editing) endpoints, an access token (i.e. validated user) must be present.
+
+In order to get a validated user, check out the `oauth2/token` endpoint and / or look towards the bottom of this page to find a wrapper / framework in your language.
 
 ### Errors
 Errors can be returned for any of the `/edit` endpoints and differ in content based on the endpoint you're using. However, they will have the following structure:
@@ -45,20 +47,20 @@ JSON Example
 
 These endpoints encompass the actions that can be taken on an object. For example, to like a blog post, use the endpoint `blog/like.json`, and pass the `id` of the blog you wish to like. Everything in the actions section should be POSTed.
 
-## /like.json
+## /like
 
 id _(required)_
-:	the id of the object you wish to like
+:	the id of the content you wish to like
 
 action: _(required)_
 :	acceptable values are "like" or "unlike"
 
-The response will return the liked object with the like count updated.
+The response will return the liked object with the like count updated. See listing endpoints for different content types for the structure of this data.
 
-## /repost.json
+## /repost
 
 id _(required)_
-:	the object to be reposted
+:	the id of the content to be reposted
 
 action _(required)_
 :	acceptable values are "repost" or "unrepost"
@@ -68,20 +70,20 @@ account_id _(required)_
 
 	seperate numerous account IDs with commas
 
-The response will return the reposted object with the repost count updated.
+The response will return the reposted object with the repost count updated. See listing endpoints for different content types for the structure of this data.
 
-## /comment.json
+## /comment
 
 Comments are infinitely nested in StageBloc. All comments are organized by the id of their parent, which can be either an object like a blog post or photo, or another comment.
 
 id _(required)_
-:	the id of the object you wish to comment on
+:	the id of the content you wish to comment on
 
 text _(required)_
-:	the text of comment
+:	the text of the comment
 
 reply_to_id
-:	if it's a comment on a comment, you must also pass the id of the parent comment
+:	if it's a comment on a comment, you must also pass the id of the parent comment (i.e. the specific comment you're replying to)
 
 ### Example Response
 	{
@@ -284,11 +286,11 @@ published
 	defaults to a UTC date of the current time in timezone America/Chicago (UTC/GMT -5)
 
 author_id
-:	the ID of the user who should be set as the author of the post
+:	the id of the user who should be set as the author of the post
 
-	possible values are any ID of an admin for the currently authenticated account
+	possible values are any id of an admin for the currently authenticated account
 	
-	defaults to the authenticated user's ID
+	defaults to the authenticated user's id
 
 status
 :	whether or not this blog post should be published
@@ -316,9 +318,9 @@ exclusive
 ### Returning a specific blog post
 
 id
-:	the ID of the blog entry to return
+:	the id of the blog entry to return
 
-	possible values are any blog entry ID that belongs to the authenticated account
+	possible values are any blog id that belongs to the authenticated account
 	
 	no default
 
@@ -464,7 +466,7 @@ This endpoint is used for interacting with an account's events.
 id
 :	the ID of the event to return
 
-	possible values are any event ID that belongs to the authenticated account
+	possible values are any event id that belongs to the authenticated account
 	
 	no default
 	
@@ -498,19 +500,19 @@ offset
 
 	defaults to `0`
 	
-include_past
+past
 :	whether or not to include events that have already occurred
 
-	possible values are `1` (include past events) or `0` (don't include past events)
+	possible values are `true` (include past events) or `false` (don't include past events)
 	
-	defaults to `0`
+	defaults to `false`
 	
-include_upcoming
+upcoming
 :	whether or not to include events that have not yet occurred
 
-	possible values are `1` (include upcoming events) or `0` (don't include upcoming events)
+	possible values are `true` (include upcoming events) or `false` (don't include upcoming events)
 	
-	defaults to `1`
+	defaults to `true`
     
 ### Examples Response (JSON)
 
@@ -597,9 +599,9 @@ tags
 ### Returning a single photo
 
 id
-:	the ID of the photo to return
+:	the id of the photo to return
 
-	possible values are any photo ID that belongs to the authenticated account
+	possible values are any photo id that belongs to the authenticated account
 	
 	no default
 	
@@ -608,9 +610,9 @@ id
 ### Returning all of the photos in an album
 
 album_id
-:	the ID of the album to receive the photos of
+:	the id of the album to receive the photos of
 
-	possible values are any album ID that belongs to the authenticated account
+	possible values are any album id that belongs to the authenticated account
 	
 	no default
 	
@@ -690,9 +692,9 @@ This endpoint is used for interacting with an account's photo albums.
 
 ## /photos/albums/list
 id
-:	the ID of the photo to return
+:	the id of the photo album to return
 
-	possible values are any photo album ID that belongs to the authenticated account
+	possible values are any photo album id that belongs to the authenticated account
 	
 	no default
 	
@@ -770,7 +772,7 @@ images
     }
     
 #/oauth2
-This is used during the [OAuth2](http://oauth.net/2/) authentication process to get an access token from a request token for [StageBloc Connect](http://stagebloc.local/developers/connect/). Curious? Check out our OAuth2 [PHP](https://github.com/stagebloc/php-stagebloc-api) or [Objective-C](https://github.com/stagebloc/cocoa-stagebloc-api) wrapper on GitHub to get started.
+This is used during the [OAuth2](http://oauth.net/2/) authentication process to get an access token from a request token for [StageBloc Connect](http://stagebloc.local/developers/connect/). Curious? Check out our OAuth2 [PHP](https://github.com/stagebloc/php-stagebloc-api) or [Objective-C](https://github.com/stagebloc/stagebloc-ios) wrapper on GitHub to get started.
 
 ### General Flow
 In order to authenticate a user with our application, you must first send them to the `stagebloc.com/connect/` page along with a few `GET` parameters.
@@ -854,9 +856,9 @@ This endpoint is used for interacting with an account's statuses.
 Pass the `id` of a status to return a specific status. If an `id `is passed, all other parameters will be ignored and only the requested status will be returned
 
 id
-:	the ID of the status to return
+:	the id of the status to return
 
-	possible values are any status ID that belongs to the authenticated account
+	possible values are any status id that belongs to the authenticated account
 	
 	no default
 	
