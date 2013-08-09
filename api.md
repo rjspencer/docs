@@ -377,6 +377,9 @@ status
 This endpoint is used for interacting with an account's events.
 
 ## /events/list
+
+### Returning a specific event
+
 id
 :	the ID of the event to return
 
@@ -385,6 +388,8 @@ id
 	no default
 	
 **_Important Note:_** If an id is passed, all other parameters will be ignored and only the requested event will be returned
+
+### Returning all events for an account
 
 order_by
 :	how to order the results
@@ -425,24 +430,29 @@ include_upcoming
 	possible values are `1` (include upcoming events) or `0` (don't include upcoming events)
 	
 	defaults to `1`
-	
-### Explanation of Returned Data
-
-total
-:	the total amount of events for the authenticated account
-
-buy_link
-:	a link to an external service where tickets can be purchased
-
-image
-:	the image used as the main image for the event
-
-collaborators
-:	a list of people also involved in this event
     
 ### Examples Response (JSON)
 
-    
+	{
+	    response =     {
+	        items =         (
+	                        {
+	                "attending_count" = 0;
+	                "comment_count" = 0;
+	                description = "";
+	                "end_date_time" = "2013-08-17 19:00:00 -05:00";
+	                id = 1300;
+	                "like_count" = 0;
+	                "short_url" = "http://stgb.lc/e/oq";
+	                "start_date_time" = "2013-08-17 17:00:00 -05:00";
+	                "ticket_link" = "";
+	                "ticket_price" = 0;
+	                title = "Leap Motion Meetup";
+	                "user_is_attending" = no;
+	            }
+	        );
+	    };
+	}
     
 # /photos
 These endpoints are used for interacting with an account's photos.
