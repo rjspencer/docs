@@ -2,12 +2,13 @@
 **"It's your data, we're just giving it a good home."**
 
 Use the StageBloc API to develop custom, standalone integrations with StageBloc.
+
 [Objective-C Client](https://github.com/stagebloc/stagebloc-ios)
 [PHP Client](https://github.com/stagebloc/php-stagebloc-api)
 
 
 ### Under Development
-The API (and therefore these docs) is still currently under development. That means there will be changes made, so if you're planning on using the API, check back here for updates and changes frequently. We also blog about updates on the [StageBloc Developers](http://stagebloc.com/sbdevs) site.
+The API is frequently updated, . That means there will be changes made, so if you're planning on using the API, check back here for updates and changes frequently. We also blog about updates on the [StageBloc Developers](http://stagebloc.com/sbdevs) site.
 
 ### Fork us on GitHub!
 All of StageBloc's documentation are up on GitHub for you to fork, modify, and improve. Join us over there to request features, add suggestions, and report bugs. What are you waiting for? [Git to it!](https://github.com/stagebloc/docs)
@@ -41,9 +42,28 @@ JSON Example
     
 # Actions
 
+These endpoints encompass the actions that can be taken on an object. For example, to like a blog post, use the endpoint `blog/like.json`, and pass the `id` of the blog you wish to like.
+
 ## /like.json
 
+id _(required)_
+:	the id of the object you wish to like
+
+action: _(required)_
+:	acceptable values are "like" or "unlike"
+
+The response will return the liked object, with the like count updated.
+
 ## /repost.json
+
+id _(required)_
+:	the object to be reposted
+
+action _(required)_
+:	acceptable values are "repost" or "unrepost"
+
+account_id _(required)_
+:	the id(s) of the account you wish to repost to in string format separated by commas. Example: `"1231,1232"`
 
 ## /comment.json
 
