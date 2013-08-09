@@ -2,6 +2,9 @@
 **"It's your data, we're just giving it a good home."**
 
 Use the StageBloc API to develop custom, standalone integrations with StageBloc.
+[Objective-C Client](https://github.com/stagebloc/stagebloc-ios)
+[PHP Client](https://github.com/stagebloc/php-stagebloc-api)
+
 
 ### Under Development
 The API (and therefore these docs) is still currently under development. That means there will be changes made, so if you're planning on using the API, check back here for updates and changes frequently. We also blog about updates on the [StageBloc Developers](http://stagebloc.com/sbdevs) site.
@@ -35,13 +38,16 @@ JSON Example
             }
         }]
     }
+    
+# Actions
 
-### Wrappers
-There is currently a PHP wrapper available for connecting with the API. It can be found on [GitHub](https://github.com/stagebloc/php-stagebloc-api). Instructions for how to use it are included in the `README` file of that repository.
+## /like.json
 
-An [Objective-C](https://github.com/stagebloc/cocoa-stagebloc-api) framework also exists for easy use with the StageBloc API in your iPhone, iPad, or Mac applications. Instructions on how to get setup with that can be found it its corresponding `README` file as well. There's also a [demo project](https://github.com/stagebloc/stagebloc-cocoa-framework-demo) showcasing the abilities of that framework.
+## /repost.json
 
-If you want to create your own wrapper in another language, please do! Let us know, and we can link to it from here.
+## /comment.json
+
+## /flag.json
 
 # /accounts
 This endpoint is used for interacting with the accounts the authenticated user has admin access to.
