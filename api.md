@@ -55,7 +55,7 @@ id _(required)_
 action: _(required)_
 :	acceptable values are "like" or "unlike"
 
-The response will return the liked object with the like count updated. See listing endpoints for different content types for the structure of this data.
+The response will return the liked content item with the like count updated. See listing endpoints for different content types for the structure of this data.
 
 ## /repost
 
@@ -70,11 +70,11 @@ account_id _(required)_
 
 	seperate numerous account IDs with commas
 
-The response will return the reposted object with the repost count updated. See listing endpoints for different content types for the structure of this data.
+The response will return the reposted content item with the repost count updated. See listing endpoints for different content types for the structure of this data.
 
 ## /comment
 
-Comments are infinitely nested in StageBloc. All comments are organized by the id of their parent, which can be either an object like a blog post or photo, or another comment.
+Comments are infinitely nested in StageBloc.
 
 id _(required)_
 :	the id of the content you wish to comment on
@@ -83,7 +83,7 @@ text _(required)_
 :	the text of the comment
 
 reply_to_id
-:	if it's a comment on a comment, you must also pass the id of the parent comment (i.e. the specific comment you're replying to)
+:	if it's reply to a comment, you must also pass the `id` of the parent comment (i.e. the specific comment you're replying to)
 
 ### Example Response
 	{
@@ -127,7 +127,7 @@ reply_to_id
 	}
 
 # /accounts
-This endpoint is used for interacting with the accounts the authenticated user has admin access to.
+This endpoint is used for interacting with accounts on StageBloc, whether it be a user's admin accounts, accounts they're following, etc
 
 ## /accounts/list
 Lists the accounts the currently authenticated user has admin access to. No parameters are required for this endpoint.
@@ -144,7 +144,7 @@ images
 :	the image for the account
 
 user_is_following
-:   whether the active user is following the particular account.
+:   whether the active user is following the particular account
 	
 ### Example Response (JSON)
 
@@ -257,16 +257,16 @@ service
 	}
 
 # /blog
-This endpoint is used for interacting with an account's blog posts
+This endpoint is used for interacting with blog posts
 
 ## /blog/edit
 
 This endpoint can be used for editing existing blog posts or adding new blog posts to a StageBloc account. Upon successful editing/creation, the blog post data will be returned in the same manner `/blog/list` would return it. Otherwise, an error message will be returned explaining what went wrong.
 
 id _(required to edit an existing blog post)_
-:	the ID of the blog post to edit
+:	the id of the blog post to edit
 
-	possible values are any blog post ID that belongs to the authenticated account
+	possible values are any blog post id that belongs to the authenticated account
 	
 title _(required)_
 :	the title of the blog post
@@ -517,24 +517,32 @@ upcoming
 ### Examples Response (JSON)
 
 	{
-	    response =     {
-	        items =         (
-	                        {
-	                "attending_count" = 0;
-	                "comment_count" = 0;
-	                description = "";
-	                "end_date_time" = "2013-08-17 19:00:00 -05:00";
-	                id = 1300;
-	                "like_count" = 0;
-	                "short_url" = "http://stgb.lc/e/oq";
-	                "start_date_time" = "2013-08-17 17:00:00 -05:00";
-	                "ticket_link" = "";
-	                "ticket_price" = 0;
-	                title = "Leap Motion Meetup";
-	                "user_is_attending" = no;
+	    "response": {
+	        "items": [{
+	            "id": 135,
+	            "title": "Rock Show",
+	            "short_url": "http:\/\/stgb.dev\/e\/3k",
+	            "description": "This event is a rock show",
+	            "ticket_price": 0,
+	            "ticket_link": "",
+	            "start_date_time": "2013-08-22 11:00:00 -05:00",
+	            "end_date_time": "2013-08-22 13:00:00 -05:00",
+	            "comment_count": 0,
+	            "like_count": 0,
+	            "attending_count": 0,
+	            "user_is_attending": true,
+	            "location": {
+	                "name": "A Place",
+	                "address": "1234 Electric Ave",
+	                "city": "Awesome Town",
+	                "state": "Wisconsin",
+	                "country": "USA"
+	            },
+	            "custom_field_data": {
+	                "test-custom-field": true
 	            }
-	        );
-	    };
+	        }]
+	    }
 	}
     
 # /photos
@@ -545,9 +553,9 @@ These endpoints are used for interacting with an account's photos.
 This endpoint can be used for editing existing photos or adding new photos to a StageBloc account. When adding a photo, a JPG, GIF, or PNG file is required that is less than 10MB in size. Upon successful editing/creation, the photo data will be returned in the same manner `/photos/list` would return it. Otherwise, an error message will be returned explaining what was wrong.
 
 id _(required to edit an existing photo)_
-:	the ID of the photo to edit
+:	the id of the photo to edit
 
-	possible values are any photo ID that belongs to the authenticated account
+	possible values are any photo id that belongs to the authenticated account
 	
 title _(required)_
 :	the title of the photo
@@ -567,7 +575,7 @@ album_id
 	defaults to none
 	
 album_type
-:	an ID representing which type of album to upload this photo to, only applicable if `album_id` isn't given, setting it to `5` will change the account's profile image
+:	an id representing which type of album to upload this photo to, only applicable if `album_id` isn't given, setting it to `5` will change the account's profile image
 
 	possible values are `2` (mobile uploads), `5` (account images), `4` (blog images), or `6` (event images)
 	
