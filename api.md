@@ -87,43 +87,49 @@ reply_to_id
 
 ### Example Response
 	{
-	    response =     {
-	        items =      (
-	                        {
-	                "account_id" = 1;
-	                "content_id" = 213;
-	                created = "2013-08-09 21:08:05";
-	                id = 47;
-	                "reply_count" = 0;
-	                "reply_to_id" = 0;
-	                "short_url" = "http://stgb.dev/c//P";
-	                text = sadsadsad;
-	                type = accountStatus;
-	                user =                 {
-	                    bio = "I really love cats, they are super awesome and i want to eat them yum yum yum";
-	                    birthday = "1993-02-13";
-	                    created = "2009-10-27 14:29:16";
-	                    email = "hi@stagebloc.com";
-	                    gender = male;
-	                    id = 8;
-	                    name = "JoshDude HolatMan";
-	                    photo =                     {
-	                        height = 0;
-	                        id = 49;
-	                        images =                         {
-	                            "large_url" = "http://cdn-staging.stagebloc.com/local/photos/users/8/large/20130108_170544_8_49.jpeg";
-	                            "medium_url" = "http://cdn-staging.stagebloc.com/local/photos/users/8/medium/20130108_170544_8_49.jpeg";
-	                            "small_url" = "http://cdn-staging.stagebloc.com/local/photos/users/8/small/20130108_170544_8_49.jpeg";
-	                            "thumbnail_url" = "http://cdn-staging.stagebloc.com/local/photos/users/8/thumbnail/20130108_170544_8_49.jpeg";
-	                        };
-	                        width = 0;
-	                    };
-	                    url = "http://stagebloc.dev/user/joshholat62man/";
-	                    username = joshholat62man;
-	                };
+	    "response": {
+	        "items": [{
+	            "id": 124,
+	            "short_url": "http:\/\/stgb.com\/c\/\/39",
+	            "text": "Test comment text...",
+	            "type": "blog",
+	            "content_id": 111,
+	            "account_id": 17,
+	            "created": "2013-08-27 20:39:20",
+	            "reply_to_id": null,
+	            "reply_count": 0,
+	            "user": {
+	                "id": 8,
+	                "url": "http:\/\/stagebloc.com\/user\/joshholat62man\/",
+	                "created": "2009-10-27 14:29:16",
+	                "name": "JoshDude HolatMan",
+	                "username": "joshholat62man",
+	                "bio": "This is my bio!",
+	                "following_count": 3,
+	                "likes_count": 30,
+	                "content_count": 1838,
+	                "email": "hi@stagebloc.com",
+	                "gender": "male",
+	                "birthday": "1996-07-06",
+	                "location": {
+	                    "city": "Chicago",
+	                    "state_province": "IL",
+	                    "country": "US"
+	                },
+	                "photo": {
+	                    "id": 74,
+	                    "width": 720,
+	                    "height": 720,
+	                    "images": {
+	                        "thumbnail_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/users\/8\/thumbnail\/20130826_233333_8_74.jpeg",
+	                        "small_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/users\/8\/small\/20130826_233333_8_74.jpeg",
+	                        "medium_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/users\/8\/medium\/20130826_233333_8_74.jpeg",
+	                        "large_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/users\/8\/large\/20130826_233333_8_74.jpeg"
+	                    }
+	                }
 	            }
-	        );
-	    };
+	        }]
+	    }
 	}
 
 # /accounts
@@ -147,7 +153,6 @@ user_is_following
 :   whether the active user is following the particular account
 	
 ### Example Response (JSON)
-
     {
 	    response = {
 	        items = ({
@@ -225,35 +230,28 @@ service
 :	the connected service type
     
 ### Example Response (JSON)
-
-    {
-	    response = {
-	        items = ({
-	            id = 180;
-	            name = StageBloc;
-	            service = {
-	                name = Twitter;
-	            };
+	{
+	    "response": {
+	        "items": [{
+	            "id": 217,
+	            "name": "Demo 17",
+	            "service": {
+	                "name": "Twitter"
+	            }
 	        }, {
-	            id = 1446;
-	            name = john;
-	            service = {
-	                name = Facebook;
-	            };
+	            "id": 314,
+	            "name": "JoshDude HolatMan",
+	            "service": {
+	                "name": "Twitter"
+	            }
 	        }, {
-	            id = 1246;
-	            name = "John Smith";
-	            service = {
-	                name = Twitter;
-	            };
-	        }, {
-	            id = 1452;
-	            name = "John Smith";
-	            service = {
-	                name = Facebook;
-	            };
-	        });
-	    };
+	            "id": 323,
+	            "name": "JoshDude HolatMan",
+	            "service": {
+	                "name": "Facebook"
+	            }
+	        }]
+	    }
 	}
 
 # /blog
@@ -384,77 +382,88 @@ status
 :	a value of `1` means published and a value of `0` means draft
     
 ### Example Response (JSON)
-    {
-	    response = {
-	    items = ({
-	        account = {
-	            color = "#e6eaef";
-	            "custom_domain" = "";
-	            description = "The world's a stage. Get on it.";
-	            id = 205;
-	            name = StageBloc;
-	            photo = {
-	                "comment_count" = 0;
-	                description = "Account Image";
-	                height = 1024;
-	                id = 630003;
-	                images = {
-	                    "large_url" = "http://cdn.stagebloc.com/production/photos/205/large/20130613_171101_205_630003.png";
-	                    "medium_url" = "http://cdn.stagebloc.com/production/photos/205/medium/20130613_171101_205_630003.png";
-	                    "small_url" = "http://cdn.stagebloc.com/production/photos/205/small/20130613_171101_205_630003.png";
-	                    "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/205/thumbnail/20130613_171101_205_630003.png";
-	                };
-	                "like_count" = 0;
-	                "repost_count" = 0;
-	                "short_url" = "http://stgb.lc/p/4eh8";
-	                title = "Account Image";
-	                "user_has_liked" = 0;
-	                width = 1024;
-	            };
-	            "stagebloc_url" = stagebloc;
-	            type = business;
-	            "user_is_following" = 1;
-	            "user_role" = 5;
-	        };
-	        author = {
-	            bio = "Developer at StageBloc.";
-	            birthday = "2000-01-01";
-	            created = "2013-01-03 00:17:53";
-	            email = "austinlouden@gmail.com";
-	            gender = male;
-	            id = 2673;
-	            name = "Austin Louden";
-	            photo = {
-	                height = 1200;
-	                id = 191;
-	                images = {
-	                    "large_url" = "http://cdn.stagebloc.com/production/photos/users/2673/large/20130524_233142_2673_191.png";
-	                    "medium_url" = "http://cdn.stagebloc.com/production/photos/users/2673/medium/20130524_233142_2673_191.png";
-	                    "small_url" = "http://cdn.stagebloc.com/production/photos/users/2673/small/20130524_233142_2673_191.png";
-	                    "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/users/2673/thumbnail/20130524_233142_2673_191.png";
-	                };
-	                width = 1200;
-	            };
-	            url = "https://stagebloc.com/user/austin/";
-	            username = austin;
-	        };
-	        body = "Example blog body";
-	        category = "";
-	        "comment_count" = 0;
-	        created = "2013-07-18 00:59:29";
-	        exclusive = 0;
-	        id = 324962;
-	        "like_count" = 1;
-	        modified = "2013-07-18 16:28:46";
-	        published = "2013-07-18 16:00:00";
-	        "repost_count" = 1;
-	        "short_url" = "http://stgb.lc/b/2EAN";
-	        sticky = 0;
-	        title = "Meet BARK";
-	        "user_has_liked" = 0;
-	    });
-	    };
-    }
+	{
+	    "response": {
+	        "items": [{
+	            "id": 7691,
+	            "title": "New blog post",
+	            "body": "<p>\r\n\tLorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor quam nisl, nec tempor eros dictum ut. Nam dictum ligula eget risus iaculis, sit amet auctor lacus porttitor. Donec porttitor sem vel sem euismod, quis tempor est dignissim. Donec dapibus fringilla nibh ac viverra. Donec luctus orci dictum, varius est at, sagittis urna. Nullam quis vestibulum nulla. Donec suscipit dapibus velit eget iaculis. Proin sed odio sed nulla pellentesque consequat. Donec vitae lorem at masasss sdf sdfsdf\r\n<\/p>",
+	            "category": "students",
+	            "short_url": "http:\/\/stgb.dev\/b\/3hB",
+	            "published": "2013-06-03 22:31:00",
+	            "created": "2013-06-03 22:31:24",
+	            "modified": "2013-07-25 14:35:29",
+	            "sticky": true,
+	            "exclusive": true,
+	            "comment_count": 0,
+	            "like_count": 0,
+	            "repost_count": 0,
+	            "author": {
+	                "id": 8,
+	                "url": "http:\/\/stagebloc.dev\/user\/joshholat62man\/",
+	                "created": "2009-10-27 14:29:16",
+	                "name": "JoshDude HolatMan",
+	                "username": "joshholat62man",
+	                "bio": "This is my bio!",
+	                "following_count": 3,
+	                "likes_count": 30,
+	                "content_count": 1838,
+	                "email": "hi@stagebloc.com",
+	                "gender": "male",
+	                "birthday": "1996-07-06",
+	                "location": {
+	                    "city": "Chicago",
+	                    "state_province": "IL",
+	                    "country": "US"
+	                },
+	                "photo": {
+	                    "id": 74,
+	                    "width": 720,
+	                    "height": 720,
+	                    "images": {
+	                        "thumbnail_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/users\/8\/thumbnail\/20130826_233333_8_74.jpeg",
+	                        "small_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/users\/8\/small\/20130826_233333_8_74.jpeg",
+	                        "medium_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/users\/8\/medium\/20130826_233333_8_74.jpeg",
+	                        "large_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/users\/8\/large\/20130826_233333_8_74.jpeg"
+	                    }
+	                }
+	            },
+	            "user_has_liked": false,
+	            "account": {
+	                "id": 1,
+	                "name": "Demo",
+	                "stagebloc_url": "demo",
+	                "custom_domain": "",
+	                "description": "<p>\r\n\t@StageBloc Co-Founder, Object Orienter, Git Pusher, Apple lover, College Dropout<\/p>\r\n",
+	                "type": "business",
+	                "color": "#ddb4ff",
+	                "follower_count": 70,
+	                "content_count": 607,
+	                "user_role": 0,
+	                "user_is_following": false,
+	                "user_is_admin": true,
+	                "photo": {
+	                    "id": 2849,
+	                    "title": "Account Image",
+	                    "short_url": "http:\/\/stgb.dev\/p\/R8",
+	                    "description": "Account Image",
+	                    "width": 1600,
+	                    "height": 1200,
+	                    "comment_count": 0,
+	                    "like_count": 0,
+	                    "repost_count": 0,
+	                    "images": {
+	                        "thumbnail_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/1\/thumbnail\/20130115_170951_1_2849.jpeg",
+	                        "small_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/1\/small\/20130115_170951_1_2849.jpeg",
+	                        "medium_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/1\/medium\/20130115_170951_1_2849.jpeg",
+	                        "large_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/1\/large\/20130115_170951_1_2849.jpeg"
+	                    },
+	                    "user_has_liked": false
+	                }
+	            }
+	        }]
+	    }
+	}
     
 # /events
 This endpoint is used for interacting with an account's events.
@@ -655,45 +664,28 @@ offset
 	defaults to `0`
 	
 ### Example Response (JSON)
-    {
-    	response = {
-	        items = ({
-	            "comment_count" = 0;
-	            description = "";
-	            height = 1936;
-	            id = 631718;
-	            images = {
-	                "large_url" = "http://cdn.stagebloc.com/production/photos/205/large/20130719_182538_205_631718.jpeg";
-	                "medium_url" = "http://cdn.stagebloc.com/production/photos/205/medium/20130719_182538_205_631718.jpeg";
-	                "small_url" = "http://cdn.stagebloc.com/production/photos/205/small/20130719_182538_205_631718.jpeg";
-	                "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/205/thumbnail/20130719_182538_205_631718.jpeg";
-	            };
-	            "like_count" = 0;
-	            "repost_count" = 0;
-	            "short_url" = "http://stgb.lc/p/4eMG";
-	            title = "SB shirt";
-	            "user_has_liked" = 0;
-	            width = 1936;
-	        }, {
-	            "comment_count" = 0;
-	            description = "";
-	            height = 465;
-	            id = 631213;
-	            images = {
-	                "large_url" = "http://cdn.stagebloc.com/production/photos/205/large/20130711_173911_205_631213.png";
-	                "medium_url" = "http://cdn.stagebloc.com/production/photos/205/medium/20130711_173911_205_631213.png";
-	                "small_url" = "http://cdn.stagebloc.com/production/photos/205/small/20130711_173911_205_631213.png";
-	                "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/205/thumbnail/20130711_173911_205_631213.png";
-	            };
-	            "like_count" = 0;
-	            "repost_count" = 0;
-	            "short_url" = "http://stgb.lc/p/4eCZ";
-	            title = "Kid Rock signup";
-	            "user_has_liked" = 0;
-	            width = 565;
-	        });
-	    };
-    }
+	{
+	    "response": {
+	        "items": [{
+	            "id": 2950,
+	            "title": "Test Title",
+	            "short_url": "http:\/\/stgb.dev\/p\/SS",
+	            "description": "",
+	            "width": 640,
+	            "height": 1136,
+	            "comment_count": 0,
+	            "like_count": 0,
+	            "repost_count": 0,
+	            "images": {
+	                "thumbnail_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/1\/thumbnail\/20130819_165015_1_2950.jpeg",
+	                "small_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/1\/small\/20130819_165015_1_2950.jpeg",
+	                "medium_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/1\/medium\/20130819_165015_1_2950.jpeg",
+	                "large_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/1\/large\/20130819_165015_1_2950.jpeg"
+	            },
+	            "user_has_liked": false
+	        }]
+	    }
+	}
     
 # /photos/albums
 This endpoint is used for interacting with an account's photo albums.
@@ -740,44 +732,37 @@ images
 :	the cover image used for the photo album
 	
 ### Example Response (JSON)
-
-    {
-	    response = {
-	        items = ({
-	            created = "2013-06-12 20:59:12";
-	            description = "The description of the album.";
-	            id = 2219;
-	            modified = "2013-06-13 17:00:13";
-	            "short_url" = "http://stgb.lc/pa/Eg";
-	            title = "Application Images";
-	        }, {
-	            created = "2010-09-23 19:01:50";
-	            description = "The description of the album.";
-	            id = 3;
-	            modified = "2012-10-11 02:52:07";
-	            photo = {
-	                "comment_count" = 0;
-	                description = "Another description";
-	                height = 323;
-	                id = 5;
-	                images = {
-	                    "large_url" = "http://cdn.stagebloc.com/production/photos/205/large/20100923_190330_205_5.jpg";
-	                    "medium_url" = "http://cdn.stagebloc.com/production/photos/205/medium/20100923_190330_205_5.jpg";
-	                    "small_url" = "http://cdn.stagebloc.com/production/photos/205/small/20100923_190330_205_5.jpg";
-	                    "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/205/thumbnail/20100923_190330_205_5.jpg";
-	                };
-	                "like_count" = 0;
-	                "repost_count" = 0;
-	                "short_url" = "http://stgb.lc/p/6";
-	                title = "The Social Network";
-	                "user_has_liked" = 0;
-	                width = 600;
-	            };
-	            "short_url" = "http://stgb.lc/pa/4";
-	            title = "Screen Grabs";
-	        });
-	    };
-    }
+	{
+	    "response": {
+	        "items": [{
+	            "id": 359,
+	            "title": "Album Name",
+	            "description": "",
+	            "short_url": "http:\/\/stgb.dev\/pa\/7c",
+	            "created": "2013-02-27 16:05:49",
+	            "modified": "2013-08-14 00:36:23",
+	            "photo_count": 0,
+	            "photo": {
+	                "id": 2892,
+	                "title": "TEST TITLE",
+	                "short_url": "http:\/\/stgb.dev\/p\/RS",
+	                "description": "",
+	                "width": 1600,
+	                "height": 1200,
+	                "comment_count": 1,
+	                "like_count": 0,
+	                "repost_count": 0,
+	                "images": {
+	                    "thumbnail_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/1\/thumbnail\/20130227_160549_1_2892.jpeg",
+	                    "small_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/1\/small\/20130227_160549_1_2892.jpeg",
+	                    "medium_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/1\/medium\/20130227_160549_1_2892.jpeg",
+	                    "large_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/1\/large\/20130227_160549_1_2892.jpeg"
+	                },
+	                "user_has_liked": false
+	            }
+	        }]
+	    }
+	}
     
 #/oauth2
 This is used during the [OAuth2](http://oauth.net/2/) authentication process to get an access token from a request token for [StageBloc Connect](http://stagebloc.local/developers/connect/). Curious? Check out our OAuth2 [PHP](https://github.com/stagebloc/php-stagebloc-api) or [Objective-C](https://github.com/stagebloc/stagebloc-ios) wrapper on GitHub to get started.
@@ -899,73 +884,30 @@ offset
 	defaults to `0`
     
 ### Example Response (JSON)
-
 	{
-		response = {
-		    items = ({
-		        author = {
-		            bio = "Developer at StageBloc.";
-		            birthday = "2000-01-01";
-		            created = "2013-01-03 00:17:53";
-		            email = "johnsmith@gmail.com";
-		            gender = male;
-		            id = 2673;
-		            name = "John Smith";
-		            photo = {
-		                height = 1200;
-		                id = 191;
-		                images = {
-		                    "large_url" = "http://cdn.stagebloc.com/production/photos/users/2673/large/20130524_233142_2673_191.png";
-		                    "medium_url" = "http://cdn.stagebloc.com/production/photos/users/2673/medium/20130524_233142_2673_191.png";
-		                    "small_url" = "http://cdn.stagebloc.com/production/photos/users/2673/small/20130524_233142_2673_191.png";
-		                    "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/users/2673/thumbnail/20130524_233142_2673_191.png";
-		                };
-		                width = 1200;
-		            };
-		            url = "https://stagebloc.com/user/john/";
-		            username = john;
-		        };
-		        "comment_count" = 0;
-		        id = 776;
-		        "like_count" = 0;
-		        published = "2013-07-19 18:18:15";
-		        "repost_count" = 0;
-		        "short_url" = "http://stgb.lc/s/eo";
-		        text = "Second post from the new app";
-		        "user_has_liked" = 0;
-		    }, {
-		        author = {
-		            bio = "Developer at StageBloc.";
-		            birthday = "2000-01-01";
-		            created = "2013-01-03 00:17:53";
-		            email = "johnsmith@gmail.com";
-		            gender = male;
-		            id = 2673;
-		            name = "John Smith";
-		            photo = {
-		                height = 1200;
-		                id = 191;
-		                images = {
-		                    "large_url" = "http://cdn.stagebloc.com/production/photos/users/2673/large/20130524_233142_2673_191.png";
-		                    "medium_url" = "http://cdn.stagebloc.com/production/photos/users/2673/medium/20130524_233142_2673_191.png";
-		                    "small_url" = "http://cdn.stagebloc.com/production/photos/users/2673/small/20130524_233142_2673_191.png";
-		                    "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/users/2673/thumbnail/20130524_233142_2673_191.png";
-		                };
-		                width = 1200;
-		            };
-		            url = "https://stagebloc.com/user/john/";
-		            username = john;
-		        };
-		        "comment_count" = 0;
-		        id = 602;
-		        "like_count" = 1;
-		        published = "2013-05-01 05:28:03";
-		        "repost_count" = 0;
-		        "short_url" = "http://stgb.lc/s/bo";
-		        text = "2 more exams, then moving to Chicago";
-		        "user_has_liked" = 0;
-		    });
-		};
+	    "response": {
+	        "items": [{
+	            "id": 223,
+	            "short_url": "http:\/\/stgb.dev\/s\/4R",
+	            "text": "Meow meow meow",
+	            "published": "2013-07-01 14:44:01",
+	            "comment_count": 0,
+	            "like_count": 0,
+	            "repost_count": 0,
+	            "author": {
+	                "id": 1676,
+	                "url": "http:\/\/stagebloc.dev\/user\/jholat\/",
+	                "created": "2013-07-01 14:42:12",
+	                "name": "Josh",
+	                "username": "jholat",
+	                "bio": "",
+	                "following_count": 0,
+	                "likes_count": 0,
+	                "content_count": 1
+	            },
+	            "user_has_liked": false
+	        }]
+	    }
 	}
     
 ## /statuses/edit
@@ -1022,46 +964,62 @@ username
 settings
 :	should mirror the settings dictionary shown below, with 0 for off, 1 for on
 
-
 	{
-	    response =     {
-	        items =         (
-	                        {
-	                bio = "<null>";
-	                birthday = "1969-12-31";
-	                created = "2013-08-09 12:08:14";
-	                email = "ratchet@stagebloc.com";
-	                gender = cupcake;
-	                id = 165528;
-	                name = ratchet;
-	                settings =                 {
-	                    "dashboard_popular_content" = 1;
-	                    notifications =                     {
-	                        comments =                         {
-	                            email = 1;
-	                            push = 1;
-	                            web = 1;
-	                        };
-	                        follows =                         {
-	                            email = 1;
-	                            push = 1;
-	                            web = 1;
-	                        };
-	                        likes =                         {
-	                            email = 1;
-	                            push = 1;
-	                            web = 1;
-	                        };
-	                        reposts =                         {
-	                            email = 1;
-	                            push = 1;
-	                            web = 1;
-	                        };
-	                    };
-	                };
-	                url = "https://stagebloc.com/user/ratchet/";
-	                username = ratchet;
+	    "response": {
+	        "items": [{
+	            "id": 8,
+	            "url": "http:\/\/stagebloc.com\/user\/joshholat62man\/",
+	            "created": "2009-10-27 14:29:16",
+	            "name": "JoshDude HolatMan",
+	            "username": "joshholat62man",
+	            "bio": "NEW!",
+	            "following_count": 3,
+	            "likes_count": 30,
+	            "content_count": 1838,
+	            "email": "hi@stagebloc.com",
+	            "gender": "male",
+	            "birthday": "1996-07-06",
+	            "location": {
+	                "city": "Chicago",
+	                "state_province": "IL",
+	                "country": "AF"
+	            },
+	            "settings": {
+	                "dashboard_popular_content": true,
+	                "notifications": {
+	                    "likes": {
+	                        "email": false,
+	                        "push": true,
+	                        "web": true
+	                    },
+	                    "comments": {
+	                        "email": true,
+	                        "push": true,
+	                        "web": false
+	                    },
+	                    "follows": {
+	                        "email": true,
+	                        "push": true,
+	                        "web": false
+	                    },
+	                    "reposts": {
+	                        "email": false,
+	                        "push": true,
+	                        "web": true
+	                    }
+	                }
+	            },
+	            "photo": {
+	                "id": 74,
+	                "width": 720,
+	                "height": 720,
+	                "images": {
+	                    "thumbnail_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/users\/8\/thumbnail\/20130826_233333_8_74.jpeg",
+	                    "small_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/users\/8\/small\/20130826_233333_8_74.jpeg",
+	                    "medium_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/users\/8\/medium\/20130826_233333_8_74.jpeg",
+	                    "large_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/users\/8\/large\/20130826_233333_8_74.jpeg"
+	                }
 	            }
-	        );
-	    };
+	        }]
+	    }
 	}
