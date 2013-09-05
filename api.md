@@ -153,66 +153,51 @@ user_is_following
 :   whether the active user is following the particular account
 	
 ### Example Response (JSON)
-    {
-	    response = {
-	        items = ({
-	            color = "#cce8ff";
-	            "custom_domain" = "";
-	            description = "CS Purdue University. Interested in mobile + web development";
-	            id = 2362;
-	            name = john;
-	            photo = {
-	                "comment_count" = 0;
-	                description = "Account Image";
-	                height = 1200;
-	                id = 629624;
-	                images = {
-	                    "large_url" = "http://cdn.stagebloc.com/production/photos/2362/large/20130524_233241_2362_629624.png";
-	                    "medium_url" = "http://cdn.stagebloc.com/production/photos/2362/medium/20130524_233241_2362_629624.png";
-	                    "small_url" = "http://cdn.stagebloc.com/production/photos/2362/small/20130524_233241_2362_629624.png";
-	                    "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/2362/thumbnail/20130524_233241_2362_629624.png";
-	                };
-	                "like_count" = 0;
-	                "repost_count" = 0;
-	                "short_url" = "http://stgb.lc/p/4eaA";
-	                title = "Account Image";
-	                "user_has_liked" = 0;
-	                width = 1200;
-	            };
-	            "stagebloc_url" = john;
-	            type = personal;
-	            "user_is_following" = 1;
-	            "user_role" = 0;
+	{
+	    "response": {
+	        "items": [{
+	            "id": 952,
+	            "name": "Actual No Data",
+	            "stagebloc_url": "ActualNoData",
+	            "custom_domain": "customdomain.dev",
+	            "description": "My account desc",
+	            "type": "personal",
+	            "color": "#edcea6",
+	            "verified": false,
+	            "follower_count": 8,
+	            "content_count": 6,
+	            "authenticated": false
 	        }, {
-	            color = "#e6eaef";
-	            "custom_domain" = "";
-	            description = "The world's a stage. Get on it.";
-	            id = 205;
-	            name = StageBloc;
-	            photo = {
-	                "comment_count" = 0;
-	                description = "Account Image";
-	                height = 1024;
-	                id = 630003;
-	                images = {
-	                    "large_url" = "http://cdn.stagebloc.com/production/photos/205/large/20130613_171101_205_630003.png";
-	                    "medium_url" = "http://cdn.stagebloc.com/production/photos/205/medium/20130613_171101_205_630003.png";
-	                    "small_url" = "http://cdn.stagebloc.com/production/photos/205/small/20130613_171101_205_630003.png";
-	                    "thumbnail_url" = "http://cdn.stagebloc.com/production/photos/205/thumbnail/20130613_171101_205_630003.png";
-	                };
-	                "like_count" = 0;
-	                "repost_count" = 0;
-	                "short_url" = "http://stgb.lc/p/4eh8";
-	                title = "Account Image";
-	                "user_has_liked" = 0;
-	                width = 1024;
-	            };
-	            "stagebloc_url" = stagebloc;
-	            type = business;
-	            "user_is_following" = 1;
-	            "user_role" = 5;
-	        });
-	    };
+	            "id": 19,
+	            "name": "Demo 17",
+	            "stagebloc_url": "demo17",
+	            "custom_domain": "",
+	            "description": "another desc",
+	            "type": "other",
+	            "color": "#cce8ff",
+	            "verified": false,
+	            "follower_count": 3,
+	            "content_count": 863,
+	            "authenticated": false,
+	            "photo": {
+	                "id": 2000,
+	                "title": "Account Image",
+	                "short_url": "http:\/\/stgb.dev\/p\/Au",
+	                "description": "Account Image",
+	                "width": 0,
+	                "height": 0,
+	                "comment_count": 0,
+	                "like_count": 0,
+	                "repost_count": 0,
+	                "images": {
+	                    "thumbnail_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/19\/thumbnail\/20111212_200901_19_2000.jpeg",
+	                    "small_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/19\/small\/20111212_200901_19_2000.jpeg",
+	                    "medium_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/19\/medium\/20111212_200901_19_2000.jpeg",
+	                    "large_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/19\/large\/20111212_200901_19_2000.jpeg"
+	                }
+	            }
+	        }]
+	    }
 	}
    
 ## /accounts/social/list
