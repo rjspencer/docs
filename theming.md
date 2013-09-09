@@ -1291,13 +1291,18 @@ AccountAboutName
 :    the name of the account
 
 AccountAbout
-:	the biography text of the account
+:    the biography text of the account
 
 AccountAboutCleaned
-:	the bio text stripped of all tags except: `<span><em><strong><a><u><i><b>`
+:    the bio text stripped of all tags except: `<span><em><strong><a><u><i><b>`
 
 AccountAboutUrl
 :    the main URL of the account
+
+AccountPhotoUrl
+:    the URL for the account's photo	
+
+    *see [Variables With Options](#variables-with-options)*
 
 ### block:AccountLink
 
