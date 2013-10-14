@@ -2053,7 +2053,7 @@ chunkSize
 
 	defaults to `false`
 
-supported
+supported (*required*)
 :	a comma separated list of supported content types
 
     accepted values are `{ContentType-Blog}`, `{ContentType-Photos}`, `{ContentType-Statuses}`, `{ContentType-Videos}`, `{ContentType-Audio}`
