@@ -1764,6 +1764,9 @@ BlogPostCustomField
 BlogPostExcerpt
 :	the 1500 character beginning of a blog post
 
+BlogPostShortExcerptStripped
+:	first 400 characters of blog post with all html tags stripped
+
 BlogPostUrl
 :	the permalink to the content's individual page
 
