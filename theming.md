@@ -2289,12 +2289,6 @@ PhotoAlbumDescription
 PhotoAlbumUrl
 :	a permalink to the photo album's individual page
 
-PhotoAlbumId
-:	the ID of the photo album
-
-PhotoAlbumTitle
-:	the title for the photo album
-
 PhotoAlbumPhotoCount
 :	the number of photos in this photo album
 
@@ -4421,3 +4415,5 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 	
 # Deprecated
 ### block:AccountPhoto
+### block:PhotoView {PhotoAlbumTitle}
+### block:PhotoView {PhotoAlbumTitleId}
