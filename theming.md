@@ -573,8 +573,8 @@ audioplaylistid (*required*)
 class
 :	the class to assign to the `<a>` tag
 	
-### BlogPostCustomField
-A way to access custom field data from a blog post
+### CustomField
+A way to access custom field data from a piece of content
 
 slug
 :	the slug of the custom field
@@ -649,12 +649,6 @@ shorttime
 	accepted values are `true` or `false`, *Note: requires that `format` = `relative`*
 	
 	defaults to `false`
-	
-### EventCustomField
-A way to access custom field data from an event
-
-slug
-:	the slug of the custom field
 
 ### FormatTimestamp
 A way to format timestamps
@@ -1758,9 +1752,6 @@ BlogPostBody
 BlogPostCategory
 :	the category for the blog post
 
-BlogPostCustomField
-:	a way to access custom field data in blog posts, see description in [Variables With Options](#variables-with-options) *note: see `if:CustomFieldIsSet`*
-
 BlogPostExcerpt
 :	the 1500 character beginning of a blog post
 
@@ -1962,9 +1953,6 @@ EventAges
 
 EventCity 
 :	the city in which the event is taking place
-
-EventCustomField
-:	a way to access custom field data in event, see description in [Variables With Options](#variables-with-options) *note: see `if:CustomFieldIsSet`*
 
 EventId
 :	the ID of the event
