@@ -1755,6 +1755,9 @@ BlogPostCategory
 BlogPostExcerpt
 :	the 1500 character beginning of a blog post
 
+BlogPostShortExcerptStripped
+:	first 400 characters of blog post with all html tags stripped
+
 BlogPostUrl
 :	the permalink to the content's individual page
 
@@ -2041,7 +2044,7 @@ chunkSize
 
 	defaults to `false`
 
-supported
+supported (*required*)
 :	a comma separated list of supported content types
 
     accepted values are `{ContentType-Blog}`, `{ContentType-Photos}`, `{ContentType-Statuses}`, `{ContentType-Videos}`, `{ContentType-Audio}`
@@ -2273,12 +2276,6 @@ PhotoAlbumDescription
 
 PhotoAlbumUrl
 :	a permalink to the photo album's individual page
-
-PhotoAlbumId
-:	the ID of the photo album
-
-PhotoAlbumTitle
-:	the title for the photo album
 
 PhotoAlbumPhotoCount
 :	the number of photos in this photo album
@@ -4406,3 +4403,5 @@ Here's a boilerplate theme to kickstart your development. [View these files on G
 	
 # Deprecated
 ### block:AccountPhoto
+### block:PhotoView {PhotoAlbumTitle}
+### block:PhotoView {PhotoAlbumTitleId}
