@@ -1975,6 +1975,9 @@ EventNotAttendingCount
 EventShortUrl
 :	a short URL for the event
 
+EventStreetAddress
+:	the street address of the event's location
+
 EventState
 :	the state in which the event is taking place
 
