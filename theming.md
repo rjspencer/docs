@@ -1119,7 +1119,7 @@ name
 Checks to see if a page is the currently rendered theme engine page
 
 page
-:	the page to check *should be anything after the colon in `{page:<Page_Name>}`
+:	the page to check *should be anything after the colon in `{page:<Page_Name>}`*
 
 uri
 :	if you need to be more exact, you can specify an exact URI *the part of the URL after your account name (non custom domains) or you custom domain, no leading forward slash*
