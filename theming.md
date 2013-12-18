@@ -1383,7 +1383,12 @@ ActivityDate
 
 
 ActivityExcerpt
-:	a trimmed version of {ActivityBody}, roughly 600 characters, taking into account HTML
+:	a trimmed version of {ActivityBody}, 600 characters by default, taking into account HTML
+
+	**Options**
+
+	length
+	:	the length of characters to trim to
 
 ActivityExcerptCleaned
 :	a trimmed version of {ActivityExcerpt} stripped of all HTML except: `<span><em><strong><a><u><i><b>`
