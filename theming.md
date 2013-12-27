@@ -712,7 +712,7 @@ closeTag
 	defaults to `true`
 	
 ### Link
-A way to link to various pages within StageBloc
+A way to link to various pages within StageBloc and your theme
 
 to
 :	the page to link to
@@ -720,6 +720,11 @@ to
 	accepted values are `TOS` (Terms Of Service), `PrivacyPolicy`, `Contact`, `StageBloc` (our home page), and `ForgotPassword`
 	
 	also allows `ConnectTwitter`, `DisconnectTwitter`, `ConnectFacebook`, `DisconnectFacebook`, `ConnectInstagram`, `DisconnectInstagram`
+	
+	you can also put an custom page in this parameter (i.e. to="CustomMyCustomPage")
+
+absolute
+:	whether or not the URL should be an absolute URL when using it with custom pages
 	
 redirectUrl
 :	where to redirect the user to after authenticating using `ConnectTwitter`, `ConnectFacebook`, or `ConnectInstagram` with the `to` option
