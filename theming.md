@@ -1840,6 +1840,9 @@ CommentUserId
 CommentId
 :	the ID for the comment
 
+CommentContentType
+:	the type of content this comment was made on
+
 CommentItemId
 :	the ID of the item the comment was written about
 
