@@ -2681,6 +2681,49 @@ UserPhotoUrl
 	defaultphoto
 	:	the URL of a photo to use if one isn't set and you don't want to use our default photo
 
+## TransactionList
+A listing of blogs *note: if inside of the `BlogCategoryView` `Page`, this will be automatically filtered by that category*
+
+### Options
+
+limit
+:	the amount of transactions to limit to
+
+    defaults to `10`
+
+offset
+:	skip X number of items, still returns `limit` items
+
+userid
+:	the user ID of the user to get the transactions for *note: will only be able to get the logged in users transactions*
+
+    defaults to the logged in user
+
+### block:TransactionView
+TransactionReceiptUrl
+:	a URL to the receipt for this order
+
+TransactionId
+:	the ID of the transaction
+
+TransactionOrderHash
+:	an order hash representing all the items in this transaction
+
+TransactionAmount
+:	the amount of money spent in this transaction (doesn't include shipping)
+
+TransactionShippingAmount
+:   the amount of money spent on shipping
+
+TransactionTrackingNumber
+:	the tracking number for the item if it has been shipped
+
+TransactionDownloadUrl
+:	a link to download the purchased item if it is digital
+
+TransactionItemName
+:	the name of the item that was ordered
+
 ## VideoList
 A listing of videos.
 
