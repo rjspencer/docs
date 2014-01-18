@@ -769,6 +769,22 @@ linkText
 
 class
 :	the class to give the `<a>` tag
+	
+### OpenCartLink
+Creates a link that, when clicked, will open the user's cart
+
+text
+:	the text to be put inside the `<a>` tag
+
+    defaults to `"Open Cart"`
+
+class
+:	the class to assign to the `<a>` tag
+
+closetag
+:	whether or not to close the `<a>` tag
+	
+	defaults to `true`
 
 ### PhotoAddToCartLink
 Creates a link that, when clicked, will add the photo to the user's cart on StageBloc
