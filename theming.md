@@ -3000,6 +3000,40 @@ Finally, you should add two bindings to your theme's JavaScript.
 	{
 		// This binding will handle generic errors. data will contain a `type` property for the action it came from (i.e. 'sbInlineComment')
 	});
+
+## Inline Comment Loading
+	This functionality allows you to use JavaScript to load more comments on the page. For content with lots of content and a customized comment list, this is a good way to achieve a "Load More Comments" type of functionality
+
+	**Step One**
+
+	You'll want to make a call to the `sbInlineLoadComments` functionality of SBNav
+
+		pm({
+			target: window.frames['sbnav'],
+			type: 'sbInlineLoadComments',
+			data: { contentType: $(this).attr('data-content-type'),
+					contentId: $(this).attr('data-content-id'),
+					limit: 20, // Any number
+					offset: 10 // Any number, probably based on the amount of comments already loaded
+				}
+		});
+
+	The postMessage JS library is already included for you. The `type` and `target` parameters must be exactly as shown above. The passed data must contain the keys `contentType` and `contentId`.
+
+	**Step Two**
+
+	You should add two bindings to your theme's JavaScript.
+
+		pm.bind('sbInlineLoadComments', function(data)
+		{
+			// data will be a JSON array representing the additional comments
+		});
+
+		pm.bind('sbError', function(data)
+		{
+			// This binding will handle generic errors. data will contain a `type` property for the action it came from (i.e. 'sbInlineLoadComments')
+		});
+
 	
 ## Inline Status Submission
 Normally, adding content can be done very easily with the use of `{SubmitFanContentLink}` variable that opens an SB Nav modal. However, sometimes you'll want to have comments inline within your page to give the user a different experience. This is fairly straightforward to do.
