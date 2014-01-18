@@ -2846,8 +2846,13 @@ VideoJavaScriptEncodedEmbedCode
 VideoJavaScriptEscapedEmbedCode
 :	the embed code escaped to be used in JavaScript
 
-VideoThumbnailUrl
-:	a URL to a thumbnail image used to represent this video 
+VideoPhotoUrl
+:	a photo of the cover of the video
+
+	**Options**
+	
+	size
+	:	accepted sizes are "thumbnail", "small", "medium", "large", "original"
 
 ## VideoPlaylistList
 A listing of video playlists
