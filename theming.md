@@ -3002,37 +3002,37 @@ Finally, you should add two bindings to your theme's JavaScript.
 	});
 
 ## Inline Comment Loading
-	This functionality allows you to use JavaScript to load more comments on the page. For content with lots of content and a customized comment list, this is a good way to achieve a "Load More Comments" type of functionality
+This functionality allows you to use JavaScript to load more comments on the page. For content with lots of content and a customized comment list, this is a good way to achieve a "Load More Comments" type of functionality
 
-	**Step One**
+**Step One**
 
-	You'll want to make a call to the `sbInlineLoadComments` functionality of SBNav
+You'll want to make a call to the `sbInlineLoadComments` functionality of SBNav
 
-		pm({
-			target: window.frames['sbnav'],
-			type: 'sbInlineLoadComments',
-			data: { contentType: $(this).attr('data-content-type'),
-					contentId: $(this).attr('data-content-id'),
-					limit: 20, // Any number
-					offset: 10 // Any number, probably based on the amount of comments already loaded
-				}
-		});
+	pm({
+		target: window.frames['sbnav'],
+		type: 'sbInlineLoadComments',
+		data: { contentType: $(this).attr('data-content-type'),
+				contentId: $(this).attr('data-content-id'),
+				limit: 20, // Any number
+				offset: 10 // Any number, probably based on the amount of comments already loaded
+			}
+	});
 
-	The postMessage JS library is already included for you. The `type` and `target` parameters must be exactly as shown above. The passed data must contain the keys `contentType` and `contentId`.
+The postMessage JS library is already included for you. The `type` and `target` parameters must be exactly as shown above. The passed data must contain the keys `contentType` and `contentId`.
 
-	**Step Two**
+**Step Two**
 
-	You should add two bindings to your theme's JavaScript.
+You should add two bindings to your theme's JavaScript.
 
-		pm.bind('sbInlineLoadComments', function(data)
-		{
-			// data will be a JSON array representing the additional comments
-		});
+	pm.bind('sbInlineLoadComments', function(data)
+	{
+		// data will be a JSON array representing the additional comments
+	});
 
-		pm.bind('sbError', function(data)
-		{
-			// This binding will handle generic errors. data will contain a `type` property for the action it came from (i.e. 'sbInlineLoadComments')
-		});
+	pm.bind('sbError', function(data)
+	{
+		// This binding will handle generic errors. data will contain a `type` property for the action it came from (i.e. 'sbInlineLoadComments')
+	});
 
 	
 ## Inline Status Submission
