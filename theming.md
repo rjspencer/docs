@@ -1056,11 +1056,17 @@ Check to see if content is exclusive or not
 ### if:ContentIsFanSubmitted
 Check to see if a content item was fan submitted or not
 
+### if:ContestHasEnded
+Check to see if a contest has ended or not
+
 ### if:CustomFieldIsSet
 Check to see if a particular custom field is set on a content item
 
 slug
 :	the slug of the custom field you want to check
+
+### if:EventHasContest
+Check to see if an event has a contest or not
 
 ### if:EventHasEnded
 Check if an event's end time is after the current time.
@@ -1233,14 +1239,17 @@ status
 
 	accepted values are `yes`, `no`, or `maybe`
 
-### if:UserHasTwitterConnected
-Checks to see if the currently logged in user has Twitter connected
+### if:UserHasEnteredContest
+Checks to see if a user has entered a contest already or not
 
 ### if:UserHasFacebookConnected
 Checks to see if the currently logged in user has Facebook connected
 
 ### if:UserHasInstagramConnected
 Checks to see if the currently logged in user has Instagram connected
+
+### if:UserHasTwitterConnected
+Checks to see if the currently logged in user has Twitter connected
 
 ### if:UserIsAdmin
 Checks to see if the user is logged in and an admin of the current account
@@ -1865,6 +1874,27 @@ CommentItemId
 CreatedDate
 :	the date the comment was created *see [Variables With Options](#variables-with-options)*
 
+## ContestView
+A view for a single contest
+
+### Options
+contestid
+:	the ID of the contest to load *required*
+
+### block:ContestView
+
+ContestId
+:	the ID of the contest
+
+ContestTitle
+:	the title of the contest
+
+ContestDescription
+:	the description of the contest
+
+ContestParticipantCount
+:	the number of allowed people for the contest
+
 ## ChildAccountList
 A listing of accounts that are children of the current account
 
@@ -1985,6 +2015,9 @@ EventAges
 
 EventCity 
 :	the city in which the event is taking place
+
+EventContestId
+:	the ID for the contest for this event
 
 EventId
 :	the ID of the event
