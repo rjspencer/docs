@@ -1893,6 +1893,9 @@ ContestDescription
 :	the description of the contest
 
 ContestParticipantCount
+:	the number of people who have entered the contest
+
+ContestAllowedParticipantCount
 :	the number of allowed people for the contest
 
 ## ChildAccountList
