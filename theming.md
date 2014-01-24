@@ -1059,6 +1059,9 @@ Check to see if a content item was fan submitted or not
 ### if:ContestHasEnded
 Check to see if a contest has ended or not
 
+### if:ContestAllowsUnlimitedParticipants
+Check to see if there's a limit on the amount of participants for a contest
+
 ### if:CustomFieldIsSet
 Check to see if a particular custom field is set on a content item
 
