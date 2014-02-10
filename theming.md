@@ -2761,14 +2761,14 @@ TransactionReceiptUrl
 TransactionId
 :	the ID of the transaction
 
-TransactionOrderHash
-:	an order hash representing all the items in this transaction
+TransactionOrderId
+:	the ID of the order this transaction belongs to
 
 TransactionAmount
 :	the amount of money spent in this transaction (doesn't include shipping)
 
 TransactionShippingAmount
-:   the amount of money spent on shipping
+:   the amount of money spent on shipping for this transaction
 
 TransactionTrackingNumber
 :	the tracking number for the item if it has been shipped
