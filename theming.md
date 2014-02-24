@@ -328,7 +328,223 @@ If statements support the use of `||` and `&&` for AND and OR logic. However, mi
 	{/if:IfStatementOne||IfStatementTwo}
 	
 # Sections
-The main sections of the Theming Engine line up with the available to create and share on StageBloc.
+The main sections of the Theming Engine line up with the available content you can create and share on StageBloc.
+
+## Blog
+	{page:BlogView}
+		{module:BlogView}
+			{block:BlogPost}
+				<h2>{BlogPostTitle}</h2>
+				{BlogPostBody}
+			{/block:BlogPost}
+		{/module:BlogView}
+	{/page:BlogView}
+
+### page:BlogList
+`/blog` - This page should show a listing of blog posts
+
+### page:BlogView
+`/blog/[%id]` - This page should show the content of an individual blog post. If the post has a category, the URL would automatically change to `/blog/[%category]/[%id]`
+
+### page:BlogCategoryView
+`/blog/[%category]` - This page should show a listing of blog posts by category (`{module:BlogList}` will filter by the right category automatically on this page)
+
+### module:BlogList
+This module lists blog posts by an account. Blog posts are returned by the date they were published.
+
+**Module Options**  
+`direction`
+
+	the direction in which to order the blog posts
+
+    accepted values are asc or desc
+
+    defaults to desc
+
+`limit`
+
+	the amount of blogs to list per page
+	
+	accepted values are any integer
+
+    defaults to 5
+
+`offset`
+
+	skips X number of items based on the ordering, it is automatically adjusted when paging
+	
+	accepted values are any integer
+	
+	defaults to 0
+	
+`ignorePaging`
+
+	will make offset always 0 regardless of the page you are one
+
+	accepted values are true or false
+
+	defaults to false
+	
+`sticky`
+
+	whether or not to include sticky posts
+
+	defaults to showing both
+
+	accepted values are true (to show only sticky posts) or false (to show only non-sticky posts)
+
+`ignoreSticky`
+
+	whether or not sticky blog posts should be on top of the listing
+
+	accepted values are true or false
+
+	defaults to false
+
+`exclusive`
+
+	whether or not to include exclusive posts
+
+	defaults to showing both
+
+	accepted values are true (to show only exclusive posts) or false (to show only non-exclusive posts)
+
+`category`
+
+	a category to filter the blog listing by
+	
+	accepted values are any string
+	
+	defaults to none (unless there is a category in the URL, then it defaults to that)
+
+`ignoreCategory`
+
+	whether or not to ignore a category if it shows up in the URL
+
+	accepted values true and false
+
+	defaults to false
+	
+`tag`
+
+	a tag to filter the blog listing by
+
+	accepted values are any string
+
+	defaults to none
+	
+`includeFanContent`
+
+	normally content submitted by fans is for `FansiteContentList`, but this allows it to be included here
+
+	accepted values are true and false
+
+	defaults to false
+
+`accountid`
+
+	a comma separated list of the IDs of the accounts to limit the results to
+	
+	accepted values are IDs of any children accounts of the current account (see variable `{ChildAccountIDs}`)
+
+    defaults to none (i.e. only the current account)
+
+`paging` *(advanced)*
+
+	define how many items are on this page
+	
+	if you are using multiple modules with both `limit`s and `offset`s then you need to explicitly set how many items are on the current page, or pagination will return unexpected results
+	
+	accepted values are any integer
+
+### module:BlogView
+This module will list the content for a single blog post. When on `{page:BlogView}` it will automatically grab the right data from the URL
+
+**Module Options**  
+`fanSubmittedIsExclusive`
+
+	whether or not to consider content submitted by fans to a fansite as exclusive or not by default
+
+	accepted values are true and false
+
+	defaults to true
+
+### block:BlogPost
+This block exposes various content available for a blog post object
+
+**Variables**
+
+AuthorName  
+:	the author's full name
+
+AuthorUsername  
+:	the author's StageBloc username
+
+AuthorUrl  
+:	the URL to the public facing user page for this author
+
+AuthorFansiteUrl  
+:	the URL to the public facing user page for this author on the account's fansite
+
+AuthorPhotoUrl  
+:	url to a thumbnail sized, 130x130px user photo
+
+BlogPostAccountId  
+:    the ID of the account that this blog post belongs to
+
+BlogPostTitle  
+:	the title of the blog post
+
+BlogPostId  
+:	the blog post's ID
+
+BlogPostUrl  
+:	the permalink to the blog post's individual page
+
+BlogPostShortUrl  
+:	a short URL for the blog post
+
+LikeCount  
+:	the number of likes for the blog post
+
+BlogPostBody  
+:	the main content for the blog post
+
+BlogPostExcerpt  
+:	a 1500 character beginning of the blog post
+
+BlogPostShortExcerpt  
+:	a 400 character beginning of the blog post
+
+BlogPostShortExcerptCleaned  
+:	first 400 characters of blog post with all `<span><em><strong><a><u><i><b>` tags stripped
+
+BlogPostShortExcerptStripped  
+:	first 400 characters of blog post with all html tags stripped
+
+BlogPostRelatedContentTag  
+:	the tag associated with this blog post for related content
+
+BlogPostPhotoUrl  
+:	the URL of the first `<img>` in the blog post (see `if:BlogPostHasPhoto`)
+
+PreviousBlogPostId, NextBlogPostId  
+:	the ID of the blog post previous/next to the current one if it exists
+
+PreviousBlogPostTitle, NextBlogPostTitle  
+:	the title of the blog post previous/next to the current one if it exists
+
+PreviousBlogPostUrl, NextBlogPostUrl  
+:	the permalink of the blog post previous/next to the current one if it exists
+
+### If Statements
+`if:BlogPostHasPhoto`
+
+	check if a blog post has at least one photo (`<img>` tag) in it
+	
+`if:ReadMore`
+
+	check if the current excerpt is trimmed to something less than its total length
 
 # SBNav
 SBNav is the little, circular control box that appears in a corner of the screen. It allows users to, among other things, log in, follow and unfollow accounts, and manage their shopping cart. It is also the means of communication by which our [Advanced Functionality](#advanced-functionality) is achieved.
