@@ -1236,7 +1236,7 @@ VideoJavaScriptEscapedEmbedCode
 **VideoPhotoUrl**  
 A cover image for this video or a default one if there is no cover set
 
-size
+`size`
 
 	the size of the photo to load
 	
@@ -1855,6 +1855,104 @@ The date and time this event end
 
 ### page:StatusView
 `/statuses/[%id]` - This page should show an individual status
+
+### module:StatusList
+This module lists statuses by an account. Statuses are returned by the date they were created.
+
+**Module Options**  
+`limit`
+
+	the amount of statuses to list per page
+
+	accepted values are any integer
+
+	defaults to 10
+
+`offset`
+
+	skips X number of items based on the ordering, it is automatically adjusted when paging
+
+	accepted values are any integer
+
+	defaults to 0
+
+`direction`
+
+	the direction in which to list the statuses
+
+	accepted values are asc or desc
+
+	defaults to desc
+
+`accountId`
+
+	a comma separated list of the IDs of the accounts to limit the results to
+
+	accepted values are IDs of any children accounts of the current account (see variable {ChildAccountIDs})
+
+	defaults to none (i.e. only the current account)
+
+`fanContent`
+
+	normally content submitted by fans is for module:FansiteContentList, but this allows it to be included here
+
+	accepted values are true and false
+
+	defaults to false
+
+`accountContent`
+
+	whether or not to show photos created by admins of the account
+
+	accepted values are true or false
+
+    defaults to true
+
+### module:StatusView
+This module will load the content for an status. When on {page:StatusView} it will automatically grab the right data from the URL.
+
+**Module Options**  
+`statusId`
+
+	an ID for which status to show
+
+	accepted values are any status ID that belongs to the same account
+
+	defaults to none or the ID from the URL if on {page:StatusView}
+	
+`fanSubmittedIsExclusive`
+
+	whether or not to consider content submitted by fans to a fansite as exclusive or not
+
+	accepted values are true and false
+
+	defaults to true
+
+### block:StatusPost
+
+AuthorName  
+:	the author of the status
+
+AuthorPhotoUrl  
+:	a 130x130 pixel image of the author of the photo or a placeholder if the photo doesn't exist
+
+StatusId  
+:	the ID of the status was posted
+
+StatusAccountId  
+:    the ID of the account that posted this status
+
+StatusUrl
+:	a permalink to an individual status post page
+
+StatusShortUrl  
+:	a short URL for the status
+
+StatusText  
+:	the actual text of the status post
+
+StatusTextWithLinks  
+:	the actual text of the status post with links converted into HTML <a> tags
 
 ## Store Items
 ### page:StoreItemList
