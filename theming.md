@@ -340,6 +340,57 @@ If statements support the use of `||` and `&&` for AND and OR logic. However, mi
 # Sections
 The main sections of the Theming Engine line up with the available content you can create and share on StageBloc.
 
+## General
+The following Theme Engine elements are available for general use within a theme and can be placed anywhere.
+
+### Variables
+`CSS`
+
+	A <link rel="stylesheet" /> tag with a link to the theme's CSS on StageBloc's CDN
+
+`JS`
+
+	A <script src=""> tag with a link to the theme's JS on StageBloc's CDN
+
+`AccountName`
+
+	the name of the account
+
+`AccountId`
+
+	the ID of the account
+	
+### Variables With Options
+**BootstrapCSS**  
+The latest version of Bootstrap's combined (responsive with icons) CSS from [BootstrapCDN](http://www.bootstrapcdn.com/)
+
+`v`
+
+	use this parameter to specify a particular version
+	
+	accepted values are any version hosted on BootstrapCDN
+	
+	defaults to the latest version
+
+`includeIcons`
+
+	whether or not to includes Bootstrap's icons with the CSS
+
+	allowed values are true or false
+	
+	defaults to true
+	
+**BootstrapJS**  
+The latest version of Bootstrap's JS from [BootstrapCDN](http://www.bootstrapcdn.com/)
+
+`v`
+
+	use this parameter to specify a particular version
+	
+	accepted values are any version hosted on BootstrapCDN
+	
+	defaults to the latest version
+
 ## Blog
 	{page:BlogView}
 		{module:BlogView}
