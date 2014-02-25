@@ -1948,6 +1948,9 @@ StatusUrl
 StatusShortUrl  
 :	a short URL for the status
 
+LikeCount
+:	the amount of likes for this status
+
 StatusText  
 :	the actual text of the status post
 
@@ -1961,7 +1964,256 @@ StatusTextWithLinks
 ### page:StoreItemView
 `/store/[%id]` - This page should show content for an individual store item
 
+### module:StoreItemList
+This module lists store items by an account. Store items are listed by the date it was created.
+
+**Module Options**  
+`limit`
+
+	the amount of store items to list per page
+
+	accepted values are any integer
+
+	defaults to 20
+
+`offset`
+
+	skips X number of items based on the ordering, it is automatically adjusted when paging
+
+	accepted values are any integer
+
+	defaults to 0
+
+`direction`
+
+	the direction in which to list the store items
+
+	accepted values are asc or desc
+
+	defaults to desc
+   
+`accountId`
+
+	a comma separated list of the IDs of the accounts to limit the results to
+
+	accepted values are IDs of any children accounts of the current account (see variable {ChildAccountIDs})
+
+	defaults to none (i.e. only the current account)
+
+`type`
+
+	the type of store items to include
+
+	accepted values are any comma separated string of "digital" and/or "physical"
+	
+	defaults to "digital,physical"
+    
+`status`
+
+	the status of the store items to include
+
+	accepted values are any comma separated string of the following constants: listed, coming_soon, sold_out
+	
+	defaults to all "listed,coming_soon,sold_out"
+
+### module:StoreItemView
+This module will load the content for a single audio track. When on {page:StoreItemView} it will automatically grab the right data from the URL.
+
+**Module Options**  
+`storeItemId`
+
+	an ID for which store item to show
+
+	accepted values are any store item ID that belongs to the same account
+
+	defaults to none or the ID from the URL if on {page:StoreItemView}
+	
+`ignoreStatus`
+
+	whether or not to ignore the status of the store item to be shown
+
+	accepted values are true and false
+
+	defaults to false
+	
+### block:StoreItemView
+StoreItemAccountId  
+:    the ID of the account that created the store item
+
+StoreItemUrl  
+:	the URL for the store item
+
+StoreItemTitle  
+:	the title of the store item
+
+StoreItemDescription  
+:	the description of the store item
+
+LikeCount
+:	the number of likes for this store item
+
+StoreItemPrice  
+:	the price of the store item with any active sales applied *(if there is a pre-order currently active for the store item, it'll use that price instead)*
+
+StoreItemOriginalPrice  
+:	the original price of the store item (i.e. no sales applied) *(if there is a pre-order currently active for the store item, it'll use that price instead)*
+
+StoreItemPrice  
+:	the price of the store item with any sales applied
+
+StoreItemId  
+:	the ID for the store item
+
+StoreItemPhotoAlbumId  
+:	the ID of the photo album that holds the photos for this store item *(this can be used with `module:PhotoList` to easily list store item photos)*
+
+### Variables With Options
+**StoreItemPhotoUrl**  
+A cover image for this store item or a default one if there is no cover set
+
+`size`
+
+	the size of the photo to load
+	
+	accepted sizes are "thumbnail", "small", "medium", "large", "original"
+	
+	defaults to "thumbnail"
+
+### If Statements
+`if:StoreItemCanBeDownloadedForFree`
+
+	check to see if the store item can be downloaded for free
+
+`if:StoreItemCanBeSold`
+
+	check to see if the store item is being sold
+
+`if:StoreItemCanNamePrice`
+
+	check to see if the store item supports naming a price
+
+`if:StoreItemIsOnSale`
+
+	check to see if the store item is on sale or not
+	
+`if:StoreItemIsPhysical`
+
+	check to see if the store item is a physical good (instead of a digital good)
+
+`if:StoreItemIsSoldOut`
+
+	check to see if the store item is sold out or not
+
 ## Comments
+When on one of the following pages, using the appropriate content's module view will automatically pull in the correct data (i.e. `{module:BlogView}` will be the correct data automatically on `{page:BlogCommentView}`)
+
+### page:AudioCommentView
+`/audio/[%audio_id]/comment/[%id]` - This page should show the content of an individual audio comment
+
+### page:BlogCommentView
+`/blog/[%blog_id]/comment/[%id]` - This page should show the content of an individual blog post comment
+
+### page:EventCommentView
+`/event/[%event_id]/comment/[%id]` - This page should show the content of an individual event comment
+
+### page:PhotoCommentView
+`/photos/[%photo_id]/comment/[%id]` - This page should show the content of an individual photo comment
+
+### page:StatusCommentView
+`/statuses/[%status_id]/comment/[%id]` - This page should show the content of an individual status comment
+
+### page:VideoCommentView
+`/videos/[%video_id]/comment/[%id]` - This page should show the content of an individual video comment
+
+### page:StoreCommentView
+`/store/[%store_item_id]/comment/[%id]` - This page should show the content of an individual store comment
+
+### module:CommentList
+A view for a listing of the most recent comments, it will use the content of the currently rendered item
+
+**Module Options**  
+`limit`
+
+	the amount to limit the comments to
+
+	accepted values are any integeer *(keep in mind that the {CommentLink} variable exists and so does the sbInlineLoadComments Advanced Functionality*
+	
+	defaults to 10
+	
+`parents`
+
+	whether or not to get the parent comments for the individual comment
+
+	accepted values are true or false
+
+	defaults to false
+	
+`includeFirstLevelReplies`
+
+	whether or not to include the first level of replies, may return more items than `limit` *(see if:CommentIsReply)*
+
+	accepted values are true or false
+	
+	defaults to false
+	
+`userId``
+
+	a user to filter the comments by
+	
+	accepted values are an user ID
+
+	defaults to none
+
+### module:CommentView
+This module will load the content for a single comment. When on any of the above pages it will automatically grab the right data from the URL.
+
+**Module Options**  
+`contentId`
+
+	the ID of the content to list the comments of
+
+	accepted values are any ID of content belonging to the account of the comment
+
+	defaults to the current modules item's ID in the theme engineComm
+
+`contentSection`
+
+	the type of the content to list the comments of
+
+	accepted values are any of the {ContentType-[%type]} variables
+
+	defaults to the current modules item's content type in the theme engine
+
+### block:CommentView
+CommentText  
+:	the text of the comment
+
+CommentShortUrl  
+:	a short URL to the comment
+
+CommentAuthorUsername  
+:	the comment author's username
+
+CommentAuthorFansiteUrl  
+:	the URL of this user on the current fansite
+
+CommentAuthorUrl  
+:	the URL to the main user page for the author
+
+CommentAuthorPhotoUrl  
+:	the URL to the thumbnail image for the user who submitted this comment
+
+CommentUserId  
+:	the ID of the user who posted the comment *Can be used with `block:UserView`
+
+CommentId  
+:	the ID for the comment
+
+CommentContentType  
+:	the type of content this comment was made on
+
+CommentItemId  
+:	the ID of the item the comment was written about
 
 ## Orders
 
