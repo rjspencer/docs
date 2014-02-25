@@ -2351,6 +2351,53 @@ CommentItemId
 	check to see if a comment is a reply to another comment
 
 ## Orders
+Items that users have ordered will only be shown using the logged in user's ID and can't be made public
+
+### module:TransactionList
+This module lists transactions for the logged in user
+
+**Module Options**  
+`limit`
+
+	the amount of transactions to list per page
+
+	accepted values are any integer
+
+	defaults to 20
+
+`offset`
+
+	skips X number of items based on the ordering
+
+	accepted values are any integer
+
+	defaults to 0
+
+### block:TransactionView
+TransactionReceiptUrl  
+:	a URL to the receipt for this order
+
+TransactionId  
+:	the ID of the transaction
+
+TransactionOrderId  
+:	the ID of the order this transaction belongs to
+
+TransactionAmount  
+:	the amount of money spent in this transaction in USD (doesn't include shipping)
+
+TransactionShippingAmount  
+:   the amount of money spent on shipping for this transaction
+
+TransactionTrackingNumber  
+:	the tracking number for the item if it has been shipped
+
+TransactionDownloadUrl  
+:	a link to download the purchased item if it is digital
+
+TransactionItemName  
+:	the name of the item that was ordered
+
 
 ## Users
 
