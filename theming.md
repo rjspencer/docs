@@ -168,7 +168,7 @@ The following options are an example of two options that are available on most m
 
 	accepted values are true or false
 
-	defaults false
+	defaults to false
 	
 ## Blocks
 Blocks can best be thought of us the models of the data and must be inside of a `{module}`. When inside of a listing `{module}`, a `{block}` will be repeated as many times as necessary depending on the returned data. The general syntax for `{block}`s is as follows:
@@ -853,7 +853,7 @@ format
 **AudioPhotoUrl**  
 A cover image for this audio track or a default one if there is no cover set
 
-size
+`size`
 
 	the size of the photo to load
 	
@@ -957,7 +957,7 @@ AudioPlaylistFreeDownloadQuality, AudioPlaylistPaidDownloadQuaility
 **AudioPlaylistPhotoUrl**  
 A cover image for this audio playlist or a default one if there is no cover set
 
-size
+`size`
 
 	the size of the photo to load
 	
@@ -968,7 +968,7 @@ size
 **AudioPlaylistReleaseDate** 
 The date the audio playlist was released on
 	
-format
+`format`
 
 	the format of the date according to PHP [date() function](http://php.net/date) 
 
@@ -1189,6 +1189,9 @@ VideoJavaScriptEscapedTitle
 VideoId  
 :	the ID of the video
 
+LikeCount  
+:	the number of likes for the video
+
 VideoShortUrl  
 :	a short URL for the video
 
@@ -1250,6 +1253,14 @@ This module lists video playlists by an account.
 	accepted values are any integer
 
 	defaults to 0
+	
+`direction`
+
+	the direction in which to list the videos
+
+	accepted values are asc or desc
+
+	defaults to asc
 
 `accountId`
 
@@ -1275,6 +1286,9 @@ VideoPlaylistUrl
 VideoPlaylistTitle  
 :	the title for the video playlist
 
+LikeCount  
+:	the number of likes for the video playlist
+
 VideoPlaylistVideoCount  
 :	the amount of videos in this playlist
 
@@ -1288,7 +1302,7 @@ CreatedByName, ModifiedByName
 **VideoPlaylistPhotoUrl**  
 A cover image for this video video or a default one if there is no cover set
 
-size
+`size`
 
 	the size of the photo to load
 	
@@ -1322,11 +1336,11 @@ This module lists photos by an account. Photos is listed by the date it was crea
 
 `limit`
 
-	the amount of video playlists to list per page
+	the amount of photos to list per page
 
 	accepted values are any integer
 
-	defaults to 50
+	defaults to 10
 
 `offset`
 
@@ -1342,7 +1356,7 @@ This module lists photos by an account. Photos is listed by the date it was crea
 
 	accepted values are asc or desc
 
-	defaults to asc
+	defaults to desc
 
 `accountId`
 
@@ -1443,6 +1457,9 @@ PhotoUrl
 PhotoShortUrl  
 :	a short URL for the photo
 
+LikeCount  
+:	the number of likes for the photo
+
 PhotoTitle  
 :	the title of the photo
 
@@ -1484,6 +1501,95 @@ PreviousPhotoUrl, NextPhotoUrl
 
 ### page:PhotoAlbumView
 `/photos/albums/[%id]` - This page should show the content for an individual photo album
+
+### module:PhotoAlbumList
+This module lists photo albums by an account.
+
+**Module Options**  
+`limit`
+
+	the amount of photo albums to list per page
+
+	accepted values are any integer
+
+	defaults to 10
+
+`offset`
+
+	skips X number of items based on the ordering, it is automatically adjusted when paging
+
+	accepted values are any integer
+
+	defaults to 0
+
+`direction`
+
+	the direction in which to list the photo albums
+
+	accepted values are asc or desc
+
+	defaults to desc
+
+`accountId`
+
+	a comma separated list of the IDs of the accounts to limit the results to
+
+	accepted values are IDs of any children accounts of the current account (see variable {ChildAccountIDs})
+
+	defaults to none (i.e. only the current account)
+
+### module:PhotoAlbumView
+This module will load the content for a single photo album. When on {page:PhotoAlbumView} it will automatically grab the right data from the URL.
+
+**Module Options**  
+`albumId`
+
+	an ID for which photo album to show
+
+	accepted values are any photo album ID that belongs to the same account
+
+	defaults to none or the ID from the URL if on {page:PhotoView}
+
+### block:PhotoAlbumView
+PhotoAlbumId  
+:	the ID of the photo album
+
+PhotoAlbumAccountId  
+:    the ID of the account that created the photo album
+
+PhotoAlbumDescription  
+:	the description of the photo album
+
+PhotoAlbumUrl  
+:	a permalink to the photo album's individual page
+
+PhotoAlbumShortUrl  
+:	a show URL for this photo album
+
+LikeCount  
+:	the number of likes for the photo album
+
+PhotoAlbumPhotoCount  
+:	the number of photos in this photo album
+
+CreatedByPhotoUrl, ModifiedByPhotoUrl  
+:	a URL to the photo for who created/modified the album to be used in an `<img src="" />` tag
+
+CreatedByName, ModifiedByName  
+:	the name of the user who created/modified the photo album
+
+### Variables With Options
+**PhotoAlbumPhotoUrl**  
+A cover image for this photo album or a default one if there is no cover set
+
+`size`
+
+	the size of the photo to load
+	
+	accepted sizes are "thumbnail", "small", "medium", "large", "original"
+	
+	defaults to "thumbnail"
+
 
 ## Events
 ### page:EventPastList
