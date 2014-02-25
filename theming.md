@@ -340,10 +340,21 @@ If statements support the use of `||` and `&&` for AND and OR logic. However, mi
 # Sections
 The main sections of the Theming Engine line up with the available content you can create and share on StageBloc.
 
+In general, the documentation for each section goes from higher level to lower level. It will first list the pages. After the pages, the modules are listed with their available options. The block is listed after the modules and can be used inside of any of the modules for that section. After the definition of the block, all of the variables (and variables with options) available to that block specifically are listed.
+
+Lastly, the if statements are listed for that block as well. Unless otherwise noted, if statements must be used inside of the corresponding block *(some are global and can be used anywhere)*.
+
 ## General
 The following Theme Engine elements are available for general use within a theme and can be placed anywhere.
 
 ### Variables
+	<!-- Example use of some global variables -->
+	<head>
+		<title>{AccountName}</title>
+		{CSS}
+		{JS}
+	</head>
+
 `CSS`
 
 	a <link rel="stylesheet" /> tag with a link to the theme's CSS on StageBloc's CDN
@@ -361,6 +372,17 @@ The following Theme Engine elements are available for general use within a theme
 	the ID of the account
 	
 ### Variables With Options
+**jQuery**  
+The latest version of jQuery on the page via Google's CDN
+
+`v`
+
+	use this parameter to specify a particular version
+	
+	accepted values are any version hosted on Google
+	
+	defaults to the latest version
+
 **BootstrapCSS**  
 The latest version of Bootstrap's combined (responsive with icons) CSS from [BootstrapCDN](http://www.bootstrapcdn.com/)
 
@@ -1057,27 +1079,27 @@ Creates a link that, when clicked, will download the audio track (unless it requ
 ### If Statements
 `if:AudioPlaylistCanBeDownloadedForFree`
 
-	Check to see if the audio playlist can be downloaded for free
+	check to see if the audio playlist can be downloaded for free
 
 `if:AudioPlaylistCanBeSold`
 
-	Check to see if the audio playlist is being sold
+	check to see if the audio playlist is being sold
 	
 `if:AudioPlaylistCanNamePrice`
 
-	Check to see if the playlist is being sold and fans can name a price for it or not
+	check to see if the playlist is being sold and fans can name a price for it or not
 	
 `if:AudioPlaylistHasLabel`
 
-	Check to see if the audio playlist has a label or not
+	check to see if the audio playlist has a label or not
 	
 `if:AudioPlaylistHasRecordedDate`
 
-	Check to see if the audio playlist has a recorded date or not
+	check to see if the audio playlist has a recorded date or not
 	
 `if:AudioPlaylistHasThumbnail`
 
-	Check to see if the audio playlist has a photo or not
+	check to see if the audio playlist has a photo or not
 	
 ## Videos
 ### page:VideoList
@@ -1313,7 +1335,7 @@ A cover image for this video video or a default one if there is no cover set
 ### If Statements
 `if:VideoPlaylistHasThumbnail`
 
-	Check to see if the video playlist has a photo or not
+	check to see if the video playlist has a photo or not
 
 ## Photos
 ### page:PhotoList
@@ -1493,7 +1515,7 @@ PreviousPhotoUrl, NextPhotoUrl
 ### If Statements
 `if:PhotoCanBeSold`
 
-	Checks to see if a photo can be sold or not
+	checks to see if a photo can be sold or not
 
 ## Photo Albums
 ### page:PhotoAlbumList
@@ -1590,7 +1612,6 @@ A cover image for this photo album or a default one if there is no cover set
 	
 	defaults to "thumbnail"
 
-
 ## Events
 ### page:EventPastList
 `/events/past` - This page should show a listing of events that have already occurred
@@ -1600,6 +1621,233 @@ A cover image for this photo album or a default one if there is no cover set
 
 ### page:EventView
 `/events/[%id]` - This page should show information for an individual event
+
+### module:EventList
+This module lists events by an account. Videos are returned by the date they occur.
+
+**Module Options**  
+`limit`
+
+	the amount of events to list per page
+
+	accepted values are any integer
+
+	defaults to 50
+
+`offset`
+
+	skips X number of items based on the ordering, it is automatically adjusted when paging
+
+	accepted values are any integer
+
+	defaults to 0
+
+`direction`
+
+	the direction in which to list the events
+
+	accepted values are asc or desc
+
+	defaults to asc
+
+`accountId`
+
+	a comma separated list of the IDs of the accounts to limit the results to
+
+	accepted values are IDs of any children accounts of the current account (see variable {ChildAccountIDs})
+
+	defaults to none (i.e. only the current account)
+
+`sticky`
+
+	whether or not to include sticky events
+
+	defaults to showing both
+
+	accepted values are true (to show only sticky events) or false (to show only non-sticky events)
+
+`upcoming`
+
+	whether or not to show upcoming events
+
+    accepted values are true or false
+
+    defaults to true
+
+`past`
+
+	whether or not to include past events
+
+    accepted values are true or false
+
+    defaults to false
+
+`userId`
+
+	a userId to limit the events to those this user has RSVPed to
+
+	accepts the ID of any user that is a fan of the account
+
+	defaults to none
+	
+`attending`
+
+	when used in combination with userId, a way to filter the attending status of those events
+
+	accepted values are "yes", "no", and "maybe"
+
+	defaults to none
+
+### module:EventView
+This module will load the content for an event. When on {page:EventView} it will automatically grab the right data from the URL.
+
+**Module Options**  
+`eventId`
+
+	an ID for which event to show
+
+	accepted values are any event ID that belongs to the same account
+
+	defaults to none or the ID from the URL if on {page:EventView}
+
+### block:EventView
+EventAccountId  
+:   the ID of the account that created the event
+
+EventTitle  
+:	the title of the event
+
+EventDescription  
+:	the description of the event
+
+EventAges  
+:	will return either "Any age" or "[%Age]+" (meaning this age and up)
+
+EventCity  
+:	the city in which the event is taking place
+
+EventContestId  
+:	the ID for the contest for this event (if it has one)
+
+EventId  
+:	the ID of the event
+
+EventLikeCount  
+:	the number of likes for the event
+
+EventAttendingCount  
+:	the number of users that have RSVPed "Yes"
+
+EventMaybeAttendingCount  
+:	the number of users that have RSVPed "Maybe"
+
+EventNotAttendingCount  
+:	the number of users that have RSVPed "No"
+
+EventUrl  
+:	a permalink to the event's individual page
+
+EventShortUrl  
+:	a short URL for the event
+
+EventLocation  
+:	a string constructed based on the information available for the location. if in the USA, it will return "city, state", otherwise it will return "city, state, country"
+
+EventStreetAddress  
+:	the street address of the event's location
+
+EventState  
+:	the state in which the event is taking place
+
+EventPrice  
+:	the event for the price if it has one
+
+TicketsBuyLink  
+:	a link to where tickets for this event can be purchased, will return a link to the presale tickets if it's a presale or the normal tickets if not
+
+VenueName  
+:	the name of the venue where this event is taking place
+
+SupportingActs  
+:	a comma separated listing of the supporting acts for the event
+
+VenueWebsiteUrl  
+:	the URL to the venue where the event is taking place
+
+### Variables With Options
+**EventPhotoUrl**  
+A cover image for this event or a default one if there is no cover set
+
+`size`
+
+	the size of the photo to load
+	
+	accepted sizes are "thumbnail", "small", "medium", "large", "original"
+	
+	defaults to "thumbnail"
+
+**EventStartDate**  
+The date and time this event starts
+
+`format`
+
+	the format of the date according to PHP [date() function](http://php.net/date) 
+
+    accepted values are a date format string, relative (returns time ago such as "5 seconds ago"), or gmdate (a GMT date in PHP date format 'Y-m-d H:i:s')
+
+    defaults to `n/j/y`
+
+**EventEndDate**  
+The date and time this event end
+
+`format`
+
+	the format of the date according to PHP [date() function](http://php.net/date) 
+
+    accepted values are a date format string, relative (returns time ago such as "5 seconds ago"), or gmdate (a GMT date in PHP date format 'Y-m-d H:i:s')
+
+    defaults to `n/j/y`
+
+### If Statements
+`if:EventHasContest`
+
+	check to see if an event has a contest or not
+
+`if:EventHasEnded`
+
+	check if an event has finished or not
+
+`if:EventHasMinimumAge`
+
+	check if an event has a required minimum age (any age greater than zero).
+
+`if:EventHasPhoto`
+
+	check to see if an has a cover photo or not
+
+`if:EventHasPrice`
+
+	check if an event has a price of more than $0.00
+
+`if:EventHasSupportingActs`
+
+	check if there is at least one supporting act for the event
+
+`if:EventHasTicketsBuyLink`
+
+	check if the event has a ticket buy link attached, if the event has a presale and the presale hasn't started yet then this will return false
+
+`if:EventPresaleIsActive`
+
+	check to see if the presale for an event is active
+
+`if:HasPastEvents` *(global, can be run from anywhere)*
+
+	check if past events exist for current account
+
+`if:HasUpcomingEvents` *(global, can be run from anywhere)*
+
+	check if upcoming events exist for the current account
 
 ## Statuses
 ### page:StatusList
