@@ -2396,6 +2396,10 @@ TransactionItemName
 :	the name of the item that was ordered
 
 ### If Statements
+`if:TransactionHasBeenShipped`
+
+	checks to see if the transaction was shipped or not
+
 `if:TransactionIsForDigitalItem`
 
 	checks to see if the transaction was for a digital item or not
