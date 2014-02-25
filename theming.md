@@ -152,7 +152,7 @@ Modules can have their own options. Some of the options are available to all `{m
 		...
 	{/module:ModuleName}
 	
-The following options are an example of two options that are available on most modules. All of the available options for a particular `{module}` can be found by the documentation for that specific modules elsewhere in these docs.
+The following options are an example of two options that are available on most listing modules. All of the available options for a particular `{module}` can be found by the documentation for that specific modules elsewhere in these docs.
 
 `pagination`
 
@@ -170,6 +170,42 @@ The following options are an example of two options that are available on most m
 
 	defaults to false
 	
+### Module If Statements
+**if:PositionInModule**  
+Checks to see what block is currently being rendered in the listing module. The first item in the module is `1` (i.e. it is 1 indexed)
+
+`gt`
+
+	check if the position is greater than a certain point
+	
+	accepted values are any integer
+	
+	defaults to none
+
+`lt`
+
+	check if the position is less than a certain point
+
+	accepted values are any integer
+
+	defaults to none
+
+`e`
+
+	check to see if the position is equal to a certain point
+
+	accepted values are any integer
+
+	defaults to none
+
+`multipleOf`
+
+	check to see if the position is a multiple of a number
+
+	accepted values are any integer
+
+	defaults to none
+
 ## Blocks
 Blocks can best be thought of us the models of the data and must be inside of a `{module}`. When inside of a listing `{module}`, a `{block}` will be repeated as many times as necessary depending on the returned data. The general syntax for `{block}`s is as follows:
 
@@ -382,6 +418,9 @@ The latest version of jQuery on the page via Google's CDN
 	accepted values are any version hosted on Google
 	
 	defaults to the latest version
+	
+**jPlayer**  
+The jPlayer javascript library *(requires {jQuery} to be present before this variable)*
 
 **BootstrapCSS**  
 The latest version of Bootstrap's combined (responsive with icons) CSS from [BootstrapCDN](http://www.bootstrapcdn.com/)
@@ -412,6 +451,26 @@ The latest version of Bootstrap's JS from [BootstrapCDN](http://www.bootstrapcdn
 	accepted values are any version hosted on BootstrapCDN
 	
 	defaults to the latest version
+	
+### If Statements
+**if:PageIsActive**  
+Checks to see if a page is the currently rendered theme engine page
+
+`page`
+	
+	the page to check *should be anything after the colon in {page:<Page_Name>}*
+	
+	accepted values are any page
+	
+	defaults to none
+
+`uri`
+
+	if you need to be more exact, you can specify an exact URI *the part of the URL after your account name (non custom domains) or you custom domain, no leading forward slash*
+	
+	accepted values are any URI
+	
+	defaults to none
 	
 ### Pages
 **page:Error404**  
@@ -467,15 +526,7 @@ This module lists blog posts by an account. Blog posts are returned by the date 
 	accepted values are any integer
 	
 	defaults to 0
-	
-`ignorePaging`
-
-	will make offset always 0 regardless of the page you are one
-
-	accepted values are true or false
-
-	defaults to false
-	
+		
 `sticky`
 
 	whether or not to include sticky posts
@@ -2078,6 +2129,85 @@ A cover image for this store item or a default one if there is no cover set
 	accepted sizes are "thumbnail", "small", "medium", "large", "original"
 	
 	defaults to "thumbnail"
+	
+**StoreItemAddToCartLink**  
+Creates a link that, when clicked, will add the store item to the user's cart
+
+`storeItemId` (*required*)
+
+	the ID of the store item you want to add to the user's cart
+
+`text`
+
+	the text to be put inside the <a> tag
+
+	accepted values are any string (HTML included)
+
+    defaults to "Add To Cart"
+
+`preorderText`
+
+	the text to be put inside the <a> tag when a pre-order is set up for the playlist
+
+	accepted values are any string (HTML included)
+
+    defaults to "Pre-order"
+
+`preorderSoldOutText`
+
+	the text to be put inside the <a> tag when a preorder is set up for the playlist and it has sold out
+
+	accepted values are any string (HTML included)
+
+    defaults to "Pre-order Sold Out"
+
+`closeTag`
+
+	whether or not to close the <a> tag
+
+	accepted values are true or false
+
+	defaults to true
+
+`class`
+
+	the class to assign to the <a> tag
+
+	accepted values are any string
+
+	defaults to none
+
+**StoreItemFreeDownloadLink**  
+Creates a link that, when clicked, will download the store item is possible
+
+`storeItemId` (*required*)
+
+	the ID of the store item you want to add to the user's cart
+
+`text`
+
+	the text to be put inside the <a> tag
+
+	accepted values are any string (HTML included)
+
+    defaults to "Add To Cart"
+
+`closeTag`
+
+	whether or not to close the <a> tag
+
+	accepted values are true or false
+
+	defaults to true
+
+`class`
+
+	the class to assign to the <a> tag
+
+	accepted values are any string
+
+	defaults to none
+
 
 ### If Statements
 `if:StoreItemCanBeDownloadedForFree`
@@ -2215,7 +2345,14 @@ CommentContentType
 CommentItemId  
 :	the ID of the item the comment was written about
 
+### If Statements
+`if:CommentIsReply`
+
+	check to see if a comment is a reply to another comment
+
 ## Orders
+
+## Users
 
 # SBNav
 SBNav is the little, circular control box that appears in a corner of the screen. It allows users to, among other things, log in, follow and unfollow accounts, and manage their shopping cart. It is also the means of communication by which our [Advanced Functionality](#advanced-functionality) is achieved.
