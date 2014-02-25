@@ -954,7 +954,7 @@ AudioPlaylistFreeDownloadQuality, AudioPlaylistPaidDownloadQuaility
 	128kb MP3, 320kb MP3, Original WAV, Original AIFF, Original WAV / AIFF
 
 ### Variables With Options
-**AudioPlaylistPhotoUrl** 
+**AudioPlaylistPhotoUrl**  
 A cover image for this audio playlist or a default one if there is no cover set
 
 size
@@ -1183,7 +1183,7 @@ VideoCreatorId
 VideoUrl  
 :	a permalink to the video's individual page
 
-VideoJavaScriptEscapedTitle
+VideoJavaScriptEscapedTitle  
 :	the title of the video escaped so that it is able to be used with JavaScript
 
 VideoId  
@@ -1208,7 +1208,7 @@ VideoJavaScriptEscapedEmbedCode
 :	the embed code escaped to be used in JavaScript
 
 ### Variables With Options
-**VideoPhotoUrl** 
+**VideoPhotoUrl**  
 A cover image for this video or a default one if there is no cover set
 
 size
@@ -1231,7 +1231,75 @@ size
 ### page:VideoPlaylistView
 `/videos/playlists/[%id]` - This page should show content for an individual video playlist
 
+### VideoPlaylistList
+This module lists video playlists by an account.
 
+**Module Options**  
+`limit`
+
+	the amount of video playlists to list per page
+
+	accepted values are any integer
+
+	defaults to 50
+
+`offset`
+
+	skips X number of items based on the ordering, it is automatically adjusted when paging
+
+	accepted values are any integer
+
+	defaults to 0
+
+`accountId`
+
+	a comma separated list of the IDs of the accounts to limit the results to
+
+	accepted values are IDs of any children accounts of the current account (see variable {ChildAccountIDs})
+
+	defaults to none (i.e. only the current account)
+
+### VideoPlaylistView
+This module will load the content for a single vide playlist. When on {page:VideoPlaylistView} it will automatically grab the right data from the URL.
+
+### block:VideoPlaylistView
+VideoPlaylistDescription  
+:	the description for the playlist
+
+VideoPlaylistId  
+:	the ID for the video playlist
+
+VideoPlaylistUrl  
+:	a permalink to the video playlist's individual page
+
+VideoPlaylistTitle  
+:	the title for the video playlist
+
+VideoPlaylistVideoCount  
+:	the amount of videos in this playlist
+
+CreatedByPhotoUrl, ModifiedByPhotoUrl  
+:	a URL to the thumbnail photo for the user who created/modified the video playlist to be used in an `<img src="" />` tag
+
+CreatedByName, ModifiedByName  
+:	the name of the user who created/modified the video playlist
+
+### Variables With Options
+**VideoPlaylistPhotoUrl**  
+A cover image for this video video or a default one if there is no cover set
+
+size
+
+	the size of the photo to load
+	
+	accepted sizes are "thumbnail", "small", "medium", "large", "original"
+	
+	defaults to "thumbnail"
+	
+### If Statements
+`if:VideoPlaylistHasThumbnail`
+
+	Check to see if the video playlist has a photo or not
 
 ## Photos
 ### page:PhotoList
@@ -1239,6 +1307,176 @@ size
 
 ### page:PhotoView
 `/photos/[%id]` - This page should show content for an individual photo
+
+### module:PhotoList
+This module lists photos by an account. Photos is listed by the date it was created (unless an audioPlaylistId is specified, then they are listed by their order in that playlist).
+
+**Modules Options**  
+`albumId`
+
+	a photo album ID to filter the photos by
+	
+	accepted values are any ID of an photo album that belongs to the same account
+
+    defaults to none
+
+`limit`
+
+	the amount of video playlists to list per page
+
+	accepted values are any integer
+
+	defaults to 50
+
+`offset`
+
+	skips X number of items based on the ordering, it is automatically adjusted when paging
+
+	accepted values are any integer
+
+	defaults to 0
+
+`direction`
+
+	the direction in which to list the videos
+
+	accepted values are asc or desc
+
+	defaults to asc
+
+`accountId`
+
+	a comma separated list of the IDs of the accounts to limit the results to
+
+	accepted values are IDs of any children accounts of the current account (see variable {ChildAccountIDs})
+
+	defaults to none (i.e. only the current account)
+
+`includeFanContent`
+
+	normally content submitted by fans is for module:FansiteContentList, but this allows it to be included here
+
+	accepted values are true and false
+
+	defaults to false
+
+`accountContent`
+
+	whether or not to show photos created by admins of the account
+	
+	accepted values are true or false
+
+    defaults to true
+
+`exclusive`
+
+	whether or not to show exclusive content
+
+	accepted values are true or false
+
+	defaults to showing both in the case that the user is logged in and authorized to see it
+	
+`userId`
+
+	the user to limit the photos to
+	
+	accepted values are an ID of an admin if accountContent is enabled or an ID of a fan is includeFanContent is enabled
+
+    defaults to none (i.e. all fans and / or all admins)
+
+`showPrivate`
+
+	whether or not to include private photos in the listing
+	
+	accepted values are true or false
+	
+	defaults to false
+
+### module:PhotoView
+This module will load the content for a single photo. When on {page:PhotoView} it will automatically grab the right data from the URL.
+
+**Module Options**  
+`photoId`
+
+	an ID for which photo to show
+
+	accepted values are any photo ID that belongs to the same account
+
+	defaults to none or the ID from the URL if on {page:PhotoView}
+
+`fanSubmittedIsExclusive`
+
+	whether or not to consider content submitted by fans to a fansite as exclusive or not
+
+	accepted values are true and false
+
+	defaults to true
+
+### block:PhotoView
+AuthorName  
+:	the name of the user that created this audio track
+
+AuthorUsername  
+:	the StageBloc username of the user that created this audio track
+
+AuthorUrl  
+:	the URL to the public facing user page for this author
+
+AuthorFansiteUrl  
+:	the URL to the public facing user page for this author on the account's fansite
+
+AuthorPhotoUrl  
+:	url to a thumbnail sized, 130x130px user photo
+
+PhotoAccountId  
+:    the ID of the account that created the photo
+
+PhotoCreatorId  
+:	the ID of the user who created the photo
+
+PhotoId  
+:	the ID of the photo
+
+PhotoUrl  
+:	the permalink to this photo's individual page
+
+PhotoShortUrl  
+:	a short URL for the photo
+
+PhotoTitle  
+:	the title of the photo
+
+PhotoDescription  
+:	the description of the photo
+
+Source-Thumb  
+:	a squared thumbnail photo link with the dimensions of 130x130px
+
+Source-Small  
+:	a link to a photo with max dimensions of 250x250px
+
+Source-Medium  
+:	a link to a photo with max dimensions of 500x500px
+
+Source-Large  
+:	a link to a photo with max dimensions of 800x800px
+
+Source-Original  
+:	a link to the originally uploaded photo
+
+PreviousPhotoId, NextPhotoId  
+:	the ID of the photo previous/next to the current one if it exists
+
+PreviousPhotoTitle, NextPhotoTitle  
+:	the title of the photo previous/next to the current one if it exists
+
+PreviousPhotoUrl, NextPhotoUrl  
+:	the permalink of the photo previous/next to the current one if it exists
+
+### If Statements
+`if:PhotoCanBeSold`
+
+	Checks to see if a photo can be sold or not
 
 ## Photo Albums
 ### page:PhotoAlbumList
