@@ -36,6 +36,16 @@ Some tips...
 ### Help us out!
 The documentation for the Theming Engine is up on GitHub for you to fork, modify, and improve. Join us over there to request features, add suggestions, and report bugs. What are you waiting for? [Git to it!](https://github.com/stagebloc/docs/blob/master/theming.md)
 
+## Local Theme Dev
+StageBloc themes can be edited in a web based sidebar, but that isn't ideal when doing rapid development and prototyping of a theme. For that reason, we've built an open source, PHP based tool to allow for easy localhost theme development. The tool simply uses our API to render a theme and return the HTML back to you. As such, a similar tool could be built in any other language pretty easily.
+
+For the PHP version, head over to our [Local Theme Dev](https://github.com/stagebloc/local-theme-dev) repo on GitHub. Once installed and running, it allows developers to quickly and easily swap between different themes and accounts to get a feel for how various data looks in their theme.
+
+Please feel free to open issues and/or submit pull requests if you find ways to make it more useful.
+
+## Submitting Themes
+Once you've built your theme, you can submit it to the StageBloc team for approval to be sold in our marketplace. This can be done via the StageBloc backend for your account. Themes can be priced as whatever amount you see fit (as well as free), and the same percentages apply to themes that apply to any other products sold on StageBloc. Once someone purchases your theme, they'll get the full source code and will be able to install and use it on their account.
+
 # Syntax
 The StageBloc Theming Engine makes use of curly brackets and a few main building blocks for the majority of its syntax. The build blocks (page, modules, and blocks) should be kept lowercase as they are in these docs.
 
