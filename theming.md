@@ -346,11 +346,11 @@ The following Theme Engine elements are available for general use within a theme
 ### Variables
 `CSS`
 
-	A <link rel="stylesheet" /> tag with a link to the theme's CSS on StageBloc's CDN
+	a <link rel="stylesheet" /> tag with a link to the theme's CSS on StageBloc's CDN
 
 `JS`
 
-	A <script src=""> tag with a link to the theme's JS on StageBloc's CDN
+	a <script src=""> tag with a link to the theme's JS on StageBloc's CDN
 
 `AccountName`
 
@@ -390,6 +390,14 @@ The latest version of Bootstrap's JS from [BootstrapCDN](http://www.bootstrapcdn
 	accepted values are any version hosted on BootstrapCDN
 	
 	defaults to the latest version
+	
+### Pages
+**page:Error404**  
+`/AnyPageThatDoesNotExist` - This page will be loaded whenever a unknown URL structure is hit
+
+## Activity Stream
+### page:ActivityStreamList
+`/updates` - This page should show a listing of content posted by your account *(this is the default homepage)*
 
 ## Blog
 	{page:BlogView}
@@ -416,7 +424,7 @@ This module lists blog posts by an account. Blog posts are returned by the date 
 **Module Options**  
 `direction`
 
-	the direction in which to order the blog posts
+	the direction in which to list the blog posts
 
     accepted values are asc or desc
 
@@ -635,7 +643,7 @@ The date this blog post was published
 `/audio/[%id]` - This page should show content for an individual audio track
 
 ### module:AudioList
-This module lists audio tracks by an account. Audio is listed by the date it was created.
+This module lists audio tracks by an account. Audio is listed by the date it was created  (unless an `audioPlaylistId` is specified, then they are listed by their order in that playlist).
 
 **Module Options**  
 `audioPlaylistId`
@@ -662,9 +670,9 @@ This module lists audio tracks by an account. Audio is listed by the date it was
 
 	defaults to 0
 
-`featured`
+`sticky`
 
-	whether or not to just return the featured audio track
+	whether or not to just return the sticky audio track
 
 	accepted values are true or false
 
@@ -672,13 +680,13 @@ This module lists audio tracks by an account. Audio is listed by the date it was
 
 `direction`
 
-	the direction in which to show the audio
+	the direction in which to list the audio
 	
 	accepted values are asc or desc
 
     defaults to asc
     
-`accountid`
+`accountId`
 
 	a comma separated list of the IDs of the accounts to limit the results to
 
@@ -690,7 +698,7 @@ This module lists audio tracks by an account. Audio is listed by the date it was
 This module will load the content for a single audio track. When on `{page:AudioView}` it will automatically grab the right data from the URL.
 
 **Module Options**  
-`audioid`
+`audioId`
 
 	an ID for which audio track to show
 	
@@ -877,9 +885,9 @@ size
 This module lists audio playlists by an account.
 
 **Module Options**  
-`featured`
+`sticky`
 
-	whether or not to list only the featured audio playlist
+	whether or not to list only the sticky audio playlist
 
     accepted values are true or false
 
@@ -887,7 +895,7 @@ This module lists audio playlists by an account.
 
 `featuredFirst`
 
-	whether or not to show the featured audio playlist first in the listing
+	whether or not to show the sticky audio playlist first in the listing
 	
 	accepted values are true or false
 	
@@ -1066,6 +1074,206 @@ Creates a link that, when clicked, will download the audio track (unless it requ
 `if:AudioPlaylistHasRecordedDate`
 
 	Check to see if the audio playlist has a recorded date or not
+	
+`if:AudioPlaylistHasThumbnail`
+
+	Check to see if the audio playlist has a photo or not
+	
+## Videos
+### page:VideoList
+`/videos` - This page should show a listing of video content such as videos or video playlists
+
+### page:VideoView
+`/videos/[%id]` - This page should show the content for an individual video
+
+### VideoList
+This module lists videos by an account. Videos are returned by the date they were created (unless a `videoPlaylistId` is specified, then they are listed by their order in that playlist).
+
+**Module Options**  
+`videoPlaylistId`
+
+	a video playlist ID to filter the videos by
+
+	accepted values are any ID of a video playlist that belongs to the same account
+
+	defaults to none
+	
+`limit`
+
+	the amount of videos to list per page
+
+	accepted values are any integer
+
+	defaults to 50
+
+`offset`
+
+	skips X number of items based on the ordering, it is automatically adjusted when paging
+
+	accepted values are any integer
+
+	defaults to 0
+
+`direction`
+
+	the direction in which to list the videos
+
+	accepted values are asc or desc
+
+	defaults to asc
+    
+`sticky`
+
+	whether or not to include sticky videos
+
+	defaults to showing both
+
+	accepted values are true (to show only sticky posts) or false (to show only non-sticky posts)
+    
+`accountId`
+
+	a comma separated list of the IDs of the accounts to limit the results to
+
+	accepted values are IDs of any children accounts of the current account (see variable {ChildAccountIDs})
+
+	defaults to none (i.e. only the current account)
+
+### VideoView
+This module will load the content for a single video. When on `{page:VideoView}` it will automatically grab the right data from the URL.
+
+**Module Options**  
+`videoId`
+
+	an ID for which video to show
+
+	accepted values are any video ID that belongs to the same account
+
+	defaults to none or the ID from the URL if on {page:VideoView}
+
+`fanSubmittedIsExclusive`
+
+	whether or not to consider content submitted by fans to a fansite as exclusive or not
+
+	accepted values are true and false
+
+	defaults to true
+
+### block:VideoView
+AuthorName  
+:	the name of the user that created this audio track
+
+AuthorUsername  
+:	the StageBloc username of the user that created this audio track
+
+AuthorUrl  
+:	the URL to the public facing user page for this author
+
+AuthorFansiteUrl  
+:	the URL to the public facing user page for this author on the account's fansite
+
+AuthorPhotoUrl  
+:	url to a thumbnail sized, 130x130px user photo
+
+VideoAccountId  
+:    the ID of the account that posted the video
+
+VideoCreatorId  
+:	the ID of the user who created the video
+
+VideoUrl  
+:	a permalink to the video's individual page
+
+VideoJavaScriptEscapedTitle
+:	the title of the video escaped so that it is able to be used with JavaScript
+
+VideoId  
+:	the ID of the video
+
+VideoShortUrl  
+:	a short URL for the video
+
+VideoDescription  
+:	the description of the video
+
+VideoJavaScriptEscapedDescription  
+:	the description of the video escaped to be used in JavaScript
+
+VideoEmbedCode  
+:	the embed code for the given video
+
+VideoJavaScriptEncodedEmbedCode  
+:	the embed code encoded for use in a URL
+
+VideoJavaScriptEscapedEmbedCode  
+:	the embed code escaped to be used in JavaScript
+
+### Variables With Options
+**VideoPhotoUrl** 
+A cover image for this video or a default one if there is no cover set
+
+size
+
+	the size of the photo to load
+	
+	accepted sizes are "thumbnail", "small", "medium", "large", "original"
+	
+	defaults to "thumbnail"
+
+### If Statements
+`if:AudioPlaylistHasThumbnail`
+
+	Check to see if the audio playlist has a photo or not
+
+## Video Playlists
+### page:VideoPlaylistList
+`/videos/playlists` - This page should show a listing of video playlists
+
+### page:VideoPlaylistView
+`/videos/playlists/[%id]` - This page should show content for an individual video playlist
+
+
+
+## Photos
+### page:PhotoList
+`/photos` - This page should show a listing of all your account's photos and/or photo albums
+
+### page:PhotoView
+`/photos/[%id]` - This page should show content for an individual photo
+
+## Photo Albums
+### page:PhotoAlbumList
+`/photos/albums` - This page should show a listing of photo albums
+
+### page:PhotoAlbumView
+`/photos/albums/[%id]` - This page should show the content for an individual photo album
+
+## Events
+### page:EventPastList
+`/events/past` - This page should show a listing of events that have already occurred
+
+### page:EventUpcomingList
+`/events`, `/events/upcoming` - This page should show a listing of events that have not yet occurred
+
+### page:EventView
+`/events/[%id]` - This page should show information for an individual event
+
+## Statuses
+### page:StatusList
+`/statuses` - This page should show a listing of statuses posted by your account
+
+### page:StatusView
+`/statuses/[%id]` - This page should show an individual status
+
+## Store Items
+### page:StoreItemList
+`/store` - This page should show a listing of store items from your account
+
+### page:StoreItemView
+`/store/[%id]` - This page should show content for an individual store item
+
+## Comments
+
+## Orders
 
 # SBNav
 SBNav is the little, circular control box that appears in a corner of the screen. It allows users to, among other things, log in, follow and unfollow accounts, and manage their shopping cart. It is also the means of communication by which our [Advanced Functionality](#advanced-functionality) is achieved.
