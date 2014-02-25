@@ -445,7 +445,7 @@ This module lists blog posts by an account. Blog posts are returned by the date 
 	
 `includeFanContent`
 
-	normally content submitted by fans is for `FansiteContentList`, but this allows it to be included here
+	normally content submitted by fans is for module:FansiteContentList, but this allows it to be included here
 
 	accepted values are true and false
 
@@ -455,7 +455,7 @@ This module lists blog posts by an account. Blog posts are returned by the date 
 
 	a comma separated list of the IDs of the accounts to limit the results to
 	
-	accepted values are IDs of any children accounts of the current account (see variable `{ChildAccountIDs}`)
+	accepted values are IDs of any children accounts of the current account (see variable {ChildAccountIDs})
 
     defaults to none (i.e. only the current account)
 
@@ -468,7 +468,7 @@ This module lists blog posts by an account. Blog posts are returned by the date 
 	accepted values are any integer
 
 ### module:BlogView
-This module will list the content for a single blog post. When on `{page:BlogView}` it will automatically grab the right data from the URL
+This module will load the content for a single blog post. When on `{page:BlogView}` it will automatically grab the right data from the URL.
 
 **Module Options**  
 `fanSubmittedIsExclusive`
@@ -547,6 +547,26 @@ PreviousBlogPostTitle, NextBlogPostTitle
 PreviousBlogPostUrl, NextBlogPostUrl  
 :	the permalink of the blog post previous/next to the current one if it exists
 
+### Variables With Options
+**PublishedDate**  
+The date this blog post was published
+  
+`format`
+
+	the format of the date according to PHP [date() function](http://php.net/date) 
+
+    accepted values are a date format string, relative (returns time ago such as "5 seconds ago"), or gmdate (a GMT date in PHP date format 'Y-M-d h:i A')
+
+    defaults to `n/j/y`
+    
+`shorttime`
+
+	whether or not to show the units of time in a contracted manner (i.e. secs vs seconds) when using format="relative"
+
+	accepted values are true or false
+	
+	defaults to false
+
 ### If Statements
 `if:BlogPostHasPhoto`
 
@@ -555,6 +575,253 @@ PreviousBlogPostUrl, NextBlogPostUrl
 `if:ReadMore`
 
 	check if the current excerpt is trimmed to something less than its total length
+	
+## Audio
+### page:AudioList
+`/audio` - This page should show a listing of audio content such as audio tracks or audio playlists
+
+### page:AudioView
+`/audio/[%id]` - This page should show content for an individual audio track
+
+### module:AudioList
+This module lists audio tracks by an account. Audio is listed by the date it was created.
+
+**Module Options**  
+`audioPlaylistId`
+
+	a audio playlist ID to filter the audio tracks by
+	
+	accepted values are any ID of an audio playlist that belongs to the same account
+
+    defaults to none
+
+`limit`
+
+	the amount of audio tracks to list per page
+	
+	accepted values are any integer
+
+    defaults to 10
+
+`offset`
+
+	skips X number of items based on the ordering, it is automatically adjusted when paging
+
+	accepted values are any integer
+
+	defaults to 0
+
+`featured`
+
+	whether or not to just return the featured audio track
+
+	accepted values are true or false
+
+	defaults to false
+
+`direction`
+
+	the direction in which to show the audio
+	
+	accepted values are asc or desc
+
+    defaults to asc
+    
+`accountid`
+
+	a comma separated list of the IDs of the accounts to limit the results to
+
+	accepted values are IDs of any children accounts of the current account (see variable {ChildAccountIDs})
+
+	defaults to none (i.e. only the current account)
+
+### module:AudioView
+This module will load the content for a single audio track. When on `{page:AudioView}` it will automatically grab the right data from the URL.
+
+**Module Options**  
+`audioid`
+
+	an ID for which audio track to show
+	
+	accepted values are any audio ID that belongs to the same account
+	
+	defaults to none or the ID from the URL if on {page:AudioView}
+	
+`fanSubmittedIsExclusive`
+
+	whether or not to consider content submitted by fans to a fansite as exclusive or not by default
+
+	accepted values are true and false
+
+	defaults to true
+
+### block:AudioView
+This block exposes various content for an audio object
+
+AuthorName  
+:	the name of the user that created this audio track
+
+AuthorUsername  
+:	the StageBloc username of the user that created this audio track
+
+AuthorUrl  
+:	the URL to the public facing user page for this author
+
+AuthorFansiteUrl  
+:	the URL to the public facing user page for this author on the account's fansite
+
+AuthorPhotoUrl  
+:	url to a thumbnail sized, 130x130px user photo
+
+AudioAccountId  
+:    the ID of the account that created this audio
+
+AudioUrl  
+:	a permalink to the audio track's individual page
+
+AudioShortUrl  
+:	the short URL for this audio track
+
+AudioTitle  
+:	the title of the audio track
+
+AudioJavaScriptEscapedTitle  
+:	the title of the audio track for use within JavaScript
+
+AudioId  
+:	the ID of the audio track
+
+AudioLyrics  
+:	the lyrics for the audio track
+
+AudioDescription  
+:	the description for the audio track
+
+AudioPrice  
+:	the price for this audio track in USD
+
+AudioStreamUrl
+:	the URL to use when streaming the audio track
+
+AudioCredits  
+:	the credits for the audio object
+
+AudioArtist  
+:	the artist for the audio track if given, otherwise the name of the account this audio belongs to
+
+AudioFreeDownloadQuality, AudioPaidDownloadQuaility  
+:	a string representing the quality of the free/paid version of this audio track, one of the following values:
+
+		* 128kb MP3
+		* 320kb MP3
+		* Original WAV
+		* Original AIFF
+		* Original WAV / AIFF
+
+### Variables With Options
+**AudioAddToCartLink**  
+Creates a link that, when clicked, will add the audio track to the user's cart on StageBloc
+
+`audioId` (*required*)
+
+	the ID of the audio track you want to add to the user's cart
+
+`text`
+
+	the text to be put inside the <a> tag
+
+	accepted values are any string (HTML included)
+
+    defaults to "Add To Cart"
+
+`closeTag`
+
+	whether or not to close the <a> tag
+	
+	accepted values are true or false
+	
+	defaults to true
+
+`class`
+
+	the class to assign to the <a> tag
+	
+	accepted values are any string
+	
+	defaults to none
+
+**AudioFreeDownloadLink**  
+Creates a link that, when clicked, will download the audio track (unless it requires a follow to download, in which a modal will first show up)
+
+`audioId` (*required*)
+
+	the ID of the audio track you want to add to the user's cart
+
+`text`
+
+	the text to be put inside the <a> tag
+
+	accepted values are any string (HTML included)
+
+    defaults to "Add To Cart"
+
+`closeTag`
+
+	whether or not to close the <a> tag
+	
+	accepted values are true or false
+	
+	defaults to true
+
+`class`
+
+	the class to assign to the <a> tag
+	
+	accepted values are any string
+	
+	defaults to none
+
+**AudioRecordedDate**  
+The date this audio was recorded on
+	
+format
+
+	the format of the date according to PHP [date() function](http://php.net/date) 
+
+    accepted values are a date format string, relative (returns time ago such as "5 seconds ago"), or gmdate (a GMT date in PHP date format 'Y-M-d h:i A')
+
+    defaults to `n/j/y`
+
+**AudioPhotoUrl**  
+A cover image for this audio track or a default one if there is no cover set
+
+size
+
+	the size of the photo to load
+	
+	accepted sizes are "thumbnail", "small", "medium", "large", "original"
+	
+	defaults to "thumbnail"
+	
+### If Statements
+`if:AudioHasLyrics`
+
+	Check to see if the audio track has lyrics
+
+`if:AudioCanBeDownloadedForFree`
+	
+	Check to see if the audio track can be downloaded for free
+
+`if:AudioCanBeSold`
+
+	Check to see if the audio track is being sold
+
+## Audio Playlists
+### page:AudioPlaylistList
+`/audio/playlists` - This page should show a listing of audio playlists
+
+### page:AudioPlaylistView
+`/audio/playlists/[%id]` - This page should show content for an individual audio playlist
 
 # SBNav
 SBNav is the little, circular control box that appears in a corner of the screen. It allows users to, among other things, log in, follow and unfollow accounts, and manage their shopping cart. It is also the means of communication by which our [Advanced Functionality](#advanced-functionality) is achieved.
