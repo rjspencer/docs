@@ -2374,8 +2374,8 @@ This module lists transactions for the logged in user
 	defaults to 0
 
 ### block:TransactionView
-TransactionReceiptUrl  
-:	a URL to the receipt for this order
+TransactionOrderReceiptUrl  
+:	a URL to the receipt for the order this transaction belongs to
 
 TransactionId  
 :	the ID of the transaction
@@ -2386,9 +2386,6 @@ TransactionOrderId
 TransactionAmount  
 :	the amount of money spent in this transaction in USD (doesn't include shipping)
 
-TransactionShippingAmount  
-:   the amount of money spent on shipping for this transaction
-
 TransactionTrackingNumber  
 :	the tracking number for the item if it has been shipped
 
@@ -2397,7 +2394,6 @@ TransactionDownloadUrl
 
 TransactionItemName  
 :	the name of the item that was ordered
-
 
 ## Users
 
