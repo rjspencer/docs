@@ -502,7 +502,7 @@ This module lists blog posts by an account. Blog posts are returned by the date 
 
 	defaults to false
 
-`accountid`
+`accountId`
 
 	a comma separated list of the IDs of the accounts to limit the results to
 	
@@ -742,6 +742,9 @@ AudioJavaScriptEscapedTitle
 AudioId  
 :	the ID of the audio track
 
+LikeCount  
+:	the number of likes for the audio track
+
 AudioLyrics  
 :	the lyrics for the audio track
 
@@ -763,11 +766,7 @@ AudioArtist
 AudioFreeDownloadQuality, AudioPaidDownloadQuaility  
 :	a string representing the quality of the free/paid version of this audio track, one of the following values:
 
-		* 128kb MP3
-		* 320kb MP3
-		* Original WAV
-		* Original AIFF
-		* Original WAV / AIFF
+	128kb MP3, 320kb MP3, Original WAV, Original AIFF, Original WAV / AIFF
 
 ### Variables With Options
 **AudioAddToCartLink**  
@@ -873,6 +872,200 @@ size
 
 ### page:AudioPlaylistView
 `/audio/playlists/[%id]` - This page should show content for an individual audio playlist
+
+### module:AudioPlaylistList
+This module lists audio playlists by an account.
+
+**Module Options**  
+`featured`
+
+	whether or not to list only the featured audio playlist
+
+    accepted values are true or false
+
+    defaults to false
+
+`featuredFirst`
+
+	whether or not to show the featured audio playlist first in the listing
+	
+	accepted values are true or false
+	
+	defaults to false
+	
+`accountId`
+
+	a comma separated list of the IDs of the accounts to limit the results to
+
+	accepted values are IDs of any children accounts of the current account (see variable {ChildAccountIDs})
+
+	defaults to none (i.e. only the current account)
+
+### module:AudioPlaylistView
+This module will load the content for a single audio playlist. When on {page:AudioPlaylistView} it will automatically grab the right data from the URL.
+
+### block:AudioPlaylistView
+This block exposes various content for an audio playlist object
+
+AudioPlaylistDescription  
+:	the description for the audio playlist
+
+AudioPlaylistId  
+:	the ID for the audio playlist
+
+AudioPlaylistUrl  
+:	a permalink for the playlist's individual page
+
+AudioPlaylistTitle  
+:	the title of the audio playlist
+
+AudioPlaylistAudioCount  
+:	the amount of audio tracks in this playlist
+
+AudioPlaylistPrice  
+:	the price of this playlist if it is being sold
+
+AudioPlaylistLabel  
+:	the record label for the audio playlist
+
+LikeCount  
+:	the number of likes for the audio playlist
+
+AudioPlaylistPrice  
+:	the price for the playlist (if there is a pre-order currently active for the playlist, it'll use that price instead)
+
+CreatedByPhotoUrl, ModifiedByPhotoUrl
+:	a URL to the photo for who created/modified the audio playlist to be used in an `<img />` tag
+
+CreatedByName, ModifiedByName
+:	the name of the user who created/modified the audio playlist
+
+AudioPlaylistFreeDownloadQuality, AudioPlaylistPaidDownloadQuaility  
+:	a string representing the quality of the free/paid version of this audio playlist, one of the following values:
+
+	128kb MP3, 320kb MP3, Original WAV, Original AIFF, Original WAV / AIFF
+
+### Variables With Options
+**AudioPlaylistPhotoUrl** 
+A cover image for this audio playlist or a default one if there is no cover set
+
+size
+
+	the size of the photo to load
+	
+	accepted sizes are "thumbnail", "small", "medium", "large", "original"
+	
+	defaults to "thumbnail"
+
+**AudioPlaylistReleaseDate** 
+The date the audio playlist was released on
+	
+format
+
+	the format of the date according to PHP [date() function](http://php.net/date) 
+
+    accepted values are a date format string, relative (returns time ago such as "5 seconds ago"), or gmdate (a GMT date in PHP date format 'Y-M-d h:i A')
+
+    defaults to `n/j/y`
+
+**AudioPlaylistAddToCartLink**  
+Creates a link that, when clicked, will add the audio track to the user's cart on StageBloc
+
+`audioPlaylistId` (*required*)
+
+	the ID of the audio playlist you want to add to the user's cart
+
+`text`
+
+	the text to be put inside the <a> tag
+
+	accepted values are any string (HTML included)
+
+    defaults to "Add To Cart"
+
+`preorderText`
+
+	the text to be put inside the <a> tag when a pre-order is set up for the playlist
+
+	accepted values are any string (HTML included)
+
+    defaults to "Pre-order"
+
+`preorderSoldOutText`
+
+	the text to be put inside the <a> tag when a preorder is set up for the playlist and it has sold out
+
+	accepted values are any string (HTML included)
+
+    defaults to "Pre-order Sold Out"
+
+`closeTag`
+
+	whether or not to close the <a> tag
+
+	accepted values are true or false
+
+	defaults to true
+
+`class`
+
+	the class to assign to the <a> tag
+
+	accepted values are any string
+
+	defaults to none
+
+**AudioPlaylistFreeDownloadLink**  
+Creates a link that, when clicked, will download the audio track (unless it requires a follow to download, in which a modal will first show up)
+
+`audioPlaylistId` (*required*)
+
+	the ID of the audio track you want to add to the user's cart
+
+`text`
+
+	the text to be put inside the <a> tag
+
+	accepted values are any string (HTML included)
+
+    defaults to "Add To Cart"
+
+`closeTag`
+
+	whether or not to close the <a> tag
+
+	accepted values are true or false
+
+	defaults to true
+
+`class`
+
+	the class to assign to the <a> tag
+
+	accepted values are any string
+
+	defaults to none
+
+### If Statements
+`if:AudioPlaylistCanBeDownloadedForFree`
+
+	Check to see if the audio playlist can be downloaded for free
+
+`if:AudioPlaylistCanBeSold`
+
+	Check to see if the audio playlist is being sold
+	
+`if:AudioPlaylistCanNamePrice`
+
+	Check to see if the playlist is being sold and fans can name a price for it or not
+	
+`if:AudioPlaylistHasLabel`
+
+	Check to see if the audio playlist has a label or not
+	
+`if:AudioPlaylistHasRecordedDate`
+
+	Check to see if the audio playlist has a recorded date or not
 
 # SBNav
 SBNav is the little, circular control box that appears in a corner of the screen. It allows users to, among other things, log in, follow and unfollow accounts, and manage their shopping cart. It is also the means of communication by which our [Advanced Functionality](#advanced-functionality) is achieved.
