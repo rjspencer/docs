@@ -496,6 +496,200 @@ Checks to see if a page is the currently rendered theme engine page
 **page:Error404**  
 `/AnyPageThatDoesNotExist` - This page will be loaded whenever a unknown URL structure is hit
 
+## Modals
+As described in the [SBNav](#sbnav) section, there is a lot of built in functionality for you to use as a theme developer. Much of that functionality is accomplished through modals we've created and made available to use through SBNav. These modals are meant to handle a lot of the common actions a user may want to do and makes it so that you don't have to build that functionality into your theme if you don't want to.
+
+### JoinFansiteLink
+A link that opens a modal and allows a user to join the site's fansite *(the account must have a fansite setup for this to work)*
+
+`text`
+
+	the text to be put inside the <a> tag
+
+	accepted values are any string (HTML included)
+
+    defaults to "Join Fansite"
+
+`closeTag`
+
+	whether or not to close the <a> tag
+	
+	accepted values are true or false
+	
+	defaults to true
+
+`class`
+
+	the class to assign to the <a> tag
+	
+	accepted values are any string
+	
+	defaults to none
+	
+`reload`
+
+	whether or not to reload the page after their join the fansite
+	
+	accepts values are true and false
+	
+	defaults to false
+
+`forceFreeTier`
+
+	the tier you want to force a joining of (which override the join fansite modal) *(requires that the tier you pass be free)*
+	
+	accepted values are 1, 2, or 3 assuming the tier is free
+	
+	defaults to false
+
+`view`
+
+	what to default the view to if the user isn't logged on
+
+	accepted values are "login" or "signup"
+
+	defaults to "login"
+
+### {SubmitFanContentLink}
+Creates a link that, when clicked, will open a modal to allow fans to submit content
+
+`linkText`
+
+	the text to be put inside the <a> tag
+
+	accepted values are any string (HTML included)
+
+    defaults to "Add Content"
+
+`closeTag`
+
+	whether or not to close the <a> tag
+	
+	accepted values are true or false
+	
+	defaults to true
+
+`class`
+
+	the class to assign to the <a> tag
+	
+	accepted values are any string
+	
+	defaults to none
+
+`contentType`
+
+	the type of content to default the content adding modal to
+
+	accepted values are status, blog, photo, or video
+
+    defaults to status
+
+### {ShareLink}
+Add a link to open the built in StageBloc sharing modal. When the user is logged out this will have generic social sharing buttons for services like Twitter and Facebook. When the user is logged in, content can be shared using their connected social accounts.
+
+`linkText`
+
+	the text to be put inside the <a> tag
+
+	accepted values are any string (HTML included)
+
+    defaults to "Share"
+
+`shareText`
+
+	the text to default to in the sharing modal (other than the link to the content being shared)
+
+	accepted values are any string
+
+    defaults to none
+
+`closeTag`
+
+	whether or not to close the <a> tag
+	
+	accepted values are true or false
+	
+	defaults to true
+
+`class`
+
+	the class to assign to the <a> tag
+	
+	accepted values are any string
+	
+	defaults to none
+
+### {ReportContentLink}
+Creates a link that, when clicked, will open a modal for reporting (flagging) content as inappropriate, etc
+
+`linkText`
+
+	the text to be put inside the <a> tag
+
+	accepted values are any string (HTML included)
+
+    defaults to "Report Content"
+
+`closeTag`
+
+	whether or not to close the <a> tag
+	
+	accepted values are true or false
+	
+	defaults to true
+
+`class`
+
+	the class to assign to the <a> tag
+	
+	accepted values are any string
+	
+	defaults to none
+
+`contentType`
+
+	the content type slug of the content being reported
+
+	accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
+
+    defaults to whatever the current item is in the Theming Engine
+	
+`contentId`
+
+	the content ID of the content being reported
+
+	accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
+
+    defaults to whatever the current item is in the Theming Engine
+
+### {OpenCartLink}
+Creates a link that, when clicked, will open the user's cart
+
+`text`
+
+	the text to be put inside the <a> tag
+
+	accepted values are any string (HTML included)
+
+    defaults to "Open Cart"
+
+`closeTag`
+
+	whether or not to close the <a> tag
+	
+	accepted values are true or false
+	
+	defaults to true
+
+`class`
+
+	the class to assign to the <a> tag
+	
+	accepted values are any string
+	
+	defaults to none
+
 ## About
 ### page:About
 `/about` - This page should show general information about your account
