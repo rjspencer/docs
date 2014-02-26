@@ -2660,13 +2660,13 @@ OrderReceiptUrl
 OrderId  
 :	the ID of the order
 
-OrderTotal
+OrderTotal  
 :	the total amount of money in USD spend on this order
 
 OrderAmount  
 :	the amount of money in USD spent on this order without shipping
 
-OrderShippingAmount
+OrderShippingAmount  
 :	the amount of money in USD spent on shipping for this order
 
 ### block:TransactionView
