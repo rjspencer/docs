@@ -2540,7 +2540,7 @@ CommentItemId
 	check to see if a comment is a reply to another comment
 
 ## Orders
-Items that users have ordered will only be shown using the logged in user's ID and can't be made public
+Items that users have ordered will only be shown using the logged in user's ID and can't be made public. An order has one or more transactions. Transactions can be used to show the actual items that were part of an order.
 
 ### module:TransactionList
 This module lists transactions for the logged in user
@@ -2594,6 +2594,147 @@ TransactionItemName
 	checks to see if the transaction was for a digital item or not
 
 ## Users
+### page:UserView
+`/fansite/users/[%id]` - This page should show an individual fan of your account
+
+### page:UserList
+`/fansite/users` - This page should show a list of fans of an account
+
+### module:FanList
+This module lists fans of an account.
+
+### block:UserView
+This block exposes information for an individual user
+
+**Module Options**  
+`userId`
+
+	the ID of the user to show
+	
+	accepted values are the ID of any of the fans for the account
+
+	defaults to the user ID in the URL
+
+`loggedIn`
+
+	whether or not to use the currently logged in user, will override userId if true
+
+	accepted values are true and false
+
+	defaults to false
+
+### block:UserView
+UserId  
+:	the ID of the user
+
+UserName  
+:    the real name of the user
+
+UserUsername  
+:    the username of the user
+
+UserFansitePostCount  
+:	the number of posts the user has on the current account's fansite
+
+UserFansiteLikeCount  
+:	the number of likes the user has on the current account's fansite
+
+UserFansiteCommentCount  
+:	the number of comments the user has on the current account's fansite
+
+UserEventAttendingCount  
+:	the number of events the user is attending for the current account
+
+UserUrl  
+:	the URL to the user's page on StageBloc (i.e. `stagebloc.com/user/[%id]`)
+
+UserFansiteUrl  
+:	the URL to the user's pages on the current account's fansite (if they have one setup) (i.e. `stagebloc.com/[%account_url]/fansite/users/[%user_id]`)
+
+### Variables With Options
+**UserPhotoUrl**  
+This users profile image
+
+`size`
+
+	the size of the photo to load
+	
+	accepted sizes are "thumbnail", "small", "medium", "large", "original"
+	
+	defaults to "thumbnail"
+
+`defaultPhoto`
+
+	the URL of a photo to use if one isn't set and you don't want to use our default photo
+	
+	accepted values are any image URL
+	
+	defaults to our default image
+	
+### If Statements
+`if:UserHasFacebookConnected` *(global, can be used anywhere)*
+
+	checks to see if the currently logged in user has Facebook connected
+
+`if:UserHasInstagramConnected` *(global, can be used anywhere)*
+
+	checks to see if the currently logged in user has Instagram connected
+
+`if:UserHasTwitterConnected` *(global, can be used anywhere)*
+
+	checks to see if the currently logged in user has Twitter connected
+
+`if:UserIsAdmin` *(global, can be used anywhere)*
+
+	checks to see if the user is logged in and an admin of the current account
+
+`if:UserIsFollowing` *(global, can be used anywhere)*
+
+	checks to see if the user is logged in and following the current account or not
+
+`if:UserIsMe`
+
+	checks to see if the current user is the logged in user
+	
+`if:UserBelongsToFansiteTier`
+
+	checks to see if the user is logged in and belongs to a specific tier in a fansite. Possible tiers are 1, 2, and 3.
+
+	`tier`
+
+		the specific tier to check to see if the user belongs to, will override gt and lt
+	
+		accepted values are any integer
+	
+		defaults to noen
+
+	`gt`
+
+		check if the tier is greater than a certain tier
+	
+		accepted values are any integer
+	
+		defaults to none
+
+	`lt`
+
+		check if the tier is less than a certain tier
+
+		accepted values are any integer
+
+		defaults to none
+
+`if:UserCanViewContent`
+
+	checks to see if a user can view the current content based on its exclusivity and any other relevant factors
+
+`if:UserIsLoggedIn` *(global, can be used anywhere)*
+
+	checks to see if there's a logged in user
+
+`if:UserIsVerified` *(global, can be used anywhere)*
+
+	checks to see if a user has verified their email address or not
 
 # SBNav
 SBNav is the little, circular control box that appears in a corner of the screen. It allows users to, among other things, log in, follow and unfollow accounts, and manage their shopping cart. It is also the means of communication by which our [Advanced Functionality](#advanced-functionality) is achieved.
