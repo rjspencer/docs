@@ -480,6 +480,195 @@ Checks to see if a page is the currently rendered theme engine page
 ### page:ActivityStreamList
 `/updates` - This page should show a listing of content posted by your account *(this is the default homepage)*
 
+### module:ActivityStreamList
+This module lists all content posted by an account. Content is returned by the date it was created.
+
+**Modules Options**  
+`supported` *(required)*
+
+	a comma separated list of supported content types
+
+    accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
+
+    defaults to none
+
+`groupPhotos`
+
+	whether or not photos should be grouped into album udpates
+
+	accepted values are true and false
+
+    defaults to true
+
+`exclusive`
+
+	whether or not to also show exclusive content if the user is logged in and capable of seeing it
+
+	defaults to true
+	
+	accepted values are true, false, or always *("always" will always show it, even for non-authorized users)*
+
+`sticky`
+
+	whether or not to include sticky content
+
+	defaults to showing both
+
+	accepted values are true (to show only sticky posts) or false (to show only non-sticky posts)
+
+`ignoreSticky`
+
+	whether or not sticky blog posts should be on top of the listing
+
+	accepted values are true or false
+
+	defaults to false
+		
+`limit`
+
+	the amount of blogs to list per page
+
+	accepted values are any integer
+
+    defaults to 5
+
+`offset`
+
+	skips X number of items based on the ordering, it is automatically adjusted when paging
+
+	accepted values are any integer
+
+	defaults to 0
+
+### block:ActivityStreamView
+ActivityAuthorName  
+:	the name of the person who created the content
+
+ActivityAuthorPhotoUrl  
+:	a URL to a 130x130px thumbnail user photo
+
+ActivityTitle  
+:	the title of the content
+
+ActivityId  
+:	the ID of the content
+
+ActivityBody  
+:	the main content for the activity, varies based content type
+
+	Blog: the full blog post HTML
+	Event: the same as {ActivityTitle}: [%number] events added today!
+	Statuses: full status content
+	Photos albums: album description
+	Videos: video embed code
+	Video playlists: playlist description
+	Audio: Link to streamable MP3
+	Audio playlists: playlist description
+	Store items: item description
+
+ActivityCSSClass  
+:	the relevant class from this list: repost, blog, blog repost, status, event, video, audio, photo
+
+ActivityUrl  
+:	the permalink to the content's individual page
+
+ActivityShortUrl  
+:	the short URL to the content's individual page
+
+ActivityTagCount  
+:	the number of tags this piece of content has
+
+ActivityLikeCount  
+:	the number of likes this piece of content has
+
+ActivityPhotoCount  
+:	number of photos added to a photo album item
+
+RepostedContentTimeAgo  
+:	if reposted, how long ago in relative time
+
+RepostedFromAccountName  
+:	if reposted, what was the original account's name
+
+RepostedFromAccountPhotoUrl  
+:	if reposted, what was the original account's photo
+
+RepostedFromAccountUrl  
+:	if reposted, what was the original content permalink url
+
+### Variables With Options
+**ActivityDate**  
+The date this content item was published
+  
+`format`
+
+	the format of the date according to PHP [date() function](http://php.net/date) 
+
+    accepted values are a date format string, relative (returns time ago such as "5 seconds ago"), or gmdate (a GMT date in PHP date format 'Y-M-d h:i A')
+
+    defaults to `n/j/y`
+
+**ActivityExcerpt**  
+A trimmed version of `{ActivityBody}`
+
+`length`
+
+	the length of the excerpt to use
+	
+	accepted values are any integer
+	
+	defaults to 600
+	
+`cleaned`
+
+	whether or not to remove all tags except `<span><em><strong><a><u><i><b>`
+	
+	accepted values are true and false
+	
+	defaults to false
+	
+`considerHtml`
+
+	whether or not to include HTML tags as page of the length
+	
+	accepted values are true and false
+	
+	defaults to true
+	
+`ending`
+
+	what to use at the end of the content if it is cut short
+	
+	accepted values are any string
+	
+	defaults to "..."
+
+**ActivityPhotoUrl**  
+A cover image for this audio track or a default one if there is no cover set
+
+`size`
+
+	the size of the photo to load
+	
+	accepted sizes are "thumbnail", "small", "medium", "large", "original"
+	
+	defaults to "thumbnail"
+	
+### If Statements
+`if:ActivityHasActivityPhoto`
+
+	check to see if the content item has a photo or not
+	
+`if:ActivityIs[%type]`
+	
+	check to see if a certain activity list item is of a certain type *(use {if:ActivityIsRepost} to differentiate between reposts and non-reposts)*
+
+	supported types: Audio, Blog, Event, Photo, PhotoAlbum, Repost, Status, StoreItem, Video
+
+`if:ReadMore`
+
+	check if the current excerpt is trimmed to something less than its total length
+
 ## Blog
 	{page:BlogView}
 		{module:BlogView}
