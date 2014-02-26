@@ -407,6 +407,10 @@ The following Theme Engine elements are available for general use within a theme
 
 	the ID of the account
 	
+`jPlayer`
+
+	the jPlayer javascript library *(requires {jQuery} to be present before this variable)*
+
 ### Variables With Options
 **jQuery**  
 The latest version of jQuery on the page via Google's CDN
@@ -418,9 +422,6 @@ The latest version of jQuery on the page via Google's CDN
 	accepted values are any version hosted on Google
 	
 	defaults to the latest version
-	
-**jPlayer**  
-The jPlayer javascript library *(requires {jQuery} to be present before this variable)*
 
 **BootstrapCSS**  
 The latest version of Bootstrap's combined (responsive with icons) CSS from [BootstrapCDN](http://www.bootstrapcdn.com/)
@@ -451,6 +452,25 @@ The latest version of Bootstrap's JS from [BootstrapCDN](http://www.bootstrapcdn
 	accepted values are any version hosted on BootstrapCDN
 	
 	defaults to the latest version
+	
+**SecureEmail**  
+Encodes an email address to protect it from spambots
+
+`address` *(required)*
+
+	the email address to encode
+	
+	accepted values are any string
+	
+	defaults to none
+	
+`text`
+
+	the text to put inside the `<a>` tag
+	
+	accepted values are any string
+	
+	defaults to value for address
 	
 ### If Statements
 **if:PageIsActive**  
@@ -1787,6 +1807,38 @@ PreviousPhotoTitle, NextPhotoTitle
 PreviousPhotoUrl, NextPhotoUrl  
 :	the permalink of the photo previous/next to the current one if it exists
 
+### Variables With Options
+**PhotoAddToCartLink**  
+Creates a link that, when clicked, will add the photo to the user's cart
+
+`photoId` (*required*)
+
+	the ID of the photo you want to add to the user's cart
+
+`text`
+
+	the text to be put inside the <a> tag
+
+	accepted values are any string (HTML included)
+
+    defaults to "Add To Cart"
+
+`closeTag`
+
+	whether or not to close the <a> tag
+
+	accepted values are true or false
+
+	defaults to true
+
+`class`
+
+	the class to assign to the <a> tag
+
+	accepted values are any string
+
+	defaults to none
+
 ### If Statements
 `if:PhotoCanBeSold`
 
@@ -2577,6 +2629,18 @@ CommentItemId
 ## Orders
 Items that users have ordered will only be shown using the logged in user's ID and can't be made public. An order has one or more transactions. Transactions can be used to show the actual items that were part of an order.
 
+### module:OrderList
+This module list orders for the logged in user
+
+**Module Options**  
+`limit`
+
+	the amount of transactions to list per page
+
+	accepted values are any integer
+
+	defaults to 20
+
 ### module:TransactionList
 This module lists transactions for the logged in user
 
@@ -2588,14 +2652,22 @@ This module lists transactions for the logged in user
 	accepted values are any integer
 
 	defaults to 20
+	
+### block:OrderView
+OrderReceiptUrl  
+:	a URL to the receipt for the order
 
-`offset`
+OrderId  
+:	the ID of the order
 
-	skips X number of items based on the ordering
+OrderTotal
+:	the total amount of money in USD spend on this order
 
-	accepted values are any integer
+OrderAmount  
+:	the amount of money in USD spent on this order without shipping
 
-	defaults to 0
+OrderShippingAmount
+:	the amount of money in USD spent on shipping for this order
 
 ### block:TransactionView
 TransactionOrderReceiptUrl  
@@ -2608,7 +2680,7 @@ TransactionOrderId
 :	the ID of the order this transaction belongs to
 
 TransactionAmount  
-:	the amount of money spent in this transaction in USD (doesn't include shipping)
+:	the amount of money spent on this transaction in USD (doesn't include shipping)
 
 TransactionTrackingNumber  
 :	the tracking number for the item if it has been shipped
@@ -2620,6 +2692,10 @@ TransactionItemName
 :	the name of the item that was ordered
 
 ### If Statements
+`if:OrderHasBeenShipped`
+
+	checks to see if the order as a whole was shipped or not
+
 `if:TransactionHasBeenShipped`
 
 	checks to see if the transaction was shipped or not
