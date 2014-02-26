@@ -476,6 +476,41 @@ Checks to see if a page is the currently rendered theme engine page
 **page:Error404**  
 `/AnyPageThatDoesNotExist` - This page will be loaded whenever a unknown URL structure is hit
 
+## About
+### page:About
+`/about` - This page should show general information about your account
+
+### module:AccountAbout
+This module loads information for an account
+
+### block:AccountAbout
+This block exposes information about an account
+
+AccountAboutName  
+:    the name of the account
+
+AccountAbout  
+:    the biography text of the account
+
+AccountAboutCleaned  
+:    the bio text stripped of all tags except `<span><em><strong><a><u><i><b>`
+
+AccountAboutUrl  
+:    the URL to the account about page
+
+### Variables With Option
+**AccountPhotoUrl** *(global, can be used anywhere)*  
+The main image for this account
+
+`size`
+
+	the size of the photo to load
+	
+	accepted sizes are "thumbnail", "small", "medium", "large", "original"
+	
+	defaults to "thumbnail"
+
+
 ## Activity Stream
 ### page:ActivityStreamList
 `/updates` - This page should show a listing of content posted by your account *(this is the default homepage)*
@@ -2603,8 +2638,8 @@ TransactionItemName
 ### module:FanList
 This module lists fans of an account.
 
-### block:UserView
-This block exposes information for an individual user
+### module:UserView
+This module will load the information for a single user
 
 **Module Options**  
 `userId`
@@ -2624,6 +2659,8 @@ This block exposes information for an individual user
 	defaults to false
 
 ### block:UserView
+This block exposes information for an individual user
+
 UserId  
 :	the ID of the user
 
