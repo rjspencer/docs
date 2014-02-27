@@ -2847,6 +2847,14 @@ This module lists transactions for the logged in user
 
 	defaults to 20
 	
+`orderId`
+
+	the order ID to limit the transactions to
+	
+	accepted values are any order ID of the logged in user
+	
+	defaults to none
+	
 ### block:OrderView
 OrderReceiptUrl  
 :	a URL to the receipt for the order
