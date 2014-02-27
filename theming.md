@@ -2885,6 +2885,18 @@ TransactionDownloadUrl
 TransactionItemName  
 :	the name of the item that was ordered
 
+### Variables With Options
+**OrderedDate**  
+The GMT date the order was made
+
+`format`
+
+	the format of the date according to PHP [date() function](http://php.net/date) 
+
+    accepted values are a date format string, relative (returns time ago such as "5 seconds ago")
+
+    defaults to `n/j/y`
+
 ### If Statements
 `if:OrderHasBeenShipped`
 
