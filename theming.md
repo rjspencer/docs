@@ -3231,6 +3231,14 @@ ContestAllowedParticipantCount
 
 	checks to see if the currently logged in user has entered the contest or not
 
+`if:UserWonContent`
+
+	checks to see if the currently logged in user has won the contest or not
+
+`if:ContestWinnersWereSelected`
+
+	checks to see if the winners for this contest were selected
+
 ## Orders
 Items that users have ordered will only be shown using the logged in user's ID and can't be made public. An order has one or more transactions. Transactions can be used to show the actual items that were part of an order.
 
