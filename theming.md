@@ -476,6 +476,25 @@ Encodes an email address to protect it from spambots
 	
 	defaults to value for address
 	
+**ChildsAccountIDs**  
+A comma separated list of children account IDs of the current account, useful with the `accountid` parameter of some modules
+
+`type`
+
+	the type of accounts to limit the results to
+
+    accepted values are any comma separated combination of children account types you've defined
+
+    defaults to all types
+
+`includeCurrent`
+
+	whether or not to include the current account with the children
+
+    accepted values are true or false
+
+    defaults to false
+	
 ### If Statements
 **if:PageIsActive**  
 Checks to see if a page is the currently rendered theme engine page
@@ -860,7 +879,217 @@ The main image for this account
 	accepted sizes are "thumbnail", "small", "medium", "large", "original"
 	
 	defaults to "thumbnail"
+	
+## Navigation
+	{module:Navigation ignore="{ContentType-Audio}" events="Shows"}
+	<ul>
+		{block:NavigationItem}
+			<li><a href="{Url}" class="{CSSClass}">{LinkText}</a></li>
+		{/block:NavigationItem}
+	</ul>
+	{/module:Navigation}
 
+### module:Navigation
+This module will list all of the links to various content sections that the account supports
+
+**Module Options**  
+`ignore`
+
+	a comma separated list of sections to ignore
+	
+	accepted values are {ContentType-Audio}, {ContentType-Blog}, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}, updates, about, fansite
+	
+	defaults to none
+	
+`order`
+
+	a comma seperated list of the order for the navigation
+	
+	accepted value are the same as ignore
+	
+	defaults to general ordering
+	
+`fansiteNavigation`
+
+	whether or not to show the subnvagiation for fansite as opposed to the global nav
+	
+	accepted values are true and false
+	
+	defaults to false
+	
+### block:Navigation
+This block exposes various options available for each navigation link
+
+CSSClass  
+:	a class that says what the navigation item is linking to, will automatically append a class `active` if the current navigation item
+
+LinkText  
+:	the text for the navigation link
+
+Url  
+:	the URL for the navigation link
+
+## Fan Content Stream
+### page:FansiteContentList
+`/fansite` - This page should show a listing of fan content posted to your fan club
+
+### module:FanContentList
+This modules lists all content posted by fans to a fan club
+
+`supported` *(required)*
+
+	a comma separated list of supported content types
+
+    accepted values are {ContentType-Audio}, {ContentType-Blog}, {ContentType-Photos}, {ContentType-Statuses}, {ContentType-Videos}
+
+    defaults to none
+
+`includeAccountcontent`
+
+	whether or not to include account content
+
+	accepted values are true or false
+
+	defaults to false
+	
+`userId`
+
+	a user ID to filter the content by
+	
+	accepted values are the ID of any fans
+	
+	defaults to none
+	
+`limit`
+
+	the amount of blogs to list per page
+
+	accepted values are any integer
+
+    defaults to 5
+
+`offset`
+
+	skips X number of items based on the ordering, it is automatically adjusted when paging
+
+	accepted values are any integer
+
+	defaults to 0
+	
+### block:FansiteContentView
+This block exposes various content available for fan content
+
+FansiteContentAuthorName  
+:	the name of the fan who created the content
+
+FansiteContentAuthorUrl  
+:	the URL to the user page for the author of this content
+
+FansiteContentAuthorUsername  
+:	the username of the user who created the content
+
+FansiteContentAuthorId  
+:	the ID of the fan who created the content
+
+FansiteContentAuthorThumbnailPhotoUrl  
+:	a thumbnail photo URL of the fan who created the content
+
+FansiteContentTitle  
+:	the title of the content
+
+FansiteContentID  
+:	the ID of the content
+
+FansiteContentSection  
+:	the content section slug of the content
+
+FansiteContentBody  
+:	the body of the content
+
+FansiteContentCSSClass  
+:	a CSS class to use for the content
+
+FansiteContentExcerpt  
+:	an excerpt of the content
+
+FansiteContentExcerptCleaned  
+:	an excerpt of the content with most of the HTML tags stripped
+
+FansiteContentExcerptStripped  
+:	an excerpt of the content with all of the HTML tags stripped
+
+FansiteContentTagCount  
+:	the number of tags for the piece of content
+
+FansiteContentUrl  
+:	the URL to the original content
+
+FansiteContentShortUrl  
+:	the short URL to the content's individual page
+
+FansiteContentPhotoCount  
+:	the number of photos related to the content
+
+FansiteContentLikeCount  
+:	the number of likes the content has
+
+### Variables With Options
+**ActivityDate**  
+The date this content item was published
+  
+`format`
+
+	the format of the date according to PHP [date() function](http://php.net/date) 
+
+    accepted values are a date format string, relative (returns time ago such as "5 seconds ago"), or gmdate (a GMT date in PHP date format 'Y-M-d h:i A')
+
+    defaults to `n/j/y`
+
+**ActivityExcerpt**  
+A trimmed version of `{FansiteContentBody}`
+
+`length`
+
+	the length of the excerpt to use
+	
+	accepted values are any integer
+	
+	defaults to 600
+	
+`cleaned`
+
+	whether or not to remove all tags except `<span><em><strong><a><u><i><b>`
+	
+	accepted values are true and false
+	
+	defaults to false
+	
+`considerHtml`
+
+	whether or not to include HTML tags as page of the length
+	
+	accepted values are true and false
+	
+	defaults to true
+	
+`ending`
+
+	what to use at the end of the content if it is cut short
+	
+	accepted values are any string
+	
+	defaults to "..."
+
+**ActivityPhotoUrl**  
+A cover image for this content or a default one if there is no cover set
+
+`size`
+
+	the size of the photo to load
+	
+	accepted sizes are "thumbnail", "small", "medium", "large", "original"
+	
+	defaults to "thumbnail"
 
 ## Activity Stream
 ### page:ActivityStreamList
@@ -927,6 +1156,8 @@ This module lists all content posted by an account. Content is returned by the d
 	defaults to 0
 
 ### block:ActivityStreamView
+This block exposes various content available for a account content
+
 ActivityAuthorName  
 :	the name of the person who created the content
 
@@ -1030,7 +1261,7 @@ A trimmed version of `{ActivityBody}`
 	defaults to "..."
 
 **ActivityPhotoUrl**  
-A cover image for this audio track or a default one if there is no cover set
+A cover image for this content or a default one if there is no cover set
 
 `size`
 
