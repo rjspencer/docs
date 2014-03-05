@@ -399,6 +399,10 @@ The following Theme Engine elements are available for general use within a theme
 
 	a <script src=""> tag with a link to the theme's JS on StageBloc's CDN
 
+`Body-ID`
+
+	the general section of the page (useful for general section styling)
+
 `AccountName`
 
 	the name of the account
@@ -492,6 +496,36 @@ Checks to see if a page is the currently rendered theme engine page
 	
 	defaults to none
 	
+**if:HasTags**  
+Checks to see if a piece of content has tags or not
+
+**if:AccountLikedContent**  
+Checks to see if an admin of the account liked the content in question
+
+`userId`
+
+	the user ID of a specific admin to check for
+	
+	accepted values are any user ID that is an admin for the account
+	
+	defaults to none
+	
+`contentType`
+
+	the content type slug of the content to check
+
+	accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
+
+    defaults to whatever the current item is in the Theming Engine
+
+`contentId`
+
+	the content ID of the content to check
+
+	accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
+
+    defaults to whatever the current item is in the Theming Engine
+
 ### Pages
 **page:Error404**  
 `/AnyPageThatDoesNotExist` - This page will be loaded whenever a unknown URL structure is hit
@@ -499,7 +533,58 @@ Checks to see if a page is the currently rendered theme engine page
 ## Modals
 As described in the [SBNav](#sbnav) section, there is a lot of built in functionality for you to use as a theme developer. Much of that functionality is accomplished through modals we've created and made available to use through SBNav. These modals are meant to handle a lot of the common actions a user may want to do and makes it so that you don't have to build that functionality into your theme if you don't want to.
 
-### JoinFansiteLink
+### {CommentLink}
+A link that opens a modal and allow the user to view content and comment on it
+
+`linkText`
+
+	the text to be put inside the <a> tag 
+
+	accepted values are any string (HTML included)
+
+    defaults to "Add Comment"
+
+`href`
+
+	the link to fallback to in case the JS fails opening the modal
+	
+	accepted values are any URL
+	
+	defaults to "javascript:void(0)"
+
+`closeTag`
+
+	whether or not to close the <a> tag
+	
+	accepted values are true or false
+	
+	defaults to true
+
+`class`
+
+	the class to assign to the <a> tag
+	
+	accepted values are any string
+	
+	defaults to none
+
+`contentType`
+
+	the content type slug of the content to like
+
+	accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
+
+    defaults to whatever the current item is in the Theming Engine
+
+`contentId`
+
+	the content ID of the content to like
+
+	accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
+
+    defaults to whatever the current item is in the Theming Engine
+
+### {JoinFansiteLink}
 A link that opens a modal and allows a user to join the site's fansite *(the account must have a fansite setup for this to work)*
 
 `text`
@@ -689,6 +774,58 @@ Creates a link that, when clicked, will open the user's cart
 	accepted values are any string
 	
 	defaults to none
+
+## Functionality
+### {LikeLink}
+A link that likes a specific piece of content
+
+`likeText`
+
+	the text to be put inside the <a> tag when the item has not yet been liked
+
+	accepted values are any string (HTML included)
+
+    defaults to "Like"
+
+`unlikeText`
+
+	the text to be put inside the <a> tag when the item has been liked
+
+	accepted values are any string (HTML included)
+
+    defaults to "Unlike"
+
+`closeTag`
+
+	whether or not to close the <a> tag
+	
+	accepted values are true or false
+	
+	defaults to true
+
+`class`
+
+	the class to assign to the <a> tag
+	
+	accepted values are any string
+	
+	defaults to none
+
+`contentType`
+
+	the content type slug of the content to like
+
+	accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
+
+    defaults to whatever the current item is in the Theming Engine
+
+`contentId`
+
+	the content ID of the content to like
+
+	accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
+
+    defaults to whatever the current item is in the Theming Engine
 
 ## About
 ### page:About
@@ -2819,6 +2956,49 @@ CommentItemId
 `if:CommentIsReply`
 
 	check to see if a comment is a reply to another comment
+
+## Contests
+### module:ContestView
+This module loads the content for a single contest
+
+### Options
+**Module Options**  
+`contestId` *(required)*
+
+	the ID of the contest to load
+
+	accepts values are any contest that belongs to this account
+	
+	deafaults to none
+
+### block:ContestView
+ContestId  
+:	the ID of the contest
+
+ContestTitle  
+:	the title of the contest
+
+ContestDescription  
+:	the description of the contest
+
+ContestParticipantCount  
+:	the number of people who have entered the contest
+
+ContestAllowedParticipantCount  
+:	the number of allowed people for the contest
+
+### If Statements
+`if:ContestHasEnded`
+
+	checks to see if the contest has ended
+	
+`if:ContestAllowsUnlimitedParticipants`
+
+	checks to see if the contest allows any amount of participants
+
+`if:UserHasEnteredContest`
+
+	checks to see if the currently logged in user has entered the contest or not
 
 ## Orders
 Items that users have ordered will only be shown using the logged in user's ID and can't be made public. An order has one or more transactions. Transactions can be used to show the actual items that were part of an order.
