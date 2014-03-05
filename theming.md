@@ -1,6 +1,8 @@
 # Home
 Hello there! You are about to embark on an epic journey through StageBloc's Theming Engine documentation. It may sound scary, but you won't have any issues if you have a basic understanding of HTML, CSS, and/or JavaScript.
 
+These docs aim to make using the Theming Engine super simple. Do note that if there is every something you'd like exposed in the Theming Engine that doesn't already appear to be available, feel free to contact us asking if we'd be able to add it for you.
+
 ### General Information
 In general, a theme consists of defining the pages that make sense for your website and filling them with data. Each `{page}` represents a separate URL on the site. The data within each `{page}` is built using any combination of `{module}`s and `{block}`s.
 
@@ -476,7 +478,7 @@ Encodes an email address to protect it from spambots
 	
 	defaults to value for address
 	
-**ChildsAccountIDs**  
+**ChildAccountIDs**  
 A comma separated list of children account IDs of the current account, useful with the `accountid` parameter of some modules
 
 `type`
@@ -724,6 +726,41 @@ Add a link to open the built in StageBloc sharing modal. When the user is logged
 	
 	defaults to none
 
+### {RepostLink}
+Create a link that, when clicked, will open a modal asking which of your accounts you'd like to repost this content to
+
+`repostText`
+
+	the text to be put inside the <a> tag when the item has not yet been reposted
+
+	accepted values are any string (HTML included)
+
+    defaults to "Repost"
+
+`unrepostText`
+
+	the text to be put inside the <a> tag when the item has been reposted
+
+	accepted values are any string (HTML included)
+
+    defaults to "Unrepost"
+
+`closeTag`
+
+	whether or not to close the <a> tag
+	
+	accepted values are true or false
+	
+	defaults to true
+
+`class`
+
+	the class to assign to the <a> tag
+	
+	accepted values are any string
+	
+	defaults to none
+
 ### {ReportContentLink}
 Creates a link that, when clicked, will open a modal for reporting (flagging) content as inappropriate, etc
 
@@ -880,6 +917,31 @@ The main image for this account
 	
 	defaults to "thumbnail"
 	
+## Pagination
+The pagination module can be used in most all listing modules.
+
+### module:Pagination
+This module latches onto the last seen module and provides next/previous links to go through the pages. *(This currently must be the first module **after** the module you wish to paginate)*
+
+	{module:Pagination}
+		<div id="pagination">
+			{block:NextPage}
+				<a href="{NextPage}">Older</a>
+			{/block:NextPage}
+			{block:PreviousPage}
+				<a href="{PreviousPage}">Newer</a>
+			{/block:PreviousPage}
+		</div>
+	{/module:Pagination}
+
+### block:PreviousPage
+PreviousPage  
+:	link to previous page
+
+### block:NextPage
+NextPage  
+:	link to next page
+
 ## Navigation
 	{module:Navigation ignore="{ContentType-Audio}" events="Shows"}
 	<ul>
@@ -2729,6 +2791,12 @@ The date and time this event end
 `if:EventPresaleIsActive`
 
 	check to see if the presale for an event is active
+	
+`if:UserEventAttendingStatus`
+
+	check to see if the logged in user is attending the event
+	
+	requires a "status" paramers of "yes", "no", or "maybe"
 
 `if:HasPastEvents` *(global, can be run from anywhere)*
 
