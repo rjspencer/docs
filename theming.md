@@ -3321,6 +3321,14 @@ This module list orders for the logged in user
 	accepted values are any integer
 
 	defaults to 20
+	
+`refunded`
+
+	whether or not to show refunded orders
+	
+	accepted values are true and false
+	
+	defaults to false
 
 ### module:TransactionList
 This module lists transactions for the logged in user
@@ -3393,6 +3401,10 @@ The GMT date the order was made
     defaults to `n/j/y`
 
 ### If Statements
+`if:OrderWasRefunded`
+
+	checks to see if the order has been refunded or not
+
 `if:OrderHasBeenShipped`
 
 	checks to see if the order as a whole was shipped or not
