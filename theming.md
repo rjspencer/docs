@@ -416,6 +416,10 @@ The following Theme Engine elements are available for general use within a theme
 `jPlayer`
 
 	the jPlayer javascript library *(requires {jQuery} to be present before this variable)*
+	
+`Link-StageBloc`
+
+	a link to stagebloc.com
 
 ### Variables With Options
 **jQuery**  
@@ -498,6 +502,25 @@ A comma separated list of children account IDs of the current account, useful wi
     defaults to false
 	
 ### If Statements
+**if:OptionIsSet**  
+Determines if the given [{option} variable](#variables) has been set or not
+
+`group` *(required)*
+
+	the group this option belongs to
+	
+	accepted values are any string
+	
+	defaults to none
+
+`name` *(required)*
+
+	the name of the option in the specified group
+	
+	accepted values are any string
+	
+	defaults to none
+
 **if:PageIsActive**  
 Checks to see if a page is the currently rendered theme engine page
 
@@ -517,6 +540,25 @@ Checks to see if a page is the currently rendered theme engine page
 	
 	defaults to none
 	
+**if:PaginationIs**  
+Checks if the pagination is within a certain bound
+
+`gt`
+	
+	check if the pagination is greater than a certain page
+	
+	accepted values are any integer
+	
+	defaults to none
+
+`lt`
+
+	check if the pagination is less than a certain page
+
+	accepted values are any integer
+
+	defaults to none
+
 **if:HasTags**  
 Checks to see if a piece of content has tags or not
 
@@ -3618,14 +3660,29 @@ First, you'll need some sort way of having users add information. For instance, 
 		{/block:API}
 	{/module:API}
 
-The available keys for passing are `name`, `username`, `email`, `bio`, and `gender`. You can also pass a `birthday` parameter with the array values `day`, `month`, and `year`.
+The available keys for passing are `name`, `username`, `email`, `bio`, and `gender`. You can also pass a `birthday` parameter as an array with the keys `day`, `month`, and `year`.
+
+You are also able to pass a user photo with the `photoFile` key, but it requires that the browser support `FileReader`. When a `file` input is changed, you can show a preview of the image on the page using code similar to the following:
+
+	if (typeof FileReader === 'undefined') {
+	  alert('Sorry, but your browser is too old to upload photos. Please upgrade!');
+	  return;
+	}
+
+	var reader = new FileReader();
+	reader.onload = function(event) {
+	  _userPhotoData = event.target.result; // A global variable for holding this image
+	  $('#userPhotoPreview').css('background-image', 'url(' + newPhotoData + ')');
+	};
+	reader.readAsDataURL(this.files[0]);
 
 **Step Two**
 
 Next, when the user submits the form, you'll want to capture it with JavaScript similar to the following:
 
 	$('#userEditForm').submit(function() {
-		pm({ target: window.frames['sbnav'], type: 'sbInlineUserProfileEdit', data: $(this).serialize() });
+		var formData = $(this).serialize() + '&photoFile=' + _userPhotoData;
+		pm({ target: window.frames['sbnav'], type: 'sbInlineUserProfileEdit', data: formData });
 		return false;
 	});
 
@@ -3730,7 +3787,57 @@ Finally, you should add a binding to your theme's JavaScript. You can use this c
 	pm.bind('sbInlineSubmitStatus', function(data) {
 		// data will be a JavaScript object representing the status that was posted (or an error if an error occurred)
 	});
+
+## Photo Submission
+Normally, adding photo can be done very easily with the use of `{SubmitFanContentLink}` variable that opens an SBNav modal. However, sometimes you'll want to allow fans to submit photos for your fansite from within the theme itself. Note that this method does require that the user's browser supports `FileReader`.
+
+**Step One**
+
+First, you'll need some sort of `HTML` form. Here's an example:
+
+	<form id="photoSubmit">
+		<input type="file" name="photoFile" id="photoFile" />
+		<input type="submit" />
+	</form>
 	
+When this `file` input changes, you'll want to put the data for that image somewhere on the page where you can get it later or store it in a global variable. Below is an example of how to do that as well as how to show the user a preview of the image:
+
+	$('body').on('change', '#photoFile', function() {
+		if (typeof FileReader === 'undefined') {
+		  alert('Sorry, but your browser is too old to upload photos. Please upgrade!');
+		  return;
+		}
+
+		var reader = new FileReader();
+		reader.onload = function(event) {
+	        var img = new Image();
+	        img.src = event.target.result;
+	        $('#photoPreview').html(img);
+			$('#userPhotoPreview').css('background-image', 'url(' + newPhotoData + ')');
+		};
+		reader.readAsDataURL(this.files[0]);
+	}
+
+**Step Two**
+
+Next, when the user submits the form, you'll want to capture it with JavaScript similar to the following:
+
+	$('#photoSubmit').submit(function() {
+		var formData = $(this).serialize() + '&photoFile=' + $('#photoPreview img').attr('src');
+		pm({ target: window.frames['sbnav'], type: 'sbInlineSubmitPhoto', data: formData });
+		return false;
+	});
+
+The passed data must contain the key `statusText` for it to be valid.
+
+**Step Three**
+
+Finally, you should add a binding to your theme's JavaScript. You can use this callback to handle the data returned from SBNav.
+
+	pm.bind('sbInlineSubmitPhoto', function(data) {
+		// data will be a JavaScript object representing the photo that was posted (or an error if an error occurred)
+	});
+
 ## Blog Submission
 Normally, adding blogs can be done very easily with the use of `{SubmitFanContentLink}` variable that opens an SBNav modal. However, sometimes you'll want to allow fans to submit blogs for your fansite from within the theme itself.
 
