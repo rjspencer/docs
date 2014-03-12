@@ -128,6 +128,14 @@ The following options are available for `{page}`s:
 
 	default value is false
 	
+`searchable`
+
+	whether or not this page should be able to be indexed by search engines
+	
+	acceptes values are true and false
+	
+	defaults to true
+	
 ## Modules
 Modules are the main data loading structures within `{page}`s. The general syntax for modules is as follows:
 
