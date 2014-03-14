@@ -132,7 +132,7 @@ The following options are available for `{page}`s:
 
 	whether or not this page should be able to be indexed by search engines
 	
-	acceptes values are true and false
+	accepted values are true and false
 	
 	defaults to true
 	
@@ -2614,6 +2614,8 @@ A cover image for this photo album or a default one if there is no cover set
 	defaults to "thumbnail"
 
 ## Events
+This section contains various information for how to show data for events on your website. Keep in mind SEO and other metadata when creating this page, as it can help with search results. For Google specifically, you have a [few options](http://googlewebmastercentral.blogspot.com/2014/03/musical-artists-your-official-tour.html). The easiest method is probably just to have your markup conform to [schema.org's Event schema](http://schema.org/Event).
+
 ### page:EventPastList
 `/events/past` - This page should show a listing of events that have already occurred
 
