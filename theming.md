@@ -2964,7 +2964,7 @@ StatusText
 :	the actual text of the status post
 
 StatusTextWithLinks  
-:	the actual text of the status post with links converted into HTML <a> tags
+:	the actual text of the status post with links converted into HTML `<a>` tags
 
 ## Store Items
 ### page:StoreItemList
@@ -3046,6 +3046,7 @@ This module will load the content for a single audio track. When on {page:StoreI
 	defaults to false
 	
 ### block:StoreItemView
+
 StoreItemAccountId  
 :    the ID of the account that created the store item
 
