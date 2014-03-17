@@ -54,7 +54,7 @@ The StageBloc Theming Engine makes use of curly brackets and a few main building
 To find out more information about each building block, navigate to them in the navigation on the left hand side of this page.
 	
 ## Pages
-Each view (i.e. URL) on StageBloc in contained within a `{page}`. There are a bunch of built in pages, but [you can also create your own custom pages](#custom-pages). Any HTML, `{module}`s, or `{block}`s can be put inside of a `{page}`.
+Each view (i.e. URL) on StageBloc in contained within a `{page}`. There are a bunch of built in pages, but you can also create your own custom pages (see below). Any HTML, `{module}`s, or `{block}`s can be put inside of a `{page}`.
 
 It is not necessary to define a view for every `{page}` available via the Theming Engine. Define pages that make sense for your theme, and the rest will be taken care of via a fallback theme we've created so that no links will be broken.
 
@@ -511,7 +511,7 @@ A comma separated list of children account IDs of the current account, useful wi
 	
 ### If Statements
 **if:OptionIsSet**  
-Determines if the given [{option} variable](#variables) has been set or not
+Determines if the given `{option}` variable has been set or not
 
 `group` *(required)*
 
@@ -602,7 +602,7 @@ Checks to see if an admin of the account liked the content in question
 `/AnyPageThatDoesNotExist` - This page will be loaded whenever a unknown URL structure is hit
 
 ## Modals
-As described in the [SBNav](#sbnav) section, there is a lot of built in functionality for you to use as a theme developer. Much of that functionality is accomplished through modals we've created and made available to use through SBNav. These modals are meant to handle a lot of the common actions a user may want to do and makes it so that you don't have to build that functionality into your theme if you don't want to.
+As described in the SBNav section, there is a lot of built in functionality for you to use as a theme developer. Much of that functionality is accomplished through modals we've created and made available to use through SBNav. These modals are meant to handle a lot of the common actions a user may want to do and makes it so that you don't have to build that functionality into your theme if you don't want to.
 
 ### {CommentLink}
 A link that opens a modal and allow the user to view content and comment on it
@@ -3615,7 +3615,7 @@ This users profile image
 	checks to see if a user has verified their email address or not
 
 # SBNav
-SBNav is the little, circular control box that appears in a corner of the screen. It allows users to, among other things, log in, follow and unfollow accounts, and manage their shopping cart. It is also the means of communication by which our [Advanced Functionality](#advanced-functionality) is achieved.
+SBNav is the little, circular control box that appears in a corner of the screen. It allows users to, among other things, log in, follow and unfollow accounts, and manage their shopping cart. It is also the means of communication by which our Advanced Functionality is achieved.
 
 As a theme author, you can change a few things about it. If an account has white labeling enabled, SBNav may be removed from their account.
 
@@ -3634,7 +3634,7 @@ You can set the position of SBNav with the `{SBNav}` variable. Place it anywhere
 When submitting a theme, you can select a default color that you feel best matches your theme. Just as a head up, users do have the option to override this in their account's theme management section.
 
 # Advanced Functionality
-Using JavaScript and [SBNav](#sbnav) we are able to expose some advanced functionality. The functionality allowed here is available using built in StageBloc modals, but these methods allow theme authors to have a little bit more control over how it looks and works in their theme. In general, advanced functionality is achieved by targeting SBNav via `postMessage` as follows:
+Using JavaScript and SBNav we are able to expose some advanced functionality. The functionality allowed here is available using built in StageBloc modals, but these methods allow theme authors to have a little bit more control over how it looks and works in their theme. In general, advanced functionality is achieved by targeting SBNav via `postMessage` as follows:
 
 	pm({ target: window.frames['sbnav'], type: 'advancedFunctionalityType', data: { key: value } });
 
