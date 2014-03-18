@@ -3088,6 +3088,25 @@ A cover image for this store item or a default one if there is no cover set
 	
 	defaults to "thumbnail"
 	
+**StoreItemPrice**  
+The price of the store item
+
+`currency`
+
+	the currency to show the price in
+	
+	accepted values are "gbp", "usd", and "eur"
+	
+	defaults to "usd"
+
+`includeSymbol`
+
+	whether or not to include the symbol of the currency
+	
+	accepted values are true and false
+	
+	defaults to false
+	
 **StoreItemAddToCartLink**  
 Creates a link that, when clicked, will add the store item to the user's cart
 
@@ -3134,6 +3153,14 @@ Creates a link that, when clicked, will add the store item to the user's cart
 	accepted values are any string
 
 	defaults to none
+
+`currency`
+
+	a three character ISO code of the currency to use for this item, will fallback to "usd" if there are any items in the cart that don't support this same currency
+	
+	accepted values are "gbp", "usd", and "eur"
+	
+	defaults to "usd"
 
 **StoreItemFreeDownloadLink**  
 Creates a link that, when clicked, will download the store item is possible
