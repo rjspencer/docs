@@ -3204,6 +3204,14 @@ Creates a link that, when clicked, will download the store item is possible
 
 	check to see if the store item is being sold
 
+	`currency`
+
+		the currency to check if it can be sold in
+	
+		accepted values are usd, gbp, and eur
+	
+		defaults to usd
+
 `if:StoreItemCanNamePrice`
 
 	check to see if the store item supports naming a price
@@ -3497,6 +3505,31 @@ The GMT date the order was made
 
 	checks to see if the transaction was for a digital item or not
 
+## Accounts
+### module:ChildAccountList
+A listing of accounts that are children of the current account
+
+**Module Options**  
+`type`
+
+	the type of accounts to limit the results to
+
+    accepted values are any comma separated combination account types you've created
+
+    defaults to all types
+
+### block:ChildAccountView
+This block exposes information for a child account
+
+ChildAccountName  
+:	name of the child account
+
+ChildAccountUrl  
+:    the URL of the child account
+
+ChildAccountId  
+:    the ID of the child account
+
 ## Users
 ### page:UserView
 `/fansite/users/[%id]` - This page should show an individual fan of your account
@@ -3612,7 +3645,7 @@ This users profile image
 	
 		accepted values are any integer
 	
-		defaults to noen
+		defaults to none
 
 	`gt`
 
