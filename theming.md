@@ -3111,6 +3111,15 @@ The price of the store item
 **StoreItemAddToCartLink**  
 Creates a link that, when clicked, will add the store item to the user's cart
 
+For instance,  
+```
+{StoreItemAddToCartLink storeItemId="{StoreItemId}" text="Buy Now"}
+```  
+would change to  
+```
+<a href="javascript:void(0);" onclick="<magical_js>">Buy Now</a>
+```
+
 `storeItemId` (*required*)
 
 	the ID of the store item you want to add to the user's cart
