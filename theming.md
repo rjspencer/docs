@@ -993,7 +993,7 @@ NextPage
 :	link to next page
 
 ## Navigation
-	{module:Navigation ignore="{ContentType-Audio}" events="Shows"}
+	{module:Navigation ignore="{ContentType-Audio}" events="Shows" order="events,about,customrandompage"}
 	<ul>
 		{block:NavigationItem}
 			<li><a href="{Url}" class="{CSSClass}">{LinkText}</a></li>
@@ -1015,7 +1015,7 @@ This module will list all of the links to various content sections that the acco
 	
 `order`
 
-	a comma seperated list of the order for the navigation
+	a comma seperated list of the order for the navigation, when using custom pages be sure to prefix it with "custom" (see example above)
 	
 	accepted value are the same as ignore
 	
@@ -1213,7 +1213,7 @@ This module lists all content posted by an account. Content is returned by the d
 **Modules Options**  
 `supported` *(required)*
 
-	a comma separated list of supported content types
+	a comma separated list of supported content types *note: if you are only using one filter type here, please use the actual module for that specific type of content instead*
 
     accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
 
