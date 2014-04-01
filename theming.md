@@ -1068,6 +1068,19 @@ LinkText
 Url  
 :	the URL for the navigation link
 
+### If Statements
+`if:NavItemHasSlug`
+
+	check to see if the currently rendered item is a current page or not
+	
+	`slug` (*required*)
+	
+		the slug in question
+		
+		accepted values are anything you'd pass to `order` or `ignore`
+		
+		defaults to none
+
 ## Fan Content Stream
 ### page:FansiteContentList
 `/fansite` - This page should show a listing of fan content posted to your fan club
@@ -3748,6 +3761,54 @@ When a request such as the above is made, SBNav will act accordingly given the d
 		// This binding will handle generic errors (i.e. if SBNav receives a 500 or anything for any reason)
 		// data.type will be the action it came from (i.e. 'advancedFunctionalityType')
 	});
+
+## Custom Fields
+Custom Fields is a feature that allows you to attach extra pieces of information to content within StageBloc that we don't natively support. For instance, if you wanted to be able to mark events as sold out, something we won't natively support, then you could create a custom field to add a boolean flag to events marking whether or not they are sold out.
+
+To start using Custom Fields, you must first set some up in the advanced part of the backend account management section. You are currently able to setup the following types of custom fields:
+
+	- Textarea - Use this to add blurbs of text to pieces of content
+	- Select - Use this to add dropdowns with pre-defined options to pieces of content
+	- Checkbox - Can be used to add a boolean flag to content
+	- Input - Useful for adding a short amount of text to content
+	- URL - Similar to a normal Input but more geared towards a URL
+	- Photo - Can be used to add photos to content (i.e. a header image for blog posts, etc)
+	- HTML - Used to add chunks of HTML code to content
+	
+Once you setup a custom field on a piece of content, you'll begin to see them in the areas you normally edit that content. For instance, on photo modals you'll see a "Custom Fields" collapsable toggle that allows you to edit any custom fields that were setup for photos.
+
+Getting the data from custom fields into your theme is pretty straightforward. Below are some of the options you have available to you in the theming engine for them:
+
+**if:CustomFieldIsSet**  
+Use this to check if the custom field for the content in question has been explicitly set when editing the content or not.
+
+`slug` (*required*)
+
+	the slug of the custom field you are checking, this can be seen in the backend once they are created
+	
+	accepted values are any slug that you have setup for custom fields
+	
+	defaults to none
+	
+**CustomField**  
+This variable can be used to access the data of custom field's (i.e. the text, URL, etc that was entered for it)
+
+`slug` (*required*)
+
+	the slug of the custom field you are checking, this can be seen in the backend once they are created
+	
+	accepted values are any slug that you have setup for custom fields
+	
+	defaults to none
+	
+For example, here's how you could accomplish the sold out functionality that was mentioned earlier:
+	
+	{if:CustomFieldIsSet slug="is-sold-out"}
+        <div class="sold-out">
+			<img class="sold-out-img" src="http://stgb.lc/ta/20130721_054345_2632_516.png" />
+		</div>
+    {/if:CustomFieldIsSet}
+
 
 ## User Profile Editing
 This allows the user's profile to be edited.
