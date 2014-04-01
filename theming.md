@@ -655,89 +655,116 @@ A link that opens a modal and allow the user to view content and comment on it
 
     defaults to whatever the current item is in the Theming Engine
 
+### {SignupLink}
+A link that opens a modal and allows a user to sign up for StageBloc and follow your account
+
+`text`
+
+    the text to be put inside the <a> tag
+
+    accepted values are any string (HTML included)
+
+    defaults to "Sign Up"
+
+`closeTag`
+
+    whether or not to close the <a> tag
+    
+    accepted values are true or false
+    
+    defaults to true
+
+`class`
+
+    the class to assign to the <a> tag
+    
+    accepted values are any string
+    
+    defaults to none
+
 ### {JoinFansiteLink}
 A link that opens a modal and allows a user to join the site's fansite *(the account must have a fansite setup for this to work)*
 
 `text`
 
-	the text to be put inside the <a> tag
+    the text to be put inside the <a> tag
 
-	accepted values are any string (HTML included)
+    accepted values are any string (HTML included)
 
     defaults to "Join Fansite"
 
 `closeTag`
 
-	whether or not to close the <a> tag
-	
-	accepted values are true or false
-	
-	defaults to true
+    whether or not to close the <a> tag
+    
+    accepted values are true or false
+    
+    defaults to true
 
 `class`
 
-	the class to assign to the <a> tag
-	
-	accepted values are any string
-	
-	defaults to none
-	
+    the class to assign to the <a> tag
+    
+    accepted values are any string
+    
+    defaults to none
+    
 `reload`
 
-	whether or not to reload the page after their join the fansite
-	
-	accepts values are true and false
-	
-	defaults to false
+    whether or not to reload the page after their join the fansite
+    
+    accepts values are true and false
+    
+    defaults to false
 
 `forceFreeTier`
 
-	the tier you want to force a joining of (which override the join fansite modal) *(requires that the tier you pass be free)*
-	
-	accepted values are 1, 2, or 3 assuming the tier is free
-	
-	defaults to false
+    the tier you want to force a joining of (which override the join fansite modal) *(requires that the tier you pass be free)*
+    
+    accepted values are 1, 2, or 3 assuming the tier is free
+    
+    defaults to false
 
 `view`
 
-	what to default the view to if the user isn't logged on
+    what to default the view to if the user isn't logged on
 
-	accepted values are "login" or "signup"
+    accepted values are "login" or "signup"
 
-	defaults to "login"
+    defaults to "login"
 
 ### {SubmitFanContentLink}
 Creates a link that, when clicked, will open a modal to allow fans to submit content
 
 `linkText`
 
-	the text to be put inside the <a> tag
+    the text to be put inside the <a> tag
 
-	accepted values are any string (HTML included)
+    accepted values are any string (HTML included)
 
     defaults to "Add Content"
 
 `closeTag`
 
-	whether or not to close the <a> tag
-	
-	accepted values are true or false
-	
-	defaults to true
+    whether or not to close the <a> tag
+    
+    accepted values are true or false
+    
+    defaults to true
 
 `class`
 
-	the class to assign to the <a> tag
-	
-	accepted values are any string
-	
-	defaults to none
+    the class to assign to the <a> tag
+    
+    accepted values are any string
+    
+    defaults to none
 
 `contentType`
 
-	the type of content to default the content adding modal to
+    the type of content to default the content adding modal to
 
-	accepted values are status, blog, photo, or video
+    accepted values are status, blog, photo, or video
 
     defaults to status
 
