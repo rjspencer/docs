@@ -803,41 +803,6 @@ Add a link to open the built in StageBloc sharing modal. When the user is logged
 	
 	defaults to none
 
-### {RepostLink}
-Create a link that, when clicked, will open a modal asking which of your accounts you'd like to repost this content to
-
-`repostText`
-
-	the text to be put inside the <a> tag when the item has not yet been reposted
-
-	accepted values are any string (HTML included)
-
-    defaults to "Repost"
-
-`unrepostText`
-
-	the text to be put inside the <a> tag when the item has been reposted
-
-	accepted values are any string (HTML included)
-
-    defaults to "Unrepost"
-
-`closeTag`
-
-	whether or not to close the <a> tag
-	
-	accepted values are true or false
-	
-	defaults to true
-
-`class`
-
-	the class to assign to the <a> tag
-	
-	accepted values are any string
-	
-	defaults to none
-
 ### {ReportContentLink}
 Creates a link that, when clicked, will open a modal for reporting (flagging) content as inappropriate, etc
 
@@ -1353,18 +1318,6 @@ ActivityLikeCount
 ActivityPhotoCount  
 :	number of photos added to a photo album item
 
-RepostedContentTimeAgo  
-:	if reposted, how long ago in relative time
-
-RepostedFromAccountName  
-:	if reposted, what was the original account's name
-
-RepostedFromAccountPhotoUrl  
-:	if reposted, what was the original account's photo
-
-RepostedFromAccountUrl  
-:	if reposted, what was the original content permalink url
-
 ### Variables With Options
 **ActivityDate**  
 The date this content item was published
@@ -1430,9 +1383,9 @@ A cover image for this content or a default one if there is no cover set
 	
 `if:ActivityIs[%type]`
 	
-	check to see if a certain activity list item is of a certain type *(use {if:ActivityIsRepost} to differentiate between reposts and non-reposts)*
+	check to see if a certain activity list item is of a certain type
 
-	supported types: Audio, Blog, Event, Photo, PhotoAlbum, Repost, Status, StoreItem, Video
+	supported types: Audio, Blog, Event, Photo, PhotoAlbum, Status, StoreItem, Video
 
 `if:ReadMore`
 
