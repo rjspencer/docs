@@ -4021,38 +4021,3 @@ Finally, you should add a binding to your theme's JavaScript. You can use this c
 	pm.bind('sbInlineSubmitVideo', function(data) {
 		// data will be a JavaScript object representing the video that was posted (or an error if an error occurred)
 	});
-
-## Email Subscriptions
-When users are part of a fansite, they can manage their email subscriptions to that fansite in the backend. This is a way to add that functionality inline to your site.
-
-**Step One**
-
-First, you'll need some sort of `HTML` form. Here's an example:
-
-	{module:API v="3.0" path="user/email_lists/list" account_id="{AccountId}"}
-		{block:API}
-			<form id="emailSubscriptionEdit">
-				<input type="radio" name="subscribedStatus[{id}]" value="1" {if:APIKeyHasValue key="user_is_subscribed" value="true"}checked{/if:APIKeyHasValue} />Subscribe
-				<input type="radio" name="subscribedStatus[{id}]" value="0" {if:APIKeyHasValue key="user_is_subscribed" value="false"}checked{/if:APIKeyHasValue} />Unsubscribe
-			</form>
-			{title}
-		{/block:API}
-	{/module:API}
-
-**Step Two**
-
-Next, when the user updates their preference, you'll want to capture it with JavaScript similar to the following:
-
-	$('#emailSubscriptionEdit :input').change(function() {
-		pm({ target: window.frames['sbnav'], type: 'sbInlineEmailSubscriptionEdit', data: $(this).parents('form').serialize() });
-	});
-	
-The passed data must contain the array `subscribedStatus` with ID indices for it to be valid.
-
-**Step Three**
-
-Finally, you should add a binding to your theme's JavaScript. You can use this callback to handle the data returned from SBNav.
-
-	pm.bind('sbInlineEmailSubscriptionEdit', function(data) {
-		// data will be a JavaScript object representing the status that was posted (or an error if an error occurred)
-	});
