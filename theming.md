@@ -12,12 +12,12 @@ StageBloc also then has various `{if}` statements and other helpful variables to
 
 The general structure of a theme is simply repeating chunks of code with the following structure. HTML can be placed anywhere inside of this hierarchy:
 
-	{page:PageName}
-		{module:ModuleName}
-			{block:BlockName}
-			{/block:BlockName}
-		{/module:ModuleName}
-	{/page:PageName}
+    {page:PageName}
+        {module:ModuleName}
+            {block:BlockName}
+            {/block:BlockName}
+        {/module:ModuleName}
+    {/page:PageName}
 
 Some useful notes...
 
@@ -52,7 +52,7 @@ Once you've built your theme, you can submit it to the StageBloc team for approv
 The StageBloc Theming Engine makes use of curly brackets and a few main building blocks for the majority of its syntax. The build blocks (page, modules, and blocks) should be kept lowercase as they are in these docs.
 
 To find out more information about each building block, navigate to them in the navigation on the left hand side of this page.
-	
+    
 ## Pages
 Each view (i.e. URL) on StageBloc in contained within a `{page}`. There are a bunch of built in pages, but you can also create your own custom pages (see below). Any HTML, `{module}`s, or `{block}`s can be put inside of a `{page}`.
 
@@ -60,94 +60,94 @@ It is not necessary to define a view for every `{page}` available via the Themin
 
 A page in its simplest form would look like the following block of code:
 
-	{page:PageName}
-		...
-		HTML content, etc here
-		...
-	{/page:PageName}
-	
+    {page:PageName}
+        ...
+        HTML content, etc here
+        ...
+    {/page:PageName}
+    
 ### Custom Pages
 Custom pages allow you to create pages at URLs that aren't already built into the Theming Engine. They can be defined using the following syntax:
 
-	{page:CustomMyAwesomePage}
-		...
-		HTML content, etc here
-		...
-	{/page:CustomMyAwesomePage}
+    {page:CustomMyAwesomePage}
+        ...
+        HTML content, etc here
+        ...
+    {/page:CustomMyAwesomePage}
 
 The URL for a custom page is simply whatever follows "Custom" in the page's definition (the above examples URL would be `/MyAwesomePage`). Using slashes within the page's definition is also allowable and allows easy creation of hierarchical URLs.
 
 Any content that can be put inside of a built in page can be put inside of a custom page.
-	
+    
 ### Page Options
 Pages can have options applied to them. Options are listed within the `{page}` code itself like below:
 
-	{page:PageName optionName="optionValue"}
-		...
-		HTML content, modules, etc here
-		...
-	{/page:PageName}
+    {page:PageName optionName="optionValue"}
+        ...
+        HTML content, modules, etc here
+        ...
+    {/page:PageName}
 
 The following options are available for `{page}`s:
 
 `homepage`
 
-	a flag representing if the page should be used as the homepage
+    a flag representing if the page should be used as the homepage
 
-	accepted values are true or false
+    accepted values are true or false
 
-	the default homepage is ActivityStreamList *if that page isn't defined the first defined Page in the theme's HTML will be used*
+    the default homepage is ActivityStreamList *if that page isn't defined the first defined Page in the theme's HTML will be used*
 
 `url`
 
-	a URL to override the page's default URL
+    a URL to override the page's default URL
 
-	accepted values are any string valid in a URL, the [%id] is always assumed to be at the end *(Note: do not start the override URL with a slash (/))*
+    accepted values are any string valid in a URL, the [%id] is always assumed to be at the end *(Note: do not start the override URL with a slash (/))*
 
-		{page:EventList url="shows"}
-			<!-- The events page would now be at /shows, not /events -->
-		{/page:EventList}
+        {page:EventList url="shows"}
+            <!-- The events page would now be at /shows, not /events -->
+        {/page:EventList}
 
-	default value is based on the page or whatever comes after "Custom" for custom pages
+    default value is based on the page or whatever comes after "Custom" for custom pages
 
-	if a page has more than one [%id] (i.e. `BlogCommentView`), use an asterik (*) for the first [%id]
+    if a page has more than one [%id] (i.e. `BlogCommentView`), use an asterik (*) for the first [%id]
 
 `title`
 
-	a value to force the <title> of the <head> content of the page to be
+    a value to force the <title> of the <head> content of the page to be
 
-	accepts any string
+    accepts any string
 
     default value will be based on the `{module}`s present on the rendered page
 
 `ajax`
 
-	a GET parameter value that can be used to output ONLY the stuff within a specific page (i.e. strip out any headers, footers, etc) *note: this is useful for infinite scrolling with AJAX*
+    a GET parameter value that can be used to output ONLY the stuff within a specific page (i.e. strip out any headers, footers, etc) *note: this is useful for infinite scrolling with AJAX*
 
-	accepted values are true and false
+    accepted values are true and false
 
-	default value is false
-	
+    default value is false
+    
 `searchable`
 
-	whether or not this page should be able to be indexed by search engines
-	
-	accepted values are true and false
-	
-	defaults to true
-	
+    whether or not this page should be able to be indexed by search engines
+    
+    accepted values are true and false
+    
+    defaults to true
+    
 ## Modules
 Modules are the main data loading structures within `{page}`s. The general syntax for modules is as follows:
 
-	{module:ModuleName}
-		...
-		HTML content, blocks, etc here
-		...
-	{Else:ModuleName}
-		...
-		Data to show if the module doesn't return any
-		...
-	{/module:ModuleName}
+    {module:ModuleName}
+        ...
+        HTML content, blocks, etc here
+        ...
+    {Else:ModuleName}
+        ...
+        Data to show if the module doesn't return any
+        ...
+    {/module:ModuleName}
 
 Modules come in two types, views and lists. A listing module will iterate through numerous pieces of content and repeat the content within the module as many times as it finds pieces of data.
 
@@ -156,86 +156,86 @@ Using `{Else:<module_name>}` will cause the content in the else section to rende
 ### Module Options
 Modules can have their own options. Some of the options are available to all `{module}`s while other are specific to particular `{module}`s. The syntax for module options is the exact same as that of `{page}`s and looks as follows:
 
-	{module:ModuleName optionName="optionValue"}
-		...
-		HTML content, blocks, etc here
-		...
-	{/module:ModuleName}
-	
+    {module:ModuleName optionName="optionValue"}
+        ...
+        HTML content, blocks, etc here
+        ...
+    {/module:ModuleName}
+    
 The following options are an example of two options that are available on most listing modules. All of the available options for a particular `{module}` can be found by the documentation for that specific modules elsewhere in these docs.
 
 `pagination`
 
-	flag representing if the module should be used as the primary module for pagination on the parent {page}
+    flag representing if the module should be used as the primary module for pagination on the parent {page}
 
-	accepted values are true or false
+    accepted values are true or false
 
-	defaults to what the Theming Engine decides is best
+    defaults to what the Theming Engine decides is best
 
 `ignorePaging`
 
-	available on most listing modules to make the module ignore any pagination that might be preset in the header
+    available on most listing modules to make the module ignore any pagination that might be preset in the header
 
-	accepted values are true or false
+    accepted values are true or false
 
-	defaults to false
-	
+    defaults to false
+    
 ### Module If Statements
 **if:PositionInModule**  
 Checks to see what block is currently being rendered in the listing module. The first item in the module is `1` (i.e. it is 1 indexed)
 
 `gt`
 
-	check if the position is greater than a certain point
-	
-	accepted values are any integer
-	
-	defaults to none
+    check if the position is greater than a certain point
+    
+    accepted values are any integer
+    
+    defaults to none
 
 `lt`
 
-	check if the position is less than a certain point
+    check if the position is less than a certain point
 
-	accepted values are any integer
+    accepted values are any integer
 
-	defaults to none
+    defaults to none
 
 `e`
 
-	check to see if the position is equal to a certain point
+    check to see if the position is equal to a certain point
 
-	accepted values are any integer
+    accepted values are any integer
 
-	defaults to none
+    defaults to none
 
 `multipleOf`
 
-	check to see if the position is a multiple of a number
+    check to see if the position is a multiple of a number
 
-	accepted values are any integer
+    accepted values are any integer
 
-	defaults to none
+    defaults to none
 
 ## Blocks
 Blocks can best be thought of us the models of the data and must be inside of a `{module}`. When inside of a listing `{module}`, a `{block}` will be repeated as many times as necessary depending on the returned data. The general syntax for `{block}`s is as follows:
 
-	{block:BlockName}
-		...
-		HTML content, block variables, etc here
-		...
-	{/block:BlockName}
-	
+    {block:BlockName}
+        ...
+        HTML content, block variables, etc here
+        ...
+    {/block:BlockName}
+    
 Depending on the block you are using, different data variables become available that allow you to represent the object on the page.
 
 ## Variables
 Variables are the simplest of Theming Engine elements and return the finest level of detail about an object. Using a variable simply looks like the follow:
-	
-	{VariableName}
-	
+    
+    {VariableName}
+    
 Using options with a variable is just like using options with any other Theming Engine elements:
-	
-	{VariableWithOption optionOneName="optionOneValue" optionTwoName="optionTwoValue"}
-	
+    
+    {VariableWithOption optionOneName="optionOneValue" optionTwoName="optionTwoValue"}
+    
 All variables have the `block` option available to them to force them to render within the context of a certain `{block}`. This usually isn't necessary unless you have two nested `{block}`s and want to make sure the variables renders at the correct time.
 
 ### Custom Variables
@@ -243,25 +243,25 @@ You can use custom variables to define chunks of code to reuse throughout the re
 
 To define a variable, use the following syntax:
 
-	{variable:CustomMyVariable}
-		...
-		Any content here
-		...
-	{/variable:CustomMyVariable}
+    {variable:CustomMyVariable}
+        ...
+        Any content here
+        ...
+    {/variable:CustomMyVariable}
 
 Custom variables must start with "Custom" in their names. In this example, your variable name would be `MyVariable`. After defining your variable, you can access it just like a normal variable. For instance, to use the above variable we just defined, you'd write the following anywhere in your theme:
 
-	{CustomMyVariable}
+    {CustomMyVariable}
 
 ### {option} Variables
 You can set up ways for StageBloc users to customize their theme to their liking without them doing any HTML/CSS/JS editing by using `{option}` variables. Options variables are pulled into the sidebar theme editor on the web and presented using `<form>` elements that less technical users can use to customize their theme. The general syntax for an `{option}` variable is:
 
-	{option:VariableType
-		group="VariableGroup"
-		name="Variable Name"
-		default="Default Value"
-		format=""
-		defaultFormat=""}
+    {option:VariableType
+        group="VariableGroup"
+        name="Variable Name"
+        default="Default Value"
+        format=""
+        defaultFormat=""}
 
 Keep in mind that less is often more. If someone wants very specific, fine tune control, it's best if they just edit the theme.
 
@@ -269,23 +269,23 @@ The following parameters are available to all `{option}` variables:
 
 `name` (*required*)
 
-	The unique name for this variable. This name is also presented to the user in the sidebar theme editor.
+    The unique name for this variable. This name is also presented to the user in the sidebar theme editor.
 
 `group`
 
-	A namespace for this variable. This is used to group variables in the sidebar theme editor.
+    A namespace for this variable. This is used to group variables in the sidebar theme editor.
 
 `format`
 
-	The way the data is outputted. This makes use of PHP's [sprintf()](http://php.net/sprintf) function if you'd like to force a format.
+    The way the data is outputted. This makes use of PHP's [sprintf()](http://php.net/sprintf) function if you'd like to force a format.
 
 `defaultFormat`
 
-	The default format to be used for the data.
+    The default format to be used for the data.
 
 `default`
 
-	When the user doesn't explicitly set or change this option, this value will be used.
+    When the user doesn't explicitly set or change this option, this value will be used.
 
 The following `{option}` variables are currently available for use:
 
@@ -293,11 +293,11 @@ The following `{option}` variables are currently available for use:
 
 This `{option}` variable allows users to upload an image to use within their theme (i.e. a header image). This shouldn't be used for things like sprites or other theme assets. A file upload box will show up in the theme editor sidebar where they can upload JPEG, GIF, and PNG files to be used in the theme. The data returned is the full URL to the image uploaded.
 
-	{option:Image
-		group="Images"
-		name="Header Image"
-		format="background-image: url(%s);"
-		defaultFormat=""}
+    {option:Image
+        group="Images"
+        name="Header Image"
+        format="background-image: url(%s);"
+        defaultFormat=""}
 
 **option:Color**
 
@@ -305,36 +305,36 @@ This `{option}` variable will present users with a color select box in the theme
 
 `rgb`
 
-	Determines whether or not to return RGB or HEX values
-	
-	accepted values are true or false
-	
-	defaults to false
+    Determines whether or not to return RGB or HEX values
+    
+    accepted values are true or false
+    
+    defaults to false
 
 An example:
 
-	{option:Color
-		group="Colors"
-		name="Footer Color"
-		format="color: rgb(%s);"
-		defaultFormat=""}
+    {option:Color
+        group="Colors"
+        name="Footer Color"
+        format="color: rgb(%s);"
+        defaultFormat=""}
 
 **option:Select**
 
 This `{option}` variable adds a drop down box containing a list of predefined values to the sidebar. The data returned is the value selected.
 
 `presets`
-	Defines a comma separated list of values
+    Defines a comma separated list of values
 
 An example:
 
-	{option:Select
-		group="Images"
-		name="Background Repeat"
-		format="background-repeat: %s;"
-		presets="repeat,no-repeat,repeat-x,repeat-y"
-		default="no-repeat"
-	}
+    {option:Select
+        group="Images"
+        name="Background Repeat"
+        format="background-repeat: %s;"
+        presets="repeat,no-repeat,repeat-x,repeat-y"
+        default="no-repeat"
+    }
 
 **option:Textarea**
 
@@ -343,46 +343,46 @@ This `{option}` variable presents users with a textbox where they can input any 
 ## If Statements
 If statements will check if a certain statement is true or not and add the appropriate code as defined within the theme. Else statements can be achieved by placing `{if:Else}` inside of an if statement. For example, an if statement in its simplest form could be as follows:
 
-	{if:IfStatementName}
-		...
-		This content will be used if the statement is true
-		...
-	{if:Else}
-		...
-		This content will be used if the statement is false
-		...
-	{/if:IfStatementName}
+    {if:IfStatementName}
+        ...
+        This content will be used if the statement is true
+        ...
+    {if:Else}
+        ...
+        This content will be used if the statement is false
+        ...
+    {/if:IfStatementName}
 
 If statements can be nested inside of one another as well.
 
 ### If Statement Options
 Various if statements have different options available to them depending on the statement. The syntax is exactly the same as `{pags}`s and `{module}`s:
 
-	{if:IfStatementName optionName="optionValue"}
-		...
-		This content will be used if the statement is true
-		...
-	{/if:IfStatementName}
-	
+    {if:IfStatementName optionName="optionValue"}
+        ...
+        This content will be used if the statement is true
+        ...
+    {/if:IfStatementName}
+    
 An option that is available to all if statements is `block`. Sometimes for if statements that can be used in numerous different `{block}`s where weird behavior is happening because of the nested, you can use the `block` option to have finer control over when the if statement is rendered.
 
 `block`
 
-	the {block} to force the if statement to render as a part of
+    the {block} to force the if statement to render as a part of
 
-	accepted values any parent {block} of the if statement
+    accepted values any parent {block} of the if statement
 
-	defaults to the theming engines best guess
+    defaults to the theming engines best guess
 
 ### Combined If Statements
 If statements support the use of `||` and `&&` for AND and OR logic. However, mixing of ANDs and ORs is not currently allowed (i.e. it must be all ANDs or all ORs). For example:
 
-	{if:IfStatementOne||IfStatementTwo}
-		...
-		This content will be used if either of the if statements are true
-		...
-	{/if:IfStatementOne||IfStatementTwo}
-	
+    {if:IfStatementOne||IfStatementTwo}
+        ...
+        This content will be used if either of the if statements are true
+        ...
+    {/if:IfStatementOne||IfStatementTwo}
+    
 # Sections
 The main sections of the Theming Engine line up with the available content you can create and share on StageBloc.
 
@@ -394,40 +394,40 @@ Lastly, the if statements are listed for that block as well. Unless otherwise no
 The following Theme Engine elements are available for general use within a theme and can be placed anywhere.
 
 ### Variables
-	<!-- Example use of some global variables -->
-	<head>
-		<title>{AccountName}</title>
-		{CSS}
-		{JS}
-	</head>
+    <!-- Example use of some global variables -->
+    <head>
+        <title>{AccountName}</title>
+        {CSS}
+        {JS}
+    </head>
 
 `CSS`
 
-	a <link rel="stylesheet" /> tag with a link to the theme's CSS on StageBloc's CDN
+    a <link rel="stylesheet" /> tag with a link to the theme's CSS on StageBloc's CDN
 
 `JS`
 
-	a <script src=""> tag with a link to the theme's JS on StageBloc's CDN
+    a <script src=""> tag with a link to the theme's JS on StageBloc's CDN
 
 `Body-ID`
 
-	the general section of the page (useful for general section styling)
+    the general section of the page (useful for general section styling)
 
 `AccountName`
 
-	the name of the account
+    the name of the account
 
 `AccountId`
 
-	the ID of the account
-	
+    the ID of the account
+    
 `jPlayer`
 
-	the jPlayer javascript library *(requires {jQuery} to be present before this variable)*
-	
+    the jPlayer javascript library *(requires {jQuery} to be present before this variable)*
+    
 `Link-StageBloc`
 
-	a link to stagebloc.com
+    a link to stagebloc.com
 
 ### Variables With Options
 **jQuery**  
@@ -435,67 +435,67 @@ The latest version of jQuery on the page via Google's CDN
 
 `v`
 
-	use this parameter to specify a particular version
-	
-	accepted values are any version hosted on Google
-	
-	defaults to the latest version
+    use this parameter to specify a particular version
+    
+    accepted values are any version hosted on Google
+    
+    defaults to the latest version
 
 **BootstrapCSS**  
 The latest version of Bootstrap's combined (responsive with icons) CSS from [BootstrapCDN](http://www.bootstrapcdn.com/)
 
 `v`
 
-	use this parameter to specify a particular version
-	
-	accepted values are any version hosted on BootstrapCDN
-	
-	defaults to the latest version
+    use this parameter to specify a particular version
+    
+    accepted values are any version hosted on BootstrapCDN
+    
+    defaults to the latest version
 
 `includeIcons`
 
-	whether or not to includes Bootstrap's icons with the CSS
+    whether or not to includes Bootstrap's icons with the CSS
 
-	allowed values are true or false
-	
-	defaults to true
-	
+    allowed values are true or false
+    
+    defaults to true
+    
 **BootstrapJS**  
 The latest version of Bootstrap's JS from [BootstrapCDN](http://www.bootstrapcdn.com/)
 
 `v`
 
-	use this parameter to specify a particular version
-	
-	accepted values are any version hosted on BootstrapCDN
-	
-	defaults to the latest version
-	
+    use this parameter to specify a particular version
+    
+    accepted values are any version hosted on BootstrapCDN
+    
+    defaults to the latest version
+    
 **SecureEmail**  
 Encodes an email address to protect it from spambots
 
 `address` *(required)*
 
-	the email address to encode
-	
-	accepted values are any string
-	
-	defaults to none
-	
+    the email address to encode
+    
+    accepted values are any string
+    
+    defaults to none
+    
 `text`
 
-	the text to put inside the `<a>` tag
-	
-	accepted values are any string
-	
-	defaults to value for address
-	
+    the text to put inside the `<a>` tag
+    
+    accepted values are any string
+    
+    defaults to value for address
+    
 **ChildAccountIDs**  
 A comma separated list of children account IDs of the current account, useful with the `accountid` parameter of some modules
 
 `type`
 
-	the type of accounts to limit the results to
+    the type of accounts to limit the results to
 
     accepted values are any comma separated combination of children account types you've defined
 
@@ -503,69 +503,69 @@ A comma separated list of children account IDs of the current account, useful wi
 
 `includeCurrent`
 
-	whether or not to include the current account with the children
+    whether or not to include the current account with the children
 
     accepted values are true or false
 
     defaults to false
-	
+    
 ### If Statements
 **if:OptionIsSet**  
 Determines if the given `{option}` variable has been set or not
 
 `group` *(required)*
 
-	the group this option belongs to
-	
-	accepted values are any string
-	
-	defaults to none
+    the group this option belongs to
+    
+    accepted values are any string
+    
+    defaults to none
 
 `name` *(required)*
 
-	the name of the option in the specified group
-	
-	accepted values are any string
-	
-	defaults to none
+    the name of the option in the specified group
+    
+    accepted values are any string
+    
+    defaults to none
 
 **if:PageIsActive**  
 Checks to see if a page is the currently rendered theme engine page
 
 `page`
-	
-	the page to check *should be anything after the colon in {page:<Page_Name>}*
-	
-	accepted values are any page
-	
-	defaults to none
+    
+    the page to check *should be anything after the colon in {page:<Page_Name>}*
+    
+    accepted values are any page
+    
+    defaults to none
 
 `uri`
 
-	if you need to be more exact, you can specify an exact URI *the part of the URL after your account name (non custom domains) or you custom domain, no leading forward slash*
-	
-	accepted values are any URI
-	
-	defaults to none
-	
+    if you need to be more exact, you can specify an exact URI *the part of the URL after your account name (non custom domains) or you custom domain, no leading forward slash*
+    
+    accepted values are any URI
+    
+    defaults to none
+    
 **if:PaginationIs**  
 Checks if the pagination is within a certain bound
 
 `gt`
-	
-	check if the pagination is greater than a certain page
-	
-	accepted values are any integer
-	
-	defaults to none
+    
+    check if the pagination is greater than a certain page
+    
+    accepted values are any integer
+    
+    defaults to none
 
 `lt`
 
-	check if the pagination is less than a certain page
+    check if the pagination is less than a certain page
 
-	accepted values are any integer
+    accepted values are any integer
 
-	defaults to none
+    defaults to none
 
 **if:HasTags**  
 Checks to see if a piece of content has tags or not
@@ -575,25 +575,25 @@ Checks to see if an admin of the account liked the content in question
 
 `userId`
 
-	the user ID of a specific admin to check for
-	
-	accepted values are any user ID that is an admin for the account
-	
-	defaults to none
-	
+    the user ID of a specific admin to check for
+    
+    accepted values are any user ID that is an admin for the account
+    
+    defaults to none
+    
 `contentType`
 
-	the content type slug of the content to check
+    the content type slug of the content to check
 
-	accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
+    accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
 
     defaults to whatever the current item is in the Theming Engine
 
 `contentId`
 
-	the content ID of the content to check
+    the content ID of the content to check
 
-	accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
+    accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
 
     defaults to whatever the current item is in the Theming Engine
 
@@ -609,49 +609,49 @@ A link that opens a modal and allow the user to view content and comment on it
 
 `linkText`
 
-	the text to be put inside the <a> tag 
+    the text to be put inside the <a> tag 
 
-	accepted values are any string (HTML included)
+    accepted values are any string (HTML included)
 
     defaults to "Add Comment"
 
 `href`
 
-	the link to fallback to in case the JS fails opening the modal
-	
-	accepted values are any URL
-	
-	defaults to "javascript:void(0)"
+    the link to fallback to in case the JS fails opening the modal
+    
+    accepted values are any URL
+    
+    defaults to "javascript:void(0)"
 
 `closeTag`
 
-	whether or not to close the <a> tag
-	
-	accepted values are true or false
-	
-	defaults to true
+    whether or not to close the <a> tag
+    
+    accepted values are true or false
+    
+    defaults to true
 
 `class`
 
-	the class to assign to the <a> tag
-	
-	accepted values are any string
-	
-	defaults to none
+    the class to assign to the <a> tag
+    
+    accepted values are any string
+    
+    defaults to none
 
 `contentType`
 
-	the content type slug of the content to like
+    the content type slug of the content to like
 
-	accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
+    accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
 
     defaults to whatever the current item is in the Theming Engine
 
 `contentId`
 
-	the content ID of the content to like
+    the content ID of the content to like
 
-	accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
+    accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
 
     defaults to whatever the current item is in the Theming Engine
 
@@ -773,76 +773,76 @@ Add a link to open the built in StageBloc sharing modal. When the user is logged
 
 `linkText`
 
-	the text to be put inside the <a> tag
+    the text to be put inside the <a> tag
 
-	accepted values are any string (HTML included)
+    accepted values are any string (HTML included)
 
     defaults to "Share"
 
 `shareText`
 
-	the text to default to in the sharing modal (other than the link to the content being shared)
+    the text to default to in the sharing modal (other than the link to the content being shared)
 
-	accepted values are any string
+    accepted values are any string
 
     defaults to none
 
 `closeTag`
 
-	whether or not to close the <a> tag
-	
-	accepted values are true or false
-	
-	defaults to true
+    whether or not to close the <a> tag
+    
+    accepted values are true or false
+    
+    defaults to true
 
 `class`
 
-	the class to assign to the <a> tag
-	
-	accepted values are any string
-	
-	defaults to none
+    the class to assign to the <a> tag
+    
+    accepted values are any string
+    
+    defaults to none
 
 ### {ReportContentLink}
 Creates a link that, when clicked, will open a modal for reporting (flagging) content as inappropriate, etc
 
 `linkText`
 
-	the text to be put inside the <a> tag
+    the text to be put inside the <a> tag
 
-	accepted values are any string (HTML included)
+    accepted values are any string (HTML included)
 
     defaults to "Report Content"
 
 `closeTag`
 
-	whether or not to close the <a> tag
-	
-	accepted values are true or false
-	
-	defaults to true
+    whether or not to close the <a> tag
+    
+    accepted values are true or false
+    
+    defaults to true
 
 `class`
 
-	the class to assign to the <a> tag
-	
-	accepted values are any string
-	
-	defaults to none
+    the class to assign to the <a> tag
+    
+    accepted values are any string
+    
+    defaults to none
 
 `contentType`
 
-	the content type slug of the content being reported
+    the content type slug of the content being reported
 
-	accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
+    accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
 
     defaults to whatever the current item is in the Theming Engine
-	
+    
 `contentId`
 
-	the content ID of the content being reported
+    the content ID of the content being reported
 
-	accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
+    accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
 
     defaults to whatever the current item is in the Theming Engine
 
@@ -851,27 +851,27 @@ Creates a link that, when clicked, will open the user's cart
 
 `text`
 
-	the text to be put inside the <a> tag
+    the text to be put inside the <a> tag
 
-	accepted values are any string (HTML included)
+    accepted values are any string (HTML included)
 
     defaults to "Open Cart"
 
 `closeTag`
 
-	whether or not to close the <a> tag
-	
-	accepted values are true or false
-	
-	defaults to true
+    whether or not to close the <a> tag
+    
+    accepted values are true or false
+    
+    defaults to true
 
 `class`
 
-	the class to assign to the <a> tag
-	
-	accepted values are any string
-	
-	defaults to none
+    the class to assign to the <a> tag
+    
+    accepted values are any string
+    
+    defaults to none
 
 ## Functionality
 ### {LikeLink}
@@ -879,49 +879,49 @@ A link that likes a specific piece of content
 
 `likeText`
 
-	the text to be put inside the <a> tag when the item has not yet been liked
+    the text to be put inside the <a> tag when the item has not yet been liked
 
-	accepted values are any string (HTML included)
+    accepted values are any string (HTML included)
 
     defaults to "Like"
 
 `unlikeText`
 
-	the text to be put inside the <a> tag when the item has been liked
+    the text to be put inside the <a> tag when the item has been liked
 
-	accepted values are any string (HTML included)
+    accepted values are any string (HTML included)
 
     defaults to "Unlike"
 
 `closeTag`
 
-	whether or not to close the <a> tag
-	
-	accepted values are true or false
-	
-	defaults to true
+    whether or not to close the <a> tag
+    
+    accepted values are true or false
+    
+    defaults to true
 
 `class`
 
-	the class to assign to the <a> tag
-	
-	accepted values are any string
-	
-	defaults to none
+    the class to assign to the <a> tag
+    
+    accepted values are any string
+    
+    defaults to none
 
 `contentType`
 
-	the content type slug of the content to like
+    the content type slug of the content to like
 
-	accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
+    accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
 
     defaults to whatever the current item is in the Theming Engine
 
 `contentId`
 
-	the content ID of the content to like
+    the content ID of the content to like
 
-	accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
+    accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
 
     defaults to whatever the current item is in the Theming Engine
 
@@ -953,45 +953,45 @@ The main image for this account
 
 `size`
 
-	the size of the photo to load
-	
-	accepted sizes are "thumbnail", "small", "medium", "large", "original"
-	
-	defaults to "thumbnail"
-	
+    the size of the photo to load
+    
+    accepted sizes are "thumbnail", "small", "medium", "large", "original"
+    
+    defaults to "thumbnail"
+    
 ## Pagination
 The pagination module can be used in most all listing modules.
 
 ### module:Pagination
 This module latches onto the last seen module and provides next/previous links to go through the pages. *(This currently must be the first module **after** the module you wish to paginate)*
 
-	{module:Pagination}
-		<div id="pagination">
-			{block:NextPage}
-				<a href="{NextPage}">Older</a>
-			{/block:NextPage}
-			{block:PreviousPage}
-				<a href="{PreviousPage}">Newer</a>
-			{/block:PreviousPage}
-		</div>
-	{/module:Pagination}
+    {module:Pagination}
+        <div id="pagination">
+            {block:NextPage}
+                <a href="{NextPage}">Older</a>
+            {/block:NextPage}
+            {block:PreviousPage}
+                <a href="{PreviousPage}">Newer</a>
+            {/block:PreviousPage}
+        </div>
+    {/module:Pagination}
 
 ### block:PreviousPage
 PreviousPage  
-:	link to previous page
+:   link to previous page
 
 ### block:NextPage
 NextPage  
-:	link to next page
+:   link to next page
 
 ## Navigation
-	{module:Navigation ignore="{ContentType-Audio}" events="Shows" order="events,about,customrandompage"}
-	<ul>
-		{block:NavigationItem}
-			<li><a href="{Url}" class="{CSSClass}">{LinkText}</a></li>
-		{/block:NavigationItem}
-	</ul>
-	{/module:Navigation}
+    {module:Navigation ignore="{ContentType-Audio}" events="Shows" order="events,about,customrandompage"}
+    <ul>
+        {block:NavigationItem}
+            <li><a href="{Url}" class="{CSSClass}">{LinkText}</a></li>
+        {/block:NavigationItem}
+    </ul>
+    {/module:Navigation}
 
 ### module:Navigation
 This module will list all of the links to various content sections that the account supports
@@ -999,52 +999,52 @@ This module will list all of the links to various content sections that the acco
 **Module Options**  
 `ignore`
 
-	a comma separated list of sections to ignore
-	
-	accepted values are {ContentType-Audio}, {ContentType-Blog}, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}, updates, about, fansite
-	
-	defaults to none
-	
+    a comma separated list of sections to ignore
+    
+    accepted values are {ContentType-Audio}, {ContentType-Blog}, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}, updates, about, fansite
+    
+    defaults to none
+    
 `order`
 
-	a comma seperated list of the order for the navigation, when using custom pages be sure to prefix it with "custom" (see example above)
-	
-	accepted value are the same as ignore
-	
-	defaults to general ordering
-	
+    a comma seperated list of the order for the navigation, when using custom pages be sure to prefix it with "custom" (see example above)
+    
+    accepted value are the same as ignore
+    
+    defaults to general ordering
+    
 `fansiteNavigation`
 
-	whether or not to show the subnvagiation for fansite as opposed to the global nav
-	
-	accepted values are true and false
-	
-	defaults to false
-	
+    whether or not to show the subnvagiation for fansite as opposed to the global nav
+    
+    accepted values are true and false
+    
+    defaults to false
+    
 ### block:Navigation
 This block exposes various options available for each navigation link
 
 CSSClass  
-:	a class that says what the navigation item is linking to, will automatically append a class `active` if the current navigation item
+:   a class that says what the navigation item is linking to, will automatically append a class `active` if the current navigation item
 
 LinkText  
-:	the text for the navigation link
+:   the text for the navigation link
 
 Url  
-:	the URL for the navigation link
+:   the URL for the navigation link
 
 ### If Statements
 `if:NavItemHasSlug`
 
-	check to see if the currently rendered item is a current page or not
-	
-	`slug` (*required*)
-	
-		the slug in question
-		
-		accepted values are anything you'd pass to `order` or `ignore`
-		
-		defaults to none
+    check to see if the currently rendered item is a current page or not
+    
+    `slug` (*required*)
+    
+        the slug in question
+        
+        accepted values are anything you'd pass to `order` or `ignore`
+        
+        defaults to none
 
 ## Fan Content Stream
 ### page:FansiteContentList
@@ -1055,7 +1055,7 @@ This modules lists all content posted by fans to a fan club
 
 `supported` *(required)*
 
-	a comma separated list of supported content types
+    a comma separated list of supported content types
 
     accepted values are {ContentType-Audio}, {ContentType-Blog}, {ContentType-Photos}, {ContentType-Statuses}, {ContentType-Videos}
 
@@ -1063,92 +1063,92 @@ This modules lists all content posted by fans to a fan club
 
 `includeAccountcontent`
 
-	whether or not to include account content
+    whether or not to include account content
 
-	accepted values are true or false
+    accepted values are true or false
 
-	defaults to false
-	
+    defaults to false
+    
 `userId`
 
-	a user ID to filter the content by
-	
-	accepted values are the ID of any fans
-	
-	defaults to none
-	
+    a user ID to filter the content by
+    
+    accepted values are the ID of any fans
+    
+    defaults to none
+    
 `limit`
 
-	the amount of blogs to list per page
+    the amount of blogs to list per page
 
-	accepted values are any integer
+    accepted values are any integer
 
     defaults to 5
 
 `offset`
 
-	skips X number of items based on the ordering, it is automatically adjusted when paging
+    skips X number of items based on the ordering, it is automatically adjusted when paging
 
-	accepted values are any integer
+    accepted values are any integer
 
-	defaults to 0
-	
+    defaults to 0
+    
 ### block:FansiteContentView
 This block exposes various content available for fan content
 
 FansiteContentAuthorName  
-:	the name of the fan who created the content
+:   the name of the fan who created the content
 
 FansiteContentAuthorUrl  
-:	the URL to the user page for the author of this content
+:   the URL to the user page for the author of this content
 
 FansiteContentAuthorUsername  
-:	the username of the user who created the content
+:   the username of the user who created the content
 
 FansiteContentAuthorId  
-:	the ID of the fan who created the content
+:   the ID of the fan who created the content
 
 FansiteContentAuthorThumbnailPhotoUrl  
-:	a thumbnail photo URL of the fan who created the content
+:   a thumbnail photo URL of the fan who created the content
 
 FansiteContentTitle  
-:	the title of the content
+:   the title of the content
 
 FansiteContentID  
-:	the ID of the content
+:   the ID of the content
 
 FansiteContentSection  
-:	the content section slug of the content
+:   the content section slug of the content
 
 FansiteContentBody  
-:	the body of the content
+:   the body of the content
 
 FansiteContentCSSClass  
-:	a CSS class to use for the content
+:   a CSS class to use for the content
 
 FansiteContentExcerpt  
-:	an excerpt of the content
+:   an excerpt of the content
 
 FansiteContentExcerptCleaned  
-:	an excerpt of the content with most of the HTML tags stripped
+:   an excerpt of the content with most of the HTML tags stripped
 
 FansiteContentExcerptStripped  
-:	an excerpt of the content with all of the HTML tags stripped
+:   an excerpt of the content with all of the HTML tags stripped
 
 FansiteContentTagCount  
-:	the number of tags for the piece of content
+:   the number of tags for the piece of content
 
 FansiteContentUrl  
-:	the URL to the original content
+:   the URL to the original content
 
 FansiteContentShortUrl  
-:	the short URL to the content's individual page
+:   the short URL to the content's individual page
 
 FansiteContentPhotoCount  
-:	the number of photos related to the content
+:   the number of photos related to the content
 
 FansiteContentLikeCount  
-:	the number of likes the content has
+:   the number of likes the content has
 
 ### Variables With Options
 **ActivityDate**  
@@ -1156,7 +1156,7 @@ The date this content item was published
   
 `format`
 
-	the format of the date according to PHP [date() function](http://php.net/date) 
+    the format of the date according to PHP [date() function](http://php.net/date) 
 
     accepted values are a date format string, relative (returns time ago such as "5 seconds ago"), or gmdate (a GMT date in PHP date format 'Y-M-d h:i A')
 
@@ -1167,46 +1167,46 @@ A trimmed version of `{FansiteContentBody}`
 
 `length`
 
-	the length of the excerpt to use
-	
-	accepted values are any integer
-	
-	defaults to 600
-	
+    the length of the excerpt to use
+    
+    accepted values are any integer
+    
+    defaults to 600
+    
 `cleaned`
 
-	whether or not to remove all tags except `<span><em><strong><a><u><i><b>`
-	
-	accepted values are true and false
-	
-	defaults to false
-	
+    whether or not to remove all tags except `<span><em><strong><a><u><i><b>`
+    
+    accepted values are true and false
+    
+    defaults to false
+    
 `considerHtml`
 
-	whether or not to include HTML tags as page of the length
-	
-	accepted values are true and false
-	
-	defaults to true
-	
+    whether or not to include HTML tags as page of the length
+    
+    accepted values are true and false
+    
+    defaults to true
+    
 `ending`
 
-	what to use at the end of the content if it is cut short
-	
-	accepted values are any string
-	
-	defaults to "..."
+    what to use at the end of the content if it is cut short
+    
+    accepted values are any string
+    
+    defaults to "..."
 
 **ActivityPhotoUrl**  
 A cover image for this content or a default one if there is no cover set
 
 `size`
 
-	the size of the photo to load
-	
-	accepted sizes are "thumbnail", "small", "medium", "large", "original"
-	
-	defaults to "thumbnail"
+    the size of the photo to load
+    
+    accepted sizes are "thumbnail", "small", "medium", "large", "original"
+    
+    defaults to "thumbnail"
 
 ## Activity Stream
 ### page:ActivityStreamList
@@ -1218,7 +1218,7 @@ This module lists all content posted by an account. Content is returned by the d
 **Modules Options**  
 `supported` *(required)*
 
-	a comma separated list of supported content types *note: if you are only using one filter type here, please use the actual module for that specific type of content instead*
+    a comma separated list of supported content types *note: if you are only using one filter type here, please use the actual module for that specific type of content instead*
 
     accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
 
@@ -1226,97 +1226,97 @@ This module lists all content posted by an account. Content is returned by the d
 
 `groupPhotos`
 
-	whether or not photos should be grouped into album udpates
+    whether or not photos should be grouped into album udpates
 
-	accepted values are true and false
+    accepted values are true and false
 
     defaults to true
 
 `exclusive`
 
-	whether or not to also show exclusive content if the user is logged in and capable of seeing it
+    whether or not to also show exclusive content if the user is logged in and capable of seeing it
 
-	defaults to true
-	
-	accepted values are true, false, or always *("always" will always show it, even for non-authorized users)*
+    defaults to true
+    
+    accepted values are true, false, or always *("always" will always show it, even for non-authorized users)*
 
 `sticky`
 
-	whether or not to include sticky content
+    whether or not to include sticky content
 
-	defaults to showing both
+    defaults to showing both
 
-	accepted values are true (to show only sticky posts) or false (to show only non-sticky posts)
+    accepted values are true (to show only sticky posts) or false (to show only non-sticky posts)
 
 `ignoreSticky`
 
-	whether or not sticky blog posts should be on top of the listing
+    whether or not sticky blog posts should be on top of the listing
 
-	accepted values are true or false
+    accepted values are true or false
 
-	defaults to false
-		
+    defaults to false
+        
 `limit`
 
-	the amount of blogs to list per page
+    the amount of blogs to list per page
 
-	accepted values are any integer
+    accepted values are any integer
 
     defaults to 5
 
 `offset`
 
-	skips X number of items based on the ordering, it is automatically adjusted when paging
+    skips X number of items based on the ordering, it is automatically adjusted when paging
 
-	accepted values are any integer
+    accepted values are any integer
 
-	defaults to 0
+    defaults to 0
 
 ### block:ActivityStreamView
 This block exposes various content available for a account content
 
 ActivityAuthorName  
-:	the name of the person who created the content
+:   the name of the person who created the content
 
 ActivityAuthorPhotoUrl  
-:	a URL to a 130x130px thumbnail user photo
+:   a URL to a 130x130px thumbnail user photo
 
 ActivityTitle  
-:	the title of the content
+:   the title of the content
 
 ActivityId  
-:	the ID of the content
+:   the ID of the content
 
 ActivityBody  
-:	the main content for the activity, varies based content type
+:   the main content for the activity, varies based content type
 
-	Blog: the full blog post HTML
-	Event: the same as {ActivityTitle}: [%number] events added today!
-	Statuses: full status content
-	Photos albums: album description
-	Videos: video embed code
-	Video playlists: playlist description
-	Audio: Link to streamable MP3
-	Audio playlists: playlist description
-	Store items: item description
+    Blog: the full blog post HTML
+    Event: the same as {ActivityTitle}: [%number] events added today!
+    Statuses: full status content
+    Photos albums: album description
+    Videos: video embed code
+    Video playlists: playlist description
+    Audio: Link to streamable MP3
+    Audio playlists: playlist description
+    Store items: item description
 
 ActivityCSSClass  
-:	the relevant class from this list: repost, blog, blog repost, status, event, video, audio, photo
+:   the relevant class from this list: repost, blog, blog repost, status, event, video, audio, photo
 
 ActivityUrl  
-:	the permalink to the content's individual page
+:   the permalink to the content's individual page
 
 ActivityShortUrl  
-:	the short URL to the content's individual page
+:   the short URL to the content's individual page
 
 ActivityTagCount  
-:	the number of tags this piece of content has
+:   the number of tags this piece of content has
 
 ActivityLikeCount  
-:	the number of likes this piece of content has
+:   the number of likes this piece of content has
 
 ActivityPhotoCount  
-:	number of photos added to a photo album item
+:   number of photos added to a photo album item
 
 ### Variables With Options
 **ActivityDate**  
@@ -1324,7 +1324,7 @@ The date this content item was published
   
 `format`
 
-	the format of the date according to PHP [date() function](http://php.net/date) 
+    the format of the date according to PHP [date() function](http://php.net/date) 
 
     accepted values are a date format string, relative (returns time ago such as "5 seconds ago"), or gmdate (a GMT date in PHP date format 'Y-M-d h:i A')
 
@@ -1335,71 +1335,71 @@ A trimmed version of `{ActivityBody}`
 
 `length`
 
-	the length of the excerpt to use
-	
-	accepted values are any integer
-	
-	defaults to 600
-	
+    the length of the excerpt to use
+    
+    accepted values are any integer
+    
+    defaults to 600
+    
 `cleaned`
 
-	whether or not to remove all tags except `<span><em><strong><a><u><i><b>`
-	
-	accepted values are true and false
-	
-	defaults to false
-	
+    whether or not to remove all tags except `<span><em><strong><a><u><i><b>`
+    
+    accepted values are true and false
+    
+    defaults to false
+    
 `considerHtml`
 
-	whether or not to include HTML tags as page of the length
-	
-	accepted values are true and false
-	
-	defaults to true
-	
+    whether or not to include HTML tags as page of the length
+    
+    accepted values are true and false
+    
+    defaults to true
+    
 `ending`
 
-	what to use at the end of the content if it is cut short
-	
-	accepted values are any string
-	
-	defaults to "..."
+    what to use at the end of the content if it is cut short
+    
+    accepted values are any string
+    
+    defaults to "..."
 
 **ActivityPhotoUrl**  
 A cover image for this content or a default one if there is no cover set
 
 `size`
 
-	the size of the photo to load
-	
-	accepted sizes are "thumbnail", "small", "medium", "large", "original"
-	
-	defaults to "thumbnail"
-	
+    the size of the photo to load
+    
+    accepted sizes are "thumbnail", "small", "medium", "large", "original"
+    
+    defaults to "thumbnail"
+    
 ### If Statements
 `if:ActivityHasActivityPhoto`
 
-	check to see if the content item has a photo or not
-	
+    check to see if the content item has a photo or not
+    
 `if:ActivityIs[%type]`
-	
-	check to see if a certain activity list item is of a certain type
+    
+    check to see if a certain activity list item is of a certain type
 
-	supported types: Audio, Blog, Event, Photo, PhotoAlbum, Status, StoreItem, Video
+    supported types: Audio, Blog, Event, Photo, PhotoAlbum, Status, StoreItem, Video
 
 `if:ReadMore`
 
-	check if the current excerpt is trimmed to something less than its total length
+    check if the current excerpt is trimmed to something less than its total length
 
 ## Blog
-	{page:BlogView}
-		{module:BlogView}
-			{block:BlogPost}
-				<h2>{BlogPostTitle}</h2>
-				{BlogPostBody}
-			{/block:BlogPost}
-		{/module:BlogView}
-	{/page:BlogView}
+    {page:BlogView}
+        {module:BlogView}
+            {block:BlogPost}
+                <h2>{BlogPostTitle}</h2>
+                {BlogPostBody}
+            {/block:BlogPost}
+        {/module:BlogView}
+    {/page:BlogView}
 
 ### page:BlogList
 `/blog` - This page should show a listing of blog posts
@@ -1416,7 +1416,7 @@ This module lists blog posts by an account. Blog posts are returned by the date 
 **Module Options**  
 `direction`
 
-	the direction in which to list the blog posts
+    the direction in which to list the blog posts
 
     accepted values are asc or desc
 
@@ -1424,91 +1424,91 @@ This module lists blog posts by an account. Blog posts are returned by the date 
 
 `limit`
 
-	the amount of blogs to list per page
-	
-	accepted values are any integer
+    the amount of blogs to list per page
+    
+    accepted values are any integer
 
     defaults to 5
 
 `offset`
 
-	skips X number of items based on the ordering, it is automatically adjusted when paging
-	
-	accepted values are any integer
-	
-	defaults to 0
-		
+    skips X number of items based on the ordering, it is automatically adjusted when paging
+    
+    accepted values are any integer
+    
+    defaults to 0
+        
 `sticky`
 
-	whether or not to include sticky posts
+    whether or not to include sticky posts
 
-	defaults to showing both
+    defaults to showing both
 
-	accepted values are true (to show only sticky posts) or false (to show only non-sticky posts)
+    accepted values are true (to show only sticky posts) or false (to show only non-sticky posts)
 
 `ignoreSticky`
 
-	whether or not sticky blog posts should be on top of the listing
+    whether or not sticky blog posts should be on top of the listing
 
-	accepted values are true or false
+    accepted values are true or false
 
-	defaults to false
+    defaults to false
 
 `exclusive`
 
-	whether or not to include exclusive posts
+    whether or not to include exclusive posts
 
-	defaults to showing both
+    defaults to showing both
 
-	accepted values are true (to show only exclusive posts) or false (to show only non-exclusive posts)
+    accepted values are true (to show only exclusive posts) or false (to show only non-exclusive posts)
 
 `category`
 
-	a category to filter the blog listing by
-	
-	accepted values are any string
-	
-	defaults to none (unless there is a category in the URL, then it defaults to that)
+    a category to filter the blog listing by
+    
+    accepted values are any string
+    
+    defaults to none (unless there is a category in the URL, then it defaults to that)
 
 `ignoreCategory`
 
-	whether or not to ignore a category if it shows up in the URL
+    whether or not to ignore a category if it shows up in the URL
 
-	accepted values true and false
+    accepted values true and false
 
-	defaults to false
-	
+    defaults to false
+    
 `tag`
 
-	a tag to filter the blog listing by
+    a tag to filter the blog listing by
 
-	accepted values are any string
+    accepted values are any string
 
-	defaults to none
-	
+    defaults to none
+    
 `includeFanContent`
 
-	normally content submitted by fans is for module:FansiteContentList, but this allows it to be included here
+    normally content submitted by fans is for module:FansiteContentList, but this allows it to be included here
 
-	accepted values are true and false
+    accepted values are true and false
 
-	defaults to false
+    defaults to false
 
 `accountId`
 
-	a comma separated list of the IDs of the accounts to limit the results to
-	
-	accepted values are IDs of any children accounts of the current account (see variable {ChildAccountIDs})
+    a comma separated list of the IDs of the accounts to limit the results to
+    
+    accepted values are IDs of any children accounts of the current account (see variable {ChildAccountIDs})
 
     defaults to none (i.e. only the current account)
 
 `paging` *(advanced)*
 
-	define how many items are on this page
-	
-	if you are using multiple modules with both `limit`s and `offset`s then you need to explicitly set how many items are on the current page, or pagination will return unexpected results
-	
-	accepted values are any integer
+    define how many items are on this page
+    
+    if you are using multiple modules with both `limit`s and `offset`s then you need to explicitly set how many items are on the current page, or pagination will return unexpected results
+    
+    accepted values are any integer
 
 ### module:BlogView
 This module will load the content for a single blog post. When on `{page:BlogView}` it will automatically grab the right data from the URL.
@@ -1516,11 +1516,11 @@ This module will load the content for a single blog post. When on `{page:BlogVie
 **Module Options**  
 `fanSubmittedIsExclusive`
 
-	whether or not to consider content submitted by fans to a fansite as exclusive or not by default
+    whether or not to consider content submitted by fans to a fansite as exclusive or not by default
 
-	accepted values are true and false
+    accepted values are true and false
 
-	defaults to true
+    defaults to true
 
 ### block:BlogPost
 This block exposes various content available for a blog post object
@@ -1528,67 +1528,67 @@ This block exposes various content available for a blog post object
 **Variables**
 
 AuthorName  
-:	the author's full name
+:   the author's full name
 
 AuthorUsername  
-:	the author's StageBloc username
+:   the author's StageBloc username
 
 AuthorUrl  
-:	the URL to the public facing user page for this author
+:   the URL to the public facing user page for this author
 
 AuthorFansiteUrl  
-:	the URL to the public facing user page for this author on the account's fansite
+:   the URL to the public facing user page for this author on the account's fansite
 
 AuthorPhotoUrl  
-:	url to a thumbnail sized, 130x130px user photo
+:   url to a thumbnail sized, 130x130px user photo
 
 BlogPostAccountId  
 :    the ID of the account that this blog post belongs to
 
 BlogPostTitle  
-:	the title of the blog post
+:   the title of the blog post
 
 BlogPostId  
-:	the blog post's ID
+:   the blog post's ID
 
 BlogPostUrl  
-:	the permalink to the blog post's individual page
+:   the permalink to the blog post's individual page
 
 BlogPostShortUrl  
-:	a short URL for the blog post
+:   a short URL for the blog post
 
 LikeCount  
-:	the number of likes for the blog post
+:   the number of likes for the blog post
 
 BlogPostBody  
-:	the main content for the blog post
+:   the main content for the blog post
 
 BlogPostExcerpt  
-:	a 1500 character beginning of the blog post
+:   a 1500 character beginning of the blog post
 
 BlogPostShortExcerpt  
-:	a 400 character beginning of the blog post
+:   a 400 character beginning of the blog post
 
 BlogPostShortExcerptCleaned  
-:	first 400 characters of blog post with all `<span><em><strong><a><u><i><b>` tags stripped
+:   first 400 characters of blog post with all `<span><em><strong><a><u><i><b>` tags stripped
 
 BlogPostShortExcerptStripped  
-:	first 400 characters of blog post with all html tags stripped
+:   first 400 characters of blog post with all html tags stripped
 
 BlogPostRelatedContentTag  
-:	the tag associated with this blog post for related content
+:   the tag associated with this blog post for related content
 
 BlogPostPhotoUrl  
-:	the URL of the first `<img>` in the blog post (see `if:BlogPostHasPhoto`)
+:   the URL of the first `<img>` in the blog post (see `if:BlogPostHasPhoto`)
 
 PreviousBlogPostId, NextBlogPostId  
-:	the ID of the blog post previous/next to the current one if it exists
+:   the ID of the blog post previous/next to the current one if it exists
 
 PreviousBlogPostTitle, NextBlogPostTitle  
-:	the title of the blog post previous/next to the current one if it exists
+:   the title of the blog post previous/next to the current one if it exists
 
 PreviousBlogPostUrl, NextBlogPostUrl  
-:	the permalink of the blog post previous/next to the current one if it exists
+:   the permalink of the blog post previous/next to the current one if it exists
 
 ### Variables With Options
 **PublishedDate**  
@@ -1596,7 +1596,7 @@ The date this blog post was published
   
 `format`
 
-	the format of the date according to PHP [date() function](http://php.net/date) 
+    the format of the date according to PHP [date() function](http://php.net/date) 
 
     accepted values are a date format string, relative (returns time ago such as "5 seconds ago"), or gmdate (a GMT date in PHP date format 'Y-M-d h:i A')
 
@@ -1604,21 +1604,21 @@ The date this blog post was published
     
 `shorttime`
 
-	whether or not to show the units of time in a contracted manner (i.e. secs vs seconds) when using format="relative"
+    whether or not to show the units of time in a contracted manner (i.e. secs vs seconds) when using format="relative"
 
-	accepted values are true or false
-	
-	defaults to false
+    accepted values are true or false
+    
+    defaults to false
 
 ### If Statements
 `if:BlogPostHasPhoto`
 
-	check if a blog post has at least one photo (`<img>` tag) in it
-	
+    check if a blog post has at least one photo (`<img>` tag) in it
+    
 `if:ReadMore`
 
-	check if the current excerpt is trimmed to something less than its total length
-	
+    check if the current excerpt is trimmed to something less than its total length
+    
 ## Audio
 ### page:AudioList
 `/audio` - This page should show a listing of audio content such as audio tracks or audio playlists
@@ -1632,51 +1632,51 @@ This module lists audio tracks by an account. Audio is listed by the date it was
 **Module Options**  
 `audioPlaylistId`
 
-	a audio playlist ID to filter the audio tracks by
-	
-	accepted values are any ID of an audio playlist that belongs to the same account
+    a audio playlist ID to filter the audio tracks by
+    
+    accepted values are any ID of an audio playlist that belongs to the same account
 
     defaults to none
 
 `limit`
 
-	the amount of audio tracks to list per page
-	
-	accepted values are any integer
+    the amount of audio tracks to list per page
+    
+    accepted values are any integer
 
     defaults to 10
 
 `offset`
 
-	skips X number of items based on the ordering, it is automatically adjusted when paging
+    skips X number of items based on the ordering, it is automatically adjusted when paging
 
-	accepted values are any integer
+    accepted values are any integer
 
-	defaults to 0
+    defaults to 0
 
 `sticky`
 
-	whether or not to just return the sticky audio track
+    whether or not to just return the sticky audio track
 
-	accepted values are true or false
+    accepted values are true or false
 
-	defaults to false
+    defaults to false
 
 `direction`
 
-	the direction in which to list the audio
-	
-	accepted values are asc or desc
+    the direction in which to list the audio
+    
+    accepted values are asc or desc
 
     defaults to asc
     
 `accountId`
 
-	a comma separated list of the IDs of the accounts to limit the results to
+    a comma separated list of the IDs of the accounts to limit the results to
 
-	accepted values are IDs of any children accounts of the current account (see variable {ChildAccountIDs})
+    accepted values are IDs of any children accounts of the current account (see variable {ChildAccountIDs})
 
-	defaults to none (i.e. only the current account)
+    defaults to none (i.e. only the current account)
 
 ### module:AudioView
 This module will load the content for a single audio track. When on `{page:AudioView}` it will automatically grab the right data from the URL.
@@ -1684,81 +1684,81 @@ This module will load the content for a single audio track. When on `{page:Audio
 **Module Options**  
 `audioId`
 
-	an ID for which audio track to show
-	
-	accepted values are any audio ID that belongs to the same account
-	
-	defaults to none or the ID from the URL if on {page:AudioView}
-	
+    an ID for which audio track to show
+    
+    accepted values are any audio ID that belongs to the same account
+    
+    defaults to none or the ID from the URL if on {page:AudioView}
+    
 `fanSubmittedIsExclusive`
 
-	whether or not to consider content submitted by fans to a fansite as exclusive or not by default
+    whether or not to consider content submitted by fans to a fansite as exclusive or not by default
 
-	accepted values are true and false
+    accepted values are true and false
 
-	defaults to true
+    defaults to true
 
 ### block:AudioView
 This block exposes various content for an audio object
 
 AuthorName  
-:	the name of the user that created this audio track
+:   the name of the user that created this audio track
 
 AuthorUsername  
-:	the StageBloc username of the user that created this audio track
+:   the StageBloc username of the user that created this audio track
 
 AuthorUrl  
-:	the URL to the public facing user page for this author
+:   the URL to the public facing user page for this author
 
 AuthorFansiteUrl  
-:	the URL to the public facing user page for this author on the account's fansite
+:   the URL to the public facing user page for this author on the account's fansite
 
 AuthorPhotoUrl  
-:	url to a thumbnail sized, 130x130px user photo
+:   url to a thumbnail sized, 130x130px user photo
 
 AudioAccountId  
 :    the ID of the account that created this audio
 
 AudioUrl  
-:	a permalink to the audio track's individual page
+:   a permalink to the audio track's individual page
 
 AudioShortUrl  
-:	the short URL for this audio track
+:   the short URL for this audio track
 
 AudioTitle  
-:	the title of the audio track
+:   the title of the audio track
 
 AudioJavaScriptEscapedTitle  
-:	the title of the audio track for use within JavaScript
+:   the title of the audio track for use within JavaScript
 
 AudioId  
-:	the ID of the audio track
+:   the ID of the audio track
 
 LikeCount  
-:	the number of likes for the audio track
+:   the number of likes for the audio track
 
 AudioLyrics  
-:	the lyrics for the audio track
+:   the lyrics for the audio track
 
 AudioDescription  
-:	the description for the audio track
+:   the description for the audio track
 
 AudioPrice  
-:	the price for this audio track in USD
+:   the price for this audio track in USD
 
 AudioStreamUrl
-:	the URL to use when streaming the audio track
+:   the URL to use when streaming the audio track
 
 AudioCredits  
-:	the credits for the audio object
+:   the credits for the audio object
 
 AudioArtist  
-:	the artist for the audio track if given, otherwise the name of the account this audio belongs to
+:   the artist for the audio track if given, otherwise the name of the account this audio belongs to
 
 AudioFreeDownloadQuality, AudioPaidDownloadQuaility  
-:	a string representing the quality of the free/paid version of this audio track, one of the following values:
+:   a string representing the quality of the free/paid version of this audio track, one of the following values:
 
-	128kb MP3, 320kb MP3, Original WAV, Original AIFF, Original WAV / AIFF
+    128kb MP3, 320kb MP3, Original WAV, Original AIFF, Original WAV / AIFF
 
 ### Variables With Options
 **AudioAddToCartLink**  
@@ -1766,69 +1766,69 @@ Creates a link that, when clicked, will add the audio track to the user's cart o
 
 `audioId` (*required*)
 
-	the ID of the audio track you want to add to the user's cart
+    the ID of the audio track you want to add to the user's cart
 
 `text`
 
-	the text to be put inside the <a> tag
+    the text to be put inside the <a> tag
 
-	accepted values are any string (HTML included)
+    accepted values are any string (HTML included)
 
     defaults to "Add To Cart"
 
 `closeTag`
 
-	whether or not to close the <a> tag
-	
-	accepted values are true or false
-	
-	defaults to true
+    whether or not to close the <a> tag
+    
+    accepted values are true or false
+    
+    defaults to true
 
 `class`
 
-	the class to assign to the <a> tag
-	
-	accepted values are any string
-	
-	defaults to none
+    the class to assign to the <a> tag
+    
+    accepted values are any string
+    
+    defaults to none
 
 **AudioFreeDownloadLink**  
 Creates a link that, when clicked, will download the audio track (unless it requires a follow to download, in which a modal will first show up)
 
 `audioId` (*required*)
 
-	the ID of the audio track you want to add to the user's cart
+    the ID of the audio track you want to add to the user's cart
 
 `text`
 
-	the text to be put inside the <a> tag
+    the text to be put inside the <a> tag
 
-	accepted values are any string (HTML included)
+    accepted values are any string (HTML included)
 
     defaults to "Add To Cart"
 
 `closeTag`
 
-	whether or not to close the <a> tag
-	
-	accepted values are true or false
-	
-	defaults to true
+    whether or not to close the <a> tag
+    
+    accepted values are true or false
+    
+    defaults to true
 
 `class`
 
-	the class to assign to the <a> tag
-	
-	accepted values are any string
-	
-	defaults to none
+    the class to assign to the <a> tag
+    
+    accepted values are any string
+    
+    defaults to none
 
 **AudioRecordedDate**  
 The date this audio was recorded on
-	
+    
 format
 
-	the format of the date according to PHP [date() function](http://php.net/date) 
+    the format of the date according to PHP [date() function](http://php.net/date) 
 
     accepted values are a date format string, relative (returns time ago such as "5 seconds ago"), or gmdate (a GMT date in PHP date format 'Y-M-d h:i A')
 
@@ -1839,24 +1839,28 @@ A cover image for this audio track or a default one if there is no cover set
 
 `size`
 
-	the size of the photo to load
-	
-	accepted sizes are "thumbnail", "small", "medium", "large", "original"
-	
-	defaults to "thumbnail"
-	
+    the size of the photo to load
+    
+    accepted sizes are "thumbnail", "small", "medium", "large", "original"
+    
+    defaults to "thumbnail"
+    
 ### If Statements
 `if:AudioHasLyrics`
 
-	Check to see if the audio track has lyrics
+    Check to see if the audio track has lyrics
 
 `if:AudioCanBeDownloadedForFree`
-	
-	Check to see if the audio track can be downloaded for free
+    
+    Check to see if the audio track can be downloaded for free
 
 `if:AudioCanBeSold`
 
-	Check to see if the audio track is being sold
+    Check to see if the audio track is being sold
+
+`if:CartHasProducts` *(global, can be used anywhere)*
+
+    checks to see if there are items in the cart
 
 ## Audio Playlists
 ### page:AudioPlaylistList
@@ -1871,7 +1875,7 @@ This module lists audio playlists by an account.
 **Module Options**  
 `sticky`
 
-	whether or not to list only the sticky audio playlist
+    whether or not to list only the sticky audio playlist
 
     accepted values are true or false
 
@@ -1879,19 +1883,19 @@ This module lists audio playlists by an account.
 
 `featuredFirst`
 
-	whether or not to show the sticky audio playlist first in the listing
-	
-	accepted values are true or false
-	
-	defaults to false
-	
+    whether or not to show the sticky audio playlist first in the listing
+    
+    accepted values are true or false
+    
+    defaults to false
+    
 `accountId`
 
-	a comma separated list of the IDs of the accounts to limit the results to
+    a comma separated list of the IDs of the accounts to limit the results to
 
-	accepted values are IDs of any children accounts of the current account (see variable {ChildAccountIDs})
+    accepted values are IDs of any children accounts of the current account (see variable {ChildAccountIDs})
 
-	defaults to none (i.e. only the current account)
+    defaults to none (i.e. only the current account)
 
 ### module:AudioPlaylistView
 This module will load the content for a single audio playlist. When on {page:AudioPlaylistView} it will automatically grab the right data from the URL.
@@ -1900,42 +1904,42 @@ This module will load the content for a single audio playlist. When on {page:Aud
 This block exposes various content for an audio playlist object
 
 AudioPlaylistDescription  
-:	the description for the audio playlist
+:   the description for the audio playlist
 
 AudioPlaylistId  
-:	the ID for the audio playlist
+:   the ID for the audio playlist
 
 AudioPlaylistUrl  
-:	a permalink for the playlist's individual page
+:   a permalink for the playlist's individual page
 
 AudioPlaylistTitle  
-:	the title of the audio playlist
+:   the title of the audio playlist
 
 AudioPlaylistAudioCount  
-:	the amount of audio tracks in this playlist
+:   the amount of audio tracks in this playlist
 
 AudioPlaylistPrice  
-:	the price of this playlist if it is being sold
+:   the price of this playlist if it is being sold
 
 AudioPlaylistLabel  
-:	the record label for the audio playlist
+:   the record label for the audio playlist
 
 LikeCount  
-:	the number of likes for the audio playlist
+:   the number of likes for the audio playlist
 
 AudioPlaylistPrice  
-:	the price for the playlist (if there is a pre-order currently active for the playlist, it'll use that price instead)
+:   the price for the playlist (if there is a pre-order currently active for the playlist, it'll use that price instead)
 
 CreatedByPhotoUrl, ModifiedByPhotoUrl
-:	a URL to the photo for who created/modified the audio playlist to be used in an `<img />` tag
+:   a URL to the photo for who created/modified the audio playlist to be used in an `<img />` tag
 
 CreatedByName, ModifiedByName
-:	the name of the user who created/modified the audio playlist
+:   the name of the user who created/modified the audio playlist
 
 AudioPlaylistFreeDownloadQuality, AudioPlaylistPaidDownloadQuaility  
-:	a string representing the quality of the free/paid version of this audio playlist, one of the following values:
+:   a string representing the quality of the free/paid version of this audio playlist, one of the following values:
 
-	128kb MP3, 320kb MP3, Original WAV, Original AIFF, Original WAV / AIFF
+    128kb MP3, 320kb MP3, Original WAV, Original AIFF, Original WAV / AIFF
 
 ### Variables With Options
 **AudioPlaylistPhotoUrl**  
@@ -1943,18 +1947,18 @@ A cover image for this audio playlist or a default one if there is no cover set
 
 `size`
 
-	the size of the photo to load
-	
-	accepted sizes are "thumbnail", "small", "medium", "large", "original"
-	
-	defaults to "thumbnail"
+    the size of the photo to load
+    
+    accepted sizes are "thumbnail", "small", "medium", "large", "original"
+    
+    defaults to "thumbnail"
 
 **AudioPlaylistReleaseDate** 
 The date the audio playlist was released on
-	
+    
 `format`
 
-	the format of the date according to PHP [date() function](http://php.net/date) 
+    the format of the date according to PHP [date() function](http://php.net/date) 
 
     accepted values are a date format string, relative (returns time ago such as "5 seconds ago"), or gmdate (a GMT date in PHP date format 'Y-M-d h:i A')
 
@@ -1965,104 +1969,108 @@ Creates a link that, when clicked, will add the audio track to the user's cart o
 
 `audioPlaylistId` (*required*)
 
-	the ID of the audio playlist you want to add to the user's cart
+    the ID of the audio playlist you want to add to the user's cart
 
 `text`
 
-	the text to be put inside the <a> tag
+    the text to be put inside the <a> tag
 
-	accepted values are any string (HTML included)
+    accepted values are any string (HTML included)
 
     defaults to "Add To Cart"
 
 `preorderText`
 
-	the text to be put inside the <a> tag when a pre-order is set up for the playlist
+    the text to be put inside the <a> tag when a pre-order is set up for the playlist
 
-	accepted values are any string (HTML included)
+    accepted values are any string (HTML included)
 
     defaults to "Pre-order"
 
 `preorderSoldOutText`
 
-	the text to be put inside the <a> tag when a preorder is set up for the playlist and it has sold out
+    the text to be put inside the <a> tag when a preorder is set up for the playlist and it has sold out
 
-	accepted values are any string (HTML included)
+    accepted values are any string (HTML included)
 
     defaults to "Pre-order Sold Out"
 
 `closeTag`
 
-	whether or not to close the <a> tag
+    whether or not to close the <a> tag
 
-	accepted values are true or false
+    accepted values are true or false
 
-	defaults to true
+    defaults to true
 
 `class`
 
-	the class to assign to the <a> tag
+    the class to assign to the <a> tag
 
-	accepted values are any string
+    accepted values are any string
 
-	defaults to none
+    defaults to none
 
 **AudioPlaylistFreeDownloadLink**  
 Creates a link that, when clicked, will download the audio track (unless it requires a follow to download, in which a modal will first show up)
 
 `audioPlaylistId` (*required*)
 
-	the ID of the audio track you want to add to the user's cart
+    the ID of the audio track you want to add to the user's cart
 
 `text`
 
-	the text to be put inside the <a> tag
+    the text to be put inside the <a> tag
 
-	accepted values are any string (HTML included)
+    accepted values are any string (HTML included)
 
     defaults to "Add To Cart"
 
 `closeTag`
 
-	whether or not to close the <a> tag
+    whether or not to close the <a> tag
 
-	accepted values are true or false
+    accepted values are true or false
 
-	defaults to true
+    defaults to true
 
 `class`
 
-	the class to assign to the <a> tag
+    the class to assign to the <a> tag
 
-	accepted values are any string
+    accepted values are any string
 
-	defaults to none
+    defaults to none
 
 ### If Statements
 `if:AudioPlaylistCanBeDownloadedForFree`
 
-	check to see if the audio playlist can be downloaded for free
+    check to see if the audio playlist can be downloaded for free
 
 `if:AudioPlaylistCanBeSold`
 
-	check to see if the audio playlist is being sold
-	
+    check to see if the audio playlist is being sold
+    
 `if:AudioPlaylistCanNamePrice`
 
-	check to see if the playlist is being sold and fans can name a price for it or not
-	
+    check to see if the playlist is being sold and fans can name a price for it or not
+    
 `if:AudioPlaylistHasLabel`
 
-	check to see if the audio playlist has a label or not
-	
+    check to see if the audio playlist has a label or not
+    
 `if:AudioPlaylistHasRecordedDate`
 
-	check to see if the audio playlist has a recorded date or not
-	
+    check to see if the audio playlist has a recorded date or not
+    
 `if:AudioPlaylistHasThumbnail`
 
-	check to see if the audio playlist has a photo or not
-	
+    check to see if the audio playlist has a photo or not
+
+`if:CartHasProducts` *(global, can be used anywhere)*
+
+    checks to see if there are items in the cart
+
 ## Videos
 ### page:VideoList
 `/videos` - This page should show a listing of video content such as videos or video playlists
@@ -2076,51 +2084,51 @@ This module lists videos by an account. Videos are returned by the date they wer
 **Module Options**  
 `videoPlaylistId`
 
-	a video playlist ID to filter the videos by
+    a video playlist ID to filter the videos by
 
-	accepted values are any ID of a video playlist that belongs to the same account
+    accepted values are any ID of a video playlist that belongs to the same account
 
-	defaults to none
-	
+    defaults to none
+    
 `limit`
 
-	the amount of videos to list per page
+    the amount of videos to list per page
 
-	accepted values are any integer
+    accepted values are any integer
 
-	defaults to 50
+    defaults to 50
 
 `offset`
 
-	skips X number of items based on the ordering, it is automatically adjusted when paging
+    skips X number of items based on the ordering, it is automatically adjusted when paging
 
-	accepted values are any integer
+    accepted values are any integer
 
-	defaults to 0
+    defaults to 0
 
 `direction`
 
-	the direction in which to list the videos
+    the direction in which to list the videos
 
-	accepted values are asc or desc
+    accepted values are asc or desc
 
-	defaults to asc
+    defaults to asc
     
 `sticky`
 
-	whether or not to include sticky videos
+    whether or not to include sticky videos
 
-	defaults to showing both
+    defaults to showing both
 
-	accepted values are true (to show only sticky posts) or false (to show only non-sticky posts)
+    accepted values are true (to show only sticky posts) or false (to show only non-sticky posts)
     
 `accountId`
 
-	a comma separated list of the IDs of the accounts to limit the results to
+    a comma separated list of the IDs of the accounts to limit the results to
 
-	accepted values are IDs of any children accounts of the current account (see variable {ChildAccountIDs})
+    accepted values are IDs of any children accounts of the current account (see variable {ChildAccountIDs})
 
-	defaults to none (i.e. only the current account)
+    defaults to none (i.e. only the current account)
 
 ### VideoView
 This module will load the content for a single video. When on `{page:VideoView}` it will automatically grab the right data from the URL.
@@ -2128,71 +2136,71 @@ This module will load the content for a single video. When on `{page:VideoView}`
 **Module Options**  
 `videoId`
 
-	an ID for which video to show
+    an ID for which video to show
 
-	accepted values are any video ID that belongs to the same account
+    accepted values are any video ID that belongs to the same account
 
-	defaults to none or the ID from the URL if on {page:VideoView}
+    defaults to none or the ID from the URL if on {page:VideoView}
 
 `fanSubmittedIsExclusive`
 
-	whether or not to consider content submitted by fans to a fansite as exclusive or not
+    whether or not to consider content submitted by fans to a fansite as exclusive or not
 
-	accepted values are true and false
+    accepted values are true and false
 
-	defaults to true
+    defaults to true
 
 ### block:VideoView
 AuthorName  
-:	the name of the user that created this audio track
+:   the name of the user that created this audio track
 
 AuthorUsername  
-:	the StageBloc username of the user that created this audio track
+:   the StageBloc username of the user that created this audio track
 
 AuthorUrl  
-:	the URL to the public facing user page for this author
+:   the URL to the public facing user page for this author
 
 AuthorFansiteUrl  
-:	the URL to the public facing user page for this author on the account's fansite
+:   the URL to the public facing user page for this author on the account's fansite
 
 AuthorPhotoUrl  
-:	url to a thumbnail sized, 130x130px user photo
+:   url to a thumbnail sized, 130x130px user photo
 
 VideoAccountId  
 :    the ID of the account that posted the video
 
 VideoCreatorId  
-:	the ID of the user who created the video
+:   the ID of the user who created the video
 
 VideoUrl  
-:	a permalink to the video's individual page
+:   a permalink to the video's individual page
 
 VideoJavaScriptEscapedTitle  
-:	the title of the video escaped so that it is able to be used with JavaScript
+:   the title of the video escaped so that it is able to be used with JavaScript
 
 VideoId  
-:	the ID of the video
+:   the ID of the video
 
 LikeCount  
-:	the number of likes for the video
+:   the number of likes for the video
 
 VideoShortUrl  
-:	a short URL for the video
+:   a short URL for the video
 
 VideoDescription  
-:	the description of the video
+:   the description of the video
 
 VideoJavaScriptEscapedDescription  
-:	the description of the video escaped to be used in JavaScript
+:   the description of the video escaped to be used in JavaScript
 
 VideoEmbedCode  
-:	the embed code for the given video
+:   the embed code for the given video
 
 VideoJavaScriptEncodedEmbedCode  
-:	the embed code encoded for use in a URL
+:   the embed code encoded for use in a URL
 
 VideoJavaScriptEscapedEmbedCode  
-:	the embed code escaped to be used in JavaScript
+:   the embed code escaped to be used in JavaScript
 
 ### Variables With Options
 **VideoPhotoUrl**  
@@ -2200,16 +2208,16 @@ A cover image for this video or a default one if there is no cover set
 
 `size`
 
-	the size of the photo to load
-	
-	accepted sizes are "thumbnail", "small", "medium", "large", "original"
-	
-	defaults to "thumbnail"
+    the size of the photo to load
+    
+    accepted sizes are "thumbnail", "small", "medium", "large", "original"
+    
+    defaults to "thumbnail"
 
 ### If Statements
 `if:AudioPlaylistHasThumbnail`
 
-	Check to see if the audio playlist has a photo or not
+    Check to see if the audio playlist has a photo or not
 
 ## Video Playlists
 ### page:VideoPlaylistList
@@ -2224,63 +2232,63 @@ This module lists video playlists by an account.
 **Module Options**  
 `limit`
 
-	the amount of video playlists to list per page
+    the amount of video playlists to list per page
 
-	accepted values are any integer
+    accepted values are any integer
 
-	defaults to 50
+    defaults to 50
 
 `offset`
 
-	skips X number of items based on the ordering, it is automatically adjusted when paging
+    skips X number of items based on the ordering, it is automatically adjusted when paging
 
-	accepted values are any integer
+    accepted values are any integer
 
-	defaults to 0
-	
+    defaults to 0
+    
 `direction`
 
-	the direction in which to list the videos
+    the direction in which to list the videos
 
-	accepted values are asc or desc
+    accepted values are asc or desc
 
-	defaults to asc
+    defaults to asc
 
 `accountId`
 
-	a comma separated list of the IDs of the accounts to limit the results to
+    a comma separated list of the IDs of the accounts to limit the results to
 
-	accepted values are IDs of any children accounts of the current account (see variable {ChildAccountIDs})
+    accepted values are IDs of any children accounts of the current account (see variable {ChildAccountIDs})
 
-	defaults to none (i.e. only the current account)
+    defaults to none (i.e. only the current account)
 
 ### VideoPlaylistView
 This module will load the content for a single vide playlist. When on {page:VideoPlaylistView} it will automatically grab the right data from the URL.
 
 ### block:VideoPlaylistView
 VideoPlaylistDescription  
-:	the description for the playlist
+:   the description for the playlist
 
 VideoPlaylistId  
-:	the ID for the video playlist
+:   the ID for the video playlist
 
 VideoPlaylistUrl  
-:	a permalink to the video playlist's individual page
+:   a permalink to the video playlist's individual page
 
 VideoPlaylistTitle  
-:	the title for the video playlist
+:   the title for the video playlist
 
 LikeCount  
-:	the number of likes for the video playlist
+:   the number of likes for the video playlist
 
 VideoPlaylistVideoCount  
-:	the amount of videos in this playlist
+:   the amount of videos in this playlist
 
 CreatedByPhotoUrl, ModifiedByPhotoUrl  
-:	a URL to the thumbnail photo for the user who created/modified the video playlist to be used in an `<img src="" />` tag
+:   a URL to the thumbnail photo for the user who created/modified the video playlist to be used in an `<img src="" />` tag
 
 CreatedByName, ModifiedByName  
-:	the name of the user who created/modified the video playlist
+:   the name of the user who created/modified the video playlist
 
 ### Variables With Options
 **VideoPlaylistPhotoUrl**  
@@ -2288,16 +2296,16 @@ A cover image for this video video or a default one if there is no cover set
 
 `size`
 
-	the size of the photo to load
-	
-	accepted sizes are "thumbnail", "small", "medium", "large", "original"
-	
-	defaults to "thumbnail"
-	
+    the size of the photo to load
+    
+    accepted sizes are "thumbnail", "small", "medium", "large", "original"
+    
+    defaults to "thumbnail"
+    
 ### If Statements
 `if:VideoPlaylistHasThumbnail`
 
-	check to see if the video playlist has a photo or not
+    check to see if the video playlist has a photo or not
 
 ## Photos
 ### page:PhotoList
@@ -2312,83 +2320,83 @@ This module lists photos by an account. Photos is listed by the date it was crea
 **Modules Options**  
 `albumId`
 
-	a photo album ID to filter the photos by
-	
-	accepted values are any ID of an photo album that belongs to the same account
+    a photo album ID to filter the photos by
+    
+    accepted values are any ID of an photo album that belongs to the same account
 
     defaults to none
 
 `limit`
 
-	the amount of photos to list per page
+    the amount of photos to list per page
 
-	accepted values are any integer
+    accepted values are any integer
 
-	defaults to 10
+    defaults to 10
 
 `offset`
 
-	skips X number of items based on the ordering, it is automatically adjusted when paging
+    skips X number of items based on the ordering, it is automatically adjusted when paging
 
-	accepted values are any integer
+    accepted values are any integer
 
-	defaults to 0
+    defaults to 0
 
 `direction`
 
-	the direction in which to list the videos
+    the direction in which to list the videos
 
-	accepted values are asc or desc
+    accepted values are asc or desc
 
-	defaults to desc
+    defaults to desc
 
 `accountId`
 
-	a comma separated list of the IDs of the accounts to limit the results to
+    a comma separated list of the IDs of the accounts to limit the results to
 
-	accepted values are IDs of any children accounts of the current account (see variable {ChildAccountIDs})
+    accepted values are IDs of any children accounts of the current account (see variable {ChildAccountIDs})
 
-	defaults to none (i.e. only the current account)
+    defaults to none (i.e. only the current account)
 
 `includeFanContent`
 
-	normally content submitted by fans is for module:FansiteContentList, but this allows it to be included here
+    normally content submitted by fans is for module:FansiteContentList, but this allows it to be included here
 
-	accepted values are true and false
+    accepted values are true and false
 
-	defaults to false
+    defaults to false
 
 `accountContent`
 
-	whether or not to show photos created by admins of the account
-	
-	accepted values are true or false
+    whether or not to show photos created by admins of the account
+    
+    accepted values are true or false
 
     defaults to true
 
 `exclusive`
 
-	whether or not to show exclusive content
+    whether or not to show exclusive content
 
-	accepted values are true or false
+    accepted values are true or false
 
-	defaults to showing both in the case that the user is logged in and authorized to see it
-	
+    defaults to showing both in the case that the user is logged in and authorized to see it
+    
 `userId`
 
-	the user to limit the photos to
-	
-	accepted values are an ID of an admin if accountContent is enabled or an ID of a fan is includeFanContent is enabled
+    the user to limit the photos to
+    
+    accepted values are an ID of an admin if accountContent is enabled or an ID of a fan is includeFanContent is enabled
 
     defaults to none (i.e. all fans and / or all admins)
 
 `showPrivate`
 
-	whether or not to include private photos in the listing
-	
-	accepted values are true or false
-	
-	defaults to false
+    whether or not to include private photos in the listing
+    
+    accepted values are true or false
+    
+    defaults to false
 
 ### module:PhotoView
 This module will load the content for a single photo. When on {page:PhotoView} it will automatically grab the right data from the URL.
@@ -2396,83 +2404,83 @@ This module will load the content for a single photo. When on {page:PhotoView} i
 **Module Options**  
 `photoId`
 
-	an ID for which photo to show
+    an ID for which photo to show
 
-	accepted values are any photo ID that belongs to the same account
+    accepted values are any photo ID that belongs to the same account
 
-	defaults to none or the ID from the URL if on {page:PhotoView}
+    defaults to none or the ID from the URL if on {page:PhotoView}
 
 `fanSubmittedIsExclusive`
 
-	whether or not to consider content submitted by fans to a fansite as exclusive or not
+    whether or not to consider content submitted by fans to a fansite as exclusive or not
 
-	accepted values are true and false
+    accepted values are true and false
 
-	defaults to true
+    defaults to true
 
 ### block:PhotoView
 AuthorName  
-:	the name of the user that created this audio track
+:   the name of the user that created this audio track
 
 AuthorUsername  
-:	the StageBloc username of the user that created this audio track
+:   the StageBloc username of the user that created this audio track
 
 AuthorUrl  
-:	the URL to the public facing user page for this author
+:   the URL to the public facing user page for this author
 
 AuthorFansiteUrl  
-:	the URL to the public facing user page for this author on the account's fansite
+:   the URL to the public facing user page for this author on the account's fansite
 
 AuthorPhotoUrl  
-:	url to a thumbnail sized, 130x130px user photo
+:   url to a thumbnail sized, 130x130px user photo
 
 PhotoAccountId  
 :    the ID of the account that created the photo
 
 PhotoCreatorId  
-:	the ID of the user who created the photo
+:   the ID of the user who created the photo
 
 PhotoId  
-:	the ID of the photo
+:   the ID of the photo
 
 PhotoUrl  
-:	the permalink to this photo's individual page
+:   the permalink to this photo's individual page
 
 PhotoShortUrl  
-:	a short URL for the photo
+:   a short URL for the photo
 
 LikeCount  
-:	the number of likes for the photo
+:   the number of likes for the photo
 
 PhotoTitle  
-:	the title of the photo
+:   the title of the photo
 
 PhotoDescription  
-:	the description of the photo
+:   the description of the photo
 
 Source-Thumb  
-:	a squared thumbnail photo link with the dimensions of 130x130px
+:   a squared thumbnail photo link with the dimensions of 130x130px
 
 Source-Small  
-:	a link to a photo with max dimensions of 250x250px
+:   a link to a photo with max dimensions of 250x250px
 
 Source-Medium  
-:	a link to a photo with max dimensions of 500x500px
+:   a link to a photo with max dimensions of 500x500px
 
 Source-Large  
-:	a link to a photo with max dimensions of 800x800px
+:   a link to a photo with max dimensions of 800x800px
 
 Source-Original  
-:	a link to the originally uploaded photo
+:   a link to the originally uploaded photo
 
 PreviousPhotoId, NextPhotoId  
-:	the ID of the photo previous/next to the current one if it exists
+:   the ID of the photo previous/next to the current one if it exists
 
 PreviousPhotoTitle, NextPhotoTitle  
-:	the title of the photo previous/next to the current one if it exists
+:   the title of the photo previous/next to the current one if it exists
 
 PreviousPhotoUrl, NextPhotoUrl  
-:	the permalink of the photo previous/next to the current one if it exists
+:   the permalink of the photo previous/next to the current one if it exists
 
 ### Variables With Options
 **PhotoAddToCartLink**  
@@ -2480,36 +2488,36 @@ Creates a link that, when clicked, will add the photo to the user's cart
 
 `photoId` (*required*)
 
-	the ID of the photo you want to add to the user's cart
+    the ID of the photo you want to add to the user's cart
 
 `text`
 
-	the text to be put inside the <a> tag
+    the text to be put inside the <a> tag
 
-	accepted values are any string (HTML included)
+    accepted values are any string (HTML included)
 
     defaults to "Add To Cart"
 
 `closeTag`
 
-	whether or not to close the <a> tag
+    whether or not to close the <a> tag
 
-	accepted values are true or false
+    accepted values are true or false
 
-	defaults to true
+    defaults to true
 
 `class`
 
-	the class to assign to the <a> tag
+    the class to assign to the <a> tag
 
-	accepted values are any string
+    accepted values are any string
 
-	defaults to none
+    defaults to none
 
 ### If Statements
 `if:PhotoCanBeSold`
 
-	checks to see if a photo can be sold or not
+    checks to see if a photo can be sold or not
 
 ## Photo Albums
 ### page:PhotoAlbumList
@@ -2524,35 +2532,35 @@ This module lists photo albums by an account.
 **Module Options**  
 `limit`
 
-	the amount of photo albums to list per page
+    the amount of photo albums to list per page
 
-	accepted values are any integer
+    accepted values are any integer
 
-	defaults to 10
+    defaults to 10
 
 `offset`
 
-	skips X number of items based on the ordering, it is automatically adjusted when paging
+    skips X number of items based on the ordering, it is automatically adjusted when paging
 
-	accepted values are any integer
+    accepted values are any integer
 
-	defaults to 0
+    defaults to 0
 
 `direction`
 
-	the direction in which to list the photo albums
+    the direction in which to list the photo albums
 
-	accepted values are asc or desc
+    accepted values are asc or desc
 
-	defaults to desc
+    defaults to desc
 
 `accountId`
 
-	a comma separated list of the IDs of the accounts to limit the results to
+    a comma separated list of the IDs of the accounts to limit the results to
 
-	accepted values are IDs of any children accounts of the current account (see variable {ChildAccountIDs})
+    accepted values are IDs of any children accounts of the current account (see variable {ChildAccountIDs})
 
-	defaults to none (i.e. only the current account)
+    defaults to none (i.e. only the current account)
 
 ### module:PhotoAlbumView
 This module will load the content for a single photo album. When on {page:PhotoAlbumView} it will automatically grab the right data from the URL.
@@ -2560,39 +2568,39 @@ This module will load the content for a single photo album. When on {page:PhotoA
 **Module Options**  
 `albumId`
 
-	an ID for which photo album to show
+    an ID for which photo album to show
 
-	accepted values are any photo album ID that belongs to the same account
+    accepted values are any photo album ID that belongs to the same account
 
-	defaults to none or the ID from the URL if on {page:PhotoView}
+    defaults to none or the ID from the URL if on {page:PhotoView}
 
 ### block:PhotoAlbumView
 PhotoAlbumId  
-:	the ID of the photo album
+:   the ID of the photo album
 
 PhotoAlbumAccountId  
 :    the ID of the account that created the photo album
 
 PhotoAlbumDescription  
-:	the description of the photo album
+:   the description of the photo album
 
 PhotoAlbumUrl  
-:	a permalink to the photo album's individual page
+:   a permalink to the photo album's individual page
 
 PhotoAlbumShortUrl  
-:	a show URL for this photo album
+:   a show URL for this photo album
 
 LikeCount  
-:	the number of likes for the photo album
+:   the number of likes for the photo album
 
 PhotoAlbumPhotoCount  
-:	the number of photos in this photo album
+:   the number of photos in this photo album
 
 CreatedByPhotoUrl, ModifiedByPhotoUrl  
-:	a URL to the photo for who created/modified the album to be used in an `<img src="" />` tag
+:   a URL to the photo for who created/modified the album to be used in an `<img src="" />` tag
 
 CreatedByName, ModifiedByName  
-:	the name of the user who created/modified the photo album
+:   the name of the user who created/modified the photo album
 
 ### Variables With Options
 **PhotoAlbumPhotoUrl**  
@@ -2600,11 +2608,11 @@ A cover image for this photo album or a default one if there is no cover set
 
 `size`
 
-	the size of the photo to load
-	
-	accepted sizes are "thumbnail", "small", "medium", "large", "original"
-	
-	defaults to "thumbnail"
+    the size of the photo to load
+    
+    accepted sizes are "thumbnail", "small", "medium", "large", "original"
+    
+    defaults to "thumbnail"
 
 ## Events
 This section contains various information for how to show data for events on your website. Keep in mind SEO and other metadata when creating this page, as it can help with search results. For Google specifically, you have a [few options](http://googlewebmastercentral.blogspot.com/2014/03/musical-artists-your-official-tour.html). The easiest method is probably just to have your markup conform to [schema.org's Event schema](http://schema.org/Event).
@@ -2624,47 +2632,47 @@ This module lists events by an account. Videos are returned by the date they occ
 **Module Options**  
 `limit`
 
-	the amount of events to list per page
+    the amount of events to list per page
 
-	accepted values are any integer
+    accepted values are any integer
 
-	defaults to 50
+    defaults to 50
 
 `offset`
 
-	skips X number of items based on the ordering, it is automatically adjusted when paging
+    skips X number of items based on the ordering, it is automatically adjusted when paging
 
-	accepted values are any integer
+    accepted values are any integer
 
-	defaults to 0
+    defaults to 0
 
 `direction`
 
-	the direction in which to list the events
+    the direction in which to list the events
 
-	accepted values are asc or desc
+    accepted values are asc or desc
 
-	defaults to asc
+    defaults to asc
 
 `accountId`
 
-	a comma separated list of the IDs of the accounts to limit the results to
+    a comma separated list of the IDs of the accounts to limit the results to
 
-	accepted values are IDs of any children accounts of the current account (see variable {ChildAccountIDs})
+    accepted values are IDs of any children accounts of the current account (see variable {ChildAccountIDs})
 
-	defaults to none (i.e. only the current account)
+    defaults to none (i.e. only the current account)
 
 `sticky`
 
-	whether or not to include sticky events
+    whether or not to include sticky events
 
-	defaults to showing both
+    defaults to showing both
 
-	accepted values are true (to show only sticky events) or false (to show only non-sticky events)
+    accepted values are true (to show only sticky events) or false (to show only non-sticky events)
 
 `upcoming`
 
-	whether or not to show upcoming events
+    whether or not to show upcoming events
 
     accepted values are true or false
 
@@ -2672,7 +2680,7 @@ This module lists events by an account. Videos are returned by the date they occ
 
 `past`
 
-	whether or not to include past events
+    whether or not to include past events
 
     accepted values are true or false
 
@@ -2680,19 +2688,19 @@ This module lists events by an account. Videos are returned by the date they occ
 
 `userId`
 
-	a userId to limit the events to those this user has RSVPed to
+    a userId to limit the events to those this user has RSVPed to
 
-	accepts the ID of any user that is a fan of the account
+    accepts the ID of any user that is a fan of the account
 
-	defaults to none
-	
+    defaults to none
+    
 `attending`
 
-	when used in combination with userId, a way to filter the attending status of those events
+    when used in combination with userId, a way to filter the attending status of those events
 
-	accepted values are "yes", "no", and "maybe"
+    accepted values are "yes", "no", and "maybe"
 
-	defaults to none
+    defaults to none
 
 ### module:EventView
 This module will load the content for an event. When on {page:EventView} it will automatically grab the right data from the URL.
@@ -2700,75 +2708,75 @@ This module will load the content for an event. When on {page:EventView} it will
 **Module Options**  
 `eventId`
 
-	an ID for which event to show
+    an ID for which event to show
 
-	accepted values are any event ID that belongs to the same account
+    accepted values are any event ID that belongs to the same account
 
-	defaults to none or the ID from the URL if on {page:EventView}
+    defaults to none or the ID from the URL if on {page:EventView}
 
 ### block:EventView
 EventAccountId  
 :   the ID of the account that created the event
 
 EventTitle  
-:	the title of the event
+:   the title of the event
 
 EventDescription  
-:	the description of the event
+:   the description of the event
 
 EventAges  
-:	will return either "Any age" or "[%Age]+" (meaning this age and up)
+:   will return either "Any age" or "[%Age]+" (meaning this age and up)
 
 EventCity  
-:	the city in which the event is taking place
+:   the city in which the event is taking place
 
 EventContestId  
-:	the ID for the contest for this event (if it has one)
+:   the ID for the contest for this event (if it has one)
 
 EventId  
-:	the ID of the event
+:   the ID of the event
 
 EventLikeCount  
-:	the number of likes for the event
+:   the number of likes for the event
 
 EventAttendingCount  
-:	the number of users that have RSVPed "Yes"
+:   the number of users that have RSVPed "Yes"
 
 EventMaybeAttendingCount  
-:	the number of users that have RSVPed "Maybe"
+:   the number of users that have RSVPed "Maybe"
 
 EventNotAttendingCount  
-:	the number of users that have RSVPed "No"
+:   the number of users that have RSVPed "No"
 
 EventUrl  
-:	a permalink to the event's individual page
+:   a permalink to the event's individual page
 
 EventShortUrl  
-:	a short URL for the event
+:   a short URL for the event
 
 EventLocation  
-:	a string constructed based on the information available for the location. if in the USA, it will return "city, state", otherwise it will return "city, state, country"
+:   a string constructed based on the information available for the location. if in the USA, it will return "city, state", otherwise it will return "city, state, country"
 
 EventStreetAddress  
-:	the street address of the event's location
+:   the street address of the event's location
 
 EventState  
-:	the state in which the event is taking place
+:   the state in which the event is taking place
 
 EventPrice  
-:	the event for the price if it has one
+:   the event for the price if it has one
 
 TicketsBuyLink  
-:	a link to where tickets for this event can be purchased, will return a link to the presale tickets if it's a presale or the normal tickets if not
+:   a link to where tickets for this event can be purchased, will return a link to the presale tickets if it's a presale or the normal tickets if not
 
 VenueName  
-:	the name of the venue where this event is taking place
+:   the name of the venue where this event is taking place
 
 SupportingActs  
-:	a comma separated listing of the supporting acts for the event
+:   a comma separated listing of the supporting acts for the event
 
 VenueWebsiteUrl  
-:	the URL to the venue where the event is taking place
+:   the URL to the venue where the event is taking place
 
 ### Variables With Options
 **EventPhotoUrl**  
@@ -2776,18 +2784,18 @@ A cover image for this event or a default one if there is no cover set
 
 `size`
 
-	the size of the photo to load
-	
-	accepted sizes are "thumbnail", "small", "medium", "large", "original"
-	
-	defaults to "thumbnail"
+    the size of the photo to load
+    
+    accepted sizes are "thumbnail", "small", "medium", "large", "original"
+    
+    defaults to "thumbnail"
 
 **EventStartDate**  
 The date and time this event starts
 
 `format`
 
-	the format of the date according to PHP [date() function](http://php.net/date) 
+    the format of the date according to PHP [date() function](http://php.net/date) 
 
     accepted values are a date format string, relative (returns time ago such as "5 seconds ago"), or gmdate (a GMT date in PHP date format 'Y-m-d H:i:s')
 
@@ -2798,7 +2806,7 @@ The date and time this event end
 
 `format`
 
-	the format of the date according to PHP [date() function](http://php.net/date) 
+    the format of the date according to PHP [date() function](http://php.net/date) 
 
     accepted values are a date format string, relative (returns time ago such as "5 seconds ago"), or gmdate (a GMT date in PHP date format 'Y-m-d H:i:s')
 
@@ -2807,49 +2815,49 @@ The date and time this event end
 ### If Statements
 `if:EventHasContest`
 
-	check to see if an event has a contest or not
+    check to see if an event has a contest or not
 
 `if:EventHasEnded`
 
-	check if an event has finished or not
+    check if an event has finished or not
 
 `if:EventHasMinimumAge`
 
-	check if an event has a required minimum age (any age greater than zero).
+    check if an event has a required minimum age (any age greater than zero).
 
 `if:EventHasPhoto`
 
-	check to see if an has a cover photo or not
+    check to see if an has a cover photo or not
 
 `if:EventHasPrice`
 
-	check if an event has a price of more than $0.00
+    check if an event has a price of more than $0.00
 
 `if:EventHasSupportingActs`
 
-	check if there is at least one supporting act for the event
+    check if there is at least one supporting act for the event
 
 `if:EventHasTicketsBuyLink`
 
-	check if the event has a ticket buy link attached, if the event has a presale and the presale hasn't started yet then this will return false
+    check if the event has a ticket buy link attached, if the event has a presale and the presale hasn't started yet then this will return false
 
 `if:EventPresaleIsActive`
 
-	check to see if the presale for an event is active
-	
+    check to see if the presale for an event is active
+    
 `if:UserEventAttendingStatus`
 
-	check to see if the logged in user is attending the event
-	
-	requires a "status" paramers of "yes", "no", or "maybe"
+    check to see if the logged in user is attending the event
+    
+    requires a "status" paramers of "yes", "no", or "maybe"
 
 `if:HasPastEvents` *(global, can be run from anywhere)*
 
-	check if past events exist for current account
+    check if past events exist for current account
 
 `if:HasUpcomingEvents` *(global, can be run from anywhere)*
 
-	check if upcoming events exist for the current account
+    check if upcoming events exist for the current account
 
 ## Statuses
 ### page:StatusList
@@ -2864,49 +2872,49 @@ This module lists statuses by an account. Statuses are returned by the date they
 **Module Options**  
 `limit`
 
-	the amount of statuses to list per page
+    the amount of statuses to list per page
 
-	accepted values are any integer
+    accepted values are any integer
 
-	defaults to 10
+    defaults to 10
 
 `offset`
 
-	skips X number of items based on the ordering, it is automatically adjusted when paging
+    skips X number of items based on the ordering, it is automatically adjusted when paging
 
-	accepted values are any integer
+    accepted values are any integer
 
-	defaults to 0
+    defaults to 0
 
 `direction`
 
-	the direction in which to list the statuses
+    the direction in which to list the statuses
 
-	accepted values are asc or desc
+    accepted values are asc or desc
 
-	defaults to desc
+    defaults to desc
 
 `accountId`
 
-	a comma separated list of the IDs of the accounts to limit the results to
+    a comma separated list of the IDs of the accounts to limit the results to
 
-	accepted values are IDs of any children accounts of the current account (see variable {ChildAccountIDs})
+    accepted values are IDs of any children accounts of the current account (see variable {ChildAccountIDs})
 
-	defaults to none (i.e. only the current account)
+    defaults to none (i.e. only the current account)
 
 `fanContent`
 
-	normally content submitted by fans is for module:FansiteContentList, but this allows it to be included here
+    normally content submitted by fans is for module:FansiteContentList, but this allows it to be included here
 
-	accepted values are true and false
+    accepted values are true and false
 
-	defaults to false
+    defaults to false
 
 `accountContent`
 
-	whether or not to show photos created by admins of the account
+    whether or not to show photos created by admins of the account
 
-	accepted values are true or false
+    accepted values are true or false
 
     defaults to true
 
@@ -2916,48 +2924,48 @@ This module will load the content for an status. When on {page:StatusView} it wi
 **Module Options**  
 `statusId`
 
-	an ID for which status to show
+    an ID for which status to show
 
-	accepted values are any status ID that belongs to the same account
+    accepted values are any status ID that belongs to the same account
 
-	defaults to none or the ID from the URL if on {page:StatusView}
-	
+    defaults to none or the ID from the URL if on {page:StatusView}
+    
 `fanSubmittedIsExclusive`
 
-	whether or not to consider content submitted by fans to a fansite as exclusive or not
+    whether or not to consider content submitted by fans to a fansite as exclusive or not
 
-	accepted values are true and false
+    accepted values are true and false
 
-	defaults to true
+    defaults to true
 
 ### block:StatusPost
 
 AuthorName  
-:	the author of the status
+:   the author of the status
 
 AuthorPhotoUrl  
-:	a 130x130 pixel image of the author of the photo or a placeholder if the photo doesn't exist
+:   a 130x130 pixel image of the author of the photo or a placeholder if the photo doesn't exist
 
 StatusId  
-:	the ID of the status was posted
+:   the ID of the status was posted
 
 StatusAccountId  
 :    the ID of the account that posted this status
 
 StatusUrl
-:	a permalink to an individual status post page
+:   a permalink to an individual status post page
 
 StatusShortUrl  
-:	a short URL for the status
+:   a short URL for the status
 
 LikeCount
-:	the amount of likes for this status
+:   the amount of likes for this status
 
 StatusText  
-:	the actual text of the status post
+:   the actual text of the status post
 
 StatusTextWithLinks  
-:	the actual text of the status post with links converted into HTML `<a>` tags
+:   the actual text of the status post with links converted into HTML `<a>` tags
 
 ## Store Items
 ### page:StoreItemList
@@ -2972,51 +2980,51 @@ This module lists store items by an account. Store items are listed by the date 
 **Module Options**  
 `limit`
 
-	the amount of store items to list per page
+    the amount of store items to list per page
 
-	accepted values are any integer
+    accepted values are any integer
 
-	defaults to 20
+    defaults to 20
 
 `offset`
 
-	skips X number of items based on the ordering, it is automatically adjusted when paging
+    skips X number of items based on the ordering, it is automatically adjusted when paging
 
-	accepted values are any integer
+    accepted values are any integer
 
-	defaults to 0
+    defaults to 0
 
 `direction`
 
-	the direction in which to list the store items
+    the direction in which to list the store items
 
-	accepted values are asc or desc
+    accepted values are asc or desc
 
-	defaults to desc
+    defaults to desc
    
 `accountId`
 
-	a comma separated list of the IDs of the accounts to limit the results to
+    a comma separated list of the IDs of the accounts to limit the results to
 
-	accepted values are IDs of any children accounts of the current account (see variable {ChildAccountIDs})
+    accepted values are IDs of any children accounts of the current account (see variable {ChildAccountIDs})
 
-	defaults to none (i.e. only the current account)
+    defaults to none (i.e. only the current account)
 
 `type`
 
-	the type of store items to include
+    the type of store items to include
 
-	accepted values are any comma separated string of "digital" and/or "physical"
-	
-	defaults to "digital,physical"
+    accepted values are any comma separated string of "digital" and/or "physical"
+    
+    defaults to "digital,physical"
     
 `status`
 
-	the status of the store items to include
+    the status of the store items to include
 
-	accepted values are any comma separated string of the following constants: listed, coming_soon, sold_out
-	
-	defaults to all "listed,coming_soon,sold_out"
+    accepted values are any comma separated string of the following constants: listed, coming_soon, sold_out
+    
+    defaults to all "listed,coming_soon,sold_out"
 
 ### module:StoreItemView
 This module will load the content for a single audio track. When on {page:StoreItemView} it will automatically grab the right data from the URL.
@@ -3024,51 +3032,51 @@ This module will load the content for a single audio track. When on {page:StoreI
 **Module Options**  
 `storeItemId`
 
-	an ID for which store item to show
+    an ID for which store item to show
 
-	accepted values are any store item ID that belongs to the same account
+    accepted values are any store item ID that belongs to the same account
 
-	defaults to none or the ID from the URL if on {page:StoreItemView}
-	
+    defaults to none or the ID from the URL if on {page:StoreItemView}
+    
 `ignoreStatus`
 
-	whether or not to ignore the status of the store item to be shown
+    whether or not to ignore the status of the store item to be shown
 
-	accepted values are true and false
+    accepted values are true and false
 
-	defaults to false
-	
+    defaults to false
+    
 ### block:StoreItemView
 
 StoreItemAccountId  
 :    the ID of the account that created the store item
 
 StoreItemUrl  
-:	the URL for the store item
+:   the URL for the store item
 
 StoreItemTitle  
-:	the title of the store item
+:   the title of the store item
 
 StoreItemDescription  
-:	the description of the store item
+:   the description of the store item
 
 LikeCount
-:	the number of likes for this store item
+:   the number of likes for this store item
 
 StoreItemPrice  
-:	the price of the store item with any active sales applied *(if there is a pre-order currently active for the store item, it'll use that price instead)*
+:   the price of the store item with any active sales applied *(if there is a pre-order currently active for the store item, it'll use that price instead)*
 
 StoreItemOriginalPrice  
-:	the original price of the store item (i.e. no sales applied) *(if there is a pre-order currently active for the store item, it'll use that price instead)*
+:   the original price of the store item (i.e. no sales applied) *(if there is a pre-order currently active for the store item, it'll use that price instead)*
 
 StoreItemPrice  
-:	the price of the store item with any sales applied
+:   the price of the store item with any sales applied
 
 StoreItemId  
-:	the ID for the store item
+:   the ID for the store item
 
 StoreItemPhotoAlbumId  
-:	the ID of the photo album that holds the photos for this store item *(this can be used with `module:PhotoList` to easily list store item photos)*
+:   the ID of the photo album that holds the photos for this store item *(this can be used with `module:PhotoList` to easily list store item photos)*
 
 ### Variables With Options
 **StoreItemPhotoUrl**  
@@ -3076,31 +3084,31 @@ A cover image for this store item or a default one if there is no cover set
 
 `size`
 
-	the size of the photo to load
-	
-	accepted sizes are "thumbnail", "small", "medium", "large", "original"
-	
-	defaults to "thumbnail"
-	
+    the size of the photo to load
+    
+    accepted sizes are "thumbnail", "small", "medium", "large", "original"
+    
+    defaults to "thumbnail"
+    
 **StoreItemPrice**  
 The price of the store item
 
 `currency`
 
-	the currency to show the price in
-	
-	accepted values are "gbp", "usd", and "eur"
-	
-	defaults to "usd"
+    the currency to show the price in
+    
+    accepted values are "gbp", "usd", and "eur"
+    
+    defaults to "usd"
 
 `includeSymbol`
 
-	whether or not to include the symbol of the currency
-	
-	accepted values are true and false
-	
-	defaults to false
-	
+    whether or not to include the symbol of the currency
+    
+    accepted values are true and false
+    
+    defaults to false
+    
 **StoreItemAddToCartLink**  
 Creates a link that, when clicked, will add the store item to the user's cart
 
@@ -3115,120 +3123,124 @@ would change to
 
 `storeItemId` (*required*)
 
-	the ID of the store item you want to add to the user's cart
+    the ID of the store item you want to add to the user's cart
 
 `text`
 
-	the text to be put inside the <a> tag
+    the text to be put inside the <a> tag
 
-	accepted values are any string (HTML included)
+    accepted values are any string (HTML included)
 
     defaults to "Add To Cart"
 
 `preorderText`
 
-	the text to be put inside the <a> tag when a pre-order is set up for the playlist
+    the text to be put inside the <a> tag when a pre-order is set up for the playlist
 
-	accepted values are any string (HTML included)
+    accepted values are any string (HTML included)
 
     defaults to "Pre-order"
 
 `preorderSoldOutText`
 
-	the text to be put inside the <a> tag when a preorder is set up for the playlist and it has sold out
+    the text to be put inside the <a> tag when a preorder is set up for the playlist and it has sold out
 
-	accepted values are any string (HTML included)
+    accepted values are any string (HTML included)
 
     defaults to "Pre-order Sold Out"
 
 `closeTag`
 
-	whether or not to close the <a> tag
+    whether or not to close the <a> tag
 
-	accepted values are true or false
+    accepted values are true or false
 
-	defaults to true
+    defaults to true
 
 `class`
 
-	the class to assign to the <a> tag
+    the class to assign to the <a> tag
 
-	accepted values are any string
+    accepted values are any string
 
-	defaults to none
+    defaults to none
 
 `currency`
 
-	a three character ISO code of the currency to use for this item, will fallback to "usd" if there are any items in the cart that don't support this same currency
-	
-	accepted values are "gbp", "usd", and "eur"
-	
-	defaults to "usd"
+    a three character ISO code of the currency to use for this item, will fallback to "usd" if there are any items in the cart that don't support this same currency
+    
+    accepted values are "gbp", "usd", and "eur"
+    
+    defaults to "usd"
 
 **StoreItemFreeDownloadLink**  
 Creates a link that, when clicked, will download the store item is possible
 
 `storeItemId` (*required*)
 
-	the ID of the store item you want to add to the user's cart
+    the ID of the store item you want to add to the user's cart
 
 `text`
 
-	the text to be put inside the <a> tag
+    the text to be put inside the <a> tag
 
-	accepted values are any string (HTML included)
+    accepted values are any string (HTML included)
 
     defaults to "Add To Cart"
 
 `closeTag`
 
-	whether or not to close the <a> tag
+    whether or not to close the <a> tag
 
-	accepted values are true or false
+    accepted values are true or false
 
-	defaults to true
+    defaults to true
 
 `class`
 
-	the class to assign to the <a> tag
+    the class to assign to the <a> tag
 
-	accepted values are any string
+    accepted values are any string
 
-	defaults to none
+    defaults to none
 
 
 ### If Statements
 `if:StoreItemCanBeDownloadedForFree`
 
-	check to see if the store item can be downloaded for free
+    check to see if the store item can be downloaded for free
 
 `if:StoreItemCanBeSold`
 
-	check to see if the store item is being sold
+    check to see if the store item is being sold
 
-	`currency`
+    `currency`
 
-		the currency to check if it can be sold in
-	
-		accepted values are usd, gbp, and eur
-	
-		defaults to usd
+        the currency to check if it can be sold in
+    
+        accepted values are usd, gbp, and eur
+    
+        defaults to usd
 
 `if:StoreItemCanNamePrice`
 
-	check to see if the store item supports naming a price
+    check to see if the store item supports naming a price
 
 `if:StoreItemIsOnSale`
 
-	check to see if the store item is on sale or not
-	
+    check to see if the store item is on sale or not
+    
 `if:StoreItemIsPhysical`
 
-	check to see if the store item is a physical good (instead of a digital good)
+    check to see if the store item is a physical good (instead of a digital good)
 
 `if:StoreItemIsSoldOut`
 
-	check to see if the store item is sold out or not
+    check to see if the store item is sold out or not
+
+`if:CartHasProducts` *(global, can be used anywhere)*
+
+    checks to see if there are items in the cart
 
 ## Comments
 When on one of the following pages, using the appropriate content's module view will automatically pull in the correct data (i.e. `{module:BlogView}` will be the correct data automatically on `{page:BlogCommentView}`)
@@ -3260,35 +3272,35 @@ A view for a listing of the most recent comments, it will use the content of the
 **Module Options**  
 `limit`
 
-	the amount to limit the comments to
+    the amount to limit the comments to
 
-	accepted values are any integeer *(keep in mind that the {CommentLink} variable exists and so does the sbInlineLoadComments Advanced Functionality*
-	
-	defaults to 10
-	
+    accepted values are any integeer *(keep in mind that the {CommentLink} variable exists and so does the sbInlineLoadComments Advanced Functionality*
+    
+    defaults to 10
+    
 `parents`
 
-	whether or not to get the parent comments for the individual comment
+    whether or not to get the parent comments for the individual comment
 
-	accepted values are true or false
+    accepted values are true or false
 
-	defaults to false
-	
+    defaults to false
+    
 `includeFirstLevelReplies`
 
-	whether or not to include the first level of replies, may return more items than `limit` *(see if:CommentIsReply)*
+    whether or not to include the first level of replies, may return more items than `limit` *(see if:CommentIsReply)*
 
-	accepted values are true or false
-	
-	defaults to false
-	
+    accepted values are true or false
+    
+    defaults to false
+    
 `userId``
 
-	a user to filter the comments by
-	
-	accepted values are an user ID
+    a user to filter the comments by
+    
+    accepted values are an user ID
 
-	defaults to none
+    defaults to none
 
 ### module:CommentView
 This module will load the content for a single comment. When on any of the above pages it will automatically grab the right data from the URL.
@@ -3296,55 +3308,55 @@ This module will load the content for a single comment. When on any of the above
 **Module Options**  
 `contentId`
 
-	the ID of the content to list the comments of
+    the ID of the content to list the comments of
 
-	accepted values are any ID of content belonging to the account of the comment
+    accepted values are any ID of content belonging to the account of the comment
 
-	defaults to the current modules item's ID in the theme engineComm
+    defaults to the current modules item's ID in the theme engineComm
 
 `contentSection`
 
-	the type of the content to list the comments of
+    the type of the content to list the comments of
 
-	accepted values are any of the {ContentType-[%type]} variables
+    accepted values are any of the {ContentType-[%type]} variables
 
-	defaults to the current modules item's content type in the theme engine
+    defaults to the current modules item's content type in the theme engine
 
 ### block:CommentView
 CommentText  
-:	the text of the comment
+:   the text of the comment
 
 CommentShortUrl  
-:	a short URL to the comment
+:   a short URL to the comment
 
 CommentAuthorUsername  
-:	the comment author's username
+:   the comment author's username
 
 CommentAuthorFansiteUrl  
-:	the URL of this user on the current fansite
+:   the URL of this user on the current fansite
 
 CommentAuthorUrl  
-:	the URL to the main user page for the author
+:   the URL to the main user page for the author
 
 CommentAuthorPhotoUrl  
-:	the URL to the thumbnail image for the user who submitted this comment
+:   the URL to the thumbnail image for the user who submitted this comment
 
 CommentUserId  
-:	the ID of the user who posted the comment *Can be used with `block:UserView`
+:   the ID of the user who posted the comment *Can be used with `block:UserView`
 
 CommentId  
-:	the ID for the comment
+:   the ID for the comment
 
 CommentContentType  
-:	the type of content this comment was made on
+:   the type of content this comment was made on
 
 CommentItemId  
-:	the ID of the item the comment was written about
+:   the ID of the item the comment was written about
 
 ### If Statements
 `if:CommentIsReply`
 
-	check to see if a comment is a reply to another comment
+    check to see if a comment is a reply to another comment
 
 ## Contests
 ### module:ContestView
@@ -3354,48 +3366,48 @@ This module loads the content for a single contest
 **Module Options**  
 `contestId` *(required)*
 
-	the ID of the contest to load
+    the ID of the contest to load
 
-	accepts values are any contest that belongs to this account
-	
-	deafaults to none
+    accepts values are any contest that belongs to this account
+    
+    deafaults to none
 
 ### block:ContestView
 ContestId  
-:	the ID of the contest
+:   the ID of the contest
 
 ContestTitle  
-:	the title of the contest
+:   the title of the contest
 
 ContestDescription  
-:	the description of the contest
+:   the description of the contest
 
 ContestParticipantCount  
-:	the number of people who have entered the contest
+:   the number of people who have entered the contest
 
 ContestAllowedParticipantCount  
-:	the number of allowed people for the contest
+:   the number of allowed people for the contest
 
 ### If Statements
 `if:ContestHasEnded`
 
-	checks to see if the contest has ended
-	
+    checks to see if the contest has ended
+    
 `if:ContestAllowsUnlimitedParticipants`
 
-	checks to see if the contest allows any amount of participants
+    checks to see if the contest allows any amount of participants
 
 `if:UserHasEnteredContest`
 
-	checks to see if the currently logged in user has entered the contest or not
+    checks to see if the currently logged in user has entered the contest or not
 
 `if:UserWonContent`
 
-	checks to see if the currently logged in user has won the contest or not
+    checks to see if the currently logged in user has won the contest or not
 
 `if:ContestWinnersWereSelected`
 
-	checks to see if the winners for this contest were selected
+    checks to see if the winners for this contest were selected
 
 ## Orders
 Items that users have ordered will only be shown using the logged in user's ID and can't be made public. An order has one or more transactions. Transactions can be used to show the actual items that were part of an order.
@@ -3406,19 +3418,19 @@ This module list orders for the logged in user
 **Module Options**  
 `limit`
 
-	the amount of transactions to list per page
+    the amount of transactions to list per page
 
-	accepted values are any integer
+    accepted values are any integer
 
-	defaults to 20
-	
+    defaults to 20
+    
 `refunded`
 
-	whether or not to show refunded orders
-	
-	accepted values are true and false
-	
-	defaults to false
+    whether or not to show refunded orders
+    
+    accepted values are true and false
+    
+    defaults to false
 
 ### module:TransactionList
 This module lists transactions for the logged in user
@@ -3426,57 +3438,57 @@ This module lists transactions for the logged in user
 **Module Options**  
 `limit`
 
-	the amount of transactions to list per page
+    the amount of transactions to list per page
 
-	accepted values are any integer
+    accepted values are any integer
 
-	defaults to 20
-	
+    defaults to 20
+    
 `orderId`
 
-	the order ID to limit the transactions to
-	
-	accepted values are any order ID of the logged in user
-	
-	defaults to none
-	
+    the order ID to limit the transactions to
+    
+    accepted values are any order ID of the logged in user
+    
+    defaults to none
+    
 ### block:OrderView
 OrderReceiptUrl  
-:	a URL to the receipt for the order
+:   a URL to the receipt for the order
 
 OrderId  
-:	the ID of the order
+:   the ID of the order
 
 OrderTotal  
-:	the total amount of money in USD spend on this order
+:   the total amount of money in USD spend on this order
 
 OrderAmount  
-:	the amount of money in USD spent on this order without shipping
+:   the amount of money in USD spent on this order without shipping
 
 OrderShippingAmount  
-:	the amount of money in USD spent on shipping for this order
+:   the amount of money in USD spent on shipping for this order
 
 ### block:TransactionView
 TransactionOrderReceiptUrl  
-:	a URL to the receipt for the order this transaction belongs to
+:   a URL to the receipt for the order this transaction belongs to
 
 TransactionId  
-:	the ID of the transaction
+:   the ID of the transaction
 
 TransactionOrderId  
-:	the ID of the order this transaction belongs to
+:   the ID of the order this transaction belongs to
 
 TransactionAmount  
-:	the amount of money spent on this transaction in USD (doesn't include shipping)
+:   the amount of money spent on this transaction in USD (doesn't include shipping)
 
 TransactionTrackingNumber  
-:	the tracking number for the item if it has been shipped
+:   the tracking number for the item if it has been shipped
 
 TransactionDownloadUrl  
-:	a link to download the purchased item if it is digital
+:   a link to download the purchased item if it is digital
 
 TransactionItemName  
-:	the name of the item that was ordered
+:   the name of the item that was ordered
 
 ### Variables With Options
 **OrderedDate**  
@@ -3484,7 +3496,7 @@ The GMT date the order was made
 
 `format`
 
-	the format of the date according to PHP [date() function](http://php.net/date) 
+    the format of the date according to PHP [date() function](http://php.net/date) 
 
     accepted values are a date format string, relative (returns time ago such as "5 seconds ago")
 
@@ -3493,19 +3505,19 @@ The GMT date the order was made
 ### If Statements
 `if:OrderWasRefunded`
 
-	checks to see if the order has been refunded or not
+    checks to see if the order has been refunded or not
 
 `if:OrderHasBeenShipped`
 
-	checks to see if the order as a whole was shipped or not
+    checks to see if the order as a whole was shipped or not
 
 `if:TransactionHasBeenShipped`
 
-	checks to see if the transaction was shipped or not
+    checks to see if the transaction was shipped or not
 
 `if:TransactionIsForDigitalItem`
 
-	checks to see if the transaction was for a digital item or not
+    checks to see if the transaction was for a digital item or not
 
 ## Accounts
 ### module:ChildAccountList
@@ -3514,7 +3526,7 @@ A listing of accounts that are children of the current account
 **Module Options**  
 `type`
 
-	the type of accounts to limit the results to
+    the type of accounts to limit the results to
 
     accepted values are any comma separated combination account types you've created
 
@@ -3524,7 +3536,7 @@ A listing of accounts that are children of the current account
 This block exposes information for a child account
 
 ChildAccountName  
-:	name of the child account
+:   name of the child account
 
 ChildAccountUrl  
 :    the URL of the child account
@@ -3548,25 +3560,25 @@ This module will load the information for a single user
 **Module Options**  
 `userId`
 
-	the ID of the user to show
-	
-	accepted values are the ID of any of the fans for the account
+    the ID of the user to show
+    
+    accepted values are the ID of any of the fans for the account
 
-	defaults to the user ID in the URL
+    defaults to the user ID in the URL
 
 `loggedIn`
 
-	whether or not to use the currently logged in user, will override userId if true
+    whether or not to use the currently logged in user, will override userId if true
 
-	accepted values are true and false
+    accepted values are true and false
 
-	defaults to false
+    defaults to false
 
 ### block:UserView
 This block exposes information for an individual user
 
 UserId  
-:	the ID of the user
+:   the ID of the user
 
 UserName  
 :    the real name of the user
@@ -3575,22 +3587,22 @@ UserUsername
 :    the username of the user
 
 UserFansitePostCount  
-:	the number of posts the user has on the current account's fansite
+:   the number of posts the user has on the current account's fansite
 
 UserFansiteLikeCount  
-:	the number of likes the user has on the current account's fansite
+:   the number of likes the user has on the current account's fansite
 
 UserFansiteCommentCount  
-:	the number of comments the user has on the current account's fansite
+:   the number of comments the user has on the current account's fansite
 
 UserEventAttendingCount  
-:	the number of events the user is attending for the current account
+:   the number of events the user is attending for the current account
 
 UserUrl  
-:	the URL to the user's page on StageBloc (i.e. `stagebloc.com/user/[%id]`)
+:   the URL to the user's page on StageBloc (i.e. `stagebloc.com/user/[%id]`)
 
 UserFansiteUrl  
-:	the URL to the user's pages on the current account's fansite (if they have one setup) (i.e. `stagebloc.com/[%account_url]/fansite/users/[%user_id]`)
+:   the URL to the user's pages on the current account's fansite (if they have one setup) (i.e. `stagebloc.com/[%account_url]/fansite/users/[%user_id]`)
 
 ### Variables With Options
 **UserPhotoUrl**  
@@ -3598,84 +3610,84 @@ This users profile image
 
 `size`
 
-	the size of the photo to load
-	
-	accepted sizes are "thumbnail", "small", "medium", "large", "original"
-	
-	defaults to "thumbnail"
+    the size of the photo to load
+    
+    accepted sizes are "thumbnail", "small", "medium", "large", "original"
+    
+    defaults to "thumbnail"
 
 `defaultPhoto`
 
-	the URL of a photo to use if one isn't set and you don't want to use our default photo
-	
-	accepted values are any image URL
-	
-	defaults to our default image
-	
+    the URL of a photo to use if one isn't set and you don't want to use our default photo
+    
+    accepted values are any image URL
+    
+    defaults to our default image
+    
 ### If Statements
 `if:UserHasFacebookConnected` *(global, can be used anywhere)*
 
-	checks to see if the currently logged in user has Facebook connected
+    checks to see if the currently logged in user has Facebook connected
 
 `if:UserHasInstagramConnected` *(global, can be used anywhere)*
 
-	checks to see if the currently logged in user has Instagram connected
+    checks to see if the currently logged in user has Instagram connected
 
 `if:UserHasTwitterConnected` *(global, can be used anywhere)*
 
-	checks to see if the currently logged in user has Twitter connected
+    checks to see if the currently logged in user has Twitter connected
 
 `if:UserIsAdmin` *(global, can be used anywhere)*
 
-	checks to see if the user is logged in and an admin of the current account
+    checks to see if the user is logged in and an admin of the current account
 
 `if:UserIsFollowing` *(global, can be used anywhere)*
 
-	checks to see if the user is logged in and following the current account or not
+    checks to see if the user is logged in and following the current account or not
 
 `if:UserIsMe`
 
-	checks to see if the current user is the logged in user
-	
+    checks to see if the current user is the logged in user
+    
 `if:UserBelongsToFansiteTier`
 
-	checks to see if the user is logged in and belongs to a specific tier in a fansite. Possible tiers are 1, 2, and 3.
+    checks to see if the user is logged in and belongs to a specific tier in a fansite. Possible tiers are 1, 2, and 3.
 
-	`tier`
+    `tier`
 
-		the specific tier to check to see if the user belongs to, will override gt and lt
-	
-		accepted values are any integer
-	
-		defaults to none
+        the specific tier to check to see if the user belongs to, will override gt and lt
+    
+        accepted values are any integer
+    
+        defaults to none
 
-	`gt`
+    `gt`
 
-		check if the tier is greater than a certain tier
-	
-		accepted values are any integer
-	
-		defaults to none
+        check if the tier is greater than a certain tier
+    
+        accepted values are any integer
+    
+        defaults to none
 
-	`lt`
+    `lt`
 
-		check if the tier is less than a certain tier
+        check if the tier is less than a certain tier
 
-		accepted values are any integer
+        accepted values are any integer
 
-		defaults to none
+        defaults to none
 
 `if:UserCanViewContent`
 
-	checks to see if a user can view the current content based on its exclusivity and any other relevant factors
+    checks to see if a user can view the current content based on its exclusivity and any other relevant factors
 
 `if:UserIsLoggedIn` *(global, can be used anywhere)*
 
-	checks to see if there's a logged in user
+    checks to see if there's a logged in user
 
 `if:UserIsVerified` *(global, can be used anywhere)*
 
-	checks to see if a user has verified their email address or not
+    checks to see if a user has verified their email address or not
 
 # SBNav
 SBNav is the little, circular control box that appears in a corner of the screen. It allows users to, among other things, log in, follow and unfollow accounts, and manage their shopping cart. It is also the means of communication by which our Advanced Functionality is achieved.
@@ -3687,11 +3699,11 @@ You can set the position of SBNav with the `{SBNav}` variable. Place it anywhere
 
 `position`
 
-	The corner to place SBNav in
+    The corner to place SBNav in
 
     Accepted values are two words in any order, separated by a space: top, bottom, left, right
 
-	Default value is "bottom right"
+    Default value is "bottom right"
 
 ### SBNav Color
 When submitting a theme, you can select a default color that you feel best matches your theme. Just as a head up, users do have the option to override this in their account's theme management section.
@@ -3699,35 +3711,35 @@ When submitting a theme, you can select a default color that you feel best match
 # Advanced Functionality
 Using JavaScript and SBNav we are able to expose some advanced functionality. The functionality allowed here is available using built in StageBloc modals, but these methods allow theme authors to have a little bit more control over how it looks and works in their theme. In general, advanced functionality is achieved by targeting SBNav via `postMessage` as follows:
 
-	pm({ target: window.frames['sbnav'], type: 'advancedFunctionalityType', data: { key: value } });
+    pm({ target: window.frames['sbnav'], type: 'advancedFunctionalityType', data: { key: value } });
 
 The postMessage JS library is already included for you. The `target` parameter must be exactly as shown above.
 
 When a request such as the above is made, SBNav will act accordingly given the data provided and callback one of the following two bindings:
 
-	pm.bind('advancedFunctionalityType', function(data) {
-		// data will be a JavaScript object representing the state of the request
-		// If data.error is defined, an error occurred during the request
-	});
+    pm.bind('advancedFunctionalityType', function(data) {
+        // data will be a JavaScript object representing the state of the request
+        // If data.error is defined, an error occurred during the request
+    });
 
-	pm.bind('sbError', function(data) {
-		// This binding will handle generic errors (i.e. if SBNav receives a 500 or anything for any reason)
-		// data.type will be the action it came from (i.e. 'advancedFunctionalityType')
-	});
+    pm.bind('sbError', function(data) {
+        // This binding will handle generic errors (i.e. if SBNav receives a 500 or anything for any reason)
+        // data.type will be the action it came from (i.e. 'advancedFunctionalityType')
+    });
 
 ## Custom Fields
 Custom Fields is a feature that allows you to attach extra pieces of information to content within StageBloc that we don't natively support. For instance, if you wanted to be able to mark events as sold out, something we won't natively support, then you could create a custom field to add a boolean flag to events marking whether or not they are sold out.
 
 To start using Custom Fields, you must first set some up in the advanced part of the backend account management section. You are currently able to setup the following types of custom fields:
 
-	- Textarea - Use this to add blurbs of text to pieces of content
-	- Select - Use this to add dropdowns with pre-defined options to pieces of content
-	- Checkbox - Can be used to add a boolean flag to content
-	- Input - Useful for adding a short amount of text to content
-	- URL - Similar to a normal Input but more geared towards a URL
-	- Photo - Can be used to add photos to content (i.e. a header image for blog posts, etc)
-	- HTML - Used to add chunks of HTML code to content
-	
+    - Textarea - Use this to add blurbs of text to pieces of content
+    - Select - Use this to add dropdowns with pre-defined options to pieces of content
+    - Checkbox - Can be used to add a boolean flag to content
+    - Input - Useful for adding a short amount of text to content
+    - URL - Similar to a normal Input but more geared towards a URL
+    - Photo - Can be used to add photos to content (i.e. a header image for blog posts, etc)
+    - HTML - Used to add chunks of HTML code to content
+    
 Once you setup a custom field on a piece of content, you'll begin to see them in the areas you normally edit that content. For instance, on photo modals you'll see a "Custom Fields" collapsable toggle that allows you to edit any custom fields that were setup for photos.
 
 Getting the data from custom fields into your theme is pretty straightforward. Below are some of the options you have available to you in the theming engine for them:
@@ -3737,29 +3749,29 @@ Use this to check if the custom field for the content in question has been expli
 
 `slug` (*required*)
 
-	the slug of the custom field you are checking, this can be seen in the backend once they are created
-	
-	accepted values are any slug that you have setup for custom fields
-	
-	defaults to none
-	
+    the slug of the custom field you are checking, this can be seen in the backend once they are created
+    
+    accepted values are any slug that you have setup for custom fields
+    
+    defaults to none
+    
 **CustomField**  
 This variable can be used to access the data of custom field's (i.e. the text, URL, etc that was entered for it)
 
 `slug` (*required*)
 
-	the slug of the custom field you are checking, this can be seen in the backend once they are created
-	
-	accepted values are any slug that you have setup for custom fields
-	
-	defaults to none
-	
+    the slug of the custom field you are checking, this can be seen in the backend once they are created
+    
+    accepted values are any slug that you have setup for custom fields
+    
+    defaults to none
+    
 For example, here's how you could accomplish the sold out functionality that was mentioned earlier:
-	
-	{if:CustomFieldIsSet slug="is-sold-out"}
+    
+    {if:CustomFieldIsSet slug="is-sold-out"}
         <div class="sold-out">
-			<img class="sold-out-img" src="http://stgb.lc/ta/20130721_054345_2632_516.png" />
-		</div>
+            <img class="sold-out-img" src="http://stgb.lc/ta/20130721_054345_2632_516.png" />
+        </div>
     {/if:CustomFieldIsSet}
 
 
@@ -3770,50 +3782,50 @@ This allows the user's profile to be edited.
 
 First, you'll need some sort way of having users add information. For instance, you could do:
 
- 	{module:API v="3.0" path="user/list" me="true"}
- 		{block:API}
-		<form id="userEditForm">
-			<input type="hidden" name="email" value="{email}" />
-			<input type="hidden" name="username" value="{username}" />
-			<textarea name="bio">{bio}</textarea>
-			<input type="submit" value="Save Profile" />
-		</form>
-		{/block:API}
-	{/module:API}
+    {module:API v="3.0" path="user/list" me="true"}
+        {block:API}
+        <form id="userEditForm">
+            <input type="hidden" name="email" value="{email}" />
+            <input type="hidden" name="username" value="{username}" />
+            <textarea name="bio">{bio}</textarea>
+            <input type="submit" value="Save Profile" />
+        </form>
+        {/block:API}
+    {/module:API}
 
 The available keys for passing are `name`, `username`, `email`, `bio`, and `gender`. You can also pass a `birthday` parameter as an array with the keys `day`, `month`, and `year`.
 
 You are also able to pass a user photo with the `photoFile` key, but it requires that the browser support `FileReader`. When a `file` input is changed, you can show a preview of the image on the page using code similar to the following:
 
-	if (typeof FileReader === 'undefined') {
-	  alert('Sorry, but your browser is too old to upload photos. Please upgrade!');
-	  return;
-	}
+    if (typeof FileReader === 'undefined') {
+      alert('Sorry, but your browser is too old to upload photos. Please upgrade!');
+      return;
+    }
 
-	var reader = new FileReader();
-	reader.onload = function(event) {
-	  _userPhotoData = event.target.result; // A global variable for holding this image
-	  $('#userPhotoPreview').css('background-image', 'url(' + newPhotoData + ')');
-	};
-	reader.readAsDataURL(this.files[0]);
+    var reader = new FileReader();
+    reader.onload = function(event) {
+      _userPhotoData = event.target.result; // A global variable for holding this image
+      $('#userPhotoPreview').css('background-image', 'url(' + newPhotoData + ')');
+    };
+    reader.readAsDataURL(this.files[0]);
 
 **Step Two**
 
 Next, when the user submits the form, you'll want to capture it with JavaScript similar to the following:
 
-	$('#userEditForm').submit(function() {
-		var formData = $(this).serialize() + '&photoFile=' + _userPhotoData;
-		pm({ target: window.frames['sbnav'], type: 'sbInlineUserProfileEdit', data: formData });
-		return false;
-	});
+    $('#userEditForm').submit(function() {
+        var formData = $(this).serialize() + '&photoFile=' + _userPhotoData;
+        pm({ target: window.frames['sbnav'], type: 'sbInlineUserProfileEdit', data: formData });
+        return false;
+    });
 
 **Step Three**
 
 Finally, you should add a binding to your theme's JavaScript. You can use this callback to handle the data returned from SBNav.
 
-	pm.bind('sbInlineUserProfileEdit', function(data) {
-		// data will be a JavaScript object representing the user (or an error if an error occurred)
-	});
+    pm.bind('sbInlineUserProfileEdit', function(data) {
+        // data will be a JavaScript object representing the user (or an error if an error occurred)
+    });
 
 ## Commenting
 Normally, adding comments can be done very easily with the use of the `{CommentLink}` variable that opens an SBNav modal. However, sometimes you'll want to have commenting inline within your page to give the user a different experience.
@@ -3822,13 +3834,13 @@ Normally, adding comments can be done very easily with the use of the `{CommentL
 
 First, need some sort of `HTML` to get the necessary data. Here's an example:
 
-	<form id="commentForm">
-		<input type="hidden" name="content_slug" value="{ContentType-Photos}" />
-		<input type="hidden" name="content_id" value="{PhotoId}" />
-		<textarea name="commentText"></textarea>
-		<input type="submit" value="Post Comment" />
-	</form>
-	
+    <form id="commentForm">
+        <input type="hidden" name="content_slug" value="{ContentType-Photos}" />
+        <input type="hidden" name="content_id" value="{PhotoId}" />
+        <textarea name="commentText"></textarea>
+        <input type="submit" value="Post Comment" />
+    </form>
+    
 Note that `content_id` and `content_slug` will vary depending on the content you're trying to comment on and will most likely be received from some sort of `{block}` data within your theme.
 
 There is also an optional `replyToId` parameter that can be passed to serve as the `id` of the original comment if this new comment is meant to be a reply to it.
@@ -3837,20 +3849,20 @@ There is also an optional `replyToId` parameter that can be passed to serve as t
 
 Next, when the user submits the form, you'll want to capture it with JavaScript similar to the following:
 
-	$('#commentForm').submit(function() {
-		pm({ target: window.frames['sbnav'], type: 'sbInlineComment', data: $(this).serialize() });
-		return false;
-	});
-	
+    $('#commentForm').submit(function() {
+        pm({ target: window.frames['sbnav'], type: 'sbInlineComment', data: $(this).serialize() });
+        return false;
+    });
+    
 The passed data must contain the keys `content_slug`, `content_id`, and `commentText` with their respective values for it to be valid.
 
 **Step Three**
 
 Finally, you should add a binding to your theme's JavaScript. You can use this callback to handle the data returned from SBNav.
 
-	pm.bind('sbInlineComment', function(data) {
-		// data will be a JavaScript representing the comment that was posted (or an error if an error occurred)
-	});
+    pm.bind('sbInlineComment', function(data) {
+        // data will be a JavaScript representing the comment that was posted (or an error if an error occurred)
+    });
 
 ## Comment Loading
 Normally, viewing comments can be done very easily with the use of the `{CommentLink}` variable that opens an SBNav modal. However, sometimes you'll want to have comments inline within your page to give the user a different experience. Initial comments can be loaded with `{module:CommentList}`, but you'll want to be careful not to load every single comment on the initial page load. This advanced functionality can be used to allow for loading more comments after the initial page load.
@@ -3859,14 +3871,14 @@ Normally, viewing comments can be done very easily with the use of the `{Comment
 
 You'll want to make a call to the `sbInlineLoadComments` functionality of SBNav:
 
-	pm({ target: window.frames['sbnav'],
-		 type: 'sbInlineLoadComments',
-		 data: { contentType: $(this).attr('data-content-type'), // i.e. {ContentType-Photos}
-				 contentId: $(this).attr('data-content-id'),
-				 limit: 20, // Any number
-				 offset: 10 // Any number, probably based on the amount of comments already loaded
-		 }
-	});
+    pm({ target: window.frames['sbnav'],
+         type: 'sbInlineLoadComments',
+         data: { contentType: $(this).attr('data-content-type'), // i.e. {ContentType-Photos}
+                 contentId: $(this).attr('data-content-id'),
+                 limit: 20, // Any number
+                 offset: 10 // Any number, probably based on the amount of comments already loaded
+         }
+    });
 
 The passed data must contain the keys `contentType` and `contentId` to be valid.
 
@@ -3874,10 +3886,10 @@ The passed data must contain the keys `contentType` and `contentId` to be valid.
 
 Finally, you should add a binding to your theme's JavaScript. You can use this callback to handle the data returned from SBNav.
 
-	pm.bind('sbInlineLoadComments', function(data) {
-		// data will be a JavaScript array representing the additional comments (or an error if an error occurred)
-	});
-	
+    pm.bind('sbInlineLoadComments', function(data) {
+        // data will be a JavaScript array representing the additional comments (or an error if an error occurred)
+    });
+    
 ## Status Submission
 Normally, adding statuses can be done very easily with the use of `{SubmitFanContentLink}` variable that opens an SBNav modal. However, sometimes you'll want to allow fans to submit statuses for your fansite from within the theme itself.
 
@@ -3885,29 +3897,29 @@ Normally, adding statuses can be done very easily with the use of `{SubmitFanCon
 
 First, you'll need some sort of `HTML` form. Here's an example:
 
-	<form id="statusSubmit">
-		<input type="text" name="statusText" />
-		<input type="submit" />
-	</form>
+    <form id="statusSubmit">
+        <input type="text" name="statusText" />
+        <input type="submit" />
+    </form>
 
 **Step Two**
 
 Next, when the user submits the form, you'll want to capture it with JavaScript similar to the following:
 
-	$('#statusSubmit').submit(function() {
-		pm({ target: window.frames['sbnav'], type: 'sbInlineSubmitStatus', data: $(this).serialize() });
-		return false;
-	});
-	
+    $('#statusSubmit').submit(function() {
+        pm({ target: window.frames['sbnav'], type: 'sbInlineSubmitStatus', data: $(this).serialize() });
+        return false;
+    });
+    
 The passed data must contain the key `statusText` for it to be valid.
 
 **Step Three**
 
 Finally, you should add a binding to your theme's JavaScript. You can use this callback to handle the data returned from SBNav.
 
-	pm.bind('sbInlineSubmitStatus', function(data) {
-		// data will be a JavaScript object representing the status that was posted (or an error if an error occurred)
-	});
+    pm.bind('sbInlineSubmitStatus', function(data) {
+        // data will be a JavaScript object representing the status that was posted (or an error if an error occurred)
+    });
 
 ## Photo Submission
 Normally, adding photo can be done very easily with the use of `{SubmitFanContentLink}` variable that opens an SBNav modal. However, sometimes you'll want to allow fans to submit photos for your fansite from within the theme itself. Note that this method does require that the user's browser supports `FileReader`.
@@ -3916,38 +3928,38 @@ Normally, adding photo can be done very easily with the use of `{SubmitFanConten
 
 First, you'll need some sort of `HTML` form. Here's an example:
 
-	<form id="photoSubmit">
-		<input type="file" name="photoFile" id="photoFile" />
-		<input type="submit" />
-	</form>
-	
+    <form id="photoSubmit">
+        <input type="file" name="photoFile" id="photoFile" />
+        <input type="submit" />
+    </form>
+    
 When this `file` input changes, you'll want to put the data for that image somewhere on the page where you can get it later or store it in a global variable. Below is an example of how to do that as well as how to show the user a preview of the image:
 
-	$('body').on('change', '#photoFile', function() {
-		if (typeof FileReader === 'undefined') {
-		  alert('Sorry, but your browser is too old to upload photos. Please upgrade!');
-		  return;
-		}
+    $('body').on('change', '#photoFile', function() {
+        if (typeof FileReader === 'undefined') {
+          alert('Sorry, but your browser is too old to upload photos. Please upgrade!');
+          return;
+        }
 
-		var reader = new FileReader();
-		reader.onload = function(event) {
-	        var img = new Image();
-	        img.src = event.target.result;
-	        $('#photoPreview').html(img);
-			$('#userPhotoPreview').css('background-image', 'url(' + newPhotoData + ')');
-		};
-		reader.readAsDataURL(this.files[0]);
-	}
+        var reader = new FileReader();
+        reader.onload = function(event) {
+            var img = new Image();
+            img.src = event.target.result;
+            $('#photoPreview').html(img);
+            $('#userPhotoPreview').css('background-image', 'url(' + newPhotoData + ')');
+        };
+        reader.readAsDataURL(this.files[0]);
+    }
 
 **Step Two**
 
 Next, when the user submits the form, you'll want to capture it with JavaScript similar to the following:
 
-	$('#photoSubmit').submit(function() {
-		var formData = $(this).serialize() + '&photoFile=' + $('#photoPreview img').attr('src');
-		pm({ target: window.frames['sbnav'], type: 'sbInlineSubmitPhoto', data: formData });
-		return false;
-	});
+    $('#photoSubmit').submit(function() {
+        var formData = $(this).serialize() + '&photoFile=' + $('#photoPreview img').attr('src');
+        pm({ target: window.frames['sbnav'], type: 'sbInlineSubmitPhoto', data: formData });
+        return false;
+    });
 
 The passed data must contain the key `statusText` for it to be valid.
 
@@ -3955,9 +3967,9 @@ The passed data must contain the key `statusText` for it to be valid.
 
 Finally, you should add a binding to your theme's JavaScript. You can use this callback to handle the data returned from SBNav.
 
-	pm.bind('sbInlineSubmitPhoto', function(data) {
-		// data will be a JavaScript object representing the photo that was posted (or an error if an error occurred)
-	});
+    pm.bind('sbInlineSubmitPhoto', function(data) {
+        // data will be a JavaScript object representing the photo that was posted (or an error if an error occurred)
+    });
 
 ## Blog Submission
 Normally, adding blogs can be done very easily with the use of `{SubmitFanContentLink}` variable that opens an SBNav modal. However, sometimes you'll want to allow fans to submit blogs for your fansite from within the theme itself.
@@ -3966,30 +3978,30 @@ Normally, adding blogs can be done very easily with the use of `{SubmitFanConten
 
 First, you'll need some sort of `HTML` form. Here's an example:
 
-	<form id="blogSubmit">
-		<input type="text" name="blogTitle" />
-		<textarea name="blogBody"></textarea>
-		<input type="submit" />
-	</form>
+    <form id="blogSubmit">
+        <input type="text" name="blogTitle" />
+        <textarea name="blogBody"></textarea>
+        <input type="submit" />
+    </form>
 
 **Step Two**
 
 Next, when the user submits the form, you'll want to capture it with JavaScript similar to the following:
 
-	$('#blogSubmit').submit(function() {
-		pm({ target: window.frames['sbnav'], type: 'sbInlineSubmitBlog', data: $(this).serialize() });
-		return false;
-	});
-	
+    $('#blogSubmit').submit(function() {
+        pm({ target: window.frames['sbnav'], type: 'sbInlineSubmitBlog', data: $(this).serialize() });
+        return false;
+    });
+    
 The passed data must contain the keys `blogTitle` and `blogBody` for it to be valid. You can also pass a comma separated list of words to use as tags with the key `blogTags`.
 
 **Step Three**
 
 Finally, you should add a binding to your theme's JavaScript. You can use this callback to handle the data returned from SBNav.
 
-	pm.bind('sbInlineSubmitBlog', function(data) {
-		// data will be a JavaScript object representing the blog that was posted (or an error if an error occurred)
-	});
+    pm.bind('sbInlineSubmitBlog', function(data) {
+        // data will be a JavaScript object representing the blog that was posted (or an error if an error occurred)
+    });
 
 ## Video Submission
 Normally, adding videos can be done very easily with the use of `{SubmitFanContentLink}` variable that opens an SBNav modal. However, sometimes you'll want to allow fans to submit videos for your fansite from within the theme itself.
@@ -3998,26 +4010,26 @@ Normally, adding videos can be done very easily with the use of `{SubmitFanConte
 
 First, you'll need some sort of `HTML` form. Here's an example:
 
-	<form id="videoSubmit">
-		<input type="text" name="videoRawUrl" />
-		<input type="submit" />
-	</form>
+    <form id="videoSubmit">
+        <input type="text" name="videoRawUrl" />
+        <input type="submit" />
+    </form>
 
 **Step Two**
 
 Next, when the user submits the form, you'll want to capture it with JavaScript similar to the following:
 
-	$('#videoSubmit').submit(function() {
-		pm({ target: window.frames['sbnav'], type: 'sbInlineSubmitVideo', data: $(this).serialize() });
-		return false;
-	});
-	
+    $('#videoSubmit').submit(function() {
+        pm({ target: window.frames['sbnav'], type: 'sbInlineSubmitVideo', data: $(this).serialize() });
+        return false;
+    });
+    
 The passed data must contain the key `videoRawUrl` for it to be valid (we'll then use oEmbed to grab the data for the video). You can explicitly pass `videoTitle` if you'd like. You can also pass a comma separated list of words to use as tags with the key `videoTags`.
 
 **Step Three**
 
 Finally, you should add a binding to your theme's JavaScript. You can use this callback to handle the data returned from SBNav.
 
-	pm.bind('sbInlineSubmitVideo', function(data) {
-		// data will be a JavaScript object representing the video that was posted (or an error if an error occurred)
-	});
+    pm.bind('sbInlineSubmitVideo', function(data) {
+        // data will be a JavaScript object representing the video that was posted (or an error if an error occurred)
+    });
