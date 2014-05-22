@@ -1619,6 +1619,12 @@ The date this blog post was published
 
     check if the current excerpt is trimmed to something less than its total length
     
+`if:BlogPostIsInCategory`
+
+    checks to see if the blog post is in a specific category or not
+    
+    pass it a "category" parameter with a comma separated list of categories to check
+    
 ## Audio
 ### page:AudioList
 `/audio` - This page should show a listing of audio content such as audio tracks or audio playlists
