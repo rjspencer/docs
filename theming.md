@@ -5,7 +5,7 @@ These docs aim to make using the Theming Engine super simple. Do note that if th
 
 ### General Information
 In general, a theme consists of defining the pages that make sense for your website and filling them with data. Each `{page}` represents a separate URL on the site. The data within each `{page}` is built using any combination of `{module}`s and `{block}`s.
-
+P
 It is easiest to think of `{module}`s as `for` loops that loop through various data from your StageBloc account. Within a `{module}` a `{block}` can be used to represent a "model" of the data by exposing various pieces of information about that data.
 
 StageBloc also then has various `{if}` statements and other helpful variables to make themes as customizable as possible.
@@ -2996,6 +2996,9 @@ StatusTextWithLinks
 ### page:StoreItemView
 `/store/[%id]` - This page should show content for an individual store item
 
+### page:StoreCategoryView
+`/store/[%category]` - This page should show a listing of store items by category ({module:StoreItemList} will filter by the right category automatically on this page)
+
 ### module:StoreItemList
 This module lists store items by an account. Store items are listed by the date it was created.
 
@@ -3023,6 +3026,14 @@ This module lists store items by an account. Store items are listed by the date 
     accepted values are asc or desc
 
     defaults to desc
+   
+`category`
+
+    the category of store items to list
+
+    accepted values are any store category
+
+    defaults to none
    
 `accountId`
 
