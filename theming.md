@@ -54,7 +54,7 @@ The StageBloc Theming Engine makes use of curly brackets and a few main building
 To find out more information about each building block, navigate to them in the navigation on the left hand side of this page.
     
 ## Pages
-Each view (i.e. URL) on StageBloc in contained within a `{page}`. There are a bunch of built in pages, but you can also create your own custom pages (see below). Any HTML, `{module}`s, or `{block}`s can be put inside of a `{page}`.
+Each view (i.e. URL) on StageBloc is contained within a `{page}`. There are a bunch of built in pages, but you can also create your own custom pages (see below). Any HTML, `{module}`s, or `{block}`s can be put inside of a `{page}`.
 
 It is not necessary to define a view for every `{page}` available via the Theming Engine. Define pages that make sense for your theme, and the rest will be taken care of via a fallback theme we've created so that no links will be broken.
 
