@@ -585,7 +585,7 @@ Checks to see if an admin of the account liked the content in question
 
     the content type slug of the content to check
 
-    accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
+    accepted values are {ContentType-Audio}, {ContentType-Blog}, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, {ContentType-Videos}, {ContentType-Store}
 
     defaults to whatever the current item is in the Theming Engine
 
@@ -593,7 +593,7 @@ Checks to see if an admin of the account liked the content in question
 
     the content ID of the content to check
 
-    accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
+    accepted values are {ContentType-Audio}, {ContentType-Blog}, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, {ContentType-Videos}, {ContentType-Store}
 
     defaults to whatever the current item is in the Theming Engine
 
@@ -643,7 +643,7 @@ A link that opens a modal and allow the user to view content and comment on it
 
     the content type slug of the content to like
 
-    accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
+    accepted values are {ContentType-Audio}, {ContentType-Blog}, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, {ContentType-Videos}, {ContentType-Store}
 
     defaults to whatever the current item is in the Theming Engine
 
@@ -651,7 +651,7 @@ A link that opens a modal and allow the user to view content and comment on it
 
     the content ID of the content to like
 
-    accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
+    accepted values are {ContentType-Audio}, {ContentType-Blog}, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, {ContentType-Videos}, {ContentType-Store}
 
     defaults to whatever the current item is in the Theming Engine
 
@@ -834,7 +834,7 @@ Creates a link that, when clicked, will open a modal for reporting (flagging) co
 
     the content type slug of the content being reported
 
-    accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
+    accepted values are {ContentType-Audio}, {ContentType-Blog}, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, {ContentType-Videos}, {ContentType-Store}
 
     defaults to whatever the current item is in the Theming Engine
     
@@ -842,7 +842,7 @@ Creates a link that, when clicked, will open a modal for reporting (flagging) co
 
     the content ID of the content being reported
 
-    accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
+    accepted values are {ContentType-Audio}, {ContentType-Blog}, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, {ContentType-Videos}, {ContentType-Store}
 
     defaults to whatever the current item is in the Theming Engine
 
@@ -913,7 +913,7 @@ A link that likes a specific piece of content
 
     the content type slug of the content to like
 
-    accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
+    accepted values are {ContentType-Audio}, {ContentType-Blog}, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, {ContentType-Videos}, {ContentType-Store}
 
     defaults to whatever the current item is in the Theming Engine
 
@@ -921,7 +921,50 @@ A link that likes a specific piece of content
 
     the content ID of the content to like
 
-    accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
+    accepted values are {ContentType-Audio}, {ContentType-Blog}, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, {ContentType-Videos}, {ContentType-Store}
+
+    defaults to whatever the current item is in the Theming Engine
+
+### {DeleteLink}
+A link that deletes a specific piece of content (if the user is authorized)
+
+`linkText`
+
+    the text to be put inside the <a> tag
+
+    accepted values are any string (HTML included)
+
+    defaults to "Delete"
+
+`closeTag`
+
+    whether or not to close the <a> tag
+    
+    accepted values are true or false
+    
+    defaults to true
+
+`class`
+
+    the class to assign to the <a> tag
+    
+    accepted values are any string
+    
+    defaults to none
+
+`contentType`
+
+    the content type slug of the content to delete
+
+    accepted values are {ContentType-Audio}, {ContentType-Blog}, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, {ContentType-Videos}, {ContentType-Store}
+
+    defaults to whatever the current item is in the Theming Engine
+
+`contentId`
+
+    the content ID of the content to delete
+
+    accepted values are {ContentType-Audio}, {ContentType-Blog}, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, {ContentType-Videos}, {ContentType-Store}
 
     defaults to whatever the current item is in the Theming Engine
 
@@ -1001,7 +1044,7 @@ This module will list all of the links to various content sections that the acco
 
     a comma separated list of sections to ignore
     
-    accepted values are {ContentType-Audio}, {ContentType-Blog}, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}, updates, about, fansite
+    accepted values are {ContentType-Audio}, {ContentType-Blog}, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, {ContentType-Videos}, {ContentType-Store}, updates, about, fansite
     
     defaults to none
     
@@ -1236,7 +1279,7 @@ This module lists all content posted by an account. Content is returned by the d
 
     a comma separated list of supported content types *note: if you are only using one filter type here, please use the actual module for that specific type of content instead*
 
-    accepted values are {ContentType-Audio}, {ContentType-Blog}, `blog_reposts`, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, status_reposts, {ContentType-Videos}, {ContentType-Store}
+    accepted values are {ContentType-Audio}, {ContentType-Blog}, {ContentType-Events}, {ContentType-Photos}, {ContentType-Statuses}, {ContentType-Videos}, {ContentType-Store}
 
     defaults to none
 
