@@ -1080,6 +1080,14 @@ This module will list all of the links to various content sections that the acco
     
     defaults to false
     
+`includeAll`
+
+    whether or not to include "All" as a category for the blog and store
+    
+    accepted values are true and false
+        
+    defaults to false
+    
 ### block:Navigation
 This block exposes various options available for each navigation link
 
