@@ -3,6 +3,8 @@ Hello there! You are about to embark on an epic journey through StageBloc's Them
 
 These docs aim to make using the Theming Engine super simple. Do note that if there is every something you'd like exposed in the Theming Engine that doesn't already appear to be available, feel free to contact us asking if we'd be able to add it for you.
 
+If you're the type of person who learns better by diving into things, we have a bunch of example themes we've built in our [themes repo](https://github.com/stagebloc/themes) on GitHub that would make for a great starting point.
+
 ### General Information
 In general, a theme consists of defining the pages that make sense for your website and filling them with data. Each `{page}` represents a separate URL on the site. The data within each `{page}` is built using any combination of `{module}`s and `{block}`s.
 P
