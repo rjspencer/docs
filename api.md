@@ -556,7 +556,7 @@ title _(required)_
 
 	possible values are any string <= 200 characters
 	
-photo_data _(required when adding a new photo (i.e. no `id` is given))_
+photo_data (required when adding a new photo (i.e. no `id` is given))
 :	the file to upload
 
 	possible values are any `JPG`, `GIF`, or `PNG` file < `10MB` in size
