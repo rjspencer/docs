@@ -3087,6 +3087,15 @@ This module lists store items by an account. Store items are listed by the date 
     accepted values are any store category
 
     defaults to none
+    
+`sticky`
+
+    whether to limit this to sticky items or not
+
+    accepted values are true or false
+
+    defaults to showing both
+   
    
 `accountId`
 
