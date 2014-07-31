@@ -3658,6 +3658,9 @@ ChildAccountId
 ChildAccountDescription  
 :    the description of the child account
 
+ChildAccountRelationship  
+:   the type of child account this is
+
 ## Users
 ### page:UserView
 `/fansite/users/[%id]` - This page should show an individual fan of your account
