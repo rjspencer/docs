@@ -3109,9 +3109,9 @@ This module lists store items by an account. Store items are listed by the date 
 
     the type of store items to include
 
-    accepted values are any comma separated string of "digital" and/or "physical"
+    accepted values are any comma separated string of "digital", "physical", "bundle", and "experience"
     
-    defaults to "digital,physical"
+    defaults to all types
     
 `status`
 
