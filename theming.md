@@ -1004,6 +1004,22 @@ The main image for this account
     
     defaults to "thumbnail"
     
+`accountId`
+
+    the ID of the account to show the photo for
+
+    accepts any account ID
+
+    defaults to the photo for the current account
+    
+`defaultPhoto`
+
+   a photo URL to use if the account photo doesn't exist
+   
+   accepts an URL
+   
+   defaults to none
+    
 ## Pagination
 The pagination module can be used in most all listing modules.
 
@@ -3638,6 +3654,9 @@ ChildAccountUrl
 
 ChildAccountId  
 :    the ID of the child account
+
+ChildAccountDescription  
+:    the description of the child account
 
 ## Users
 ### page:UserView
