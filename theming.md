@@ -35,7 +35,9 @@ Some tips...
 
 * Use semicolons in JavaScript. As mentioned above, do compress / minify your JavaScript before we upload it to our CDN so this will help ensure less issues occur.
 
-* Remember to keep metadata in mind. For instance, when people share links to Facebook, you have control over the information Facebook pulls from the page. Check out this [obligatory StackOverflow post](http://stackoverflow.com/a/7623986/115629) for more info.
+* Remember to keep metadata in mind. For instance, when people share links to Facebook, you have control over the information Facebook pulls from the page. Check out this [obligatory StackOverflow post](http://stackoverflow.com/a/7623986/115629) for more info. Some useful links to get you started...
+    - [Google Rich Snippets - Events](https://support.google.com/webmasters/answer/164506?hl=en)
+    - [Knowledge Graph Tour Dates](http://googlewebmastercentral.blogspot.com/2014/03/musical-artists-your-official-tour.html)
 
 ### Help us out!
 The documentation for the Theming Engine is up on GitHub for you to fork, modify, and improve. Join us over there to request features, add suggestions, and report bugs. What are you waiting for? [Git to it!](https://github.com/stagebloc/docs/blob/master/theming.md)
@@ -2706,7 +2708,7 @@ A cover image for this photo album or a default one if there is no cover set
     defaults to "thumbnail"
 
 ## Events
-This section contains various information for how to show data for events on your website. Keep in mind SEO and other metadata when creating this page, as it can help with search results. For Google specifically, you have a [few options](http://googlewebmastercentral.blogspot.com/2014/03/musical-artists-your-official-tour.html). The easiest method is probably just to have your markup conform to [schema.org's Event schema](http://schema.org/Event).
+This section contains various information for how to show data for events on your website. Keep in mind SEO and other metadata when creating this page, as it can help with search results. For Google specifically, you have a [few options](http://googlewebmastercentral.blogspot.com/2014/03/musical-artists-your-official-tour.html) for [metadata](https://support.google.com/webmasters/answer/164506?hl=en). The easiest method is probably just to have your markup conform to [schema.org's Event schema](http://schema.org/Event).
 
 ### page:EventPastList
 `/events/past` - This page should show a listing of events that have already occurred
@@ -2718,7 +2720,7 @@ This section contains various information for how to show data for events on you
 `/events/[%id]` - This page should show information for an individual event
 
 ### module:EventList
-This module lists events by an account. Videos are returned by the date they occur.
+This module lists events by an account. Events are returned by the date they occur.
 
 **Module Options**  
 `limit`
