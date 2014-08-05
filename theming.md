@@ -3809,23 +3809,14 @@ This users profile image
     checks to see if a user has verified their email address or not
 
 # SBNav
-SBNav is the little, circular control box that appears in a corner of the screen. It allows users to, among other things, log in, follow and unfollow accounts, and manage their shopping cart. It is also the means of communication by which our Advanced Functionality is achieved.
+SBNav is the little gray control box that appears in the bottom right corner of the screen. It allows users to, among other things, log in, follow and unfollow accounts, and manage their shopping cart. It is also the communication layer that our Advanced Functionality features employs.
 
-As a theme author, you can change a few things about it. If an account has white labeling enabled, SBNav may be removed from their account.
+If an account has white labeling enabled, SBNav may be removed from their account.
 
-### {SBNav position=""}
-You can set the position of SBNav with the `{SBNav}` variable. Place it anywhere in your theme and SBNav will be placed in the specified corner.
+### Notes and Best practices
+SBNav adds a few CSS rules to your `<html>` element, namely `position: relative` and a few `transition`s. These allow the page to animate to the left while SBNav slides open.
 
-`position`
-
-    The corner to place SBNav in
-
-    Accepted values are two words in any order, separated by a space: top, bottom, left, right
-
-    Default value is "bottom right"
-
-### SBNav Color
-When submitting a theme, you can select a default color that you feel best matches your theme. Just as a head up, users do have the option to override this in their account's theme management section.
+If you use `position: fixed` in your theme (sticky headers, etc), you may notice that the sliding animation of the page becomes unsightly. You can disable it by adding `html { position: initial !important; }` to your CSS.
 
 # Advanced Functionality
 Using JavaScript and SBNav we are able to expose some advanced functionality. The functionality allowed here is available using built in StageBloc modals, but these methods allow theme authors to have a little bit more control over how it looks and works in their theme. In general, advanced functionality is achieved by targeting SBNav via `postMessage` as follows:
