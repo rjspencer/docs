@@ -12,10 +12,17 @@ All of StageBloc's documentation is up on GitHub for you to fork, modify, and im
 # General Information
 The root URL of the API is `https://api.stagebloc.com/v1/`. It can generally be assumed that writing endpoints use `POST` requests and reading endpoints use `GET` requests.
 
-All dates returned are in `GMT / UTC (+0000)` unless otherwise specified.
+### Authorization
+Connecting with the StageBloc API uses the OAuth 2.0 standard. You must first [create a StageBloc account](http://stagebloc.com/signup) and then [register your application in the StageBloc backend](http://stagebloc.com/account/admin/management/developers/) to receive a client ID and secret that will allow users to connect with your application.
+
+Requests can be be made with just a `client_id` parameter, but this is restricted to reading (listing) endpoints. In order to make use of any writing (editing) endpoints, an access token (i.e. validated user) must be present.
 
 ### Responses
+All dates returned are in `GMT / UTC (+0000)` unless otherwise specified.
+
 Responses are returned as `JSON`. To receive a `JSONP` response, include a `GET` parameter named `jsonp` specifying the name of your callback method.
+
+Often times, large objects will be returned with just their ID instead of the whole object if they are nested within the main response. To have these objects expanded, just pass a `GET` parameter named `expand` with the comma separated string of the keys you want to expand.
 
 The general structure of a success response can be seen below.  The `data` key will contain the actual response data whereas the `metadata` key will contain informational content about the request.  
 
@@ -40,19 +47,16 @@ The general structure of an error response can be seen below.
 		"data": null
 	}
 
-### Authorization
-Connecting with the StageBloc API uses the OAuth 2.0 standard. You must first [create a StageBloc account](http://stagebloc.com/signup) and then [register your application in the StageBloc backend](http://stagebloc.com/account/admin/management/developers/) to receive a client ID and secret that will allow users to connect with your application.
-
-Requests can be be made with just a `client_id` parameter, but this is restricted to reading (listing) endpoints. In order to make use of any writing (editing) endpoints, an access token (i.e. validated user) must be present.
-
 # Authentication
 StageBloc uses the [OAuth2](http://oauth.net/2/) authentication process to get an access token from a request token. The access token is then used to make all subsequent requests.
 
+Access tokens can be revoked on a per application basis at any point in time by the user in their settings area in the StageBloc backend.
+
 Depending on the endpoint, differing levels of authentication exist. Some endpoints require that the authenticated user be a fan while other require that they be an admin of the account.
 
-At the very least, a `client_id` must be passed with each request depending on the authentication level of that endpoint.
+At the very least, a `client_id` must usually be passed with each request depending on the authentication level of that endpoint. However, if the request is made on behalf of an authenticated user, a `client_id` is not necessary.
 
-Access tokens can be revoked on a per application basis at any point in time by the user in their settings area in the StageBloc backend.
+Once an access token is received, it should be passed with the request as an HTTP header: `Authorization: OAuth <access token here>`
 
 ## /oauth2
 `[POST]`  
@@ -152,3 +156,43 @@ include\_admin\_accounts
 			"admin_accounts": [<admin accounts here if requested>]
 	    	}
 	}
+
+# Store and Commerce
+These endpoints revolve around StageBloc store and commerce data in the backend. They can be used for tasks including retrieving store items and orders, updating orders, or getting analytics from a store.
+
+## /store/dashboard
+`[GET] /v1/account/{accountId}/store/dashboard`  
+This endpoint is used to get stats and data regarding commerce and sales (very similar to the data shown on the Store dashboard in the StageBloc backend). It will provide all time, overall stats regarding your store and its revenue as well as results per country you've had at least one order in.
+
+When dealing with numeric values, the currency will be USD.
+
+	{
+	    "metadata": {
+	        "http_code": 200
+	    },
+	    "data": {
+	        "total_revenue": 3959.27,
+	        "total_orders": 204,
+	        "average_order_price": 19.41,
+	        "countries": {
+	            "CAN": {
+	                "name": "Canada",
+	                "total_orders": 8,
+	                "total_revenue": 225.99
+	            },
+	            "GBR": {
+	                "name": "United Kingdom",
+	                "total_orders": 3,
+	                "total_revenue": 27.01
+	            },
+	            "USA": {
+	                "name": "United States of America",
+	                "total_orders": 116,
+	                "total_revenue": 2836.79
+	            },
+				...
+	        }
+	    }
+	}
+
+
