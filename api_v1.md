@@ -195,4 +195,151 @@ When dealing with numeric values, the currency will be USD.
 	    }
 	}
 
+## /store/items
+`[GET] /v1/account/{accountId}/store/items`  
+This endpoint is used to get a listing of store items belonging to an account.
 
+order_by
+
+	how to order the returned items
+	
+	accepted values are `created`, `modified`, and `price`
+	
+	defaults to `created`
+	
+direction
+
+	what direction to order the returned items
+	
+	accepted values are `ASC` and `DESC`
+	
+	defaults to `DESC`
+	
+limit
+
+	the number of items to limit the response to
+	
+	accepted values are any positive number
+	
+	defaults to 50
+	
+offset
+
+	how much to offset the returned items by
+	
+	accepted values are any number greater than or equal to zero
+	
+	defaults to 0
+
+### Example Response
+
+	{
+	    "metadata": {
+	        "http_code": 200
+	    },
+	    "data": [{
+	        "id": 131,
+	        "type": "physical",
+	        "account": 1,
+	        "title": "Test Shirt",
+	        "short_url": "http:\/\/stgb.dev\/st\/3g",
+	        "description": "",
+	        "sold_out": false,
+	        "exclusive": false,
+	        "featured": false,
+	        "created": "2014-08-03 19:11:19",
+	        "created_by": 8,
+	        "modified": "2014-08-03 19:27:45",
+	        "modified_by": 8,
+	        "fans_name_price": true,
+	        "category": null,
+	        "prices": [{
+	            "currency": "usd",
+	            "price": 12
+	        }],
+	        "shipping_providers": [{
+	            "id": 1,
+	            "name": "Flat Rate",
+	            "price": 3
+	        }, {
+	            "id": 2,
+	            "name": "USPS",
+	            "origin_zip_code": "53103",
+	            "handling_fee": 2
+	        }],
+	        "on_sale": false,
+	        "options": [{
+	            "name": "Main",
+	            "sku": "7HWE49JA",
+	            "upc": null,
+	            "unlimited": true,
+	            "sold_out": false,
+	            "quantity": null,
+	            "low_stock_threshold": 10,
+	            "weight": 2,
+	            "weight_unit": "ounces",
+	            "height": 0,
+	            "width": 0,
+	            "length": 0
+	        }],
+	        "photo": 3231,
+	        "photos": 5
+	    }, {
+	        "id": 124,
+	        "type": "bundle",
+	        "account": 1,
+	        "title": "All sorts of stuff",
+	        "short_url": "http:\/\/stgb.dev\/st\/39",
+	        "description": "",
+	        "sold_out": false,
+	        "exclusive": false,
+	        "featured": false,
+	        "created": "2014-07-31 11:59:17",
+	        "created_by": 8,
+	        "modified": "2014-08-05 16:30:15",
+	        "modified_by": 8,
+	        "fans_name_price": false,
+	        "category": null,
+	        "prices": [{
+	            "currency": "usd",
+	            "price": 20
+	        }],
+	        "living_bundle": false,
+	        "bundled_items": {
+	            "store_items": [ ... ],
+	            "audio": [ ... ],
+	            "audio_playlists": [ ... ]
+	        },
+	        "on_sale": false,
+	        "photo": null,
+	        "photos": 0
+	    }]
+	}
+
+### Response Explanation
+
+type
+
+	the type of store item this is
+	
+	possible values are "physical", "experience", "digital", or "bundle"
+	
+shipping_providers
+
+	the available shipping methods for this store item, only shows up for items of type "physical"
+	
+options
+
+	the various SKUs available for this product and their related data
+	
+bundled_items
+
+	the store items that are in this bundle, only shows up for items of type "bundle"
+	
+	other store items, audio tracks, or audio playlists can be bundled and will be listed under their respective section in this array
+	
+photos
+
+	the number of photos this store item has
+	
+	if you specify to expand the photos key, it will be an array of the photos for this item
