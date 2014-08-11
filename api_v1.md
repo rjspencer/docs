@@ -157,11 +157,65 @@ include\_admin\_accounts
 	    	}
 	}
 
+# Users
+These endpoints revolve around StageBloc users and their data.
+
+## /users/me
+`[GET]`  
+Gets the currently authenticated user's information.
+
+### Example Response
+
+	{
+	    "metadata": {
+	        "http_code": 200
+	    },
+	    "data": {
+	        "id": 8,
+	        "url": "https:\/\/stagebloc.dev\/user\/testuser",
+	        "created": "2009-10-27 14:29:16",
+	        "name": "Test User",
+	        "username": "testuser",
+	        "bio": "Biography here...",
+	        "color": "70,170,255",
+	        "birthday": "1995-07-05",
+	        "gender": "male",
+	        "email": "testuser@sb.com",
+	        "photo": {
+	            "width": 525,
+	            "height": 500,
+	            "images": {
+	                "thumbnail_url": "http://placekitten.com/300/300",
+	                "small_url": "http://placekitten.com/300/300",
+	                "medium_url": "http://placekitten.com/300/300",
+	                "large_url": "http://placekitten.com/300/300",
+	                "original_url": "http://placekitten.com/300/300"
+	            }
+	        }
+	    }
+	}
+
+### Response Explanation
+
+email
+
+	this is only included for the currently authenticated user (i.e. won't show up for users other than the authenticated one)
+	
+birthday
+
+	this is only included for the currently authenticated user (i.e. won't show up for users other than the authenticated one)
+
+photo
+
+	the user's photo
+	
+	the width and height are the dimensions of the originally uploaded photo
+
 # Store and Commerce
 These endpoints revolve around StageBloc store and commerce data in the backend. They can be used for tasks including retrieving store items and orders, updating orders, or getting analytics from a store.
 
 ## /store/dashboard
-`[GET] /v1/account/{accountId}/store/dashboard`  
+`[GET] /account/{accountId}/store/dashboard`  
 This endpoint is used to get stats and data regarding commerce and sales (very similar to the data shown on the Store dashboard in the StageBloc backend). It will provide all time, overall stats regarding your store and its revenue as well as results per country you've had at least one order in.
 
 When dealing with numeric values, the currency will be USD.
@@ -196,7 +250,7 @@ When dealing with numeric values, the currency will be USD.
 	}
 
 ## /store/items
-`[GET] /v1/account/{accountId}/store/items`  
+`[GET] /account/{accountId}/store/items`  
 This endpoint is used to get a listing of store items belonging to an account.
 
 order_by
