@@ -1,18 +1,7 @@
 # Home
-**"It's your data, we're just giving it a good home."**
+**NOTE: This version of the API is currently in the process of being deprecated. Any endpoint that exists in V1 should be used there instead.**
 
 Use the StageBloc API to develop custom, standalone integrations with StageBloc.
-
-[Objective-C Client](https://github.com/stagebloc/stagebloc-ios)
-
-[PHP Client](https://github.com/stagebloc/php-stagebloc-api)
-
-
-### Under Development
-The API is actively evolving - please check back here for updates and changes. We also blog about updates on the [StageBloc Developers](http://stagebloc.com/sbdevs) site.
-
-### Fork us on GitHub!
-All of StageBloc's documentation is up on GitHub for you to fork, modify, and improve. Join us over there to request features, add suggestions, and report bugs. What are you waiting for? [Git to it!](https://github.com/stagebloc/docs)
 
 # General Information
 The root URL of the API is `https://api.stagebloc.com/3.0/`.

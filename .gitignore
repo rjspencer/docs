@@ -3,6 +3,7 @@
 .buildpath
 .project
 nbproject/*
+.idea/*
 
 # Operating system-specific files
 .DS_Store

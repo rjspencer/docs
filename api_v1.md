@@ -19,5 +19,5 @@ Connecting with the StageBloc API uses the OAuth 2.0 standard. You must first [c
 
 Requests can be be made with just a `client_id` parameter, but this is restricted to reading (listing) endpoints. In order to make use of any writing (editing) endpoints, an access token (i.e. validated user) must be present.
 
-In order to get a validated user, check out the `oauth2/token` endpoint and / or look towards the bottom of this page to find a wrapper / framework in your language.
+In order to get a validated user, check out the `oauth2/token` endpoint.
 
