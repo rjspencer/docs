@@ -18,29 +18,27 @@ All dates returned are in `GMT / UTC (+0000)` unless otherwise specified.
 Responses are returned as `JSON`. To receive a `JSONP` response, include a `GET` parameter named `jsonp` specifying the name of your callback method.
 
 The general structure of a success response can be seen below.  The `data` key will contain the actual response data whereas the `metadata` key will contain informational content about the request.  
-```
-{
-    "metadata": {
-        "http_code": 200
-    },
-    "data": {
-        ...
-    }
-}
-```
+
+	{
+		"metadata": {
+			"http_code": 200
+		},
+		"data": {
+			...
+		}
+	}
 
 The general structure of an error response can be seen below.  
-```
-{
-    "metadata": {
-        "code": 400,
-        "error_type": "InvalidData",
-        "error": "The error string to present to the user",
-        "dev_notes": "Some notes to help a developer debug the issue"
-    },
-    "data": null
-}
-```
+
+	{
+		"metadata": {
+			"code": 400,
+			"error_type": "InvalidData",
+			"error": "The error string to present to the user",
+			"dev_notes": "Some notes to help a developer debug the issue"
+		},
+		"data": null
+	}
 
 ### Authorization
 Connecting with the StageBloc API uses the OAuth 2.0 standard. You must first [create a StageBloc account](http://stagebloc.com/signup) and then [register your application in the StageBloc backend](http://stagebloc.com/account/admin/management/developers/) to receive a client ID and secret that will allow users to connect with your application.
@@ -87,16 +85,15 @@ redirect\_uri _(required)_
     possible values are the URI that matches the application being used
 
 ### Example Response
-```
-{
-    "metadata": {
-        "http_code": 200
-    },
-    "data": {
-        "code": "<client ID here>"
-    }
-}
-```
+
+	{
+		"metadata": {
+			"http_code": 200
+		},
+		"data": {
+			"code": "<client ID here>"
+		}
+	}
 
 ## /oauth2/token
 `[POST]`  
@@ -143,16 +140,15 @@ include\_admin\_accounts
 	defaults to `false`
 
 ### Example Response
-```
-{
-    "metadata": {
-        "http_code": 200
-    },
-    "data": {
-        "access_token": "<access token here>",
-        "scope": "non-expiring",
-		"user": "<user object here if requested>",
-		"admin_accounts": [<admin accounts here if requested>]
-    }
-}
-```
+
+	{
+		"metadata": {
+			"http_code": 200
+		},
+		"data": {
+			"access_token": "<access token here>",
+			"scope": "non-expiring",
+			"user": "<user object here if requested>",
+			"admin_accounts": [<admin accounts here if requested>]
+	    	}
+	}
