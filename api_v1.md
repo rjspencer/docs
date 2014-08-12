@@ -218,7 +218,7 @@ These endpoints revolve around StageBloc store and commerce data in the backend.
 `[GET] /account/{accountId}/store/dashboard`  
 This endpoint is used to get stats and data regarding commerce and sales (very similar to the data shown on the Store dashboard in the StageBloc backend). It will provide all time, overall stats regarding your store and its revenue as well as results per country you've had at least one order in.
 
-When dealing with numeric values, the currency will be USD.
+When dealing with monetary values, the currency will be USD.
 
 	{
 	    "metadata": {
@@ -397,3 +397,150 @@ photos
 	the number of photos this store item has
 	
 	if you specify to expand the photos key, it will be an array of the photos for this item
+	
+## /store/orders
+`[GET] /account/{accountId}/store/orders`  
+This endpoint is used to get retrieve orders that have been made in your store.
+
+When dealing with monetary values, the currency will be USD unless otherwise specified.
+
+order_by
+
+	how to order the returned items
+	
+	accepted values are `ordered` and `totalAmount`
+	
+	defaults to `ordered`
+	
+direction
+
+	what direction to order the returned items
+	
+	accepted values are `ASC` and `DESC`
+	
+	defaults to `DESC`
+	
+limit
+
+	the number of items to limit the response to
+	
+	accepted values are any positive number
+	
+	defaults to 50
+	
+offset
+
+	how much to offset the returned items by
+	
+	accepted values are any number greater than or equal to zero
+	
+	defaults to 0
+
+### Example Response
+
+	{
+	    "metadata": {
+	        "http_code": 200
+	    },
+	    "data": [{
+	        "id": 580,
+	        "account": 1,
+	        "ordered": "2014-08-10 23:18:02",
+	        "shipped": false,
+	        "currency": "usd",
+	        "total": 26.62,
+	        "total_usd": 26.62,
+	        "shipping_amount": 5.6,
+	        "tax_amount": 1.02,
+	        "stripe_charge_id": "<Stripe charge ID>",
+	        "email": "testfan@stagebloc.com",
+	        "user": { <user object> },
+	        "address": {
+	            "street_address": "12345 Main Street",
+	            "street_address_2": "",
+	            "city": "Chicago",
+	            "state": "IL",
+	            "postal_code": "60647",
+	            "country": "US"
+	        },
+	        "transactions": [{
+	            "id": 2968,
+	            "modified": "2014-08-10 23:18:03",
+	            "amount": 0,
+	            "quantity": 1,
+	            "item": {
+	                "type": "store",
+	                "object": { <store object> }
+	            },
+	            "shipping": {
+	                "provider": "USPS",
+	                "method": "USPS Priority Mail",
+	                "shipped": null,
+	                "tracking_number": null
+	            }
+	        }, {
+	            "id": 2969,
+	            "modified": "2014-08-10 23:18:03",
+	            "amount": 0,
+	            "quantity": 1,
+	            "item": {
+	                "type": "audio",
+	                "object": { <audio obkect> }
+	            }
+	        }]
+	    }, {
+	        "id": 579,
+	        "account": 1,
+	        "ordered": "2014-08-10 20:25:55",
+	        "shipped": false,
+	        "currency": "usd",
+	        "total": 31.17,
+	        "total_usd": 31.17,
+	        "shipping_amount": 7,
+	        "tax_amount": 1.17,
+	        "stripe_charge_id": "<Stripe charge ID>",
+	        "email": "fakemail@stagebloc.com",
+	        "user": null,
+	        "address": {
+	            "street_address": "555 Main Street",
+	            "street_address_2": "",
+	            "city": "Chicago",
+	            "state": "IL",
+	            "postal_code": "60642",
+	            "country": "US"
+	        },
+	        "transactions": [{
+	            "id": 2966,
+	            "modified": "2014-08-10 20:25:57",
+	            "amount": 23,
+	            "status": "Paid",
+	            "quantity": 1,
+	            "item": {
+	                "type": "store",
+	                "object": { <store object> }
+	            },
+	            "shipping": {
+	                "provider": "USPS",
+	                "method": "USPS Priority Mail",
+	                "shipped": null,
+	                "tracking_number": null
+	            }
+	        }]
+	    }]
+	}
+	
+### Response Explanation
+
+user
+
+	this will be `null` if the order was a guest checkout
+	
+transactions
+
+	this will list the items in this order
+	
+transactions item type
+
+	this will list the type of item that was ordered
+	
+	possible values are "audio", "audio_playlist", "store", "theme", and "fan_club_subscription"
