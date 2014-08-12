@@ -3130,6 +3130,14 @@ This module lists store items by an account. Store items are listed by the date 
     accepted values are any comma separated string of "digital", "physical", "bundle", and "experience"
     
     defaults to all types
+
+`onSale`
+
+    include or exclude items that are on sale; true is only sale items, false is only items that are not on sale
+
+    accepted values are true and false
+    
+    defaults to all items
     
 `status`
 
