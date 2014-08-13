@@ -3147,6 +3147,13 @@ This module lists store items by an account. Store items are listed by the date 
     
     defaults to all "listed,coming_soon,sold_out"
 
+**Module Variables**  
+`{StoreCategory}`
+
+    the category slug used; useful for {page:StoreCategoryView}
+
+    returns string or null
+
 ### module:StoreItemView
 This module will load the content for a single audio track. When on {page:StoreItemView} it will automatically grab the right data from the URL.
 
