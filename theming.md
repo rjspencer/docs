@@ -686,8 +686,35 @@ A link that opens a modal and allows a user to sign up for StageBloc and follow 
     
     defaults to none
 
+### {FanClubMembershipManagement}
+A link that opens a modal and allows a user to view details about their membership on your fan club. This information includes what tier they are on and when their next payment may be due among other things.
+
+`text`
+
+    the text to be put inside the <a> tag
+
+    accepted values are any string (HTML included)
+
+    defaults to "My Membership"
+
+`closeTag`
+
+    whether or not to close the <a> tag
+    
+    accepted values are true or false
+    
+    defaults to true
+
+`class`
+
+    the class to assign to the <a> tag
+    
+    accepted values are any string
+    
+    defaults to none
+
 ### {JoinFansiteLink}
-A link that opens a modal and allows a user to join the site's fansite *(the account must have a fansite setup for this to work)*
+A link that opens a modal and allows a user to join the site's fan club *(the account must have a fan club setup for this to work)*
 
 `text`
 
