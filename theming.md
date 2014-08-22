@@ -3311,6 +3311,9 @@ StoreItemPrice
 StoreItemId  
 :   the ID for the store item
 
+StoreItemCreatedById
+:   the ID of the person who created this store item
+
 StoreItemPhotoAlbumId  
 :   the ID of the photo album that holds the photos for this store item *(this can be used with `module:PhotoList` to easily list store item photos)*
 
