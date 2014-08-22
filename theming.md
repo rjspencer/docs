@@ -686,6 +686,87 @@ A link that opens a modal and allows a user to sign up for StageBloc and follow 
     
     defaults to none
 
+### {EditUserNotificationSettingsModalLink}
+A link that opens a modal and allows a user to edit their notification settings.
+
+`text`
+
+    the text to be put inside the <a> tag
+
+    accepted values are any string (HTML included)
+
+    defaults to "Edit Notification Settings"
+
+`closeTag`
+
+    whether or not to close the <a> tag
+    
+    accepted values are true or false
+    
+    defaults to true
+
+`class`
+
+    the class to assign to the <a> tag
+    
+    accepted values are any string
+    
+    defaults to none
+
+### {EditUserProfileModalLink}
+A link that opens a modal and allows a user to edit their user profile.
+
+`text`
+
+    the text to be put inside the <a> tag
+
+    accepted values are any string (HTML included)
+
+    defaults to "Edit Profile"
+
+`closeTag`
+
+    whether or not to close the <a> tag
+    
+    accepted values are true or false
+    
+    defaults to true
+
+`class`
+
+    the class to assign to the <a> tag
+    
+    accepted values are any string
+    
+    defaults to none
+
+### {EditUserSettingsModalLink}
+A link that opens a modal and allows a user to edit their user settings.
+
+`text`
+
+    the text to be put inside the <a> tag
+
+    accepted values are any string (HTML included)
+
+    defaults to "Edit Settings"
+
+`closeTag`
+
+    whether or not to close the <a> tag
+    
+    accepted values are true or false
+    
+    defaults to true
+
+`class`
+
+    the class to assign to the <a> tag
+    
+    accepted values are any string
+    
+    defaults to none
+
 ### {FanClubMembershipManagement}
 A link that opens a modal and allows a user to view details about their membership on your fan club. This information includes what tier they are on and when their next payment may be due among other things.
 
