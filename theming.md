@@ -21,7 +21,7 @@ The general structure of a theme is simply repeating chunks of code with the fol
         {/module:ModuleName}
     {/page:PageName}
 
-Some useful notes...
+#### Some useful notes...
 
 * If you don't explicitly provide a favicon in the `<head>` of your HTML, we'll add the [default StageBloc favicon](https://stagebloc.com/favicon.ico) for you. To add your own favicon, simply upload it as a Theme Asset and put it in your theme's `<head>` HTML tag.
 
@@ -31,7 +31,7 @@ Some useful notes...
 
 * CSS and JS are both minified before being uploaded to our CDN so that you get the maximum performance and caching when users come to your site. Sometimes errors can occur during this process. If you notice your JS or CSS behaving differently once uploaded, please let us know.
 
-Some tips...
+#### Some tips...
 
 * Use semicolons in JavaScript. As mentioned above, do compress / minify your JavaScript before we upload it to our CDN so this will help ensure less issues occur.
 
