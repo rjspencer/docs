@@ -1242,10 +1242,10 @@ Url
         defaults to none
 
 ## Fan Content Stream
-### page:FansiteContentList
+### page:Fansite
 `/fansite` - This page should show a listing of fan content posted to your fan club
 
-### module:FanContentList
+### module:FansiteContentList
 This modules lists all content posted by fans to a fan club
 
 `supported` *(required)*
