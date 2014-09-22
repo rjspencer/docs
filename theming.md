@@ -3247,6 +3247,14 @@ This module lists store items by an account. Store items are listed by the date 
     
     defaults to all items
     
+`exclusive`
+
+    include or exclude items that are exclusive; be default exclusive items will only be included for fans
+
+    accepted values are true and false
+    
+    defaults to null
+    
 `status`
 
     the status of the store items to include
