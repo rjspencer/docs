@@ -161,7 +161,7 @@ Gets an account's information from its ID.
 `[POST]`  
 Updates an account by its ID. Only admins of the account can use this endpoint.
 
-### POST Variables
+### POST Parameters
 
 `name`
 `description`
@@ -194,7 +194,27 @@ Gets an activity stream of recent content from the account. TODO: Need to make s
 
 ## /children/{type}
 `[GET] /account/{accountId}/children/{type}`  
-Gets the children accounts of a parent account.
+Gets the children accounts of a parent account. The `{type}` is optional and omitting it will return children accounts of all types. Otherwise, simply take the type of children accounts you are looking for, replace the spaces with dashes, and use that as the `{type}`.
+
+In the response, `child_account_types` will show all of the types regardless of the `{type}` requested.
+
+### GET Parameters
+
+limit
+
+    the number of items to limit the response to
+
+    accepted values are any positive number
+
+    defaults to 50
+
+offset
+
+    how much to offset the returned items by
+
+    accepted values are any number greater than or equal to zero
+
+    defaults to 0
 
 ### Example Response
 
@@ -223,7 +243,7 @@ Gets the currently authenticated user's information.
 `[POST]`  
 Updates the currently authenticated user's information.
 
-### POST Variables
+### POST Parameters
 
 `bio`  
 `birthday`  
@@ -625,7 +645,7 @@ transactions item type
 `[POST] /account/{accountId}/store/orders/{orderId}`  
 This endpoint can be used to update various elements about orders.
 
-### POST Variables
+### POST Parameters
 
 `shipped`  _(required)_  
 A date string that specifies when this order was shipped
@@ -652,7 +672,7 @@ Upon a successful like (or removal of a like), the JSON returned will simply be 
 `POST /account/{accountId}/{contentType}/{contentId}/flag`  
 This endpoint is used for flagging content in the API. This mostly applies to fan submitted content within Fan Clubs to ensure the content is kept at a high standard. Allowed content types (for the `contentType` parameter) include the main content types that fans are able to submit: `audio`, `blog`, `photo`, `status`, `video`.
 
-### POST Variables
+### POST Parameters
 
 `type`  
 This specifies the type of flagging this is. Accepted values are `duplicate`, `offensive`, `copyright`, or `prejudice`.
