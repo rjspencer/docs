@@ -188,12 +188,12 @@ Updates an account by its ID. Only admins of the account can use this endpoint.
         }
     }
 
-## /account/{accountId}/content
-`[GET]`
+## /content
+`[GET] /account/{accountId}/content`  
 Gets an activity stream of recent content from the account. TODO: Need to make second column wider maybe
 
-## /account/{accountId}/children/{type}
-`[GET]`
+## /children/{type}
+`[GET] /account/{accountId}/children/{type}`  
 Gets the children accounts of a parent account.
 
 ### Example Response
@@ -625,6 +625,8 @@ transactions item type
 `[POST] /account/{accountId}/store/orders/{orderId}`  
 This endpoint can be used to update various elements about orders.
 
+### POST Variables
+
 `shipped`  _(required)_  
 A date string that specifies when this order was shipped
 
@@ -633,3 +635,27 @@ An optional tracking number for when this item was shipped
 
 `carrier`  
 An optional carrier that this was shipped with for use with the `tracking_number`
+
+# Actions
+StageBloc as a network has a lot of social functionality built in that allows fans to interact with content. Those endpoints are outlined here.
+
+## /{contentId}/like
+`POST /account/{accountId}/{contentType}/{contentId}/like`  
+This endpoint is used for liking content in the API. Allowed content types (for the `contentType` parameter) include the main content types you'll find across our endpoints: `audio`, `blog`, `event`, `photo`, `status`, `store`, `video`.
+
+`DELETE /account/{accountId}/{contentType}/{contentId}/like`  
+This will remove a like from a piece of content.
+
+Upon a successful like (or removal of a like), the JSON returned will simply be the same you'd receive from a `/account/{accountId}/{contentType}/{contentId}` `GET` request.
+
+## /{contentId}/flag
+`POST /account/{accountId}/{contentType}/{contentId}/flag`  
+This endpoint is used for flagging content in the API. This mostly applies to fan submitted content within Fan Clubs to ensure the content is kept at a high standard. Allowed content types (for the `contentType` parameter) include the main content types that fans are able to submit: `audio`, `blog`, `photo`, `status`, `video`.
+
+### POST Variables
+
+`type`  
+This specifies the type of flagging this is. Accepted values are `duplicate`, `offensive`, `copyright`, or `prejudice`.
+
+`reason`  
+This specifies why the user is flagging this content and should be a sentence or two provided by the end user using your application.
