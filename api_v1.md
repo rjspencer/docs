@@ -18,7 +18,7 @@ Connecting with the StageBloc API uses the OAuth 2.0 standard. You must first [c
 Requests can be be made with just a `client_id` parameter, but this is restricted to reading (listing) endpoints. In order to make use of any writing (editing) endpoints, an access token (i.e. validated user) must be present.
 
 ### Responses
-All dates returned are in `GMT / UTC (+0000)` unless otherwise specified.
+All dates returned are in `GMT / UTC (+0000)` unless otherwise specified. The format of these dates follows PHP [`date() function`](http://php.net/date) function and is `Y-m-d H:i:s` (i.e. `2014-01-01 12:00:00`).
 
 Responses are returned as `JSON`. To receive a `JSONP` response, include a `GET` parameter named `jsonp` specifying the name of your callback method.
 
@@ -127,14 +127,6 @@ code _(required)_
 
 	possible values are any string received during the authentication / connection process
 	
-include_user
-
-	whether or not to include the authenticated user object with the `access_token` in the response
-	
-	accepted values are `true` or `false`
-	
-	defaults to `false`
-	
 include\_admin\_accounts
 
 	whether or not to include the authenticated user's admin accounts with the `access_token` in the response
@@ -152,17 +144,93 @@ include\_admin\_accounts
 		"data": {
 			"access_token": "<access token here>",
 			"scope": "non-expiring",
-			"user": "<user object here if requested>",
-			"admin_accounts": [<admin accounts here if requested>]
-	    	}
+			"user": 1,
+			"admin_accounts": [
+				<admin accounts here if requested>
+			]
+	    }
+	}
+	
+# Accounts
+These endpoints revolve around StageBloc accounts and their data. An account can have any number of admins, and all content on StageBloc is tied to an account.
+
+## /account/{accountId}
+`[GET]`  
+Gets an account's information from its ID.
+
+`[POST]`  
+Updates an account by its ID. Only admins of the account can use this endpoint.
+
+### POST Variables
+
+`name`
+`description`
+`stagebloc_url`
+
+### Example Response
+
+	{
+	    "metadata": {
+	        "http_code": 200
+	    },
+	    "data": {
+	        "id": 1,
+	        "url": "http:\/\/customdomain.com",
+	        "stagebloc_url": "demo",
+		    "name": "Demo Account",
+	        "description": "Description here...",
+	        "type": "business",
+	        "stripe_enabled": true,
+	        "verified": true,
+	        "photo": {
+	            <see structure for a photo response>
+	        }
+	    }
+	}
+
+## /account/{accountId}/content
+`[GET]`
+Gets an activity stream of recent content from the account. TODO: Need to make second column wider maybe
+
+## /account/{accountId}/children/{type}
+`[GET]`
+Gets the children accounts of a parent account.
+
+### Example Response
+
+	{
+	    "metadata": {
+	        "http_code": 200
+	    },
+	    "data": {
+			"child_account_types": [
+				"artist",
+				...
+			],
+			"child_accounts": [
+				<child accounts listed here>
+			]
+	    }
 	}
 
 # Users
-These endpoints revolve around StageBloc users and their data.
+These endpoints revolve around StageBloc users and their data. A user on StageBloc can be an admin for any amount of accounts, and their login is tied to their email address. A user can also be a fan of any number of accounts. These endpoints allow for management of both admin and fan relationships between users and their accounts.
 
 ## /users/me
 `[GET]`  
 Gets the currently authenticated user's information.
+
+`[POST]`  
+Updates the currently authenticated user's information.
+
+### POST Variables
+
+`bio`  
+`birthday`  
+`email`  
+`username`  
+`name`  
+`gender`
 
 ### Example Response
 
@@ -210,6 +278,14 @@ photo
 	the user's photo
 	
 	the width and height are the dimensions of the originally uploaded photo
+
+## /users/{userId}
+`[GET]`
+Gets a user by their user ID.
+
+### Example Response
+
+See the response for `/users/me`
 
 # Store and Commerce
 These endpoints revolve around StageBloc store and commerce data in the backend. They can be used for tasks including retrieving store items and orders, updating orders, or getting analytics from a store.
@@ -544,3 +620,16 @@ transactions item type
 	this will list the type of item that was ordered
 	
 	possible values are "audio", "audio_playlist", "store", "theme", and "fan_club_subscription"
+	
+## /store/orders/{orderId}
+`[POST] /account/{accountId}/store/orders/{orderId}`  
+This endpoint can be used to update various elements about orders.
+
+`shipped`  _(required)_  
+A date string that specifies when this order was shipped
+
+`tracking_number`  
+An optional tracking number for when this item was shipped
+
+`carrier`  
+An optional carrier that this was shipped with for use with the `tracking_number`
