@@ -1087,6 +1087,23 @@ A link that deletes a specific piece of content (if the user is authorized)
 ### module:AccountAbout
 This module loads information for an account
 
+**Module Options**  
+`accountId`
+
+    an alternative account ID to use other than the current one
+    
+    accepted values are any child account ID
+    
+    defaults to the current account
+
+`requireDescription`
+
+    whether or not the account to load should have a non-empty description to require this module to load data
+    
+    accepted values are true or false
+    
+    defaults to true
+
 ### block:AccountAbout
 This block exposes information about an account
 
