@@ -1113,6 +1113,9 @@ AccountAboutName
 AccountAbout  
 :    the biography text of the account
 
+AccountAboutStageBlocUrl  
+:    the StageBloc URL for this account
+
 AccountAboutCleaned  
 :    the bio text stripped of all tags except `<span><em><strong><a><u><i><b>`
 
