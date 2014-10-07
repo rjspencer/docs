@@ -50,11 +50,11 @@ The general structure of an error response can be seen below.
 # Authentication
 StageBloc uses the [OAuth2](http://oauth.net/2/) authentication process to get an access token from a request token. The access token is then used to make all subsequent requests.
 
-Access tokens can be revoked on a per application basis at any point in time by the user in their settings area in the StageBloc backend.
+Access tokens can be revoked on a per-application basis at any point in time by the user in their settings area in the StageBloc backend.
 
 Depending on the endpoint, differing levels of authentication exist. Some endpoints require that the authenticated user be a fan while other require that they be an admin of the account.
 
-At the very least, a `client_id` must usually be passed with each request depending on the authentication level of that endpoint. However, if the request is made on behalf of an authenticated user, a `client_id` is not necessary.
+A `client_id` must usually be passed with each request depending on the authentication level of that endpoint. However, if the request is made on behalf of an authenticated user, a `client_id` is not necessary.
 
 Once an access token is received, it should be passed with the request as an HTTP header: `Authorization: OAuth <access token here>`
 
@@ -163,8 +163,8 @@ Updates an account by its ID. Only admins of the account can use this endpoint.
 
 ### POST Parameters
 
-`name`
-`description`
+`name`  
+`description`  
 `stagebloc_url`
 
 ### Example Response
@@ -190,7 +190,7 @@ Updates an account by its ID. Only admins of the account can use this endpoint.
 
 ## /content
 `[GET] /account/{accountId}/content`  
-Gets an activity stream of recent content from the account. TODO: Need to make second column wider maybe
+Gets an activity stream of recent content from the account.
 
 ## /children/{type}
 `[GET] /account/{accountId}/children/{type}`  
@@ -234,7 +234,7 @@ offset
     }
 
 # Users
-These endpoints revolve around StageBloc users and their data. A user on StageBloc can be an admin for any amount of accounts, and their login is tied to their email address. A user can also be a fan of any number of accounts. These endpoints allow for management of both admin and fan relationships between users and their accounts.
+These endpoints revolve around StageBloc users and their data. A user on StageBloc can be an admin for any number of accounts, and their login is tied to their email address. A user can also be a fan of any number of accounts. These endpoints allow for management of both admin and fan relationships between users and their accounts.
 
 ## /users/me
 `[GET]`  
@@ -308,7 +308,7 @@ Gets a user by their user ID.
 See the response for `/users/me`
 
 # Fan Clubs
-Users on StageBloc can join Fan Clubs which belong to accounts. Be default an account doesn't have a Fan Club set up but doing so allows them to add extra functionality to their Fan Club such as allowing for three different tier levels and requiring payment for joining.
+Users on StageBloc can join Fan Clubs associated with accounts. By default an account doesn’t have a Fan Club set up, but creating one adds extra functionality such as having three different membership tiers and requiring payment for joining the Fan Club.
 
 ## /fanclub
 `GET /account/{accountId}/fanclub`  
@@ -789,7 +789,7 @@ This endpoint is used for flagging content in the API. This mostly applies to fa
 ### POST Parameters
 
 `type`  
-This specifies the type of flagging this is. Accepted values are `duplicate`, `offensive`, `copyright`, or `prejudice`.
+This type of flagging this is. Accepted values are `duplicate`, `offensive`, `copyright`, or `prejudice`.
 
 `reason`  
 This specifies why the user is flagging this content and should be a sentence or two provided by the end user using your application.
