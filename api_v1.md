@@ -333,67 +333,67 @@ An array structured similar to the return data for each array in the response be
 
 ### Example Response
 
-	{
-	    "metadata": {
-	        "http_code": 200
-	    },
-	    "data": {
-	        "title": "Awesome Fan Club",
-	        "description": "This fan club is so cool!",
-	        "account": 1,
-	        "moderation_queue": false,
-	        "tier_info": {
-	            "1": {
-	                "title": "Basic Membership",
-	                "description": "",
-	                "price": 0,
-	                "discount": 0,
-	                "membership_length": 0,
-	                "renewal_price": null,
-	                "can_submit_content": false
-	            },
-	            "2": {
-	                "title": "Standard Membership",
-	                "description": "",
-	                "price": 10,
-					"discount": 0,
-	                "membership_length": 7776000,
-	                "renewal_price": null,
-	                "can_submit_content": true
-	            },
-	            "3": {
-	                "title": "Premium Membership",
-	                "description": "You get a T-Shirt with this tier!",
-	                "price": 50,
-					"discount": 10,
-	                "membership_length": 31557600,
-	                "renewal_price": 10,
-	                "can_submit_content": true
-	            }
-	        },
-	        "allowed_content_sections": {
-	            "blog": true,
-	            "statuses": false,
-	            "photos": true,
-	            "videos": true,
-	            "audio": true
-	        }
-	    }
-	}
+    {
+        "metadata": {
+            "http_code": 200
+        },
+        "data": {
+            "title": "Awesome Fan Club",
+            "description": "This fan club is so cool!",
+            "account": 1,
+            "moderation_queue": false,
+            "tier_info": {
+                "1": {
+                    "title": "Basic Membership",
+                    "description": "",
+                    "price": 0,
+                    "discount": 0,
+                    "membership_length": 0,
+                    "renewal_price": null,
+                    "can_submit_content": false
+                },
+                "2": {
+                    "title": "Standard Membership",
+                    "description": "",
+                    "price": 10,
+                    "discount": 0,
+                    "membership_length": 7776000,
+                    "renewal_price": null,
+                    "can_submit_content": true
+                },
+                "3": {
+                    "title": "Premium Membership",
+                    "description": "You get a T-Shirt with this tier!",
+                    "price": 50,
+                    "discount": 10,
+                    "membership_length": 31557600,
+                    "renewal_price": 10,
+                    "can_submit_content": true
+                }
+            },
+            "allowed_content_sections": {
+                "blog": true,
+                "statuses": false,
+                "photos": true,
+                "videos": true,
+                "audio": true
+            }
+        }
+    }
 
 ### Response Explanation
 
 membership_length
 
-	a value in seconds that must match either zero, one month, three months, six months, or a year
+    a value in seconds that must match either zero, one month, three months, six months, or a year
 
 discount
 
-	the discount (in percentage points) that this tier gives fans off of store items for this account
+    the discount (in percentage points) that this tier gives fans off of store items for this account
 
 allowed\_content\_sections
 
-	the types of content fans are able to submit to this Fan Club
+    the types of content fans are able to submit to this Fan Club
 
 ## /fanclubs/{type}
 `GET /account/fanclubs/{type}`  
@@ -770,6 +770,50 @@ An optional tracking number for when this item was shipped
 `carrier`  
 An optional carrier that this was shipped with for use with the `tracking_number`
 
+# Statuses
+Statuses on StageBloc are shorter text updates that account's are able to schedule and post to both StageBloc itself and their connected social networks.
+
+## /status/{statusId}
+`[GET] /account/{accountId}/status/{statusId}`  
+This endpoint can be used to get a single status post on StageBloc.
+
+`[DELETE] /account/{accountId}/status/{statusId}`  
+This endpoint can be used to delete a single status post on StageBloc. Only admins of the account with the right admin level or the original fan who posted the status are capable of deleting it.
+
+### Example Response
+
+    {
+        "metadata": {
+            "http_code": 200
+        },
+        "data": {
+            "id": 1,
+            "short_url": "http:\/\/stgb.dev\/s\/2",
+            "text": "New status post!",
+            "in_moderation": false,
+            "is_fan_content": false,
+            "published": "2014-08-19 20:31:29",
+            "comment_count": 0,
+            "like_count": 1,
+            "user": 8
+        }
+    }
+
+## /likers
+`[GET] /account/{accountId}/status/{statusId}/likers`  
+This endpoint can be used to list the users who have liked this status on StageBloc.
+
+### Example Response
+
+    {
+        "metadata": {
+            "http_code": 200
+        },
+        "data": [
+            <array of user objects here>
+        ]
+    }
+
 # Actions
 StageBloc as a network has a lot of social functionality built in that allows fans to interact with content. Those endpoints are outlined here.
 
@@ -789,7 +833,7 @@ This endpoint is used for flagging content in the API. This mostly applies to fa
 ### POST Parameters
 
 `type`  
-This type of flagging this is. Accepted values are `duplicate`, `offensive`, `copyright`, or `prejudice`.
+The type of flagging this is. Accepted values are `duplicate`, `offensive`, `copyright`, or `prejudice`.
 
 `reason`  
 This specifies why the user is flagging this content and should be a sentence or two provided by the end user using your application.
