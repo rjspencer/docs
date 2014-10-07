@@ -307,6 +307,116 @@ Gets a user by their user ID.
 
 See the response for `/users/me`
 
+# Fan Clubs
+Users on StageBloc can join Fan Clubs which belong to accounts. Be default an account doesn't have a Fan Club set up but doing so allows them to add extra functionality to their Fan Club such as allowing for three different tier levels and requiring payment for joining.
+
+## /fanclub
+`GET /account/{accountId}/fanclub`  
+This will return the details about the Fan Club.
+
+`POST /account/{accountId}/fanclub`  
+This will create or update a Fan Club that belongs to the account with the given `accountId`.
+
+### POST Parameters
+
+`title`  
+The title of the Fan Club as a whole (as opposed to any tier)
+
+`description`  
+The description of the Fan Club as a whole (as opposed to any tier)
+
+`moderation_queue`  
+Whether or not to have the moderation queue on for this Fan Club.
+
+`tier_info` _(required)_  
+An array structured similar to the return data for each array in the response below used to setup each tier. If one of the tier keys is missing from this array, that tier will be removed from the Fan Club. The `membership_length` parameter is a value in seconds that must match either zero, one month, three months, six months, or a year.
+
+### Example Response
+
+	{
+	    "metadata": {
+	        "http_code": 200
+	    },
+	    "data": {
+	        "title": "Awesome Fan Club",
+	        "description": "This fan club is so cool!",
+	        "account": 1,
+	        "moderation_queue": false,
+	        "tier_info": {
+	            "1": {
+	                "title": "Basic Membership",
+	                "description": "",
+	                "price": 0,
+	                "discount": 0,
+	                "membership_length": 0,
+	                "renewal_price": null,
+	                "can_submit_content": false
+	            },
+	            "2": {
+	                "title": "Standard Membership",
+	                "description": "",
+	                "price": 10,
+					"discount": 0,
+	                "membership_length": 7776000,
+	                "renewal_price": null,
+	                "can_submit_content": true
+	            },
+	            "3": {
+	                "title": "Premium Membership",
+	                "description": "You get a T-Shirt with this tier!",
+	                "price": 50,
+					"discount": 10,
+	                "membership_length": 31557600,
+	                "renewal_price": 10,
+	                "can_submit_content": true
+	            }
+	        },
+	        "allowed_content_sections": {
+	            "blog": true,
+	            "statuses": false,
+	            "photos": true,
+	            "videos": true,
+	            "audio": true
+	        }
+	    }
+	}
+
+### Response Explanation
+
+membership_length
+
+	a value in seconds that must match either zero, one month, three months, six months, or a year
+
+discount
+
+	the discount (in percentage points) that this tier gives fans off of store items for this account
+
+allowed\_content\_sections
+
+	the types of content fans are able to submit to this Fan Club
+
+## /fanclubs/{type}
+`GET /account/fanclubs/{type}`  
+This endpoint retrieves a listing of Fan Clubs on StageBloc. The accepted values for `type` are `following`, `featured`, or `recent` with `featured` being the default. Note that for `featured` Fan Clubs, `limit` and `offset` are ignored as it will return all featured Fan Clubs at the time.
+
+### GET Parameters
+
+limit
+
+    the number of items to limit the response to
+
+    accepted values are any positive number
+
+    defaults to 20
+
+offset
+
+    how much to offset the returned items by
+
+    accepted values are any number greater than or equal to zero
+
+    defaults to 0
+
 # Store and Commerce
 These endpoints revolve around StageBloc store and commerce data in the backend. They can be used for tasks including retrieving store items and orders, updating orders, or getting analytics from a store.
 
@@ -348,6 +458,8 @@ When dealing with monetary values, the currency will be USD.
 ## /store/items
 `[GET] /account/{accountId}/store/items`  
 This endpoint is used to get a listing of store items belonging to an account.
+
+### GET Parameters
 
 order_by
 
@@ -499,6 +611,8 @@ photos
 This endpoint is used to get retrieve orders that have been made in your store.
 
 When dealing with monetary values, the currency will be USD unless otherwise specified.
+
+### GET Parameters
 
 order_by
 
