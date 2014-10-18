@@ -605,7 +605,11 @@ photos
     the number of photos this store item has
     
     if you specify to expand the photos key, it will be an array of the photos for this item
-    
+
+## /store/items/{itemId}
+`[GET] /account/{accountId}/store/items/{itemId}`  
+This endpoint is used to get a single store items belonging to an account.
+
 ## /store/orders
 `[GET] /account/{accountId}/store/orders`  
 This endpoint is used to get retrieve orders that have been made in your store.
