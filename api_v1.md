@@ -236,6 +236,55 @@ offset
 # Users
 These endpoints revolve around StageBloc users and their data. A user on StageBloc can be an admin for any number of accounts, and their login is tied to their email address. A user can also be a fan of any number of accounts. These endpoints allow for management of both admin and fan relationships between users and their accounts.
 
+## /users
+`[POST]`  
+Creates a new user on StageBloc
+
+### POST Parameters
+
+`email` _(required)_  
+The email address to use for the user
+
+`password` _(required)_  
+`birthday` _(required)_  
+`name`  
+`username`  
+`gender`  
+Accepts "male" or "female"
+
+### Example Response
+
+    {
+        "metadata": {
+            "http_code": 200
+        },
+        "data": {
+            "id": 8,
+            "url": "https:\/\/stagebloc.dev\/user\/testuser",
+            "created": "2009-10-27 14:29:16",
+            "name": "Test User",
+            "username": "testuser",
+            "bio": "Biography here...",
+            "color": "70,170,255",
+            "birthday": "1995-07-05",
+            "gender": "male",
+            "email": "testuser@sb.com",
+            "photo": {
+                "width": 525,
+                "height": 500,
+                "images": {
+                    "thumbnail_url": "http://placekitten.com/300/300",
+                    "small_url": "http://placekitten.com/300/300",
+                    "medium_url": "http://placekitten.com/300/300",
+                    "large_url": "http://placekitten.com/300/300",
+                    "original_url": "http://placekitten.com/300/300"
+                }
+            },
+			"access_token": "<access_token_here>",
+            "scope": "non-expiring"
+        }
+    }
+
 ## /users/me
 `[GET]`  
 Gets the currently authenticated user's information.
