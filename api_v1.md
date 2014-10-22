@@ -247,6 +247,9 @@ The email address to use for the user
 
 `password` _(required)_  
 `birthday` _(required)_  
+`source_account_id`  
+An account ID for an account to follow / join the Fan Club of during signup, this will then send a Fan Club welcome email instead of the generic StageBloc signup email
+
 `name`  
 `username`  
 `gender`  
