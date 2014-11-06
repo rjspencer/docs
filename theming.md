@@ -3593,7 +3593,7 @@ This module will load the content for a single comment. When on any of the above
 CommentText  
 :   the text of the comment
 
-CommentHTML
+CommentHTML  
 :   the text of the comment, formatted with `<br />`s for new lines, and `<a>` tags around links
 
 CommentShortUrl  
