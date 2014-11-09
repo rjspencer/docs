@@ -4058,7 +4058,6 @@ For example, here's how you could accomplish the sold out functionality that was
         </div>
     {/if:CustomFieldIsSet}
 
-
 ## User Profile Editing
 This allows the user's profile to be edited.
 
@@ -4109,6 +4108,43 @@ Finally, you should add a binding to your theme's JavaScript. You can use this c
 
     pm.bind('sbInlineUserProfileEdit', function(data) {
         // data will be a JavaScript object representing the user (or an error if an error occurred)
+    });
+
+## Email List Subscription
+This allows accounts to capture emails for a generic email list signup. This is currently only available for paid accounts.
+
+**Step One**
+
+First, you'll need some sort way of having users enter their information. For instance, you could do:
+
+    <form id="emailForm">
+        <input type="text" name="name" />
+        <input type="text" name="email" />
+        <input type="submit" value="Subscribe to email list" />
+    </form>
+
+The available keys for passing are `name`, `email`, and `emailListId`. As such, you'll also need to have made a generic email list in the StageBloc backend so that you can use the list's ID here.
+
+**Step Two**
+
+Next, when the user submits the form, you'll want to capture it with JavaScript similar to the following:
+
+    $('form#show-newsletter').on('submit', function (e) {
+        e.preventDefault();
+        pm({target: window.frames.sbnav, type: 'sbInlineEmailListSignup', data: {
+                name: $(this).find('[name="name"]').val(),
+                email: $(this).find('[name="email"]').val(),
+                emailListId: 1
+            }
+        });
+    });
+
+**Step Three**
+
+Finally, you should add a binding to your theme's JavaScript. You can use this callback to handle the data returned from SBNav.
+
+    pm.bind('sbInlineEmailListSignup', function(data) {
+        // data will be a JavaScript object representing success or failure
     });
 
 ## Commenting
