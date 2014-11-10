@@ -52,6 +52,28 @@ Please feel free to open issues and/or submit pull requests if you find ways to 
 ## Submitting Themes
 Once you've built your theme, you can submit it to the StageBloc team for approval to be sold in our marketplace. This can be done via the StageBloc backend for your account. Themes can be priced as whatever amount you see fit (as well as free), and the same percentages apply to themes that apply to any other products sold on StageBloc. Once someone purchases your theme, they'll get the full source code and will be able to install and use it on their account.
 
+# User Interaction
+Understanding and being able to directly communicate with your fan base are among the most important processes in building a brand. At StageBloc, we pride ourselves in creating tools and functionality that make this as easy as possible. As such, we've created a couple of different ways to easily make sure this is the case.
+
+## Profile Information
+Prompting users to keep their profile information up to date is a great way to ensure you get the complete picture of your fan base. One way to do this is to include the JavaScript below on your hosted site. When present, this post message ping will cause an SBNav modal to show up prompting the user for their information if we determine it may be out of date.
+
+```
+window.addEventListener('load', function load() {
+    window.removeEventListener('load', load, false);
+    pm({target: window.frames.sbnav, type: 'sbUserInformationPrompt', data: {} });
+}, false);
+```
+
+## Email Verification
+Having users verify their email address is one of the most important steps in being able to directly contact them. In order to ensure our deliverability rates remain high, we only email users who have verified their email addresses by clicking a verification link sent to them.
+
+Users will automatically be sent an initial link on signup. They'll also be sent a reminder email a couple days after signup if they still haven't verified their email address. Lastly, SBNav will show a nag modal for all logged in users until they verify their email address.
+
+If you want a more custom experience for your fans, simply using the `{if:UserIsVerified}` in your theme will disable our pre-built SBNav nag. Using this, you could, for instance, show a custom button that resends a verification email to user. The JavaScript to do so (which is part of SBNav's advanced functionality) is below.
+
+`pm({ target: window.frames.sbnav, type: 'sbInlineSendVerificationEmail', data: {} });`
+
 # Syntax
 The StageBloc Theming Engine makes use of curly brackets and a few main building blocks for the majority of its syntax. The build blocks (page, modules, and blocks) should be kept lowercase as they are in these docs.
 
@@ -4041,7 +4063,6 @@ For example, here's how you could accomplish the sold out functionality that was
         </div>
     {/if:CustomFieldIsSet}
 
-
 ## User Profile Editing
 This allows the user's profile to be edited.
 
@@ -4092,6 +4113,43 @@ Finally, you should add a binding to your theme's JavaScript. You can use this c
 
     pm.bind('sbInlineUserProfileEdit', function(data) {
         // data will be a JavaScript object representing the user (or an error if an error occurred)
+    });
+
+## Email List Subscription
+This allows accounts to capture emails for a generic email list signup. This is currently only available for paid accounts.
+
+**Step One**
+
+First, you'll need some sort way of having users enter their information. For instance, you could do:
+
+    <form id="emailForm">
+        <input type="text" name="name" />
+        <input type="text" name="email" />
+        <input type="submit" value="Subscribe to email list" />
+    </form>
+
+The available keys for passing are `name`, `email`, and `emailListId`. As such, you'll also need to have made a generic email list in the StageBloc backend so that you can use the list's ID here.
+
+**Step Two**
+
+Next, when the user submits the form, you'll want to capture it with JavaScript similar to the following:
+
+    $('form#show-newsletter').on('submit', function (e) {
+        e.preventDefault();
+        pm({target: window.frames.sbnav, type: 'sbInlineEmailListSignup', data: {
+                name: $(this).find('[name="name"]').val(),
+                email: $(this).find('[name="email"]').val(),
+                emailListId: 1
+            }
+        });
+    });
+
+**Step Three**
+
+Finally, you should add a binding to your theme's JavaScript. You can use this callback to handle the data returned from SBNav.
+
+    pm.bind('sbInlineEmailListSignup', function(data) {
+        // data will be a JavaScript object representing success or failure
     });
 
 ## Commenting
