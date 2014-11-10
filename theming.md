@@ -58,7 +58,12 @@ Understanding and being able to directly communicate with your fan base are amon
 ## Profile Information
 Prompting users to keep their profile information up to date is a great way to ensure you get the complete picture of your fan base. One way to do this is to include the JavaScript below on your hosted site. When present, this post message ping will cause an SBNav modal to show up prompting the user for their information if we determine it may be out of date.
 
-`$(window).load(function() { pm({target: window.frames.sbnav, type: 'sbUserInformationPrompt', data: {} }); });`
+```
+window.addEventListener('load', function load() {
+    window.removeEventListener('load', load, false);
+    pm({target: window.frames.sbnav, type: 'sbUserInformationPrompt', data: {} });
+}, false);
+```
 
 ## Email Verification
 Having users verify their email address is one of the most important steps in being able to directly contact them. In order to ensure our deliverability rates remain high, we only email users who have verified their email addresses by clicking a verification link sent to them.
