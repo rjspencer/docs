@@ -3978,7 +3978,7 @@ If you use `position: fixed` in your theme (sticky headers, etc), you may notice
 # Advanced Functionality
 Using JavaScript and SBNav we are able to expose some advanced functionality. The functionality allowed here is available using built in StageBloc modals, but these methods allow theme authors to have a little bit more control over how it looks and works in their theme. In general, advanced functionality is achieved by targeting SBNav via `postMessage` as follows:
 
-    pm({ target: window.frames['sbnav'], type: 'advancedFunctionalityType', data: { key: value } });
+    pm({ target: window.frames.sbnav, type: 'advancedFunctionalityType', data: { key: value } });
 
 The postMessage JS library is already included for you. The `target` parameter must be exactly as shown above.
 
@@ -4082,7 +4082,7 @@ Next, when the user submits the form, you'll want to capture it with JavaScript 
 
     $('#userEditForm').submit(function() {
         var formData = $(this).serialize() + '&photoFile=' + _userPhotoData;
-        pm({ target: window.frames['sbnav'], type: 'sbInlineUserProfileEdit', data: formData });
+        pm({ target: window.frames.sbnav, type: 'sbInlineUserProfileEdit', data: formData });
         return false;
     });
 
@@ -4117,7 +4117,7 @@ There is also an optional `replyToId` parameter that can be passed to serve as t
 Next, when the user submits the form, you'll want to capture it with JavaScript similar to the following:
 
     $('#commentForm').submit(function() {
-        pm({ target: window.frames['sbnav'], type: 'sbInlineComment', data: $(this).serialize() });
+        pm({ target: window.frames.sbnav, type: 'sbInlineComment', data: $(this).serialize() });
         return false;
     });
     
@@ -4138,7 +4138,7 @@ Normally, viewing comments can be done very easily with the use of the `{Comment
 
 You'll want to make a call to the `sbInlineLoadComments` functionality of SBNav:
 
-    pm({ target: window.frames['sbnav'],
+    pm({ target: window.frames.sbnav,
          type: 'sbInlineLoadComments',
          data: { contentType: $(this).attr('data-content-type'), // i.e. {ContentType-Photos}
                  contentId: $(this).attr('data-content-id'),
@@ -4174,7 +4174,7 @@ First, you'll need some sort of `HTML` form. Here's an example:
 Next, when the user submits the form, you'll want to capture it with JavaScript similar to the following:
 
     $('#statusSubmit').submit(function() {
-        pm({ target: window.frames['sbnav'], type: 'sbInlineSubmitStatus', data: $(this).serialize() });
+        pm({ target: window.frames.sbnav, type: 'sbInlineSubmitStatus', data: $(this).serialize() });
         return false;
     });
     
@@ -4224,7 +4224,7 @@ Next, when the user submits the form, you'll want to capture it with JavaScript 
 
     $('#photoSubmit').submit(function() {
         var formData = $(this).serialize() + '&photoFile=' + $('#photoPreview img').attr('src');
-        pm({ target: window.frames['sbnav'], type: 'sbInlineSubmitPhoto', data: formData });
+        pm({ target: window.frames.sbnav, type: 'sbInlineSubmitPhoto', data: formData });
         return false;
     });
 
@@ -4256,7 +4256,7 @@ First, you'll need some sort of `HTML` form. Here's an example:
 Next, when the user submits the form, you'll want to capture it with JavaScript similar to the following:
 
     $('#blogSubmit').submit(function() {
-        pm({ target: window.frames['sbnav'], type: 'sbInlineSubmitBlog', data: $(this).serialize() });
+        pm({ target: window.frames.sbnav, type: 'sbInlineSubmitBlog', data: $(this).serialize() });
         return false;
     });
     
@@ -4287,7 +4287,7 @@ First, you'll need some sort of `HTML` form. Here's an example:
 Next, when the user submits the form, you'll want to capture it with JavaScript similar to the following:
 
     $('#videoSubmit').submit(function() {
-        pm({ target: window.frames['sbnav'], type: 'sbInlineSubmitVideo', data: $(this).serialize() });
+        pm({ target: window.frames.sbnav, type: 'sbInlineSubmitVideo', data: $(this).serialize() });
         return false;
     });
     
