@@ -662,6 +662,50 @@ photos
 `[GET] /account/{accountId}/store/items/{itemId}`  
 This endpoint is used to get a single store items belonging to an account.
 
+## /coupon/{couponId}
+`[GET] /account/{accountId}/store/coupon/{couponId}`  
+This endpoint is used to get a single store coupon belonging to an account.
+
+### Example Response
+
+	{
+	    "metadata": {
+	        "http_code": 200
+	    },
+	    "data": {
+	        "id": 2,
+	        "account": 1,
+	        "title": "Awesome Coupon",
+	        "discount_ype": "percent",
+	        "amount": 10,
+	        "apply_to": "order",
+	        "exclusive": false,
+	        "start_date": null,
+	        "end_date": null,
+	        "timezone": "America\/New_York",
+	        "created": "2014-09-09 19:40:52",
+	        "created_by": 8
+	    }
+	}
+
+### Response Explanation
+
+discount_type
+
+	the type of discount this is
+
+	possible values are "percent" or "amount"
+
+apply_to
+
+	what part of the purchase this coupon applies to
+
+	possible values are "order", "shipping", or "membership"
+
+start_date
+
+	if the coupon is only valid for a certain date range, this will be the start date of that range
+
 ## /store/orders
 `[GET] /account/{accountId}/store/orders`  
 This endpoint is used to get retrieve orders that have been made in your store.
