@@ -479,6 +479,45 @@ offset
 
     defaults to 0
 
+# Audio
+These endpoints revolve around the ability to upload and stream audio through StageBloc. Audio consists of both individual tracks and those tracks being organized into various playlists.
+
+## /audio/playlists
+`[GET] /account/{accountId}/audio/playlists`  
+This endpoint can be used to list audio playlists that are available for an account.
+
+
+	{
+		"metadata": {
+			"http_code":200
+		},
+		"data": [{
+			"id": 1,
+			"title": "Best Music of the 90s",
+			"description": "",
+			"short_url": "http:\/\/stgb.dev\/ap\/4q",
+			"embed_code": "\u003Ciframe src=\u0022https:\/\/widgets.stagebloc.dev\/audio\/playlist\/198\u0022 style=\u0022width:250px;height:320px;border-radius:6px\u0022\u003E\u003C\/iframe\u003E",
+			"created_by": 0,
+			"created": "2014-11-14 11:17:50",
+			"modified_by": 0,
+			"modified": "2014-11-19 21:37:25",
+			"comment_count": 0,
+			"like_count": 0,
+			"artist": "",
+			"label": ""
+		}]
+	}
+
+### Response Explanation
+
+embed_code
+
+	StageBloc had audio playlist widgets for playlists that you can use by embedding this code on an HTML page if you so choose
+
+artist
+
+	admins can add a special artist to a playlist if it something different than the name of the account
+
 # Store and Commerce
 These endpoints revolve around StageBloc store and commerce data in the backend. They can be used for tasks including retrieving store items and orders, updating orders, or getting analytics from a store.
 
