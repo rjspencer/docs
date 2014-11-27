@@ -482,6 +482,54 @@ offset
 # Audio
 These endpoints revolve around the ability to upload and stream audio through StageBloc. Audio consists of both individual tracks and those tracks being organized into various playlists.
 
+## /audio/{audioId}
+`[GET] /account/{accountId}/audio/{audioId}`  
+This endpoint can be used to get a single audio track from an account.
+
+	{
+		"metadata": {
+			"http_code":200
+		},
+		"data": {
+			"id": 773,
+			"title": "The Best Track ever",
+			"description": "",
+			"lyrics": "",
+			"artist":"",
+			"photo": 0,
+			"account": 1,
+			"created_by": 8,
+			"created": "2014-11-14 17:48:40",
+			"modified_by": 8,
+			"modified": "2014-11-14 17:49:04",
+			"short_url": "http:\/\/stgb.dev\/a\/ek",
+			"embed_code": "\u003Ciframe src=\u0022https:\/\/widgets.stagebloc.dev\/audio\/773\u0022 style=\u0022width:250px;height:70px;border-radius:6px\u0022\u003E\u003C\/iframe\u003E",
+			"sticky": false,
+			"exclusive": false,
+			"in_moderation": false,
+			"is_fan_content": false,
+			"comment_count": 0,
+			"like_count": 0,
+			"user": 8,
+			"edit_url": "https:\/\/stagebloc.dev\/demo\/admin\/audio\/edit\/773",
+			"user_has_liked": false
+		}
+	}
+
+### Response Explanation
+
+in_moderation
+
+	if this audio track was submitted by a fan, this handles if it is still in moderation or not
+
+is\_fan\_content
+
+	whether or not this audio was submitted by a fan or not
+
+user\_has\_liked
+
+	if the request as made with a logged in user, this will signify if that user has liked the track or not
+
 ## /audio/playlists
 `[GET] /account/{accountId}/audio/playlists`  
 This endpoint can be used to list audio playlists that are available for an account.
