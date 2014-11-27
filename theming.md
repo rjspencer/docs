@@ -1,9 +1,9 @@
 # Home
 Hello there! You are about to embark on an epic journey through StageBloc's Theming Engine documentation. It may sound scary, but you won't have any issues if you have a basic understanding of HTML, CSS, and/or JavaScript.
 
-These docs aim to make using the Theming Engine super simple. Do note that if there is every something you'd like exposed in the Theming Engine that doesn't already appear to be available, feel free to contact us asking if we'd be able to add it for you.
+These docs aim to make using the Theming Engine super simple. If there is anything you'd like exposed in the Theming Engine that doesn't already appear to be available, please contact us about adding it for you.
 
-If you're the type of person who learns better by diving into things, we have a bunch of example themes we've built in our [themes repo](https://github.com/stagebloc/themes) on GitHub that would make for a great starting point.
+If you learn better by diving into things, we have a bunch of example themes we've built in our [themes repo](https://github.com/stagebloc/themes) on GitHub that make a great starting point.
 
 ### General Information
 In general, a theme consists of defining the pages that make sense for your website and filling them with data. Each `{page}` represents a separate URL on the site. The data within each `{page}` is built using any combination of `{module}`s and `{block}`s.
@@ -75,7 +75,7 @@ If you want a more custom experience for your fans, simply using the `{if:UserIs
 `pm({ target: window.frames.sbnav, type: 'sbInlineSendVerificationEmail', data: {} });`
 
 # Syntax
-The StageBloc Theming Engine makes use of curly brackets and a few main building blocks for the majority of its syntax. The build blocks (page, modules, and blocks) should be kept lowercase as they are in these docs.
+The StageBloc Theming Engine makes use of curly brackets and a few main building blocks for the majority of its syntax. The building blocks (page, modules, and blocks) should be kept lowercase like they are in these docs.
 
 To find out more information about each building block, navigate to them in the navigation on the left hand side of this page.
     
@@ -243,7 +243,7 @@ Checks to see what block is currently being rendered in the listing module. The 
     defaults to none
 
 ## Blocks
-Blocks can best be thought of us the models of the data and must be inside of a `{module}`. When inside of a listing `{module}`, a `{block}` will be repeated as many times as necessary depending on the returned data. The general syntax for `{block}`s is as follows:
+Blocks can be best thought of as the models of the data and must be inside of a `{module}`. When inside of a listing `{module}`, a `{block}` will be repeated as many times as necessary depending on the returned data. The general syntax for `{block}`s is as follows:
 
     {block:BlockName}
         ...
