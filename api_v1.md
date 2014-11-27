@@ -233,6 +233,16 @@ offset
         }
     }
 
+### Response Explanation
+
+child\_account\_types
+
+	An array of strings of the different types of children accounts the parent account has setup
+
+child_accounts
+
+	An array of account objects (see account listing endpoint for structure). It will also add a `child_account_type` key to each account specifying the type it is
+
 # Users
 These endpoints revolve around StageBloc users and their data. A user on StageBloc can be an admin for any number of accounts, and their login is tied to their email address. A user can also be a fan of any number of accounts. These endpoints allow for management of both admin and fan relationships between users and their accounts.
 
