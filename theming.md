@@ -3414,6 +3414,10 @@ would change to
 
     the ID of the store item you want to add to the user's cart
 
+`sku`
+
+	a SKU to auto-select in the cart
+
 `text`
 
     the text to be put inside the <a> tag
