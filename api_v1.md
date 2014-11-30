@@ -549,7 +549,6 @@ This endpoint can be used to list audio playlists that are available for an acco
 			"created": "2014-11-14 11:17:50",
 			"modified_by": 0,
 			"modified": "2014-11-19 21:37:25",
-			"comment_count": 0,
 			"like_count": 0,
 			"artist": "",
 			"label": ""
