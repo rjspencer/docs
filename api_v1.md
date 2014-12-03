@@ -561,7 +561,7 @@ This endpoint can be used to list audio playlists that are available for an acco
 
 embed_code
 
-	StageBloc had audio playlist widgets for playlists that you can use by embedding this code on an HTML page if you so choose
+	StageBloc has audio playlist widgets for playlists that you can use by embedding this code on an HTML page if you so choose
 
 artist
 
