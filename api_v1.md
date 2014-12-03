@@ -503,6 +503,7 @@ This endpoint can be used to get a single audio track from an account.
 			"modified_by": 8,
 			"modified": "2014-11-14 17:49:04",
 			"short_url": "http:\/\/stgb.dev\/a\/ek",
+			"stream_url": "https:\/\/stagebloc-audio.s3.amazonaws.com\/1\/stream\/607_20120327_192954_1_101.mp3",
 			"embed_code": "\u003Ciframe src=\u0022https:\/\/widgets.stagebloc.dev\/audio\/773\u0022 style=\u0022width:250px;height:70px;border-radius:6px\u0022\u003E\u003C\/iframe\u003E",
 			"sticky": false,
 			"exclusive": false,
@@ -517,6 +518,10 @@ This endpoint can be used to get a single audio track from an account.
 	}
 
 ### Response Explanation
+
+stream_url
+
+	the URL to use to stream this audio file (could be a StageBloc URL or a third party one such as SoundCloud)
 
 in_moderation
 
@@ -550,7 +555,6 @@ This endpoint can be used to list audio playlists that are available for an acco
 			"created": "2014-11-14 11:17:50",
 			"modified_by": 0,
 			"modified": "2014-11-19 21:37:25",
-			"comment_count": 0,
 			"like_count": 0,
 			"artist": "",
 			"label": ""
