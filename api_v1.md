@@ -571,6 +571,65 @@ artist
 
 	admins can add a special artist to a playlist if it something different than the name of the account
 
+# Video
+These endpoints revolve around the ability to upload and stream video through StageBloc. Video consists of both individual videos and those videos being organized into various playlists.
+
+## /video
+`[POST] /account/{accountId}/video/`  
+This endpoint can be used to upload a video to an account. Once uploaded, there will be a slight delay before it can play while it converts. You must be logged in as an admin to the account at the right permission level to use this endpoint.
+
+### POST Parameters
+
+`video` _(required)_
+
+	the contents of the video file itself
+
+`title` _(required)_
+
+	the title of the video
+
+description
+
+	the description of the video
+
+exclusive
+
+	whether or not this video should be exclusive
+
+### Example Response
+
+	{
+	    "metadata": {
+	        "http_code": 200
+	    },
+	    "data": {
+	        "id": 1,
+	        "title": "Test API Upload",
+	        "description": "",
+	        "short_url": "http:\/\/stgb.dev\/v\/B",
+	        "video_url": null,
+	        "embed_code": "\u003Ciframe width=\u0022640\u0022 height=\u0022360\u0022 src=\u0022\/\/video.stagebloc.com\/e\/4jpzTNGy\u0022 frameborder=\u00220\u0022 allowfullscreen\u003E\u003C\/iframe\u003E",
+	        "created": "2014-12-03 17:38:50",
+	        "modified": "2014-12-03 17:38:50",
+	        "in_moderation": false,
+	        "is_fan_content": false,
+	        "comment_count": 0,
+	        "like_count": 0,
+	        "user": 0,
+	        "user_has_liked": false
+	    }
+	}
+
+### Response Explanation
+
+video_url
+
+	only relevant to videos not uploaded directly to StageBloc, this would be the link to the video on the third party site
+
+embed_code
+
+	the embed code of the video to include in HTML
+
 # Store and Commerce
 These endpoints revolve around StageBloc store and commerce data in the backend. They can be used for tasks including retrieving store items and orders, updating orders, or getting analytics from a store.
 
