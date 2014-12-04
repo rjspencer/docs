@@ -263,7 +263,10 @@ The email address to use for the user
 An account ID for an account to follow / join the Fan Club of during signup, this will then send a Fan Club welcome email instead of the generic StageBloc signup email
 
 `name`  
+
 `username`  
+The username for this user, it must be unique across all of StageBloc and only accepts letters, numbers, and underscores.
+
 `gender`  
 Accepts "male" or "female"
 
@@ -299,6 +302,12 @@ Accepts "male" or "female"
             "scope": "non-expiring"
         }
     }
+
+### Response Explanation
+
+color
+
+	the RGB value of the color the user has chosen in our backend
 
 ## /users/me
 `[GET]`  
@@ -572,6 +581,40 @@ See the response for `/audio`, it will be structured the same.
 ## /audio/playlists
 `[GET] /account/{accountId}/audio/playlists`  
 This endpoint can be used to list audio playlists that are available for an account.
+
+### GET Parameters
+
+limit
+
+    the number of items to limit the response to
+
+    accepted values are any positive number
+
+    defaults to 50
+
+offset
+
+    how much to offset the returned items by
+
+    accepted values are any number greater than or equal to zero
+
+    defaults to 0
+
+order_by
+
+    how to order the returned items
+
+    accepted values are `created` and `modified`
+
+    defaults to `created`
+
+direction
+
+    what direction to order the returned items
+
+    accepted values are `ASC` and `DESC`
+
+    defaults to `DESC`
 
 ### Example Response
 
