@@ -52,7 +52,7 @@ StageBloc uses the [OAuth2](http://oauth.net/2/) authentication process to get a
 
 Access tokens can be revoked on a per-application basis at any point in time by the user in their settings area in the StageBloc backend.
 
-Depending on the endpoint, differing levels of authentication exist. Some endpoints require that the authenticated user be a fan while other require that they be an admin of the account.
+Depending on the endpoint, differing levels of authentication exist. Some endpoints require that the authenticated user be a fan while other require that they be an admin of the account. For those that require being an admin, some require a specific level of admin privileges, such as an editor or an author. Appropriate error messages will be shown if you try to access an endpoint you don't have access to.
 
 A `client_id` must usually be passed with each request depending on the authentication level of that endpoint. However, if the request is made on behalf of an authenticated user, a `client_id` is not necessary.
 
