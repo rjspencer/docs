@@ -1116,6 +1116,119 @@ This endpoint can be used to list the users who have liked this status on StageB
         ]
     }
 
+# Events
+Events on StageBloc can be many different things including shows, conferences, or really anything.
+
+## /events
+`[GET] /account/{accountId}/events`  
+This endpoint can be used to list the events for an account.
+
+### GET Parameters
+
+direction
+
+    the direction to list results in
+
+    accepted values are "ASC" or "DESC"
+
+    defaults to "DESC"
+
+limit
+
+    the number of items to limit the response to
+
+    accepted values are any positive number
+
+    defaults to 50
+
+offset
+
+    how much to offset the returned items by
+
+    accepted values are any number greater than or equal to zero
+
+    defaults to 0
+
+order_by
+
+    what to order the results by
+
+    accepted values are "created", "startDateTime", "endDateTime"
+
+    defaults to "startDateTime"
+
+upcoming
+
+	whether or not to include upcoming events
+
+	accepted values are true or false
+
+	defaults to true
+
+past
+
+	whether or not to include past events
+
+	accepted values are true or false
+
+	defaults to true
+
+### Example Response
+
+	{
+	    "metadata": {
+	        "http_code": 200
+	    },
+	    "data": [{
+	        "id": 1611,
+	        "title": "Awesome Thing Happening!",
+	        "description": "",
+	        "short_url": "http:\/\/stgb.dev\/e\/tM",
+	        "ticket_price": 0,
+	        "ticket_link": "",
+	        "start_date_time": "2014-10-12 11:00:00 -04:00",
+	        "end_date_time": "2014-10-12 14:00:00 -04:00",
+	        "timezone": "America\/New_York",
+	        "comment_count": 1,
+	        "like_count": 0,
+	        "attending_count": 0,
+	        "custom_field_data": {
+	            "is-sold-out": false
+	        },
+	        "location": {
+	            "name": "StageBloc Office",
+	            "street_address": "935 W Chestnut",
+	            "street_address_2": "",
+	            "city": "Chicago",
+	            "state": "IL",
+	            "postal_code": "12345",
+	            "country": "UA",
+	            "latitude": 0,
+	            "longitude": 0
+	        },
+			"user_has_liked": false,
+			"user_is_attending": "maybe"
+	    }]
+	}
+
+### Response Explanation
+
+ticket_link
+
+	a link to a third party service where tickets for this events can be purchased
+
+start\_date\_time & end\_date_time
+
+	the start / end date and time of the event, unlike other timestamps they won't be in GMT time but will specify an offset from GMT
+
+timezone
+
+	the timezone the event is in which is specified by the hour offset in the start and end time
+
+user\_is_attending
+
+	if the request is made with a logged in user, this will specify "yes", "no", or "maybe"
+
 # Actions
 StageBloc as a network has a lot of social functionality built in that allows fans to interact with content. Those endpoints are outlined here.
 
