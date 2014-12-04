@@ -543,6 +543,7 @@ exclusive
 			"sticky": false,
 			"exclusive": false,
 			"in_moderation": false,
+			"custom_field_data": [ ],
 			"is_fan_content": false,
 			"comment_count": 0,
 			"like_count": 0,
@@ -569,6 +570,10 @@ is\_fan\_content
 user\_has\_liked
 
 	if the request as made with a logged in user, this will signify if that user has liked the track or not
+
+custom\_field\_data
+
+	if you have custom data set on audio for you account, the slugs will show up as keys here with their values
 
 ## /audio/{audioId}
 `[GET] /account/{accountId}/audio/{audioId}`  
@@ -634,6 +639,7 @@ direction
 			"modified": "2014-11-19 21:37:25",
 			"comment_count": 0,
 			"like_count": 0,
+			"custom_field_data": [ ],
 			"artist": "",
 			"label": "",
 			"audio": 4,
@@ -654,6 +660,10 @@ artist
 audio
 
 	the number of tracks in the playlist, or an array of audio objects if you pass specify to expand "audio" as a parameter
+
+custom\_field\_data
+
+	if you have custom data set on events for you account, the slugs will show up as keys here with their values
 
 # Video
 These endpoints revolve around the ability to upload and stream video through StageBloc. Video consists of both individual videos and those videos being organized into various playlists.
@@ -1260,7 +1270,7 @@ ticket_link
 
 	a link to a third party service where tickets for this events can be purchased
 
-start\_date\_time & end\_date_time
+start\_date\_time & end\_date\_time
 
 	the start / end date and time of the event, unlike other timestamps they won't be in GMT time but will specify an offset from GMT
 
@@ -1271,6 +1281,10 @@ timezone
 user\_is_attending
 
 	if the request is made with a logged in user, this will specify "yes", "no", or "maybe"
+
+custom\_field\_data
+
+	if you have custom data set on events for you account, the slugs will show up as keys here with their values
 
 # Actions
 StageBloc as a network has a lot of social functionality built in that allows fans to interact with content. Those endpoints are outlined here.
