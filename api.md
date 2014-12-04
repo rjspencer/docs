@@ -121,113 +121,6 @@ reply_to_id
 	    }
 	}
 
-# /accounts
-This endpoint is used for interacting with accounts on StageBloc, whether it be a user's admin accounts, accounts they're following, etc
-
-## /accounts/list
-Lists the accounts the currently authenticated user has admin access to. No parameters are required for this endpoint.
-
-### Explanation of Returned Data
-
-color
-:   the color associated with the account
-
-stagebloc_url
-:	the StageBloc URL for the account (i.e. `stagebloc.com/<stagebloc_url>/`)
-
-images
-:	the image for the account
-
-user_is_following
-:   whether the active user is following the particular account
-	
-### Example Response (JSON)
-	{
-	    "response": {
-	        "items": [{
-	            "id": 952,
-	            "name": "Actual No Data",
-	            "stagebloc_url": "ActualNoData",
-	            "custom_domain": "customdomain.dev",
-	            "description": "My account desc",
-	            "type": "personal",
-	            "color": "#edcea6",
-	            "verified": false,
-	            "follower_count": 8,
-	            "content_count": 6,
-	            "authenticated": false
-	        }, {
-	            "id": 19,
-	            "name": "Demo 17",
-	            "stagebloc_url": "demo17",
-	            "custom_domain": "",
-	            "description": "another desc",
-	            "type": "other",
-	            "color": "#cce8ff",
-	            "verified": false,
-	            "follower_count": 3,
-	            "content_count": 863,
-	            "authenticated": false,
-	            "photo": {
-	                "id": 2000,
-	                "title": "Account Image",
-	                "short_url": "http:\/\/stgb.dev\/p\/Au",
-	                "description": "Account Image",
-	                "width": 0,
-	                "height": 0,
-	                "comment_count": 0,
-	                "like_count": 0,
-	                "repost_count": 0,
-	                "images": {
-	                    "thumbnail_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/19\/thumbnail\/20111212_200901_19_2000.jpeg",
-	                    "small_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/19\/small\/20111212_200901_19_2000.jpeg",
-	                    "medium_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/19\/medium\/20111212_200901_19_2000.jpeg",
-	                    "large_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/19\/large\/20111212_200901_19_2000.jpeg"
-	                }
-	            }
-	        }]
-	    }
-	}
-   
-## /accounts/social/list
-Lists the social profiles the currently authenticated user and account has connected to StageBloc. No parameters are required for this endpoint. Useful with the `/statuses/edit` endpoint for posting to a user's connected social profiles.
-
-### Explanation of Returned Data
-
-id
-:   a unique identifier for the social account
-
-name
-:   the name of the account or user that the social account is connected to
-
-service
-:	the connected service type
-    
-### Example Response (JSON)
-	{
-	    "response": {
-	        "items": [{
-	            "id": 217,
-	            "name": "Demo 17",
-	            "service": {
-	                "name": "Twitter"
-	            }
-	        }, {
-	            "id": 314,
-	            "name": "JoshDude HolatMan",
-	            "service": {
-	                "name": "Twitter"
-	            }
-	        }, {
-	            "id": 323,
-	            "name": "JoshDude HolatMan",
-	            "service": {
-	                "name": "Facebook"
-	            }
-	        }]
-	    }
-	}
-
 # /blog
 This endpoint is used for interacting with blog posts
 
@@ -751,17 +644,17 @@ Once they authorize on that page, they'll be redirected back to your redirect UR
 ##/oauth2/token
 This endpoint is used to get an access token once a request token is received from the `stagebloc.com/connect/` auth flow and the user is redirected back to your application.
 
-client_id _(required)_
+client\_id _(required)_
 :	the ID of the application an account is connecting to
 
 	possible values are any string that matches a registered application
 
-client_secret _(required)_
+client\_secret _(required)_
 :	the secret of the application an account is connecting to
 
 	possible values are any string that matches a registered application
 	
-grant_type _(required)_
+grant\_type _(required)_
 :	the grant type being requested
 
 	possible value is `authorization_code`
@@ -773,9 +666,6 @@ code _(required)_
 	
 ### Example Response (JSON)
     {"access_token":"<access_token_here>","scope":"non-expiring"}
-    
-## /oauth2/token/disconnect
-No parameters required. Hitting this endpoint will simply invalidate the OAuth access token, essentially "logging out" the user.
 
 ### Example Response (JSON)
     {"response":{"message":"Token succesfully invalidated."}}
@@ -907,93 +797,3 @@ latitude
 
 longitude
 :   a string value of the longitude the status was posted at
-
-# /user
-
-## /user/edit
-
-Used for creating a new user or editing an existing one. If the user with the specific email does not exist, a new one will be created. Returns a `user` object.
-
-email _(required)_
-:	the user's email
-
-password _(required)_
-:	the user's password
-
-bio
-:	the user's bio
-
-birthday
-:	formatted like 1969-12-31
-
-gender
-:	takes "male", "female", or "cupcake"
-
-name
-:	the name of user - distinct from username
-
-username
-:	the user's username
-
-settings
-:	should mirror the settings dictionary shown below, with 0 for off, 1 for on
-
-	{
-	    "response": {
-	        "items": [{
-	            "id": 8,
-	            "url": "http:\/\/stagebloc.com\/user\/joshholat62man\/",
-	            "created": "2009-10-27 14:29:16",
-	            "name": "JoshDude HolatMan",
-	            "username": "joshholat62man",
-	            "bio": "NEW!",
-	            "following_count": 3,
-	            "likes_count": 30,
-	            "content_count": 1838,
-	            "email": "hi@stagebloc.com",
-	            "gender": "male",
-	            "birthday": "1996-07-06",
-	            "location": {
-	                "city": "Chicago",
-	                "state_province": "IL",
-	                "country": "AF"
-	            },
-	            "settings": {
-	                "dashboard_popular_content": true,
-	                "notifications": {
-	                    "likes": {
-	                        "email": false,
-	                        "push": true,
-	                        "web": true
-	                    },
-	                    "comments": {
-	                        "email": true,
-	                        "push": true,
-	                        "web": false
-	                    },
-	                    "follows": {
-	                        "email": true,
-	                        "push": true,
-	                        "web": false
-	                    },
-	                    "reposts": {
-	                        "email": false,
-	                        "push": true,
-	                        "web": true
-	                    }
-	                }
-	            },
-	            "photo": {
-	                "id": 74,
-	                "width": 720,
-	                "height": 720,
-	                "images": {
-	                    "thumbnail_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/users\/8\/thumbnail\/20130826_233333_8_74.jpeg",
-	                    "small_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/users\/8\/small\/20130826_233333_8_74.jpeg",
-	                    "medium_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/users\/8\/medium\/20130826_233333_8_74.jpeg",
-	                    "large_url": "http:\/\/cdn-staging.stagebloc.com\/local\/photos\/users\/8\/large\/20130826_233333_8_74.jpeg"
-	                }
-	            }
-	        }]
-	    }
-	}
