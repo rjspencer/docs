@@ -573,7 +573,7 @@ user\_has\_liked
 
 custom\_field\_data
 
-	if you have custom data set on audio for you account, the slugs will show up as keys here with their values
+	if you have custom data set on audio for your account, the slugs will show up as keys here with their values
 
 ## /audio/{audioId}
 `[GET] /account/{accountId}/audio/{audioId}`  
@@ -663,7 +663,7 @@ audio
 
 custom\_field\_data
 
-	if you have custom data set on events for you account, the slugs will show up as keys here with their values
+	if you have custom data set on events for your account, the slugs will show up as keys here with their values
 
 # Video
 These endpoints revolve around the ability to upload and stream video through StageBloc. Video consists of both individual videos and those videos being organized into various playlists.
@@ -1284,7 +1284,7 @@ user\_is_attending
 
 custom\_field\_data
 
-	if you have custom data set on events for you account, the slugs will show up as keys here with their values
+	if you have custom data set on events for your account, the slugs will show up as keys here with their values
 
 # Actions
 StageBloc as a network has a lot of social functionality built in that allows fans to interact with content. Those endpoints are outlined here.
