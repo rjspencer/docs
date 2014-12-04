@@ -22,7 +22,7 @@ All dates returned are in `GMT / UTC (+0000)` unless otherwise specified. The fo
 
 Responses are returned as `JSON`. To receive a `JSONP` response, include a `GET` parameter named `jsonp` specifying the name of your callback method.
 
-Often times, large objects will be returned with just their ID instead of the whole object if they are nested within the main response. To have these objects expanded, just pass a `GET` parameter named `expand` with the comma separated string of the keys you want to expand.
+Often times, large objects will be returned with just their ID instead of the whole object if they are nested within the main response. To have these objects expanded, just pass a `GET` parameter named `expand` with the comma separated string of the keys you want to expand. For instance, passing expand=user would then return the JSON for an entire user as opposed to just the ID of that user.
 
 The general structure of a success response can be seen below.  The `data` key will contain the actual response data whereas the `metadata` key will contain informational content about the request.  
 
@@ -551,13 +551,16 @@ This endpoint can be used to list audio playlists that are available for an acco
 			"description": "",
 			"short_url": "http:\/\/stgb.dev\/ap\/4q",
 			"embed_code": "\u003Ciframe src=\u0022https:\/\/widgets.stagebloc.dev\/audio\/playlist\/198\u0022 style=\u0022width:250px;height:320px;border-radius:6px\u0022\u003E\u003C\/iframe\u003E",
-			"created_by": 0,
+			"created_by": 1,
 			"created": "2014-11-14 11:17:50",
-			"modified_by": 0,
+			"modified_by": 1,
 			"modified": "2014-11-19 21:37:25",
+			"comment_count": 0,
 			"like_count": 0,
 			"artist": "",
-			"label": ""
+			"label": "",
+			"audio": 4,
+			"user_has_liked": false
 		}]
 	}
 
@@ -570,6 +573,69 @@ embed_code
 artist
 
 	admins can add a special artist to a playlist if it something different than the name of the account
+
+audio
+
+	the number of tracks in the playlist, or an array of audio objects if you pass specify to expand "audio" as a parameter
+
+# Video
+These endpoints revolve around the ability to upload and stream video through StageBloc. Video consists of both individual videos and those videos being organized into various playlists.
+
+## /video
+`[POST] /account/{accountId}/video/`  
+This endpoint can be used to upload a video to an account. Once uploaded, there will be a slight delay before it can play while it converts. You must be logged in as an admin to the account at the right permission level to use this endpoint.
+
+### POST Parameters
+
+`video` _(required)_
+
+	the contents of the video file itself
+
+`title` _(required)_
+
+	the title of the video
+
+description
+
+	the description of the video
+
+exclusive
+
+	whether or not this video should be exclusive
+
+### Example Response
+
+	{
+	    "metadata": {
+	        "http_code": 200
+	    },
+	    "data": {
+	        "id": 1,
+	        "title": "Test API Upload",
+	        "description": "",
+	        "short_url": "http:\/\/stgb.dev\/v\/B",
+	        "video_url": null,
+	        "embed_code": "\u003Ciframe width=\u0022640\u0022 height=\u0022360\u0022 src=\u0022\/\/video.stagebloc.com\/e\/4jpzTNGy\u0022 frameborder=\u00220\u0022 allowfullscreen\u003E\u003C\/iframe\u003E",
+	        "created": "2014-12-03 17:38:50",
+	        "modified": "2014-12-03 17:38:50",
+	        "in_moderation": false,
+	        "is_fan_content": false,
+	        "comment_count": 0,
+	        "like_count": 0,
+	        "user": 8,
+	        "user_has_liked": false
+	    }
+	}
+
+### Response Explanation
+
+video_url
+
+	only relevant to videos not uploaded directly to StageBloc, this would be the link to the video on the third party site
+
+embed_code
+
+	the embed code of the video to include in HTML
 
 # Store and Commerce
 These endpoints revolve around StageBloc store and commerce data in the backend. They can be used for tasks including retrieving store items and orders, updating orders, or getting analytics from a store.
