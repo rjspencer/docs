@@ -248,7 +248,7 @@ These endpoints revolve around StageBloc users and their data. A user on StageBl
 
 ## /users
 `[POST]`  
-Creates a new user on StageBloc
+Creates a new user on StageBloc.
 
 ### POST Parameters
 
@@ -256,7 +256,9 @@ Creates a new user on StageBloc
 The email address to use for the user
 
 `password` _(required)_  
+
 `birthday` _(required)_  
+
 `source_account_id`  
 An account ID for an account to follow / join the Fan Club of during signup, this will then send a Fan Club welcome email instead of the generic StageBloc signup email
 
@@ -363,11 +365,11 @@ photo
 
 ## /users/{userId}
 `[GET]`
-Gets a user by their user ID.
+Gets a user by their user ID
 
 ### Example Response
 
-See the response for `/users/me`
+See the response for `/users/me`, it will be structured the same.
 
 # Fan Clubs
 Users on StageBloc can join Fan Clubs associated with accounts. By default an account doesn’t have a Fan Club set up, but creating one adds extra functionality such as having three different membership tiers and requiring payment for joining the Fan Club.
@@ -482,9 +484,33 @@ offset
 # Audio
 These endpoints revolve around the ability to upload and stream audio through StageBloc. Audio consists of both individual tracks and those tracks being organized into various playlists.
 
-## /audio/{audioId}
-`[GET] /account/{accountId}/audio/{audioId}`  
-This endpoint can be used to get a single audio track from an account.
+## /audio
+`[POST] /account/{accountId}/audio`  
+This endpoint can be used to create a single audio track for an account. It currently only allows actual uploads as opposed to also allowing SoundCloud or other third party source URLs.
+
+### POST Parameters
+
+`audio` _(required)_
+
+	the contents of the audio file itself
+
+`title` _(required)_
+
+	the title of the track
+
+description
+
+	the description of the track
+
+public
+
+	whether or not this audio track should be public (defaults to true)
+
+exclusive
+
+	whether or not this audio track should be exclusive
+
+### Example Response
 
 	{
 		"metadata": {
@@ -534,6 +560,14 @@ is\_fan\_content
 user\_has\_liked
 
 	if the request as made with a logged in user, this will signify if that user has liked the track or not
+
+## /audio/{audioId}
+`[GET] /account/{accountId}/audio/{audioId}`  
+This endpoint can be used to get a single audio track from an account.
+
+### Example Response
+
+See the response for `/audio`, it will be structured the same.
 
 ## /audio/playlists
 `[GET] /account/{accountId}/audio/playlists`  
