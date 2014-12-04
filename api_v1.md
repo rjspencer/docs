@@ -22,7 +22,7 @@ All dates returned are in `GMT / UTC (+0000)` unless otherwise specified. The fo
 
 Responses are returned as `JSON`. To receive a `JSONP` response, include a `GET` parameter named `jsonp` specifying the name of your callback method.
 
-Often times, large objects will be returned with just their ID instead of the whole object if they are nested within the main response. To have these objects expanded, just pass a `GET` parameter named `expand` with the comma separated string of the keys you want to expand.
+Often times, large objects will be returned with just their ID instead of the whole object if they are nested within the main response. To have these objects expanded, just pass a `GET` parameter named `expand` with the comma separated string of the keys you want to expand. For instance, passing expand=user would then return the JSON for an entire user as opposed to just the ID of that user.
 
 The general structure of a success response can be seen below.  The `data` key will contain the actual response data whereas the `metadata` key will contain informational content about the request.  
 
@@ -551,13 +551,16 @@ This endpoint can be used to list audio playlists that are available for an acco
 			"description": "",
 			"short_url": "http:\/\/stgb.dev\/ap\/4q",
 			"embed_code": "\u003Ciframe src=\u0022https:\/\/widgets.stagebloc.dev\/audio\/playlist\/198\u0022 style=\u0022width:250px;height:320px;border-radius:6px\u0022\u003E\u003C\/iframe\u003E",
-			"created_by": 0,
+			"created_by": 1,
 			"created": "2014-11-14 11:17:50",
-			"modified_by": 0,
+			"modified_by": 1,
 			"modified": "2014-11-19 21:37:25",
+			"comment_count": 0,
 			"like_count": 0,
 			"artist": "",
-			"label": ""
+			"label": "",
+			"audio": 4,
+			"user_has_liked": false
 		}]
 	}
 
@@ -570,6 +573,10 @@ embed_code
 artist
 
 	admins can add a special artist to a playlist if it something different than the name of the account
+
+audio
+
+	the number of tracks in the playlist, or an array of audio objects if you pass specify to expand "audio" as a parameter
 
 # Video
 These endpoints revolve around the ability to upload and stream video through StageBloc. Video consists of both individual videos and those videos being organized into various playlists.
@@ -615,7 +622,7 @@ exclusive
 	        "is_fan_content": false,
 	        "comment_count": 0,
 	        "like_count": 0,
-	        "user": 0,
+	        "user": 8,
 	        "user_has_liked": false
 	    }
 	}
