@@ -46,21 +46,6 @@ action: _(required)_
 
 The response will return the liked content item with the like count updated. See listing endpoints for different content types for the structure of this data.
 
-## /repost
-
-id _(required)_
-:	the id of the content to be reposted
-
-action _(required)_
-:	acceptable values are "repost" or "unrepost"
-
-account_id _(required)_
-:	the id(s) of the account you wish to repost to
-
-	seperate numerous account IDs with commas
-
-The response will return the reposted content item with the repost count updated. See listing endpoints for different content types for the structure of this data.
-
 ## /comment
 
 Comments are infinitely nested in StageBloc.
