@@ -36,16 +36,6 @@ JSON Example
 
 These endpoints encompass the actions that can be taken on an object. For example, to like a blog post, use the endpoint `blog/like.json`, and pass the `id` of the blog you wish to like. Everything in the actions section should be POSTed.
 
-## /like
-
-id _(required)_
-:	the id of the content you wish to like
-
-action: _(required)_
-:	acceptable values are "like" or "unlike"
-
-The response will return the liked content item with the like count updated. See listing endpoints for different content types for the structure of this data.
-
 ## /comment
 
 Comments are infinitely nested in StageBloc.
