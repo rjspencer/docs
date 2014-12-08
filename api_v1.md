@@ -665,6 +665,100 @@ custom\_field\_data
 
 	if you have custom data set on events for your account, the slugs will show up as keys here with their values
 
+# Photos
+These endpoints revolve around the ability to upload and view photos on StageBloc. Photos consist of both individual images as well as those images being organized into various photo albums.
+
+## /photos
+`[GET] /account/{accountId}/photos`  
+Lists photos from an account.
+
+### GET Parameters
+
+limit
+
+    the number of items to limit the response to
+
+    accepted values are any positive number
+
+    defaults to 50
+
+offset
+
+    how much to offset the returned items by
+
+    accepted values are any number greater than or equal to zero
+
+    defaults to 0
+
+order_by
+
+    how to order the returned items
+
+    accepted values are `created` and `modified`
+
+    defaults to `created`
+
+direction
+
+    what direction to order the returned items
+
+    accepted values are `ASC` and `DESC`
+
+    defaults to `DESC`
+
+### Example Response
+
+	{
+	    "metadata": {
+	        "http_code": 200
+	    },
+	    "data": [{
+	        "id": 3311,
+	        "title": "Super Cool Image",
+	        "created": "2014-12-07 23:37:32",
+	        "modified": "2014-12-07 23:37:36",
+	        "short_url": "http:\/\/stgb.dev\/p\/Z6",
+	        "description": "",
+	        "width": 534,
+	        "height": 654,
+	        "sticky": false,
+	        "exclusive": false,
+	        "in_moderation": false,
+	        "is_fan_content": false,
+	        "comment_count": 0,
+	        "like_count": 0,
+	        "images": {
+	            "thumbnail_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/thumbnail\/20141207_233732_1_3311.jpeg",
+	            "small_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/small\/20141207_233732_1_3311.jpeg",
+	            "medium_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/medium\/20141207_233732_1_3311.jpeg",
+	            "large_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/large\/20141207_233732_1_3311.jpeg",
+	            "original_url": "http:\/\/cdn.stagebloc.com\/production\/photos\/1\/original\/20141207_233732_1_3311.jpeg"
+	        },
+	        "user": 8,
+	        "custom_field_data": {
+	            "is-cool": true
+	        }
+	    }]
+	}
+
+## Response Explanation
+
+width & height
+
+	the width / height in pixels of the originally uploaded image
+
+images
+
+	an array of image URLs that are various sizes
+
+## /photo/{photoId}
+`[GET] /account/{accountId}/photo/{photoId}`  
+This endpoint can be used to get a single photo from an account. Note that if the photo is fan submitted or exclusive, it will require that the request be made by a logged in user who has access to that account as a fan or admin.
+
+### Example Response
+
+See the response for `/photos`, the photo object will be structured with the same keys / values (just not in an array).
+
 # Video
 These endpoints revolve around the ability to upload and stream video through StageBloc. Video consists of both individual videos and those videos being organized into various playlists.
 
