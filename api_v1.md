@@ -764,7 +764,7 @@ These endpoints revolve around the ability to upload and stream video through St
 
 ## /video
 `[POST] /account/{accountId}/video/`  
-This endpoint can be used to upload a video to an account. Once uploaded, there will be a slight delay before it can play while it converts. You must be logged in as an admin to the account at the right permission level to use this endpoint.
+This endpoint can be used to upload a video to an account. Once uploaded, there will be a slight delay before it can play while it converts. This request must be made by a logged in fan or admin of the account. Depending on the access level of the logged in user, it will become fan content or official content.
 
 ### POST Parameters
 
@@ -775,6 +775,10 @@ This endpoint can be used to upload a video to an account. Once uploaded, there 
 `title` _(required)_
 
 	the title of the video
+
+fan_content
+
+	whether to force this content to be submitted as fan content (versus official content, only applies if the logged in user is an admin of the account)
 
 description
 
