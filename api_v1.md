@@ -1467,7 +1467,7 @@ offset
 
 content
 
-	the content object this comment was made on (will match the same JSON structure as listing these objects in their respective endpoints)
+	the content object this comment was made on (will match the same JSON structure as listing these objects in their respective endpoints), by default this will be collapsed unless expand=content is used
 
 content_type
 
