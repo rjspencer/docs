@@ -1385,7 +1385,7 @@ custom\_field\_data
 	if you have custom data set on events for your account, the slugs will show up as keys here with their values
 
 # Comments
-Comments can be made on almost all types of comment in StageBloc.
+Comments can be made on almost all types of content in StageBloc.
 
 ## /comments
 `GET /account/{accountId}/{contentType}/{contentId}/comments`  
