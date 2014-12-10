@@ -1388,7 +1388,7 @@ custom\_field\_data
 Comments can be made on almost all types of comment in StageBloc.
 
 ## /comments
-`GET /account/{accountId}/{contentType}/{contentId}/comments`
+`GET /account/{accountId}/{contentType}/{contentId}/comments`  
 Retrieves comments for a particular piece of content on StageBloc. `contentType` can be one of audio, blog, photo, status, video, event, or store.
 
 ### GET Parameters
