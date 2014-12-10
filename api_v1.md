@@ -1384,6 +1384,95 @@ custom\_field\_data
 
 	if you have custom data set on events for your account, the slugs will show up as keys here with their values
 
+# Comments
+Comments can be made on almost all types of comment in StageBloc.
+
+## /comments
+`GET /account/{accountId}/{contentType}/{contentId}/comments`
+Retrieves comments for a particular piece of content on StageBloc. `contentType` can be one of audio, blog, photo, status, video, event, or store.
+
+### GET Parameters
+
+direction
+
+    the direction to list results in
+
+    accepted values are "ASC" or "DESC"
+
+    defaults to "DESC"
+
+limit
+
+    the number of items to limit the response to
+
+    accepted values are any positive number
+
+    defaults to 50
+
+offset
+
+    how much to offset the returned items by
+
+    accepted values are any number greater than or equal to zero
+
+    defaults to 0
+
+### Example Response
+
+	{
+	    "metadata": {
+	        "http_code": 200
+	    },
+	    "data": [{
+	        "id": 1,
+	        "text": "I made a comment on this really cool thing!",
+	        "user": 8,
+	        "created": "2014-09-15 15:38:36",
+	        "account": 1,
+	        "reply_to": 0,
+	        "reply_count": 0,
+	        "short_url": "http:\/\/stgb.dev\/c\/a\/2",
+	        "in_moderation": false,
+	        "content": {
+	            "id": 768,
+	            "title": "An audio track!",
+	            "description": "",
+	            "lyrics": "",
+	            "artist": "",
+	            "photo": 0,
+	            "account": 1,
+	            "created_by": 8,
+	            "created": "2014-11-11 15:13:52",
+	            "modified_by": 8,
+	            "modified": "2014-11-11 15:14:05",
+	            "short_url": "http:\/\/stgb.dev\/a\/ef",
+	            "stream_url": "https:\/\/stagebloc-audio.s3.amazonaws.com\/dev\/1\/stream\/975_20141111_151352_1_768.mp3?response-content-type=audio%2Fmpeg",
+	            "embed_code": "\u003Ciframe src=\u0022https:\/\/widgets.stagebloc.dev\/audio\/768\u0022 style=\u0022width:250px;height:70px;border-radius:6px\u0022\u003E\u003C\/iframe\u003E",
+	            "sticky": false,
+	            "exclusive": false,
+	            "in_moderation": false,
+	            "is_fan_content": false,
+	            "comment_count": 3,
+	            "like_count": 0,
+	            "user": 8,
+	            "custom_field_data": {
+	                "episodenumber": "1"
+	            },
+	            "content_type": "audio"
+	        }
+	    }]
+	}
+
+### Response Explanation
+
+content
+
+	the content object this comment was made on (will match the same JSON structure as listing these objects in their respective endpoints)
+
+content_type
+
+	a string specifying what type of content this comment was made on (i.e. what type of content the `content` key conforms to)
+
 # Actions
 StageBloc as a network has a lot of social functionality built in that allows fans to interact with content. Those endpoints are outlined here.
 
