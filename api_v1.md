@@ -741,7 +741,7 @@ direction
 	    }]
 	}
 
-## Response Explanation
+### Response Explanation
 
 width & height
 
