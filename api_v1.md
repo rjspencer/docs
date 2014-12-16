@@ -581,7 +581,7 @@ This endpoint can be used to get a single audio track from an account.
 
 ### Example Response
 
-See the response for `/audio`, it will be structured the same.
+See the response for `/audio`, it will be structured the same except that it won't be in an array.
 
 ## /audio/playlists
 `[GET] /account/{accountId}/audio/playlists`  
@@ -758,6 +758,81 @@ This endpoint can be used to get a single photo from an account. Note that if th
 ### Example Response
 
 See the response for `/photos`, the photo object will be structured with the same keys / values (just not in an array).
+
+## /photos/albums
+`[GET] /account/{accountId}/photos/albums`  
+Lists photos albums from an account.
+
+### GET Parameters
+
+limit
+
+    the number of items to limit the response to
+
+    accepted values are any positive number
+
+    defaults to 50
+
+offset
+
+    how much to offset the returned items by
+
+    accepted values are any number greater than or equal to zero
+
+    defaults to 0
+
+order_by
+
+    how to order the returned items
+
+    accepted values are `created` and `modified`
+
+    defaults to `created`
+
+direction
+
+    what direction to order the returned items
+
+    accepted values are `ASC` and `DESC`
+
+    defaults to `DESC`
+
+### Example Response
+
+	{
+	    "metadata": {
+	        "http_code": 200
+	    },
+	    "data": [{
+	        "id": 1724,
+	        "title": "Photo Album Title",
+	        "description": "",
+	        "short_url": "http:\/\/stgb.dev\/pa\/vJ",
+	        "created_by": 1,
+	        "created": "2014-12-04 13:44:26",
+	        "modified_by": 8,
+	        "modified": "2014-12-16 22:38:56",
+	        "like_count": 0,
+	        "custom_field_data": [],
+	        "photos": 1
+	    }]
+	}
+
+### Response Explanation
+
+photos
+
+    the number of photos this photo album has
+
+    if you specify to expand the photos key, it will be an array of the photos for this album (structured the same as the photo listing endpoint)
+
+## /albums/{albumId}
+`[GET] /account/{accountId}/photos/album/{albumId}`  
+This endpoint can be used to get a single photo album from an account.
+
+### Example Response
+
+See the response for `/photos/albums`, it will be structured the same except that it won't be in an array.
 
 # Video
 These endpoints revolve around the ability to upload and stream video through StageBloc. Video consists of both individual videos and those videos being organized into various playlists.
