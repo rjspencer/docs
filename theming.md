@@ -1283,12 +1283,41 @@ Url
         
         defaults to none
 
+## Fan Clubs
+
+### module:FansiteAbout
+This modules loads content related to a fan club
+
+### block:FansiteAbout
+This block exposes various content available for a fan club
+
+FansiteTitle  
+:   the title of the fan club
+
+FansiteDescription  
+:   the description of the fan club
+
+FansiteTier1Name  
+FansiteTier2Name  
+FansiteTier3Name  
+:   the title of the fan club tier
+
+FansiteTier1Description  
+FansiteTier2Description  
+FansiteTier3Description  
+:   the description of the fan club tier
+
+FansiteTier1Price  
+FansiteTier2Price  
+FansiteTier3Price  
+:   the price of the fan club tier
+
 ## Fan Content Stream
 ### page:Fansite
 `/fansite` - This page should show a listing of fan content posted to your fan club
 
 ### module:FansiteContentList
-This modules lists all content posted by fans to a fan club
+This module lists all content posted by fans to a fan club
 
 `supported` *(required)*
 
