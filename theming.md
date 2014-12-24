@@ -4148,6 +4148,40 @@ Finally, you should add a binding to your theme's JavaScript. You can use this c
         // data will be a JavaScript object representing the user (or an error if an error occurred)
     });
 
+## User Password Resetting
+This allows a user to initiate a password reset.
+
+**Step One**
+
+First, you'll need some sort way of having users add information. For instance, you could do:
+
+    <form id="passwordResetForm">
+        <input type="hidden" name="email" value="{email}" />
+        <input type="submit" value="Send Password Reset Email" />
+    </form>
+
+The available keys for passing are simply `email`.
+
+**Step Two**
+
+Next, when the user submits the form, you'll want to capture it with JavaScript similar to the following:
+
+    $('form#passwordResetForm').on('submit', function (e) {
+        e.preventDefault();
+        pm({target: window.frames.sbnav, type: 'sbInlineUserPasswordReset', data: {
+                email: $(this).find('[name="email"]').val()
+            }
+        });
+    });
+
+**Step Three**
+
+Finally, you should add a binding to your theme's JavaScript. You can use this callback to handle the data returned from SBNav.
+
+    pm.bind('sbInlineUserPasswordReset', function(data) {
+        // data will be a JavaScript object representing success or failure
+    });
+
 ## Email List Subscription
 This allows accounts to capture emails for a generic email list signup. This is currently only available for paid accounts.
 
