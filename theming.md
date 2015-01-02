@@ -4155,8 +4155,8 @@ This allows a user to initiate a password reset.
 
 First, you'll need some sort way of having users add information. For instance, you could do:
 
-    <form id="passwordResetForm">
-        <input type="hidden" name="email" value="{email}" />
+    <form id="forgotPasswordForm">
+        <input type="text" name="email" />
         <input type="submit" value="Send Password Reset Email" />
     </form>
 
@@ -4166,9 +4166,9 @@ The available keys for passing are simply `email`.
 
 Next, when the user submits the form, you'll want to capture it with JavaScript similar to the following:
 
-    $('form#passwordResetForm').on('submit', function (e) {
+    $('form#forgotPasswordForm').on('submit', function (e) {
         e.preventDefault();
-        pm({target: window.frames.sbnav, type: 'sbInlineUserPasswordReset', data: {
+        pm({target: window.frames.sbnav, type: 'sbInlineUserForgotPassword', data: {
                 email: $(this).find('[name="email"]').val()
             }
         });
@@ -4178,7 +4178,7 @@ Next, when the user submits the form, you'll want to capture it with JavaScript 
 
 Finally, you should add a binding to your theme's JavaScript. You can use this callback to handle the data returned from SBNav.
 
-    pm.bind('sbInlineUserPasswordReset', function(data) {
+    pm.bind('sbInlineUserForgotPassword', function(data) {
         // data will be a JavaScript object representing success or failure
     });
 
