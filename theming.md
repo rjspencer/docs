@@ -4149,11 +4149,11 @@ Finally, you should add a binding to your theme's JavaScript. You can use this c
     });
 
 ## User Password Resetting
-This allows a user to initiate a password reset.
+This allows a user to initiate a password reset if they forgot their password. The system will then send them an email with a reset link. You can optionally choose to handle the reset page otherwise they will be taken through the normal StageBloc password resetting flow.
 
 **Step One**
 
-First, you'll need some sort way of having users add information. For instance, you could do:
+First, you'll need some sort way of having users give you their information to initiate a reset with. For instance, you could do:
 
     <form id="forgotPasswordForm">
         <input type="text" name="email" />
@@ -4180,6 +4180,42 @@ Finally, you should add a binding to your theme's JavaScript. You can use this c
 
     pm.bind('sbInlineUserForgotPassword', function(data) {
         // data will be a JavaScript object representing success or failure
+    });
+
+**Step Four** _(optional beyond here)_
+
+This page in the theming engine (`{page:PasswordReset}`) will be linked to in the user's password reset email if your theme has it defined.
+
+    {page:PasswordReset}
+        <form class="js-reset-password">
+            <input type="hidden" name="hash" />
+            <input type="text" name="email" placeholder="Email Address" />
+            <input type="password" name="password" placeholder="Password" />
+            <input type="password" name="confirmPassword" placeholder="Confirm Password" />
+
+            <input type="submit" />
+        </form>
+    {/page:PasswordReset}
+
+**Step Five**
+
+Once the user enter their information (and the hash from the URL is inserted into the form), you can capture it's submission to do the actual password reset. The keys for the passed data should match the names of the form elements in step four.
+
+    $passwordResetForm.submit(function() {
+        pm({target: window.frames.sbnav, type: 'sbInlineUserPasswordReset', data: $(this).serialize() });
+        return false;
+    });
+
+**Step Six**
+
+Once the system determines if this password reset is valid, you'll receive an error or success message back to your listener like below.
+
+    pm.bind('sbInlineUserPasswordReset', function(data) {
+        if (data.error) {
+            alert(data.error);
+        } else {
+            alert(data.success);
+        }
     });
 
 ## Email List Subscription
