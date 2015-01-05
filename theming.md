@@ -4184,11 +4184,11 @@ Finally, you should add a binding to your theme's JavaScript. You can use this c
 
 **Step Four** _(optional beyond here)_
 
-This page in the theming engine (`{page:PasswordReset}`) will be linked to in the user's password reset email if your theme has it defined. The `{PasswordResetHashInput}` variable can be used to automatically get the hash from the URL.
+This page in the theming engine (`{page:PasswordReset}`) will be linked to in the user's password reset email if your theme has it defined. The `{GET}` variable can be used to automatically get the hash from the URL.
 
     {page:PasswordReset}
         <form class="js-reset-password">
-            {PasswordResetHashInput}
+            <input type="hidden" name="hash" value="{GET param="hash"}" />
             <input type="text" name="email" placeholder="Email Address" />
             <input type="password" name="password" placeholder="Password" />
             <input type="password" name="confirmPassword" placeholder="Confirm Password" />
