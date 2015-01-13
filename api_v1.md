@@ -13,7 +13,7 @@ All of StageBloc's documentation is up on GitHub for you to fork, modify, and im
 The root URL of the API is `https://api.stagebloc.com/v1/`. It can generally be assumed that writing endpoints use `POST` requests and reading endpoints use `GET` requests.
 
 ### Authorization
-Connecting with the StageBloc API uses the OAuth 2.0 standard. You must first [create a StageBloc account](http://stagebloc.com/signup) and then [register your application in the StageBloc backend](http://stagebloc.com/account/admin/management/developers/) to receive a client ID and secret that will allow users to connect with your application.
+Connecting with the StageBloc API uses the OAuth 2.0 standard. You must first [create a StageBloc account](http://stagebloc.com/signup) and then register your application in the StageBloc backend to receive a client ID and secret that will allow users to connect with your application. To do this, click on your account at the top of the page and then "Account Settings" followed by "Developer Center".
 
 Requests can be be made with just a `client_id` parameter, but this is restricted to reading (listing) endpoints. In order to make use of any writing (editing) endpoints, an access token (i.e. validated user) must be present.
 
