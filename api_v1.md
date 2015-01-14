@@ -528,6 +528,7 @@ exclusive
 		"data": {
 			"id": 773,
 			"title": "The Best Track ever",
+			"duration": 123,
 			"description": "",
 			"lyrics": "",
 			"artist":"",
@@ -554,6 +555,10 @@ exclusive
 	}
 
 ### Response Explanation
+
+duration
+
+	the length (in seconds) of this track
 
 stream_url
 
