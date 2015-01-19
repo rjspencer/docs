@@ -839,6 +839,83 @@ This endpoint can be used to get a single photo album from an account.
 
 See the response for `/photos/albums`, it will be structured the same except that it won't be in an array.
 
+## /photo
+`[POST] /account/{accountId}/photo/`  
+This endpoint can be used to upload a photo to an account. In addition to the original size, the photo will be converted into several different sizes. While it converts, there may be a slight delay before all sizes are available. This request must be made by a logged in fan or admin of the account. Depending on the access level of the logged in user, it will become fan content or official content.
+
+### POST Parameters
+
+`photo` _(required)_
+
+	the contents of the photo file itself
+
+`title` _(required)_
+
+	the title of the photo
+
+description
+
+	the description of the photo
+
+public
+
+	whether or not this photo should be public (defaults to true)
+
+exclusive
+
+	whether or not this photo should be exclusive
+
+### Example Response
+
+    {
+        "metadata": {
+            "http_code":200
+        },
+        "data": {
+            "id": 1,
+            "title": "Awesome Picture",
+            "created": "2015-01-19 18:09:17",
+            "modified": "2015-01-19 18:09:27",
+            "short_url": "http:\/\/stgb.dev\/p\/XV",
+            "description": "Photo of a developer in a coffee shop building an application using the StageBloc API",
+            "width": 850,
+            "height": 456,
+            "sticky": false,
+            "exclusive": false,
+            "in_moderation": false,
+            "is_fan_content": false,
+            "comment_count": 0,
+            "like_count": 0,
+            "images": {
+                "thumbnail_url": "http:\/\/cdn.stagebloc.com\/photos\/2936\/thumbnail\/20150119_180917_2936_3243.jpeg",
+                "small_url": "http:\/\/cdn.stagebloc.com\/photos\/2936\/small\/20150119_180917_2936_3243.jpeg",,
+                "medium_url": "http:\/\/cdn.stagebloc.com\/photos\/2936\/medium\/20150119_180917_2936_3243.jpeg",,
+                "large_url": "http:\/\/cdn.stagebloc.com\/photos\/2936\/large\/20150119_180917_2936_3243.jpeg",,
+                "original_url": "http:\/\/cdn.stagebloc.com\/photos\/2936\/original\/20150119_180917_2936_3243.jpeg",
+            },
+            "user": 0,
+            "custom_field_data": []
+        }
+    }
+
+### Response Explanation
+
+in_moderation
+
+	if this photo was submitted by a fan, this handles if it is still in moderation or not
+
+is_fan_content
+
+	whether or not this photo was submitted by a fan or not
+
+images
+
+	a list of URLs to access your original photo and several different resized versions
+
+custom_field_data
+
+    if you have custom data set on photos for your account, the slugs will show up as keys here with their values
+
 # Video
 These endpoints revolve around the ability to upload and stream video through StageBloc. Video consists of both individual videos and those videos being organized into various playlists.
 
